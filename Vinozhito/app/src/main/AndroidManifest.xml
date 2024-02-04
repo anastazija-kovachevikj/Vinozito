@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinozhito"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,5 +22,8 @@
             </intent-filter>
         </activity>
     </application>
+
+<!--    NEW-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

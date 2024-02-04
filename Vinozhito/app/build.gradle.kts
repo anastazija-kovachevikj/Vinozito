@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "finki.nichk"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "finki.nichk"
