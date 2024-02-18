@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vinozhito</string>
+    <string name="app_name">Виножито</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="main_manu_title">Изберете корисник</string>
 </resources>
