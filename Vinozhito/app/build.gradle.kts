@@ -55,6 +55,7 @@ android {
 dependencies {
 //    NEW
     //implementation("org.tensorflow:tensorflow-lite:2.8.0")
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.19") // for gif splash
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -66,6 +67,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
 //    implementation("androidx.room:room-compiler:2.6.1")
 //    implementation("androidx.navigation:navigation-fragment:2.6.0")
 //    implementation("androidx.navigation:navigation-ui:2.6.0")
@@ -74,6 +76,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,19 +8,97 @@
     android:background="@color/greyblue"
     tools:context=".MainActivity">
 
+    <!-- Title TextView -->
+
+    <!-- First half-width FrameLayout -->
+
+    <!-- Second half-width FrameLayout -->
+
+    <!-- Guideline to divide the screen -->
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:gravity="bottom|center_horizontal"
         android:text="@string/main_manu_title"
         android:textColor="@color/darkgrey2"
-        android:textSize="14pt"
+        android:textSize="15pt"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="215dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintVertical_bias="0.35">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:background="@drawable/cicrle_shape" />
+
+        <ImageButton
+            android:id="@+id/child"
+            android:layout_width="202dp"
+            android:layout_height="179dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/children" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="215dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintVertical_bias="0.35">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:background="@drawable/cicrle_shape" />
+
+        <ImageButton
+            android:id="@+id/parent"
+            android:layout_width="173dp"
+            android:layout_height="158dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/parents" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,23 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rb"
-    tools:context=".MainActivity">
+    android:background="@drawable/rb3"
 
-    <ImageView
-        android:id="@+id/vinozito_title"
-        android:layout_width="700dp"
-        android:layout_height="284dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/vv"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+    tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/start_btn"
@@ -32,12 +18,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
+        app:layout_constraintVertical_bias="0.644" />
 
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/textView2"-->
 <!--        android:layout_width="56dp"-->
 <!--        android:layout_height="53dp"-->
@@ -50,19 +36,6 @@
 <!--        app:layout_constraintHorizontal_bias="1.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        tools:layout_editor_absoluteY="179dp"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView3"-->
-<!--        android:layout_width="52dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:rotation="-30"-->
-<!--        android:text="и"-->
-<!--        android:textColor="@color/darkgrey2"-->
-<!--        android:textSize="20pt"-->
-<!--        android:textStyle="bold"-->
-<!--        tools:layout_editor_absoluteX="157dp"-->
-<!--        tools:layout_editor_absoluteY="144dp"-->
 <!--        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
