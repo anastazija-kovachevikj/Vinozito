@@ -45,14 +45,14 @@
         app:layout_constraintVertical_bias="0.35">
 
         <View
-            android:id="@+id/view1"
+            android:id="@+id/child_circle"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:background="@drawable/cicrle_shape" />
+            android:background="@drawable/circle_states" />
 
         <ImageButton
-            android:id="@+id/child"
+            android:id="@+id/child_btn"
             android:layout_width="202dp"
             android:layout_height="179dp"
             android:layout_gravity="bottom|center_horizontal"
@@ -77,14 +77,14 @@
         app:layout_constraintVertical_bias="0.35">
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/parent_circle"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:background="@drawable/cicrle_shape" />
+            android:background="@drawable/circle_states" />
 
         <ImageButton
-            android:id="@+id/parent"
+            android:id="@+id/parent_btn"
             android:layout_width="173dp"
             android:layout_height="158dp"
             android:layout_gravity="center"
