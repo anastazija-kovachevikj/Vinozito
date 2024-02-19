@@ -44,5 +44,26 @@ public class MainMenuActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        childButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainMenuActivity.this, ParentAvtivity.class);
+            startActivity(intent);
+        });
+
+
+        childButton.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // transparent when pressed
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // back to normal released or canceled
+                    v.setAlpha(1.0f);
+                    break;
+            }
+            return false;
+        });
     }
 }
