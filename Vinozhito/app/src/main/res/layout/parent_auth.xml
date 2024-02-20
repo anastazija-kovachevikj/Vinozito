@@ -18,7 +18,6 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- Left side: Number input fields -->
     <LinearLayout
         android:id="@+id/left_layout"
         android:layout_width="wrap_content"

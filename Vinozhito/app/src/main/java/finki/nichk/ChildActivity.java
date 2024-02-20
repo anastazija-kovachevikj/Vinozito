@@ -1,6 +1,8 @@
 package finki.nichk;
 
 import android.os.Bundle;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
