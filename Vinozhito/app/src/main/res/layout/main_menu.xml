@@ -8,14 +8,6 @@
     android:background="@color/greyblue"
     tools:context=".MainActivity">
 
-    <!-- Title TextView -->
-
-    <!-- First half-width FrameLayout -->
-
-    <!-- Second half-width FrameLayout -->
-
-    <!-- Guideline to divide the screen -->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
