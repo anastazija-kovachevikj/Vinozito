@@ -22,19 +22,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.644" />
 
-    <!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="56dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:rotation="-40"-->
-<!--        android:text="в"-->
-<!--        android:textColor="@color/darkgrey2"-->
-<!--        android:textSize="20pt"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/textView3"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:layout_editor_absoluteY="179dp"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

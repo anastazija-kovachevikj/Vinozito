@@ -19,38 +19,24 @@ public class MainMenuActivity extends AppCompatActivity {
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);
 
-        //View parentCircle = findViewById(R.id.parent_circle);
-
-        parentButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainMenuActivity.this, ParentAvtivity.class);
+        // PARENTS
+        buttonTouchListener(parentButton, () -> {
+            Intent intent = new Intent(MainMenuActivity.this, ParentActivity.class);
             startActivity(intent);
-            //parentButton.setAlpha(0.5f);
-            //parentCircle.setBackgroundResource(R.drawable.circle_curves);
         });
 
-
-        parentButton.setOnTouchListener((v, event) -> {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    // transparent when pressed
-                    v.setAlpha(0.5f);
-                    break;
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    // back to normal released or canceled
-                    v.setAlpha(1.0f);
-                    break;
-            }
-            return false;
-        });
-
-        childButton.setOnClickListener(v -> {
+        // CHILDREN
+        buttonTouchListener(childButton, () -> {
             Intent intent = new Intent(MainMenuActivity.this, ChildActivity.class);
             startActivity(intent);
         });
+    }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
 
-        childButton.setOnTouchListener((v, event) -> {
+        button.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     // transparent when pressed
