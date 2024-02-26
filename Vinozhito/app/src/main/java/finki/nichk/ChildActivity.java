@@ -24,8 +24,37 @@ public class ChildActivity extends AppCompatActivity {
         //Glide.with(this).asGif().load(R.drawable.c).into(bckg);
 
         ImageButton backButton = findViewById(R.id.back_button);
+        ImageButton communicationButton = findViewById(R.id.communication_btn);
+        ImageButton connectButton = findViewById(R.id.connect_btn);
+        ImageButton coloringButton = findViewById(R.id.coloring_btn);
 
-        backButton.setOnTouchListener((v, event) -> {
+        buttonTouchListener(backButton, () -> {
+            Intent intent = new Intent(ChildActivity.this, ParentActivity.class);
+            startActivity(intent);
+        });
+
+        buttonTouchListener(communicationButton, () -> {
+            Intent intent = new Intent(ChildActivity.this, CommunicationActivity.class); // CommunicationActivity
+            startActivity(intent);
+        });
+
+        buttonTouchListener(connectButton, () -> {
+            Intent intent = new Intent(ChildActivity.this, ConnectActivity.class); // ConnectActivity
+            startActivity(intent);
+        });
+
+        buttonTouchListener(coloringButton, () -> {
+            Intent intent = new Intent(ChildActivity.this, ColoringActivity.class); // ColoringActivity
+            startActivity(intent);
+        });
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
+
+        button.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     // transparent when pressed
@@ -38,11 +67,6 @@ public class ChildActivity extends AppCompatActivity {
                     break;
             }
             return false;
-        });
-
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ChildActivity.this, MainMenuActivity.class);
-            startActivity(intent);
         });
     }
 }

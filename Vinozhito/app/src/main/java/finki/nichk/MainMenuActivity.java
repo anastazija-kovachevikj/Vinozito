@@ -62,6 +62,7 @@ public class MainMenuActivity extends AppCompatActivity {
         });
     }
 
+    // BUTTON SOUND
     private void playSound() {
         // Check if mediaPlayer is not null and not already playing
         if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
