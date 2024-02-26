@@ -9,4 +9,11 @@
     <string name="boenje_title">Боење</string>
     <string name="placeholder_title">Нешто</string>
     <string name="podesuvanja_title">Подесувања</string>
+    <string name="broj_text">БРОЈ</string>
+    <string name="_5_text">5</string>
+    <string name="_6_text">6</string>
+    <string name="_7_text">7</string>
+    <string name="_8_text">8</string>
+    <string name="_9_text">9</string>
+    <string name="_0_text">0</string>
 </resources>
