@@ -16,7 +16,8 @@
         android:layout_marginTop="20dp"
         android:background="@null"
         android:scaleType="centerInside"
-        android:src="@drawable/close" />
+        android:src="@drawable/close"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:layout_width="555dp"
