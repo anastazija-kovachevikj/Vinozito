@@ -19,4 +19,5 @@ public class MainActivity extends AppCompatActivity {
             finish(); // close this activity
         });
     }
+
 }
