@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/child_main"
@@ -8,153 +7,137 @@
     android:columnCount="1"
     android:orientation="vertical"
     android:paddingBottom="45dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="15dp"
     android:rowCount="2">
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="80dp"
         android:layout_height="45dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
         android:background="@null"
         android:contentDescription="Back"
         android:scaleType="centerInside"
         android:src="@drawable/reply" />
 
-    <RelativeLayout
+    <GridLayout
         android:id="@+id/horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:contentDescription="TODO"
-        android:paddingBottom="2dp"
-        tools:context=".ChildActivity">
+        android:columnCount="3"
+        android:rowCount="2"
+        android:layout_gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp">
+            <ImageButton
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp">
+            <ImageButton
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp">
+            <ImageButton
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+        </FrameLayout>
+
 
         <LinearLayout
-            android:id="@+id/infiniteView"
-            android:layout_width="wrap_content"
-            android:layout_height="265dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="0dp"
-            android:orientation="horizontal"
-            android:scaleType="centerCrop">
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:orientation="vertical">
 
-            <GridLayout
-                android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:columnCount="3"
-                android:rowCount="2"
-                tools:ignore="UselessParent">
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jas"
+                android:gravity="center_horizontal"
+                android:layout_gravity="bottom"
+                android:paddingBottom="7dp" />
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-                    <ImageButton
-                        android:id="@+id/communication_btn"
-                        android:layout_width="160dp"
-                        android:layout_height="161dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginBottom="-3dp"
-                        android:background="@null"
-                        android:contentDescription="TODO"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/speak" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-                    <ImageButton
-                        android:id="@+id/connect_btn"
-                        android:layout_width="145dp"
-                        android:layout_height="131dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginBottom="20dp"
-                        android:background="@null"
-                        android:contentDescription="TODO"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/blocks" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-
-                    <ImageButton
-                        android:id="@+id/coloring_btn"
-                        android:layout_width="152dp"
-                        android:layout_height="143dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="-5dp"
-                        android:background="@null"
-                        android:contentDescription="TODO"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/painting" />
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-
-                    <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/unknown" />
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-
-                    <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/unknown" />
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|top"
-                    android:layout_marginStart="0dp">
-
-                    <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/unknown" />
-
-                </FrameLayout>
-
-
-            </GridLayout>
         </LinearLayout>
-    </RelativeLayout>
+
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp">
+            <ImageButton
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp">
+            <ImageButton
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:background="@drawable/card_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speak"
+                android:paddingVertical="20dp"
+                android:layout_margin="5dp"/>
+        </FrameLayout>
+
+
+
+
+
+
+
+    </GridLayout>
 </GridLayout>
