@@ -8,6 +8,6 @@ public class CommunicationActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.child_main_screen); // to be updated to communication_layout
+        setContentView(R.layout.communication_cat); // to be updated to communication_layout
     }
 }
