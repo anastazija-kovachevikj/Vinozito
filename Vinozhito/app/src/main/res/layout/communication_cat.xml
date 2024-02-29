@@ -79,7 +79,7 @@
                         android:contentDescription="TODO"
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/banana" />
+                        android:src="@drawable/heart" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -89,16 +89,16 @@
                     android:paddingBottom="15dp">
 
 
-                    <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="TODO"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/lemon" />
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="TODO"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/lemon" />-->
                 </FrameLayout>
 
                 <FrameLayout
@@ -107,16 +107,16 @@
                     android:layout_columnWeight="1"
                     android:paddingBottom="15dp">
 
-                    <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="TODO"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/pear" />
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="TODO"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/pear" />-->
                 </FrameLayout>
 
             </GridLayout>
@@ -154,7 +154,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/scroll"
