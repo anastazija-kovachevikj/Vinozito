@@ -38,6 +38,21 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
+            android:name=".ColoringActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
+            android:name=".CommunicationActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
+            android:name=".ConnectActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>

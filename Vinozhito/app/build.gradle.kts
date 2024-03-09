@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "finki.nichk"
         minSdk = 31
-        targetSdk = 33
+        targetSdk = 34 // mi kaza da smenam vo 34 od 33
         versionCode = 1
         versionName = "1.0"
 

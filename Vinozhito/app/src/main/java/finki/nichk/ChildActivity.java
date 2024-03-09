@@ -29,7 +29,7 @@ public class ChildActivity extends AppCompatActivity {
         ImageButton coloringButton = findViewById(R.id.coloring_btn);
 
         buttonTouchListener(backButton, () -> {
-            Intent intent = new Intent(ChildActivity.this, ParentActivity.class);
+            Intent intent = new Intent(ChildActivity.this, MainMenuActivity.class);
             startActivity(intent);
         });
 
