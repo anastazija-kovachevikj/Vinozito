@@ -65,6 +65,7 @@
                 android:rowCount="1">
 
                 <FrameLayout
+                    android:id="@+id/card1"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1"
@@ -83,6 +84,7 @@
                 </FrameLayout>
 
                 <FrameLayout
+                    android:id="@+id/card2"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1"
@@ -102,6 +104,7 @@
                 </FrameLayout>
 
                 <FrameLayout
+                    android:id="@+id/card1"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1"
