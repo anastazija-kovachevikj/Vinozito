@@ -72,6 +72,7 @@
                     android:paddingBottom="15dp">
 
                     <ImageButton
+                        android:id="@+id/cardslot1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
@@ -80,7 +81,8 @@
                         android:contentDescription="TODO"
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/heart" />
+                        android:src="@drawable/heart"
+                        android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
@@ -91,35 +93,37 @@
                     android:paddingBottom="15dp">
 
 
-<!--                    <ImageButton-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_columnWeight="1"-->
-<!--                        android:layout_margin="15dp"-->
-<!--                        android:background="@drawable/card_background"-->
-<!--                        android:contentDescription="TODO"-->
-<!--                        android:paddingVertical="10dp"-->
-<!--                        android:scaleType="fitCenter"-->
-<!--                        android:src="@drawable/lemon" />-->
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/lemon"
+                        android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/card1"
+                    android:id="@+id/card3"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1"
                     android:paddingBottom="15dp">
 
-<!--                    <ImageButton-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_columnWeight="1"-->
-<!--                        android:layout_margin="15dp"-->
-<!--                        android:background="@drawable/card_background"-->
-<!--                        android:contentDescription="TODO"-->
-<!--                        android:paddingVertical="10dp"-->
-<!--                        android:scaleType="fitCenter"-->
-<!--                        android:src="@drawable/pear" />-->
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pear"
+                        android:visibility="invisible"/>
                 </FrameLayout>
 
             </GridLayout>
@@ -180,7 +184,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/imageView1"
+                        android:id="@+id/banana"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
