@@ -49,7 +49,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ladybug" />
@@ -69,7 +69,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/dino" />
@@ -90,7 +90,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cake" />
@@ -111,7 +111,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/butterfly" />
@@ -131,7 +131,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/rainbow" />
@@ -151,7 +151,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cow" />
@@ -171,7 +171,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cactus" />
@@ -191,7 +191,7 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
+                    android:background="@drawable/text_background"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cp" />

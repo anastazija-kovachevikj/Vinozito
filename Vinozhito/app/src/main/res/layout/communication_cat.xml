@@ -5,213 +5,431 @@
     android:layout_height="match_parent"
     android:background="@color/greyblue">
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="85dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
-        android:background="@null"
-        android:contentDescription="Back"
-        android:scaleType="centerInside"
-        android:src="@drawable/reply" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/back_button"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:scrollbars="none"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:orientation="vertical"
+        android:rowCount="3"
+        tools:ignore="UselessParent">
 
-        <GridLayout
-            android:id="@+id/horizontal"
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/reply" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:columnCount="3"
-            android:rowCount="4">
+            android:layout_height="120dp"
+            android:columnCount="4"
+            android:rowCount="1">
 
             <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
+                android:id="@+id/frameLayout"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="40dp">
 
                 <ImageButton
-                    android:id="@+id/imageView1"
+                    android:id="@+id/person"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/white_circle"
+                    android:contentDescription="TODO"
+                    android:paddingVertical="11dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
+                    android:src="@drawable/girl" />
             </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/text_background"
+                android:columnCount="3"
+                android:paddingHorizontal="21dp"
+                android:rowCount="1">
 
-                <ImageButton
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <FrameLayout
+                    android:id="@+id/card1"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
                     android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
-            </FrameLayout>
+                    android:paddingBottom="15dp">
 
+                    <ImageButton
+                        android:id="@+id/cardslot1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/heart"
+                        android:visibility="invisible"/>
+                </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
-
-                <ImageButton
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <FrameLayout
+                    android:id="@+id/card2"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
                     android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
-            </FrameLayout>
+                    android:paddingBottom="15dp">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/lemon"
+                        android:visibility="invisible"/>
+                </FrameLayout>
 
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
-
-                <ImageButton
-                    android:id="@+id/imageView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <FrameLayout
+                    android:id="@+id/card3"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
                     android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
-            </FrameLayout>
+                    android:paddingBottom="15dp">
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pear"
+                        android:visibility="invisible"/>
+                </FrameLayout>
 
-                <ImageButton
-                    android:id="@+id/imageView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
-            </FrameLayout>
+            </GridLayout>
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1">
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginBottom="31dp"
+                android:layout_toEndOf="@+id/frameLayout"
+                android:background="@null"
+                android:contentDescription="TODO"
+                android:scaleType="centerInside"
+                android:src="@drawable/trash" />
 
-                <ImageButton
-                    android:id="@+id/imageView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/card_background"
-                    android:paddingVertical="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/speak" />
-            </FrameLayout>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="30dp"
+                android:background="@null"
+                android:contentDescription="TODO"
+                android:scaleType="centerInside"
+                android:src="@drawable/play_shadow" />
 
-            <TextView
-                android:layout_width="200dp"
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/scroll"
+            android:padding="2dp"
+            android:scrollbars="none">
+
+            <GridLayout
+                android:id="@+id/horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:layout_gravity="top|center_horizontal"
+                android:columnCount="4"
+                android:paddingHorizontal="15dp"
+                android:rowCount="4">
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp"
-                android:text="@string/komunikacija_title"
-                android:textAlignment="center"
-                android:textColor="@color/darkgrey2"
-                android:textSize="25sp"
-                android:textStyle="bold" />
 
-        </GridLayout>
-    </ScrollView>
+                    <ImageButton
+                        android:id="@+id/banana"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/banana" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/lemon" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pear" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pineapple" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="банана"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="лимон"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="круша"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="ананас"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/raspberries" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/strawberry" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/kiwi" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_columnWeight="1">
+
+
+                    <ImageButton
+                        android:id="@+id/imageView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/card_background"
+                        android:contentDescription="TODO"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/orange" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="малина"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="јагода"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="киви"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:text="портокал"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgrey2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+            </GridLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
 </RelativeLayout>
