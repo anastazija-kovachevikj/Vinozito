@@ -5,9 +5,6 @@
       <entry key="MainActivity">
         <State />
       </entry>
-      <entry key="SplashActivity">
-        <State />
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -16,12 +13,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\anast\.android\avd\Pixel_Tablet_API_31.avd" />
+                  <value value="C:\Users\ana_m\.android\avd\Pixel_Tablet_API_31.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-10T20:17:56.816291800Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-11T12:41:11.442027700Z" />
         </State>
       </entry>
     </value>

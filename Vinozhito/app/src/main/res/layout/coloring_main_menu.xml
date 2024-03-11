@@ -96,7 +96,6 @@
                     android:src="@drawable/cake" />
             </FrameLayout>
 
-
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="130dp"
