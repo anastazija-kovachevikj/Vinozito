@@ -22,7 +22,8 @@
             android:layout_marginBottom="5dp"
             android:background="@null"
             android:scaleType="centerInside"
-            android:src="@drawable/reply" />
+            android:src="@drawable/reply"
+            android:contentDescription="TODO" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -94,6 +95,7 @@
 
 
                     <ImageButton
+                        android:id="@+id/cardslot2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
@@ -114,6 +116,7 @@
                     android:paddingBottom="15dp">
 
                     <ImageButton
+                        android:id="@+id/cardslot3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
@@ -129,6 +132,7 @@
             </GridLayout>
 
             <ImageButton
+                android:id="@+id/clearAll"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentTop="true"
@@ -169,7 +173,7 @@
             android:scrollbars="none">
 
             <GridLayout
-                android:id="@+id/horizontal"
+                android:id="@+id/card_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
@@ -203,7 +207,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/imageView2"
+                        android:id="@+id/lemon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
