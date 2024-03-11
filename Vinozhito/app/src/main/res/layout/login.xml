@@ -1,0 +1,156 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/child_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyblue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/reply" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="1"
+            android:paddingHorizontal="21dp"
+            android:rowCount="6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="Добредојдовте"
+                android:textAlignment="center"
+                android:textColor="@color/darkgrey2"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:id="@+id/gridLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginEnd="150dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/text_background"
+                android:columnCount="2"
+                android:paddingHorizontal="21dp"
+                android:rowCount="1"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_columnWeight="0.17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/acc"
+                    android:layout_gravity="center_vertical"
+                    android:layout_column="0"/>
+
+                <EditText
+                    android:layout_columnWeight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Корисничко име"
+                    android:layout_gravity="center_vertical"
+                    android:layout_column="1"/>
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/gridLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginEnd="150dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/text_background"
+                android:columnCount="3"
+                android:paddingHorizontal="21dp"
+                android:rowCount="1"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_columnWeight="0.2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/password"
+                    android:layout_gravity="center_vertical" />
+
+                <EditText
+                    android:layout_columnWeight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Лозинка"
+                    android:inputType="textPassword"
+                    android:layout_gravity="center_vertical" />
+
+                <ImageButton
+                    android:layout_columnWeight="0.2"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/eye"
+                    android:layout_gravity="center_vertical" />
+
+            </GridLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="Најави се"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:background="@drawable/buttonLogIn"
+                android:textStyle="bold" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="Заборавена лозинка?"
+                android:textAlignment="center"
+                android:textColor="@color/babyblue"
+                android:background="@android:color/transparent"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="Немате кориснички профил?  Регистрирај се"
+                android:textAlignment="center"
+                android:textColor="@color/babyblue"
+                android:background="@android:color/transparent"
+                android:textStyle="bold" />
+
+
+
+
+        </GridLayout>
+    </LinearLayout>
+
+</RelativeLayout>
