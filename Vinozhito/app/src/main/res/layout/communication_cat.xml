@@ -1,33 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/child_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greyblue">
+    android:background="@color/greyblue"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:columnCount="1"
-        android:orientation="vertical"
-        android:rowCount="3"
-        tools:ignore="UselessParent">
+        android:layout_weight="9"
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="@null"
-            android:scaleType="centerInside"
-            android:src="@drawable/reply"
-            android:contentDescription="TODO" />
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkpurpelblue">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="85dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@null"
+                android:contentDescription="TODO"
+                android:scaleType="centerInside"
+                android:src="@drawable/reply" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:layout_marginVertical="15dp"
             android:columnCount="4"
             android:rowCount="1">
 
@@ -35,7 +43,11 @@
                 android:id="@+id/frameLayout"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="40dp">
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
                 <ImageButton
                     android:id="@+id/person"
@@ -45,7 +57,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="0dp"
                     android:background="@drawable/white_circle"
                     android:contentDescription="TODO"
                     android:paddingVertical="11dp"
@@ -57,9 +69,12 @@
                 android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="200dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/text_background"
                 android:columnCount="3"
                 android:paddingHorizontal="21dp"
@@ -83,7 +98,7 @@
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/heart"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -105,7 +120,7 @@
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/lemon"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -126,7 +141,7 @@
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/pear"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
                 </FrameLayout>
 
             </GridLayout>
@@ -138,8 +153,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="29dp"
-                android:layout_marginBottom="31dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
                 android:layout_toEndOf="@+id/frameLayout"
                 android:background="@null"
                 android:contentDescription="TODO"
@@ -175,7 +190,7 @@
             <GridLayout
                 android:id="@+id/card_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="top|center_horizontal"
                 android:columnCount="4"
                 android:paddingHorizontal="15dp"
@@ -185,7 +200,6 @@
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1">
-
 
                     <ImageButton
                         android:id="@+id/banana"
@@ -429,11 +443,101 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-
             </GridLayout>
         </ScrollView>
-
     </LinearLayout>
 
+    <!-- TabLayout on the right side -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/scroll_cat"
+        android:paddingVertical="2dp">
 
-</RelativeLayout>
+        <GridLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="1"
+            android:orientation="vertical"
+            android:rowCount="9">
+
+
+            <ImageButton
+                android:id="@+id/tab_button_1"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:contentDescription="TODO"
+                android:paddingHorizontal="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/banana" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:background="@drawable/border" />
+
+            <ImageButton
+                android:id="@+id/tab_button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:contentDescription="TODO"
+                android:paddingHorizontal="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/banana" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:background="@drawable/border" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:contentDescription="TODO"
+                android:paddingHorizontal="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/banana" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:background="@drawable/border" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
+
+                android:background="@color/white"
+                android:contentDescription="TODO"
+                android:paddingHorizontal="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/banana" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@drawable/border" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
+
+                android:background="@color/white"
+                android:contentDescription="TODO"
+                android:paddingHorizontal="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/banana" />
+
+        </GridLayout>
+    </ScrollView>
+</LinearLayout>
