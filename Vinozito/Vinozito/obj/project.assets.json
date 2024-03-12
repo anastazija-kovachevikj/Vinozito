@@ -8576,11 +8576,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anast\\source\\repos\\Vinozito\\Vinozito\\Vinozito.csproj",
+      "projectUniqueName": "C:\\Users\\anast\\Desktop\\Vinozito\\Vinozito\\Vinozito\\Vinozito.csproj",
       "projectName": "Vinozito",
-      "projectPath": "C:\\Users\\anast\\source\\repos\\Vinozito\\Vinozito\\Vinozito.csproj",
+      "projectPath": "C:\\Users\\anast\\Desktop\\Vinozito\\Vinozito\\Vinozito\\Vinozito.csproj",
       "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anast\\source\\repos\\Vinozito\\Vinozito\\obj\\",
+      "outputPath": "C:\\Users\\anast\\Desktop\\Vinozito\\Vinozito\\Vinozito\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",

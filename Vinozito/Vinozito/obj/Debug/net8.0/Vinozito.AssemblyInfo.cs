@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vinozito")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2940ac865c81ec441e2eeb0e1b64332fc52aa43")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72d9664a37afdb50c4d5ce3b0e73edee5561f1d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vinozito")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vinozito")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

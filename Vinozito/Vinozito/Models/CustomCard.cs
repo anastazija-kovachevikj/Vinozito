@@ -1,6 +1,6 @@
 ﻿namespace Vinozito.Models
 {
-    public class Card
+    public class CustomCard
     {
     }
 }

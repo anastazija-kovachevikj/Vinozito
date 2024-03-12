@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l523WIMGCvJwCuQXPP8mscab0OTYrplo3koJ9AlKg8qHf4pfnGYcdsDpUQPbWbNbBV9tHwfWSx8J1m4VpXYX1g==",
+  "dgSpecHash": "Jp0jKMaQSfGDvbgD9d4H1HW7FNOm+Cq4rgBKbeM3ayWdv4E+3FL1/U2FdJ/iH9bym/UfMF0nWu/hDJ3FBzYXOQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anast\\source\\repos\\Vinozito\\Vinozito\\Vinozito.csproj",
+  "projectFilePath": "C:\\Users\\anast\\Desktop\\Vinozito\\Vinozito\\Vinozito\\Vinozito.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anast\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

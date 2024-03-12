@@ -2,14 +2,12 @@
 
 namespace Vinozito.Models
 {
-    public class UserCards
+    public class Card
     {
         [Key]
         public int Id { get; set; }
-        public User user { get; set; }
         public Category category { get; set; }
-        public Card card { get; set; }
-
-
+        public String name { get; set; }
+        public String voice { get; set; }
     }
 }
