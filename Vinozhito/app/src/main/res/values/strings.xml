@@ -20,4 +20,13 @@
     <string name="_3_text">3</string>
     <string name="_2_text">2</string>
     <string name="_1_text">1</string>
+    <string name="portokal_text">портокал</string>
+    <string name="kiwi_text">киви</string>
+    <string name="jagoda_text">јагода</string>
+    <string name="malina_text">малина</string>
+    <string name="banana_text">банана</string>
+    <string name="limon_text">лимон</string>
+    <string name="krusha_text">круша</string>
+    <string name="ananas_text">ананас</string>
+    <string name="todo_text">TODO</string>
 </resources>
