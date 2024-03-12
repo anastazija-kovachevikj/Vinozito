@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Vinozito.Models
+
+namespace Vinozito_.net_.Models
 {
     public class Settings
     {

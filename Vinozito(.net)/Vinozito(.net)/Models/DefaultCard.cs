@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Vinozito.Models
+namespace Vinozito_.net_.Models
 {
-    public class Card
+    public class DefaultCard
     {
         [Key]
         public int Id { get; set; }
-        public Category category { get; set; }
-        public String name { get; set; }
-        public String voice { get; set; }
+        [Required]
+        public virtual required Category Category { get; set; }
+        public required String Name { get; set; }
+        public required String Voice { get; set; }
+        public required String Photo { get; set; }
     }
 }
