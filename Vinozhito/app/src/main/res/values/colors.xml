@@ -13,4 +13,9 @@
     <color name="redish">#C66363</color>
     <color name="lightred">#FBECF0</color>
     <color name="lightpink">#ffd1dc</color>
+    <color name="btncolor">#686a84</color>
+    <color name="yellow">#FFFACD</color>
+
+
+
 </resources>
