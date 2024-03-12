@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Vinozito-aaf1c689-8b60-4d6e-98e3-330057e42273")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vinozito")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+737a17a6a77a1922e56cad6ac675e9b66d8743c7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vinozito")]

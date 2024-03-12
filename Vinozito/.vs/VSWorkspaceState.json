@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Vinozito",
+    "\\Vinozito\\Controllers",
+    "\\Vinozito\\Data",
+    "\\Vinozito\\Models",
+    "\\Vinozito\\obj",
+    "\\Vinozito\\Properties",
+    "\\Vinozito\\Views"
+  ],
+  "SelectedNode": "\\Vinozito\\Data\\ApplicationDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}
