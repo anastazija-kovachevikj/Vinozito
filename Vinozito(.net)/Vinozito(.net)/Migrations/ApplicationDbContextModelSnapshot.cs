@@ -254,7 +254,7 @@ namespace Vinozito_.net_.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Custom")
@@ -324,9 +324,6 @@ namespace Vinozito_.net_.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -340,8 +337,6 @@ namespace Vinozito_.net_.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("DefaultCard");
                 });
@@ -462,9 +457,11 @@ namespace Vinozito_.net_.Migrations
 
             modelBuilder.Entity("Vinozito_.net_.Models.Card", b =>
                 {
-                    b.HasOne("Vinozito_.net_.Models.Category", null)
+                    b.HasOne("Vinozito_.net_.Models.Category", "Category")
                         .WithMany("CardCollection")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Vinozito_.net_.Models.DefaultCard", "DefaultCard")
                         .WithMany()
@@ -475,6 +472,8 @@ namespace Vinozito_.net_.Migrations
                     b.HasOne("Vinozito_.net_.Models.User", null)
                         .WithMany("Cards")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Category");
 
                     b.Navigation("DefaultCard");
                 });
@@ -488,17 +487,6 @@ namespace Vinozito_.net_.Migrations
                         .IsRequired();
 
                     b.Navigation("DefaultCard");
-                });
-
-            modelBuilder.Entity("Vinozito_.net_.Models.DefaultCard", b =>
-                {
-                    b.HasOne("Vinozito_.net_.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Vinozito_.net_.Models.User", b =>

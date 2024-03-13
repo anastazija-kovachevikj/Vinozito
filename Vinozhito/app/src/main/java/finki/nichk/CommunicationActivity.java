@@ -17,7 +17,6 @@ public class CommunicationActivity extends AppCompatActivity {
     int count = 1; // to count which slot
     ImageButton cardslot; // the slot to be filled
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communication_cat); // to be updated to communication_layout
@@ -25,8 +24,22 @@ public class CommunicationActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.back_button);
         ImageButton clearButton = findViewById(R.id.clearAll);
 
-//        ImageButton banana = findViewById(R.id.banana);
-//        ImageButton lemon = findViewById(R.id.lemon);
+        // TAB BUTTONS -> CATEGORIES
+        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
+        ImageButton peopleTab = findViewById(R.id.people_tab);
+        ImageButton drinksTab = findViewById(R.id.drinks_tab);
+        ImageButton foodTab = findViewById(R.id.food_tab);
+        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
+        ImageButton fruitTab = findViewById(R.id.fruit_tab);
+        ImageButton cutleryTab = findViewById(R.id.cutlery_tab);
+        ImageButton toysTab = findViewById(R.id.toys_tab);
+        ImageButton activitiesTab = findViewById(R.id.activities_tab);
+        ImageButton animalsTab = findViewById(R.id.animals_tab);
+        ImageButton clothesTab = findViewById(R.id.clothes_tab);
+        ImageButton colorsTab = findViewById(R.id.colors_tab);
+
+        
 
         ImageButton cardslot1 = findViewById(R.id.cardslot1);
         ImageButton cardslot2 = findViewById(R.id.cardslot2);
@@ -43,32 +56,6 @@ public class CommunicationActivity extends AppCompatActivity {
             cardslot3.setVisibility(View.INVISIBLE);
             count = 1; // reset
         });
-
-        // listener for the banana button
-//        buttonTouchListener(banana, () -> {
-//            try {
-//                // Get the drawable of the banana button
-//                Drawable bananaDrawable = banana.getDrawable();
-//                setCardslotImage(bananaDrawable);
-//                Log.d("BananaButton", "Image changed for cardslot1");
-//            } catch (NullPointerException e) {
-//                // Handle null drawable
-//                e.printStackTrace();
-//                Log.e("BananaButton", "Error: Drawable is null");
-//            }
-//        });
-//
-//        // listener for lemon
-//        buttonTouchListener(lemon, () -> {
-//            try {
-//                Drawable bananaDrawable = lemon.getDrawable();
-//                setCardslotImage(bananaDrawable);
-//
-//            } catch (NullPointerException e) {
-//                e.printStackTrace();
-//                Log.e("BananaButton", "Error: Drawable is null");
-//            }
-//        });
 
         GridLayout cardLayout = findViewById(R.id.card_layout); // the grid with the cards
 
@@ -91,7 +78,6 @@ public class CommunicationActivity extends AppCompatActivity {
         cardSlot.setOnClickListener(view -> {
             Drawable cardDrawable = cardSlot.getDrawable();
             setCardslotImage(cardDrawable);
-            //cardSlot.setVisibility(View.INVISIBLE);
         });
     }
 
