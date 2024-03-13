@@ -1,16 +1,14 @@
-﻿namespace Vinozito.Models
+﻿using System.ComponentModel.DataAnnotations;
+using Vinozito_.net_.Models;
+
+namespace Vinozito_.net_.Models
 {
-    public enum Category
+    public class Category
     {
-        verbs,
-        emotions,
-        drinks,
-        food,
-        cutlery,
-        games,
-        activity,
-        animal,
-        people,
-        custom
+        [Key]
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public virtual required List<Card> CardCollection { get; set; }
+
     }
 }
