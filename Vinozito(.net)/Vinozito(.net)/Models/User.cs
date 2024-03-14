@@ -11,8 +11,8 @@ namespace Vinozito_.net_.Models
         public required String Username { get; set; }
         public required String Password { get; set; }
         public required String Email { get; set; }
-        public virtual required Avatar Avatar { get; set; }
-        public virtual required Settings Settings { get; set; }
+        public virtual  Avatar Avatar { get; set; } 
+        public virtual Settings Settings { get; set; }
         public virtual required List<Card> Cards { get; set; }
 
     }

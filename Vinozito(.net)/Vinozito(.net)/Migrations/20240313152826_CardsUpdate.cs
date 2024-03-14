@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Vinozito_.net_.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class CardsUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,6 +98,25 @@ namespace Vinozito_.net_.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "DefaultCard",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Voice = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Photo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DefaultCard", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -247,26 +266,22 @@ namespace Vinozito_.net_.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "DefaultCard",
+                name: "CustomCard",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Voice = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Photo = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    DefaultCardId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DefaultCard", x => x.Id);
+                    table.PrimaryKey("PK_CustomCard", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DefaultCard_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
+                        name: "FK_CustomCard_DefaultCard_DefaultCardId",
+                        column: x => x.DefaultCardId,
+                        principalTable: "DefaultCard",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -306,36 +321,14 @@ namespace Vinozito_.net_.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "CustomCard",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Voice = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DefaultCardId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CustomCard", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CustomCard_DefaultCard_DefaultCardId",
-                        column: x => x.DefaultCardId,
-                        principalTable: "DefaultCard",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Card",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     DefaultCardId = table.Column<int>(type: "int", nullable: false),
                     Custom = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -345,7 +338,8 @@ namespace Vinozito_.net_.Migrations
                         name: "FK_Card_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Card_DefaultCard_DefaultCardId",
                         column: x => x.DefaultCardId,
@@ -418,11 +412,6 @@ namespace Vinozito_.net_.Migrations
                 column: "DefaultCardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DefaultCard_CategoryId",
-                table: "DefaultCard",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_User_AvatarId",
                 table: "User",
                 column: "AvatarId");
@@ -464,6 +453,9 @@ namespace Vinozito_.net_.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Category");
+
+            migrationBuilder.DropTable(
                 name: "User");
 
             migrationBuilder.DropTable(
@@ -474,9 +466,6 @@ namespace Vinozito_.net_.Migrations
 
             migrationBuilder.DropTable(
                 name: "Settings");
-
-            migrationBuilder.DropTable(
-                name: "Category");
         }
     }
 }
