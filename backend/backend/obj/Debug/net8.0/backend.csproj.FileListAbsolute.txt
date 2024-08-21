@@ -1,0 +1,15 @@
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\backend.exe
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\backend.deps.json
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\backend.runtimeconfig.json
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\backend.dll
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\backend.pdb
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.AssemblyInfoInputs.cache
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.AssemblyInfo.cs
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.csproj.CoreCompileInputs.cache
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.sourcelink.json
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.dll
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\refint\backend.dll
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.pdb
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
+C:\Users\ana_m\OneDrive\Desktop\Vinozito\backend\backend\obj\Debug\net8.0\ref\backend.dll
