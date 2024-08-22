@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Vinozito_.net_.Models;
 
 namespace Vinozito_.net_.Controllers
 {
