@@ -46,6 +46,11 @@ namespace Vinozito_.net_.Data
             modelBuilder.Entity<Card>()
                 .HasOne(c => c.DefaultCard);
 
+            modelBuilder.Entity<Card>()
+            .HasOne(c => c.Category)
+            .WithMany()
+            .IsRequired();
+
             // USER
             modelBuilder.Entity<User>()
                .HasKey(u => u.Id);
@@ -82,7 +87,8 @@ namespace Vinozito_.net_.Data
                 .IsRequired();
 
             modelBuilder.Entity<Category>()
-                .HasMany(c => c.CardCollection);
+                .HasMany(c => c.CardCollection)
+                .WithOne(c => c.Category);
 
             // CUSTOM CARD
             modelBuilder.Entity<CustomCard>()
@@ -99,10 +105,10 @@ namespace Vinozito_.net_.Data
             modelBuilder.Entity<DefaultCard>()
                .HasKey(d => d.Id);
 
-            modelBuilder.Entity<DefaultCard>()
-                .HasOne(dc => dc.Category)
-                .WithMany()
-                .IsRequired();
+            //modelBuilder.Entity<DefaultCard>()
+               // .HasOne(dc => dc.Category)
+                //.WithMany()
+                //.IsRequired();
 
             modelBuilder.Entity<DefaultCard>()
                 .Property(c => c.Name)
