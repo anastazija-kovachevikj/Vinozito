@@ -20,6 +20,20 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_SERVER: mongodb
+  
+  backend:
+    image: anastazijakovach/backend_vinozito:latest
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - mongodb
+      - mongo-express
+    ports:
+      - "5000:80"
 
 volumes:
   mongo_data:
