@@ -1,0 +1,44 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+# Ignore build output directories
+backend/backend/obj/
+backend/backend/bin/
+
+# Rider and Visual Studio related files
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+.idea/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuget
+*.dgspec.json
+*.nuget.cache
+*.nuget.g.props
+*.nuget.g.targets
+project.nuget.cache
+
+# Rider specific files
+rider.project.model.nuget.info
+rider.project.restore.info
+
+# Miscellaneous
+*.log
+
+
