@@ -55,3 +55,7 @@ C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Micros
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll

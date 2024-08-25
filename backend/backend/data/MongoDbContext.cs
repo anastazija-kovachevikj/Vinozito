@@ -17,5 +17,4 @@ public class MongoDbContext
     public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
     public IMongoCollection<DefaultCard> DefaultCards => _database.GetCollection<DefaultCard>("DefaultCards");
     public IMongoCollection<CustomCard> CustomCards => _database.GetCollection<CustomCard>("CustomCards");
-    public IMongoCollection<UserCards> UserCards => _database.GetCollection<UserCards>("UserCards");
 }

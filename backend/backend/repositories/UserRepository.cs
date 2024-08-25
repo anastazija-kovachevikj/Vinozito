@@ -3,45 +3,37 @@ using backend.interfaces;
 using backend.models;
 using MongoDB.Driver;
 
-namespace backend.repositories
+namespace backend.repositories;
+
+public class UserRepository(MongoDbContext context) : IUserRepository
 {
-    public class UserRepository : IUserRepository
+    public async Task<IEnumerable<User>> GetAllAsync()
     {
-        private readonly MongoDbContext _context;
+        return await context.Users.Find(_ => true).ToListAsync();
+    }
 
-        public UserRepository(MongoDbContext context)
-        {
-            _context = context;
-        }
+    public async Task<User> GetByIdAsync(string id)
+    {
+        return await context.Users.Find(u => u.Id == id).FirstOrDefaultAsync();
+    }
 
-        public async Task<IEnumerable<User>> GetAllAsync()
-        {
-            return await _context.Users.Find(_ => true).ToListAsync();
-        }
+    public async Task AddAsync(User entity)
+    {
+        await context.Users.InsertOneAsync(entity);
+    }
 
-        public async Task<User> GetByIdAsync(string id)  // Change id to string, since MongoDB usually uses ObjectId as a string
-        {
-            return await _context.Users.Find(u => u.Id == id).FirstOrDefaultAsync();
-        }
+    public async Task UpdateAsync(User entity)
+    {
+        await context.Users.ReplaceOneAsync(u => u.Id == entity.Id, entity);
+    }
 
-        public async Task AddAsync(User entity)
-        {
-            await _context.Users.InsertOneAsync(entity);
-        }
+    public async Task DeleteAsync(string id)
+    {
+        await context.Users.DeleteOneAsync(u => u.Id == id);
+    }
 
-        public async Task UpdateAsync(User entity)
-        {
-            await _context.Users.ReplaceOneAsync(u => u.Id == entity.Id, entity);
-        }
-
-        public async Task DeleteAsync(string id)
-        {
-            await _context.Users.DeleteOneAsync(u => u.Id == id);
-        }
-
-        public async Task<User> GetByUsernameAsync(string username)
-        {
-            return await _context.Users.Find(u => u.Username == username).FirstOrDefaultAsync();
-        }
+    public async Task<User> GetByUsernameAsync(string username)
+    {
+        return await context.Users.Find(u => u.Username == username).FirstOrDefaultAsync();
     }
 }

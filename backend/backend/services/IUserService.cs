@@ -10,5 +10,6 @@ namespace backend.services
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(string id);
         Task<User> GetUserByUsernameAsync(string username);
+        Task<IEnumerable<CustomCard>> GetAllCustomCardsAsync(string id);
     }
 }
