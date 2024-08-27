@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.media.MediaPlayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,10 @@ public class CommunicationActivity extends AppCompatActivity {
 
     int count = 1; // to count which slot
     ImageButton cardslot; // the slot to be filled
+
+    private MediaPlayer mediaPlayer_jabolko;
+    private MediaPlayer mediaPlayer_banana;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +43,10 @@ public class CommunicationActivity extends AppCompatActivity {
         ImageButton animalsTab = findViewById(R.id.animals_tab);
         ImageButton clothesTab = findViewById(R.id.clothes_tab);
         ImageButton colorsTab = findViewById(R.id.colors_tab);
+        ImageButton read_all = findViewById(R.id.read_all);
 
-        
+        ImageButton banana_card = findViewById(R.id.banana);
+        ImageButton jabolko_card = findViewById(R.id.jabolko);
 
         ImageButton cardslot1 = findViewById(R.id.cardslot1);
         ImageButton cardslot2 = findViewById(R.id.cardslot2);
@@ -72,14 +79,47 @@ public class CommunicationActivity extends AppCompatActivity {
                 setCardListener(cardButton);
             }
         }
+
+        // Sounds
+        // Initialize MediaPlayer with the audio file from raw folder
+        mediaPlayer_banana = MediaPlayer.create(this, R.raw.banana);
+        mediaPlayer_jabolko = MediaPlayer.create(this, R.raw.jabolko);
+
+        // Set onClickListener for the button
+//        banana_card.setOnClickListener(v -> {
+//            // Play the sound
+//            if (mediaPlayer_banana  != null) {
+//                mediaPlayer_banana .start();
+//            }
+//        });
+//
+//        jabolko_card.setOnClickListener(v -> {
+//            // Play the sound
+//            if (mediaPlayer_jabolko  != null) {
+//                mediaPlayer_jabolko .start();
+//            }
+//        });
     }
+
 
     private void setCardListener(ImageButton cardSlot) {
         cardSlot.setOnClickListener(view -> {
             Drawable cardDrawable = cardSlot.getDrawable();
             setCardslotImage(cardDrawable);
+
+            // Check if the clicked card is jabolko or banana and play the corresponding sound
+            if (cardSlot.getId() == R.id.jabolko) {
+                if (mediaPlayer_jabolko != null) {
+                    mediaPlayer_jabolko.start();
+                }
+            } else if (cardSlot.getId() == R.id.banana) {
+                if (mediaPlayer_banana != null) {
+                    mediaPlayer_banana.start();
+                }
+            }
         });
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private void buttonTouchListener(ImageButton button, Runnable onClickAction) {

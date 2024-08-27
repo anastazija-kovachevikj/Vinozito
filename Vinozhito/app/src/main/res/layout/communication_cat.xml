@@ -163,6 +163,7 @@
                 android:src="@drawable/trash" />
 
             <ImageButton
+                android:id="@+id/read_all"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentTop="true"
@@ -222,7 +223,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/lemon"
+                        android:id="@+id/jabolko"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
