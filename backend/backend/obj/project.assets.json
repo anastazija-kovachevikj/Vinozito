@@ -10254,19 +10254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anast\\.nuget\\packages\\": {}
+    "C:\\Users\\ana_m\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\obj\\",
+      "projectPath": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\ana_m\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ana_m\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10274,7 +10274,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10342,7 +10341,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

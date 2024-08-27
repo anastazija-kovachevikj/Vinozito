@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -11,129 +12,86 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CommunicationActivity extends AppCompatActivity {
 
-    int count = 1; // to count which slot
-    ImageButton cardslot; // the slot to be filled
+    private static final int SLOT_COUNT = 3;
+    private static final int SOUND_DELAY_MILLIS = 1000;
 
-    private MediaPlayer mediaPlayer_jabolko;
-    private MediaPlayer mediaPlayer_banana;
+    private int count = 0; // Track the number of occupied slots
+    private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
+    private final int[] cardDrawableIds = new int[SLOT_COUNT];
 
+    private MediaPlayer mediaPlayer;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.communication_cat); // to be updated to communication_layout
+        setContentView(R.layout.communication_cat);
 
-        ImageButton backButton = findViewById(R.id.back_button);
-        ImageButton clearButton = findViewById(R.id.clearAll);
+        initializeViews();
+        initializeListeners();
+    }
 
-        // TAB BUTTONS -> CATEGORIES
-        ImageButton conversationTab = findViewById(R.id.conversation_tab);
-        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
-        ImageButton peopleTab = findViewById(R.id.people_tab);
-        ImageButton drinksTab = findViewById(R.id.drinks_tab);
-        ImageButton foodTab = findViewById(R.id.food_tab);
-        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
-        ImageButton fruitTab = findViewById(R.id.fruit_tab);
-        ImageButton cutleryTab = findViewById(R.id.cutlery_tab);
-        ImageButton toysTab = findViewById(R.id.toys_tab);
-        ImageButton activitiesTab = findViewById(R.id.activities_tab);
-        ImageButton animalsTab = findViewById(R.id.animals_tab);
-        ImageButton clothesTab = findViewById(R.id.clothes_tab);
-        ImageButton colorsTab = findViewById(R.id.colors_tab);
-        ImageButton read_all = findViewById(R.id.read_all);
+    private void initializeViews() {
+        // Initialize slot buttons
+        cardSlots[0] = findViewById(R.id.cardslot1);
+        cardSlots[1] = findViewById(R.id.cardslot2);
+        cardSlots[2] = findViewById(R.id.cardslot3);
 
-        ImageButton banana_card = findViewById(R.id.banana);
-        ImageButton jabolko_card = findViewById(R.id.jabolko);
-
-        ImageButton cardslot1 = findViewById(R.id.cardslot1);
-        ImageButton cardslot2 = findViewById(R.id.cardslot2);
-        ImageButton cardslot3 = findViewById(R.id.cardslot3);
-
-        buttonTouchListener(backButton, () -> {
-            Intent intent = new Intent(CommunicationActivity.this, ChildActivity.class);
-            startActivity(intent);
-        });
-
-        buttonTouchListener(clearButton, () -> {
-            cardslot1.setVisibility(View.INVISIBLE);
-            cardslot2.setVisibility(View.INVISIBLE);
-            cardslot3.setVisibility(View.INVISIBLE);
-            count = 1; // reset
-        });
-
-        GridLayout cardLayout = findViewById(R.id.card_layout); // the grid with the cards
-
-        // check each child view in the GridLayout
+        // Initialize card layout and slots
+        GridLayout cardLayout = findViewById(R.id.card_layout);
         for (int i = 0; i < cardLayout.getChildCount(); i++) {
             View cardView = cardLayout.getChildAt(i);
-
-            // if the child is a FrameLayout containing an ImageButton
             if (cardView instanceof FrameLayout) {
                 FrameLayout frameLayout = (FrameLayout) cardView;
                 ImageButton cardButton = (ImageButton) frameLayout.getChildAt(0);
-
-                // set a listener for the button
                 setCardListener(cardButton);
             }
         }
-
-        // Sounds
-        // Initialize MediaPlayer with the audio file from raw folder
-        mediaPlayer_banana = MediaPlayer.create(this, R.raw.banana);
-        mediaPlayer_jabolko = MediaPlayer.create(this, R.raw.jabolko);
-
-        // Set onClickListener for the button
-//        banana_card.setOnClickListener(v -> {
-//            // Play the sound
-//            if (mediaPlayer_banana  != null) {
-//                mediaPlayer_banana .start();
-//            }
-//        });
-//
-//        jabolko_card.setOnClickListener(v -> {
-//            // Play the sound
-//            if (mediaPlayer_jabolko  != null) {
-//                mediaPlayer_jabolko .start();
-//            }
-//        });
     }
 
+    private void initializeListeners() {
+        // Initialize buttons
+        ImageButton backButton = findViewById(R.id.back_button);
+        ImageButton clearButton = findViewById(R.id.clearAll);
+        ImageButton readAll = findViewById(R.id.read_all);
 
-    private void setCardListener(ImageButton cardSlot) {
-        cardSlot.setOnClickListener(view -> {
-            Drawable cardDrawable = cardSlot.getDrawable();
-            setCardslotImage(cardDrawable);
+        // Set listeners
+        setButtonTouchListener(backButton, this::navigateToChildActivity);
+        setButtonTouchListener(clearButton, this::clearAllSlots);
+        setButtonTouchListener(readAll, this::playAllCardSounds);
 
-            // Check if the clicked card is jabolko or banana and play the corresponding sound
-            if (cardSlot.getId() == R.id.jabolko) {
-                if (mediaPlayer_jabolko != null) {
-                    mediaPlayer_jabolko.start();
-                }
-            } else if (cardSlot.getId() == R.id.banana) {
-                if (mediaPlayer_banana != null) {
-                    mediaPlayer_banana.start();
-                }
-            }
-        });
+        // Set click listeners for card slots
+        for (ImageButton slot : cardSlots) {
+            setSlotClickListener(slot);
+        }
     }
-
 
     @SuppressLint("ClickableViewAccessibility")
-    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
-        button.setOnClickListener(v -> onClickAction.run());
+    private void setCardListener(ImageButton cardButton) {
+        cardButton.setOnClickListener(view -> {
+            Drawable cardDrawable = cardButton.getDrawable();
+            int cardDrawableId = cardButton.getId();
+            if (count < SLOT_COUNT) {
+                setSlotImage(cardDrawable, cardDrawableId);
+            }
+            playCardSound(cardDrawableId);
+        });
 
-        button.setOnTouchListener((v, event) -> {
+        cardButton.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    // transparent when pressed
                     v.setAlpha(0.5f);
                     break;
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
-                    // back to normal released or canceled
                     v.setAlpha(1.0f);
                     break;
             }
@@ -141,27 +99,139 @@ public class CommunicationActivity extends AppCompatActivity {
         });
     }
 
-    private void setCardslotImage(Drawable drawable) { // 3 card slots in total
-        switch (count) {
-            case 1:
-                cardslot = findViewById(R.id.cardslot1);
-                break;
-            case 2:
-                cardslot = findViewById(R.id.cardslot2);
-                break;
-            case 3:
-                cardslot = findViewById(R.id.cardslot3);
-                break;
-            default:
-                count = 1; // reset count
-                cardslot = findViewById(R.id.cardslot1);
-        }
+    @SuppressLint("ClickableViewAccessibility")
+    private void setSlotClickListener(ImageButton slot) {
+        slot.setOnClickListener(view -> {
+            int slotIndex = getSlotIndex(slot);
+            if (slotIndex != -1) {
+                playCardSound(cardDrawableIds[slotIndex]);
+            }
+        });
 
-        if (cardslot.getVisibility() != View.VISIBLE) { // slot not empty
-            // slot is empty -> card can be added
-            cardslot.setImageDrawable(drawable);
-            cardslot.setVisibility(View.VISIBLE);
+        slot.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    v.setAlpha(1.0f);
+                    break;
+            }
+            return false;
+        });
+    }
+
+    private void setSlotImage(Drawable drawable, int drawableId) {
+        if (count < SLOT_COUNT) {
+            ImageButton slot = cardSlots[count];
+            slot.setImageDrawable(drawable);
+            slot.setVisibility(View.VISIBLE);
+            cardDrawableIds[count] = drawableId;
             count++;
+        }
+    }
+
+    private void playCardSound(int cardId) {
+        String resourceName = getResources().getResourceEntryName(cardId);
+        int soundResId = getResources().getIdentifier(resourceName, "raw", getPackageName());
+
+        if (soundResId != 0) {
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
+
+            mediaPlayer = MediaPlayer.create(this, soundResId);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+                mediaPlayer = null;
+            });
+        } else {
+            Log.e("CardSound", "Sound resource not found for: " + resourceName);
+        }
+    }
+
+    private void playAllCardSounds() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable playSoundTask = new Runnable() {
+            int index = 0;
+
+            @Override
+            public void run() {
+                if (index < SLOT_COUNT) {
+                    if (cardSlots[index].getVisibility() == View.VISIBLE) {
+                        applyTouchFeedback(cardSlots[index]);
+                        playCardSound(cardDrawableIds[index]);
+                    }
+                    index++;
+                    scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
+                } else {
+                    scheduler.shutdown();
+                }
+            }
+        };
+        playSoundTask.run();
+    }
+
+    private void applyTouchFeedback(final ImageButton slot) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            runOnUiThread(() -> slot.setAlpha(0.5f));
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            runOnUiThread(() -> slot.setAlpha(1.0f));
+        });
+        executor.shutdown();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setButtonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
+        button.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    v.setAlpha(1.0f);
+                    break;
+            }
+            return false;
+        });
+    }
+
+    private void navigateToChildActivity() {
+        Intent intent = new Intent(CommunicationActivity.this, ChildActivity.class);
+        startActivity(intent);
+    }
+
+    private void clearAllSlots() {
+        for (ImageButton slot : cardSlots) {
+            slot.setVisibility(View.INVISIBLE);
+        }
+        count = 0; // Reset slot counter
+    }
+
+    private int getSlotIndex(ImageButton slot) {
+        for (int i = 0; i < cardSlots.length; i++) {
+            if (cardSlots[i] == slot) {
+                return i;
+            }
+        }
+        return -1; // Slot not found
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
         }
     }
 }
