@@ -1,4 +1,5 @@
 ﻿using backend.data;
+using backend.dto;
 using backend.interfaces;
 using backend.models;
 using backend.repositories;
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICustomCardService, CustomCardService>();
 builder.Services.AddScoped<IDefaultCardService, DefaultCardService>();
+builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddSingleton<MongoDbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICustomCardRepository, CustomCardRepository>();

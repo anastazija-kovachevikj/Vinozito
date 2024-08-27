@@ -3,7 +3,7 @@ using backend.models;
 
 namespace backend.services.impl;
 
-public class CustomCardService(ICustomCardRepository customCardRepository) : ICustomCardService
+public class CustomCardService(ICustomCardRepository customCardRepository,UserService userService) : ICustomCardService
 {
     public async Task<IEnumerable<CustomCard>> GetAllAsync()
     {
@@ -28,5 +28,10 @@ public class CustomCardService(ICustomCardRepository customCardRepository) : ICu
     public async Task DeleteAsync(string id)
     {
         await customCardRepository.DeleteAsync(id);
+    }
+
+    public Task<IEnumerable<CustomCard>> GetAllByUserId(string id)
+    {
+        return userService.GetAllCustomCardsAsync(id);
     }
 }
