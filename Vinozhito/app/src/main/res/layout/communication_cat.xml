@@ -223,7 +223,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/jabolko"
+                        android:id="@+id/lemon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
@@ -242,7 +242,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/imageView3"
+                        android:id="@+id/pear"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
@@ -261,7 +261,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/imageView4"
+                        android:id="@+id/pineapple"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_columnWeight="1"
