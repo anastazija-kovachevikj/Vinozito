@@ -3,7 +3,7 @@ using backend.models;
 
 namespace backend.services.impl;
 
-public class UserService(IUserRepository userRepository, ICustomCardRepository customCardRepository)
+public class UserService(IUserRepository userRepository)
     : IUserService
 {
     public async Task<IEnumerable<User>> GetAllUsersAsync()
@@ -65,20 +65,5 @@ public class UserService(IUserRepository userRepository, ICustomCardRepository c
         return user;
     }
 
-    public async Task<IEnumerable<CustomCard>> GetAllCustomCardsAsync(string id)
-    {
-        var user = await userRepository.GetByIdAsync(id);
 
-        if (user.CustomCardsIds == null || !user.CustomCardsIds.Any())
-        {
-            return Enumerable.Empty<CustomCard>();
-        }
-
-        var customCardTasks = user.CustomCardsIds.Select(async cardId => await customCardRepository.GetByIdAsync(cardId));
-
-        var customCards = await Task.WhenAll(customCardTasks);
-
-        return customCards.Where(c => true);
-    }
-  
 }

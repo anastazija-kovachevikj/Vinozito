@@ -26,7 +26,7 @@ public class CardService(
                     cardType: CardType.Custom
                 );
             }
-
+        
             return new CardDto(
                 id: dc.Id,
                 audioVoice: dc.AudioVoice,
