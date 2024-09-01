@@ -4,8 +4,8 @@ using backend.models;
 namespace backend.services.impl;
 
 public class CardService(
-    CustomCardService customCardService,
-    DefaultCardService defaultCardService) : ICardService
+    ICustomCardService customCardService,
+    IDefaultCardService defaultCardService) : ICardService
 {
     public async Task<IEnumerable<CardDto>> GetCardsById(string id)
     {

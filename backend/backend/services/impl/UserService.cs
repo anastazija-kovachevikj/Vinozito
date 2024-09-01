@@ -65,5 +65,16 @@ public class UserService(IUserRepository userRepository)
         return user;
     }
 
+    public async Task AddCustomCardToListAsync(string userId,string customCardId)
+    {
+        var user = await userRepository.GetByIdAsync(userId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException("User not found");
+        }
+        
+        user.CustomCardsIds?.Add(customCardId);
 
+        await userRepository.UpdateAsync(user);
+    }
 }

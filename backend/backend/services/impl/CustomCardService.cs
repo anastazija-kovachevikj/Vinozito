@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace backend.services.impl
 {
-    public class CustomCardService(ICustomCardRepository customCardRepository, UserService userService)
+    public class CustomCardService(ICustomCardRepository customCardRepository, IUserService userService)
         : ICustomCardService
     {
-        // Constructor for dependency injection
+     
 
         public async Task<IEnumerable<CustomCard>> GetAllAsync()
         {
@@ -20,8 +20,9 @@ namespace backend.services.impl
             return await customCardRepository.GetByIdAsync(id);
         }
 
-        public async Task AddAsync(CustomCard entity)
+        public async Task AddAsync(CustomCard entity, string userId)
         {
+            await userService.AddCustomCardToListAsync(userId, entity.Id);
             await customCardRepository.AddAsync(entity);
         }
 

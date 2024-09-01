@@ -17,15 +17,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependency Injection (DI) registration
-
-builder.Services.AddScoped<ICustomCardService, CustomCardService>();
 builder.Services.AddScoped<IDefaultCardService, DefaultCardService>();
-builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddSingleton<MongoDbContext>();
-builder.Services.AddScoped<ICustomCardRepository, CustomCardRepository>();
 builder.Services.AddScoped<IDefaultCardRepository, DefaultCardRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICustomCardService, CustomCardService>();
+builder.Services.AddScoped<ICustomCardRepository, CustomCardRepository>();
+builder.Services.AddScoped<ICardService, CardService>();
+
 
 var app = builder.Build();
 
