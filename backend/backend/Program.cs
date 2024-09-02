@@ -26,8 +26,16 @@ builder.Services.AddScoped<ICustomCardService, CustomCardService>();
 builder.Services.AddScoped<ICustomCardRepository, CustomCardRepository>();
 builder.Services.AddScoped<ICardService, CardService>();
 
+builder.Services.AddSingleton<MongoDbContext>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
+    dbContext.InsertSampleData();
+}
+
 
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())

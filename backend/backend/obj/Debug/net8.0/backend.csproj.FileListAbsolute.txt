@@ -59,3 +59,4 @@ C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Micros
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\anast\OneDrive\Desktop\Vinozito\backend\backend\bin\Debug\net8.0\IdGen.dll
