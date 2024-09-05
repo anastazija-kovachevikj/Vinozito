@@ -1,6 +1,7 @@
 ﻿using backend.data;
 using backend.interfaces;
 using backend.models;
+using IdGen;
 using MongoDB.Driver;
 
 namespace backend.repositories;
@@ -19,9 +20,9 @@ public class CustomCardRepository(MongoDbContext context) : ICustomCardRepositor
 
     public async Task AddAsync(CustomCard entity)
     {
+        entity.Id = Guid.NewGuid().ToString(); 
         await context.CustomCards.InsertOneAsync(entity);
     }
-
     public async Task UpdateAsync(CustomCard entity)
     {
         await context.CustomCards.ReplaceOneAsync(c => c.Id == entity.Id, entity);

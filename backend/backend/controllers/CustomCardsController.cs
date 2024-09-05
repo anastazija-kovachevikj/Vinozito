@@ -23,14 +23,14 @@ public class CustomCardController(ICustomCardService customCardService) : Contro
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CustomCard customCard)
+    public async Task<IActionResult> Add([FromBody] CustomCard customCard, string userId)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
-        await customCardService.AddAsync(customCard);
+        await customCardService.AddAsync(customCard,userId);
         return CreatedAtAction(nameof(GetById), new { id = customCard.Id }, customCard);
     }
 

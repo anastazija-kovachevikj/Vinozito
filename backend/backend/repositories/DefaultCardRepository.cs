@@ -21,6 +21,7 @@ public class DefaultCardRepository(MongoDbContext context) : IDefaultCardReposit
 
     public async Task AddAsync(DefaultCard defaultCard)
     {
+        defaultCard.Id = Guid.NewGuid().ToString(); 
         await _defaultCards.InsertOneAsync(defaultCard);
     }
 
