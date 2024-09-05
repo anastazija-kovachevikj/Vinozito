@@ -19,6 +19,7 @@ public class UserRepository(MongoDbContext context) : IUserRepository
 
     public async Task AddAsync(User entity)
     {
+        entity.Id = Guid.NewGuid().ToString(); 
         await context.Users.InsertOneAsync(entity);
     }
 

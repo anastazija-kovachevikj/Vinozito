@@ -120,7 +120,7 @@
                         android:contentDescription="@string/todo_text"
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/lemon"
+                        android:src="@drawable/fruit_lemon"
                         android:visibility="invisible" />
                 </FrameLayout>
 
@@ -141,7 +141,7 @@
                         android:contentDescription="@string/todo_text"
                         android:paddingVertical="10dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/pear"
+                        android:src="@drawable/fruit_pear"
                         android:visibility="invisible" />
                 </FrameLayout>
 
@@ -198,252 +198,252 @@
                 android:paddingHorizontal="15dp"
                 android:rowCount="4">
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
-                    <ImageButton
-                        android:id="@+id/banana"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/banana" />
-                </FrameLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/fruit_banana"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/fruit_banana" />-->
+<!--                </FrameLayout>-->
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
-
-
-                    <ImageButton
-                        android:id="@+id/jabolko"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/lemon" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
 
-                    <ImageButton
-                        android:id="@+id/imageView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/pear" />
-                </FrameLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/lemon"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/fruit_lemon" />-->
+<!--                </FrameLayout>-->
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
-
-
-                    <ImageButton
-                        android:id="@+id/imageView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/pineapple" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/banana_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/limon_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/krusha_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/ananas_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
 
-                    <ImageButton
-                        android:id="@+id/imageView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/raspberries" />
-                </FrameLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/pear"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/fruit_pear" />-->
+<!--                </FrameLayout>-->
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
-
-
-                    <ImageButton
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/strawberry" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
 
-                    <ImageButton
-                        android:id="@+id/imageView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/kiwi" />
-                </FrameLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/pineapple"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/pineapple" />-->
+<!--                </FrameLayout>-->
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="130dp"
-                    android:layout_columnWeight="1">
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/banana_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/limon_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/krusha_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/ananas_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
 
-                    <ImageButton
-                        android:id="@+id/imageView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/card_background"
-                        android:contentDescription="@string/todo_text"
-                        android:paddingVertical="10dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/orange" />
-                </FrameLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/imageView5"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/raspberries" />-->
+<!--                </FrameLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/malina_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/jagoda_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/kiwi_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/imageView6"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/strawberry" />-->
+<!--                </FrameLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:padding="5dp"
-                    android:text="@string/portokal_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkgrey2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
+
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/imageView7"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/kiwi" />-->
+<!--                </FrameLayout>-->
+
+<!--                <FrameLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="130dp"-->
+<!--                    android:layout_columnWeight="1">-->
+
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/imageView8"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:background="@drawable/card_background"-->
+<!--                        android:contentDescription="@string/todo_text"-->
+<!--                        android:paddingVertical="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/orange" />-->
+<!--                </FrameLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/malina_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/jagoda_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/kiwi_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:text="@string/portokal_text"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/darkgrey2"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
 
             </GridLayout>
         </ScrollView>
@@ -683,7 +683,6 @@
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/other" />
-
 
         </GridLayout>
     </ScrollView>
