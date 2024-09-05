@@ -29,4 +29,5 @@
     <string name="krusha_text">круша</string>
     <string name="ananas_text">ананас</string>
     <string name="todo_text">TODO</string>
+    <string name="back">Back</string>
 </resources>

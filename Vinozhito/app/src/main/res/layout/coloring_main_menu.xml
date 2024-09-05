@@ -13,7 +13,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
         android:background="@null"
-        android:contentDescription="Back"
+        android:contentDescription="@string/back"
         android:scaleType="centerInside"
         android:src="@drawable/reply" />
 
@@ -21,11 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/back_button"
-        android:scrollbars="none"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp">
+        android:paddingEnd="15dp"
+        android:scrollbars="none">
 
         <GridLayout
             android:id="@+id/horizontal"
@@ -50,6 +50,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ladybug" />
@@ -70,6 +71,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/dino" />
@@ -85,12 +87,13 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/pear"
+                    android:id="@+id/cupcake"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cake" />
@@ -111,6 +114,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/butterfly" />
@@ -131,6 +135,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/rainbow" />
@@ -151,6 +156,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cow" />
@@ -171,6 +177,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cactus" />
@@ -191,6 +198,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cp" />

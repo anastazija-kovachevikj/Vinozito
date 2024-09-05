@@ -269,7 +269,6 @@ public class CommunicationActivity extends AppCompatActivity {
         }
     }
 
-
     private void playAllCardSounds() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         Runnable playSoundTask = new Runnable() {
