@@ -47,6 +47,19 @@
           }
         }
       },
+      "IdGen/3.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/IdGen.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/IdGen.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3675,6 +3688,23 @@
         "lib/netstandard2.0/DnsClient.xml",
         "lib/netstandard2.1/DnsClient.dll",
         "lib/netstandard2.1/DnsClient.xml"
+      ]
+    },
+    "IdGen/3.0.7": {
+      "sha512": "pynYNXHCteidWueEX8mT72+Ue9FfwyMe+cx2YNJVrRWYGrfVLqdC0Xjv9IwuAkUQ8usV5JKwUPFJFh5eVi/XMg==",
+      "type": "package",
+      "path": "idgen/3.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "idgen.3.0.7.nupkg.sha512",
+        "idgen.nuspec",
+        "lib/netstandard1.1/IdGen.dll",
+        "lib/netstandard1.1/IdGen.xml",
+        "lib/netstandard2.0/IdGen.dll",
+        "lib/netstandard2.0/IdGen.xml",
+        "logo.png"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -10245,6 +10275,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "IdGen >= 3.0.7",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.Extensions.Configuration >= 8.0.0",
       "Microsoft.Extensions.DependencyInjection >= 8.0.0",
@@ -10254,19 +10285,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ana_m\\.nuget\\packages\\": {}
+    "C:\\Users\\anast\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\ana_m\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ana_m\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\obj\\",
+      "projectPath": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\anast\\OneDrive\\Desktop\\Vinozito\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ana_m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10274,6 +10305,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10297,6 +10329,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "IdGen": {
+            "target": "Package",
+            "version": "[3.0.7, )"
+          },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "[2.2.0, )"
@@ -10341,7 +10377,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

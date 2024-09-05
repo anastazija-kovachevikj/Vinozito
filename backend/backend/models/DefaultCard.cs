@@ -1,9 +1,13 @@
 ﻿namespace backend.models;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-public class DefaultCard(string id, string audioVoice, string image, string category)
+public class DefaultCard
 {
-    public string Id { get; set; } = id;
-    public string AudioVoice { get; set; } = audioVoice;
-    public string Image { get; set; } = image;
-    public string Category { get; set; } = category;
+    
+    public string? Id { get; set; }
+    public string Name { get; set; }
+    public string AudioVoice { get; set; } 
+    public string Image { get; set; } 
+    public string Category { get; set; } 
 }
