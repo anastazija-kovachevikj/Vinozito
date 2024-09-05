@@ -33,7 +33,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
-    dbContext.InsertSampleData();
+    //dbContext.InsertSampleDataAsync(scope.ServiceProvider); // Make sure this method is async
 }
 
 
