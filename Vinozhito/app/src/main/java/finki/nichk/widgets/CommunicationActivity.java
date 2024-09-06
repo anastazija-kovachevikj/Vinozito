@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -20,6 +20,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import finki.nichk.R;
+import finki.nichk.screens.child.ChildActivity;
 
 public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greyblue"
-    tools:context=".ConnectActivity">
+    tools:context=".screens.child.ConnectActivity">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

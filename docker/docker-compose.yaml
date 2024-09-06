@@ -7,9 +7,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+      - ./dump:/dump
+      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    restart: always
 
   mongo-express:
     image: mongo-express:latest
@@ -20,7 +23,7 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_SERVER: mongodb
-  
+
   backend:
     image: anastazijakovach/backend_vinozito:latest
     build:
@@ -29,6 +32,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__MongoDb=mongodb://root:example@mongodb:27017
     depends_on:
       - mongodb
       - mongo-express

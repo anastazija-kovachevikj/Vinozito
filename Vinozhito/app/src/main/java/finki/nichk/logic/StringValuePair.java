@@ -1,6 +1,6 @@
-package finki.nichk;
+package finki.nichk.logic;
 
-class StringValuePair {
+public class StringValuePair {
     private String string;
     private int value;
 
