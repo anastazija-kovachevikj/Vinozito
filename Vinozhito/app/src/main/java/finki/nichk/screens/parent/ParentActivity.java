@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.screens.parent;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 import android.content.SharedPreferences;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import finki.nichk.R;
 
 public class ParentActivity extends AppCompatActivity {
 

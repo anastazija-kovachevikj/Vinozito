@@ -20,6 +20,7 @@ public class CardService(
             {
                 return new CardDto(
                     id: dc.Id,
+                    name: dc.Name,
                     audioVoice: customCard.VoiceAudio,
                     image: dc.Image,
                     category: dc.Category,
@@ -29,6 +30,7 @@ public class CardService(
         
             return new CardDto(
                 id: dc.Id,
+                name: dc.Name,
                 audioVoice: dc.AudioVoice,
                 image: dc.Image,
                 category: dc.Category,
