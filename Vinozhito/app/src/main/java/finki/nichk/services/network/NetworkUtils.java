@@ -1,21 +1,14 @@
 package finki.nichk.services.network;
 
-import android.util.Log;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import finki.nichk.models.Card;
 
 public class NetworkUtils {
   //  private static final String BASE_URL = "https://1c82-77-29-6-81.ngrok-free.app/api";
@@ -51,7 +44,7 @@ public class NetworkUtils {
     }
 
     public interface ApiCallback {
-        void onSuccess(String response);
+        List<Card> onSuccess(String response);
         void onError(Exception e);
     }
 }

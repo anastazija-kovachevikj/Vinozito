@@ -1,14 +1,6 @@
 package finki.nichk.services;
 
-import android.os.AsyncTask;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import finki.nichk.models.Card;
 import finki.nichk.services.network.NetworkUtils;
@@ -16,44 +8,41 @@ import finki.nichk.services.network.NetworkUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.List;
-import finki.nichk.models.Card;
-import finki.nichk.services.network.NetworkUtils;
 
 public class CardService {
 
-    private Gson gson = new Gson(); // Create a Gson instance
+    private Gson gson = new Gson();
 
-    public void fetchCardDataByUserId(String userId) {
+    public void fetchCardDataByUserIdAndCategory(String userId, String category, CardServiceCallback callback) {
+        String url = "https://32b4-46-217-22-40.ngrok-free.app/api/Card/category/" + userId + "?category=" + category;
 
-        String url = "https://1c82-77-29-6-81.ngrok-free.app/api/Card/";
         NetworkUtils.getAsync(new NetworkUtils.ApiCallback() {
+
             @Override
-            public void onSuccess(String response) {
-
-                System.out.println(response);
-
-                // Parse the response using Gson and update a List<Card>
+            public List<Card> onSuccess(String response) {
                 List<Card> cards = parseCards(response);
-
-                // Now you can work with the cards list
-
-                System.out.println(cards);
+                if (callback != null) {
+                    callback.onCardsFetched(cards); // Pass the cards to the callback
+                }
+                return cards;
             }
 
             @Override
             public void onError(Exception e) {
-                // Handle the error here
-                e.printStackTrace();
+                if (callback != null) {
+                    callback.onError(e); // Pass the error to the callback
+                }
             }
-        }, url + userId);
+        }, url);
     }
 
     private List<Card> parseCards(String jsonResponse) {
-        // Define the type for List<Card>
         Type cardListType = new TypeToken<List<Card>>() {}.getType();
-
-        // Parse the JSON response into a List<Card> using Gson
         return gson.fromJson(jsonResponse, cardListType);
+    }
+
+    public interface CardServiceCallback {
+        void onCardsFetched(List<Card> cards);
+        void onError(Exception e);
     }
 }

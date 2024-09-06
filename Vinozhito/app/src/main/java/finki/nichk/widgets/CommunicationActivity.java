@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -21,11 +23,17 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import finki.nichk.R;
+import finki.nichk.models.Card;
 import finki.nichk.screens.child.ChildActivity;
+import finki.nichk.services.CardService;
 
 public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
+    private CardService cardService;
 
     private static final int SLOT_COUNT = 3;
     private static final int SOUND_DELAY_MILLIS = 1000;
@@ -40,6 +48,7 @@ public class CommunicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communication_cat);
+        cardService = new CardService();
 
         initializeViews();
         initializeListeners();
@@ -84,19 +93,19 @@ public class CommunicationActivity extends AppCompatActivity {
         ImageButton clothesTab = findViewById(R.id.clothes_tab);
         ImageButton colorsTab = findViewById(R.id.colors_tab);
 
-        conversationTab.setOnClickListener(view -> updateGridLayout("conversation"));
-        feelingsTab.setOnClickListener(view -> updateGridLayout("feelings"));
-        peopleTab.setOnClickListener(view -> updateGridLayout("people"));
-        drinksTab.setOnClickListener(view -> updateGridLayout("drinks"));
-        foodTab.setOnClickListener(view -> updateGridLayout("food"));
-        vegetablesTab.setOnClickListener(view -> updateGridLayout("vegetables"));
-        fruitTab.setOnClickListener(view -> updateGridLayout("fruit"));
-        cutleryTab.setOnClickListener(view -> updateGridLayout("cutlery"));
-        toysTab.setOnClickListener(view -> updateGridLayout("toys"));
-        activitiesTab.setOnClickListener(view -> updateGridLayout("activities"));
-        animalsTab.setOnClickListener(view -> updateGridLayout("animals"));
-        clothesTab.setOnClickListener(view -> updateGridLayout("clothes"));
-        colorsTab.setOnClickListener(view -> updateGridLayout("colors"));
+        conversationTab.setOnClickListener(view -> updateCardLayoutByCategory("conversation"));
+        feelingsTab.setOnClickListener(view -> updateCardLayoutByCategory("feelings"));
+        peopleTab.setOnClickListener(view -> updateCardLayoutByCategory("people"));
+        drinksTab.setOnClickListener(view -> updateCardLayoutByCategory("drinks"));
+        foodTab.setOnClickListener(view -> updateCardLayoutByCategory("food"));
+        vegetablesTab.setOnClickListener(view -> updateCardLayoutByCategory("Vegetable"));
+        fruitTab.setOnClickListener(view -> updateCardLayoutByCategory("Fruit"));
+        cutleryTab.setOnClickListener(view -> updateCardLayoutByCategory("cutlery"));
+        toysTab.setOnClickListener(view -> updateCardLayoutByCategory("toys"));
+        activitiesTab.setOnClickListener(view -> updateCardLayoutByCategory("activities"));
+        animalsTab.setOnClickListener(view -> updateCardLayoutByCategory("animals"));
+        clothesTab.setOnClickListener(view -> updateCardLayoutByCategory("clothes"));
+        colorsTab.setOnClickListener(view -> updateCardLayoutByCategory("colors"));
 
         // Initialize buttons
         ImageButton backButton = findViewById(R.id.back_button);
@@ -114,72 +123,63 @@ public class CommunicationActivity extends AppCompatActivity {
         }
     }
 
-    private void updateGridLayout(String category) {
-        // Clear existing views
-        cardLayout.removeAllViews();
+    private void updateCardLayoutByCategory(String category) {
+        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", "Fruit", new CardService.CardServiceCallback() {
+            @Override
+            public void onCardsFetched(List<Card> cards) {
+                cardLayout.removeAllViews();
+                cardLayout.setColumnCount(4);
 
-        // Set the column count for the GridLayout
-        cardLayout.setColumnCount(4); // 4 columns
+                int position = 0;
+                for (Card card : cards) {
 
-        // Get the image names for the selected category
-        String[] imageNames = getImageNamesForCategory(category);
+                    String cardName = card.getName();
+                    String audioVoice = card.getAudioVoice();
+                    String imageLink = card.getImage();
 
-        // Inflate the card layout and add it to the GridLayout
-        for (int i = 0; i < imageNames.length; i++) {
-            String imageName = imageNames[i];
+                    // Inflate the card layout
+                    View cardView = LayoutInflater.from(CommunicationActivity.this).inflate(R.layout.card_layout, cardLayout, false);
 
-            // Inflate the card layout
-            View cardView = LayoutInflater.from(this).inflate(R.layout.card_layout, cardLayout, false);
+                    // Find the ImageButton and TextView in the card layout
+                    ImageButton imageButton = cardView.findViewById(R.id.card_image);
+                    TextView textView = cardView.findViewById(R.id.card_text);
 
-            // Find the ImageButton and TextView in the card layout
-            ImageButton imageButton = cardView.findViewById(R.id.card_image);
-            TextView textView = cardView.findViewById(R.id.card_text);
+                    textView.setText(cardName);
+//                    Glide.with(CommunicationActivity.this)
+//                            .load(imageLink)
+//                            .apply(new RequestOptions().placeholder(R.drawable.unknown)) // Show default image while loading
+//                            .into(imageButton);
 
-            // Set the image resource and text
-            int imageResId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-            if (imageResId != 0) {
-                imageButton.setImageResource(imageResId);
-            } else {
-                imageButton.setImageResource(R.drawable.unknown); // Default image if not found
+
+                    // Create layout parameters for the GridLayout
+                    GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                    params.width = 0;
+                    params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                    params.columnSpec = GridLayout.spec(position % 4, 1f); // Place item in correct column
+                    params.rowSpec = GridLayout.spec(position / 4);        // Place item in correct row
+                    params.setMargins(15, 15, 15, 15);              // Add some margin around each card
+
+                    // Set the layout parameters and add the card view to the GridLayout
+                    cardView.setLayoutParams(params);
+                    cardLayout.addView(cardView);
+
+                    // Set listener for the card button, passing the imageName as well
+                    //setCardListener(imageButton, imageName);
+
+                    position++;
+
+                }
             }
-            textView.setText(imageName); // Set the text to the image name
 
-            // Create layout parameters for the GridLayout
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-            params.width = 0;
-            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(i % 4, 1f); // Place item in correct column
-            params.rowSpec = GridLayout.spec(i / 4);        // Place item in correct row
-            params.setMargins(15, 15, 15, 15);              // Add some margin around each card
+            @Override
+            public void onError(Exception e) {
+                // Handle the error
+                Log.e("CardService", "Error fetching cards", e);
+            }
+        });
 
-            // Set the layout parameters and add the card view to the GridLayout
-            cardView.setLayoutParams(params);
-            cardLayout.addView(cardView);
-
-            // Set listener for the card button, passing the imageName as well
-            setCardListener(imageButton, imageName);
-        }
     }
 
-    private String[] getImageNamesForCategory(String category) {
-        // Placeholder: Replace with actual logic to get image names that contain the category
-        switch (category) { // strings od linkovi od DB
-            case "conversation": //
-                return new String[]{"conversation_talking"};
-            case "feelings":
-                return new String[]{"feelings_happy", "feelings_sad"};
-            case "people":
-                return new String[]{"people_man", "people_woman", "people_child"};
-            case "drinks":
-                return new String[]{"drinks_water", "drinks_juice", "drinks_soda"};
-            case "food":
-                return new String[]{"food_apple", "food_banana", "food_grapes", "food_banana", "peach"};
-            case "fruit":
-                return new String[]{"fruit_banana", "fruit_pear", "fruit_lemon", "fruit_pineapple", "apple", "raspberries"};
-            default:
-                return new String[]{};
-        }
-    }
 
     @SuppressLint("ClickableViewAccessibility")
     private void setCardListener(ImageButton cardButton, String imageName) {

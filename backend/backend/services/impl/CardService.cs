@@ -40,4 +40,20 @@ public class CardService(
 
         return cards;
     }
+
+    public async Task<IEnumerable<CardDto>> GetCardsByIdAndCategroyTask(string id, string category)
+    {
+        var cards = await GetCardsById(id);
+        var cardsCategory = new List<CardDto>();
+        foreach (var card in cards)
+        {
+            if (card.Category == category)
+            {
+                cardsCategory.Add(card);
+            }
+        }
+        return cardsCategory.ToList();
+        
+    }
+    
 }
