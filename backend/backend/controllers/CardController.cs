@@ -6,19 +6,19 @@ namespace backend.controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CardController : ControllerBase
+    public class CardController(ICardService cardService) : ControllerBase
     {
-        private readonly ICardService _cardService;
-
-        public CardController(ICardService cardService)
-        {
-            _cardService = cardService;
-        }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCardsByUserId(string id)
         {
-            var cards = await _cardService.GetCardsById(id);
+            var cards = await cardService.GetCardsById(id);
+            return Ok(cards);
+        }
+        
+        [HttpGet("category/{id}")]
+        public async Task<IActionResult> GetCardsByIdAndCategroyTask(string id,string category)
+        {
+            var cards = await cardService.GetCardsByIdAndCategroyTask(id, category);
             return Ok(cards);
         }
     }

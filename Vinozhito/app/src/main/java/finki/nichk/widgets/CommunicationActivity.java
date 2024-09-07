@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -21,11 +24,17 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import finki.nichk.R;
+import finki.nichk.models.Card;
 import finki.nichk.screens.child.ChildActivity;
+import finki.nichk.services.CardService;
 
 public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
+    private CardService cardService;
 
     private static final int SLOT_COUNT = 3;
     private static final int SOUND_DELAY_MILLIS = 1000;
@@ -40,6 +49,7 @@ public class CommunicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communication_cat);
+        cardService = new CardService();
 
         initializeViews();
         initializeListeners();
@@ -60,7 +70,7 @@ public class CommunicationActivity extends AppCompatActivity {
             if (cardView instanceof FrameLayout) {
                 FrameLayout frameLayout = (FrameLayout) cardView;
                 ImageButton cardButton = (ImageButton) frameLayout.getChildAt(0);
-                setCardListener(cardButton, String.valueOf(cardView));
+                // setCardListener(cardButton, String.valueOf(cardView));
             }
         }
     }
@@ -84,19 +94,19 @@ public class CommunicationActivity extends AppCompatActivity {
         ImageButton clothesTab = findViewById(R.id.clothes_tab);
         ImageButton colorsTab = findViewById(R.id.colors_tab);
 
-        conversationTab.setOnClickListener(view -> updateGridLayout("conversation"));
-        feelingsTab.setOnClickListener(view -> updateGridLayout("feelings"));
-        peopleTab.setOnClickListener(view -> updateGridLayout("people"));
-        drinksTab.setOnClickListener(view -> updateGridLayout("drinks"));
-        foodTab.setOnClickListener(view -> updateGridLayout("food"));
-        vegetablesTab.setOnClickListener(view -> updateGridLayout("vegetables"));
-        fruitTab.setOnClickListener(view -> updateGridLayout("fruit"));
-        cutleryTab.setOnClickListener(view -> updateGridLayout("cutlery"));
-        toysTab.setOnClickListener(view -> updateGridLayout("toys"));
-        activitiesTab.setOnClickListener(view -> updateGridLayout("activities"));
-        animalsTab.setOnClickListener(view -> updateGridLayout("animals"));
-        clothesTab.setOnClickListener(view -> updateGridLayout("clothes"));
-        colorsTab.setOnClickListener(view -> updateGridLayout("colors"));
+        conversationTab.setOnClickListener(view -> updateCardLayoutByCategory("conversation"));
+        feelingsTab.setOnClickListener(view -> updateCardLayoutByCategory("feelings"));
+        peopleTab.setOnClickListener(view -> updateCardLayoutByCategory("people"));
+        drinksTab.setOnClickListener(view -> updateCardLayoutByCategory("drinks"));
+        foodTab.setOnClickListener(view -> updateCardLayoutByCategory("food"));
+        vegetablesTab.setOnClickListener(view -> updateCardLayoutByCategory("Vegetable"));
+        fruitTab.setOnClickListener(view -> updateCardLayoutByCategory("Fruit"));
+        cutleryTab.setOnClickListener(view -> updateCardLayoutByCategory("cutlery"));
+        toysTab.setOnClickListener(view -> updateCardLayoutByCategory("toys"));
+        activitiesTab.setOnClickListener(view -> updateCardLayoutByCategory("activities"));
+        animalsTab.setOnClickListener(view -> updateCardLayoutByCategory("animals"));
+        clothesTab.setOnClickListener(view -> updateCardLayoutByCategory("clothes"));
+        colorsTab.setOnClickListener(view -> updateCardLayoutByCategory("colors"));
 
         // Initialize buttons
         ImageButton backButton = findViewById(R.id.back_button);
@@ -106,95 +116,116 @@ public class CommunicationActivity extends AppCompatActivity {
         // Set listeners
         setButtonTouchListener(backButton, this::navigateToChildActivity);
         setButtonTouchListener(clearButton, this::clearAllSlots);
-        setButtonTouchListener(readAll, this::playAllCardSounds);
+        //setButtonTouchListener(readAll, this::playAllCardSounds);
 
         // Set click listeners for card slots
-        for (ImageButton slot : cardSlots) {
-            setSlotClickListener(slot);
-        }
+//        for (ImageButton slot : cardSlots) {
+//            setSlotClickListener(slot);
+//        }
     }
 
-    private void updateGridLayout(String category) {
-        // Clear existing views
-        cardLayout.removeAllViews();
+    private void updateCardLayoutByCategory(String category) {
+        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
+            @Override
+            public void onCardsFetched(List<Card> cards) {
+                runOnUiThread(() -> {
+                    cardLayout.removeAllViews(); // Clear all previous views
+                    cardLayout.setColumnCount(4); // Set the number of columns to 4
 
-        // Set the column count for the GridLayout
-        cardLayout.setColumnCount(4); // 4 columns
+                    int totalCards = cards.size();
+                    int totalRows = (int) Math.ceil((double) totalCards / 4); // Calculate the required number of rows
+                    cardLayout.setRowCount(totalRows); // Set row count
 
-        // Get the image names for the selected category
-        String[] imageNames = getImageNamesForCategory(category);
+                    int position = 0;
+                    Log.d("CardInit", "Number of cards: " + totalCards);
 
-        // Inflate the card layout and add it to the GridLayout
-        for (int i = 0; i < imageNames.length; i++) {
-            String imageName = imageNames[i];
+                    for (Card card : cards) {
+                        String cardName = card.getName();
+                        String audioVoice = card.getAudioVoice();
+                        String imageLink = card.getImage();
 
-            // Inflate the card layout
-            View cardView = LayoutInflater.from(this).inflate(R.layout.card_layout, cardLayout, false);
+                        // Transform the Google Drive link to a direct download link
+                        String fileId = extractFileIdFromDriveLink(imageLink);
+                        String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
 
-            // Find the ImageButton and TextView in the card layout
-            ImageButton imageButton = cardView.findViewById(R.id.card_image);
-            TextView textView = cardView.findViewById(R.id.card_text);
+                        // Inflate the card layout
+                        View cardView = LayoutInflater.from(CommunicationActivity.this)
+                                .inflate(R.layout.card_layout, cardLayout, false);
 
-            // Set the image resource and text
-            int imageResId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-            if (imageResId != 0) {
-                imageButton.setImageResource(imageResId);
-            } else {
-                imageButton.setImageResource(R.drawable.unknown); // Default image if not found
+                        // Find the ImageButton and TextView in the card layout
+                        ImageButton imageButton = cardView.findViewById(R.id.card_image);
+                        TextView textView = cardView.findViewById(R.id.card_text);
+
+                        textView.setText(cardName); // Set card name
+
+                        // Load the image from the direct download link into the ImageButton using Glide
+                        Glide.with(CommunicationActivity.this)
+                                .load(directImageLink)
+                                .placeholder(R.drawable.unknown)
+                                .error(R.drawable.circle_curves)
+                                .into(imageButton);
+
+                        // Create layout parameters for the GridLayout
+                        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                        params.width = 0;
+                        params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                        params.columnSpec = GridLayout.spec(position % 4, 1f); // Correct column placement
+                        params.rowSpec = GridLayout.spec(position / 4);        // Correct row placement
+                        params.setMargins(15, 15, 15, 15);                    // Add some margin around each card
+
+                        // Set the layout parameters and add the card view to the GridLayout
+                        cardView.setLayoutParams(params);
+                        cardLayout.addView(cardView);
+
+                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice));
+                        position++;
+                    }
+                });
             }
-            textView.setText(imageName); // Set the text to the image name
 
-            // Create layout parameters for the GridLayout
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-            params.width = 0;
-            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(i % 4, 1f); // Place item in correct column
-            params.rowSpec = GridLayout.spec(i / 4);        // Place item in correct row
-            params.setMargins(15, 15, 15, 15);              // Add some margin around each card
+            // Helper method to extract file ID from Google Drive link
+            private String extractFileIdFromDriveLink(String driveLink) {
+                // Match the file ID using regex or string manipulation
+                String[] parts = driveLink.split("/");
+                return parts[5]; // The file ID is the 5th part in the URL structure
+            }
 
-            // Set the layout parameters and add the card view to the GridLayout
-            cardView.setLayoutParams(params);
-            cardLayout.addView(cardView);
-
-            // Set listener for the card button, passing the imageName as well
-            setCardListener(imageButton, imageName);
-        }
-    }
-
-    private String[] getImageNamesForCategory(String category) {
-        // Placeholder: Replace with actual logic to get image names that contain the category
-        switch (category) { // strings od linkovi od DB
-            case "conversation": //
-                return new String[]{"conversation_talking"};
-            case "feelings":
-                return new String[]{"feelings_happy", "feelings_sad"};
-            case "people":
-                return new String[]{"people_man", "people_woman", "people_child"};
-            case "drinks":
-                return new String[]{"drinks_water", "drinks_juice", "drinks_soda"};
-            case "food":
-                return new String[]{"food_apple", "food_banana", "food_grapes", "food_banana", "peach"};
-            case "fruit":
-                return new String[]{"fruit_banana", "fruit_pear", "fruit_lemon", "fruit_pineapple", "apple", "raspberries"};
-            default:
-                return new String[]{};
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void setCardListener(ImageButton cardButton, String imageName) {
-        cardButton.setOnClickListener(view -> {
-            if (count < SLOT_COUNT) {
-                setSlotImage(cardButton.getDrawable(), imageName);
-                playCardSound(imageName);
-                Log.d("CardClick", "Image clicked: " + imageName);
-                System.out.println(imageName);
-
+            @Override
+            public void onError(Exception e) {
+                // Handle the error
+                Log.e("CardService", "Error fetching cards", e);
             }
         });
 
-        cardButton.setOnTouchListener((v, event) -> {
+    }
 
+    private String convertGoogleDriveLinkToDirect(String driveLink) {
+        if (driveLink.contains("drive.google.com")) {
+            // Extract the file ID from the Google Drive URL
+            String[] parts = driveLink.split("/");
+            String fileId = parts[5]; // Assuming it's in the correct format
+            return "https://drive.google.com/uc?export=download&id=" + fileId;
+        } else {
+            return driveLink; // In case it's not a Google Drive link
+        }
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setCardListener(ImageButton cardButton, String audioVoiceUrl) {
+        // Convert Google Drive link to direct download link
+       // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+
+        cardButton.setOnClickListener(view -> {
+            if (count < SLOT_COUNT) {
+                // Play the sound when the card is clicked
+                playCardSoundFromUrl(audioVoiceUrl);
+                Log.d("CardClick", "Audio URL clicked: " + audioVoiceUrl);
+            }
+        });
+
+        // Apply touch feedback (visual effect) for button press
+        cardButton.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     v.setAlpha(0.5f);
@@ -207,6 +238,36 @@ public class CommunicationActivity extends AppCompatActivity {
             return false;
         });
     }
+    private void playCardSoundFromUrl(String audioFileId) {
+        Log.d("CardSound", "Attempting to play sound from URL: " + audioFileId);
+
+        // Construct the Google Drive direct download link
+        String directAudioUrl = "https://drive.google.com/uc?export=download&id=" + audioFileId;
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+        try {
+            mediaPlayer = new MediaPlayer();
+
+            // Set the data source to the direct Google Drive URL
+            mediaPlayer.setDataSource(directAudioUrl);
+            mediaPlayer.prepare(); // Prepare the media player
+            mediaPlayer.start();   // Start playing the audio
+
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release(); // Release MediaPlayer once done
+                mediaPlayer = null;
+            });
+        } catch (Exception e) {
+            Log.e("CardSound", "Failed to play sound from URL: " + directAudioUrl, e);
+        }
+    }
+
+
+
 
 
     @SuppressLint("ClickableViewAccessibility")
