@@ -1,9 +1,12 @@
 package finki.nichk.widgets;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -36,11 +39,15 @@ public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
     private CardService cardService;
 
+    private static final int TAG_IMAGE_URL = 0x1;
+    private static final int TAG_AUDIO_VOICE = 0x2;
+
     private static final int SLOT_COUNT = 3;
     private static final int SOUND_DELAY_MILLIS = 1000;
 
     private int count = 0; // Track the number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
+    private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
 
     private MediaPlayer mediaPlayer;
@@ -61,18 +68,21 @@ public class CommunicationActivity extends AppCompatActivity {
         // Initialize slot buttons
         cardSlots[0] = findViewById(R.id.cardslot1);
         cardSlots[1] = findViewById(R.id.cardslot2);
-        cardSlots[2] = findViewById(R.id.cardslot3);
 
-        // Initialize card layout and slots
-        GridLayout cardLayout = findViewById(R.id.card_layout);
-        for (int i = 0; i < cardLayout.getChildCount(); i++) {
-            View cardView = cardLayout.getChildAt(i);
-            if (cardView instanceof FrameLayout) {
-                FrameLayout frameLayout = (FrameLayout) cardView;
-                ImageButton cardButton = (ImageButton) frameLayout.getChildAt(0);
-                // setCardListener(cardButton, String.valueOf(cardView));
-            }
-        }
+        cardSlots[2] = findViewById(R.id.cardslot3);
+        cardLayout = findViewById(R.id.card_layout); // Use class-level cardLayou
+
+
+//        // Initialize card layout and slots
+//        GridLayout cardLayout = findViewById(R.id.card_layout);
+//        for (int i = 0; i < cardLayout.getChildCount(); i++) {
+//            View cardView = cardLayout.getChildAt(i);
+//            if (cardView instanceof FrameLayout) {
+//                FrameLayout frameLayout = (FrameLayout) cardView;
+//                ImageButton cardButton = (ImageButton) frameLayout.getChildAt(0);
+//                // setCardListener(cardButton, String.valueOf(cardView));
+//            }
+//        }
     }
 
     private void initializeListeners() {
@@ -116,12 +126,13 @@ public class CommunicationActivity extends AppCompatActivity {
         // Set listeners
         setButtonTouchListener(backButton, this::navigateToChildActivity);
         setButtonTouchListener(clearButton, this::clearAllSlots);
-        //setButtonTouchListener(readAll, this::playAllCardSounds);
+        setButtonTouchListener(readAll, this::playAllCardSounds);
 
-        // Set click listeners for card slots
 //        for (ImageButton slot : cardSlots) {
 //            setSlotClickListener(slot);
 //        }
+
+
     }
 
     private void updateCardLayoutByCategory(String category) {
@@ -176,8 +187,9 @@ public class CommunicationActivity extends AppCompatActivity {
                         // Set the layout parameters and add the card view to the GridLayout
                         cardView.setLayoutParams(params);
                         cardLayout.addView(cardView);
-
-                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice));
+                        String directVoiceLink = "https://drive.google.com/uc?export=download&id=" + extractFileIdFromDriveLink(audioVoice);
+                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice),directImageLink);
+                        //setSlotClickListener;
                         position++;
                     }
                 });
@@ -199,30 +211,24 @@ public class CommunicationActivity extends AppCompatActivity {
 
     }
 
-    private String convertGoogleDriveLinkToDirect(String driveLink) {
-        if (driveLink.contains("drive.google.com")) {
-            // Extract the file ID from the Google Drive URL
-            String[] parts = driveLink.split("/");
-            String fileId = parts[5]; // Assuming it's in the correct format
-            return "https://drive.google.com/uc?export=download&id=" + fileId;
-        } else {
-            return driveLink; // In case it's not a Google Drive link
-        }
-    }
-
-
     @SuppressLint("ClickableViewAccessibility")
-    private void setCardListener(ImageButton cardButton, String audioVoiceUrl) {
+    private void setCardListener(ImageButton cardButton, String audioVoiceUrl, String imageLink) {
         // Convert Google Drive link to direct download link
        // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+       // setSlotImage(imageLink);
 
         cardButton.setOnClickListener(view -> {
             if (count < SLOT_COUNT) {
                 // Play the sound when the card is clicked
                 playCardSoundFromUrl(audioVoiceUrl);
                 Log.d("CardClick", "Audio URL clicked: " + audioVoiceUrl);
+                setSlotImage(imageLink,audioVoiceUrl);
+                Log.d("CardImage", "Image link: " + imageLink);
+
             }
+
         });
+        applyTouchFeedback(cardButton);
 
         // Apply touch feedback (visual effect) for button press
         cardButton.setOnTouchListener((v, event) -> {
@@ -268,14 +274,40 @@ public class CommunicationActivity extends AppCompatActivity {
 
 
 
+    private void playAllCardSounds() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable playSoundTask = new Runnable() {
+            int index = 0;
 
+            @Override
+            public void run() {
+                if (index < SLOT_COUNT) {
+                    if (cardSlots[index].getVisibility() == View.VISIBLE) {
+                        applyTouchFeedback(cardSlots[index]);
+                        String audio = audioButtons[index].audioUrl;
+                        playCardSoundFromUrl(audio);
+                       // playCardSound(String.valueOf(cardDrawableIds[index]));
+                    }
+                    index++;
+                    scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
+                } else {
+                    scheduler.shutdown();
+                }
+            }
+        };
+        playSoundTask.run();
+    }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setSlotClickListener(ImageButton slot) {
+    private void setSlotClickListener(ImageButton slot, String audio) {
+        String audioUrl = (String) slot.getTag(R.id.tag_audio_voice);
+        Log.d("TAG_AUDIO", "The audio is:" + audioUrl);
         slot.setOnClickListener(view -> {
             int slotIndex = getSlotIndex(slot);
             if (slotIndex != -1) {
-                playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
+               playCardSoundFromUrl(audio);
+                //playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
+
             }
         });
 
@@ -293,14 +325,29 @@ public class CommunicationActivity extends AppCompatActivity {
         });
     }
 
-    private void setSlotImage(Drawable drawable, String imageName) {
+    private void setSlotImage(String imageUrl, String audioVoice) {
+
         if (count < SLOT_COUNT) {
+
             ImageButton slot = cardSlots[count];
-            slot.setImageDrawable(drawable);
+            AudioImageButton audioImageButton = new AudioImageButton(slot, audioVoice);
+            audioButtons[count] = audioImageButton;
+
+            Glide.with(CommunicationActivity.this)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.unknown)
+                    .error(R.drawable.circle_curves)
+                    .into(slot);
+
             slot.setVisibility(View.VISIBLE);
-            cardDrawableIds[count] = getResources().getIdentifier(imageName, "raw", getPackageName());
-            Log.d("CardSlots", "Slot " + count + " updated with image: " + imageName);
+            setSlotClickListener(slot,audioVoice);
+
+            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName());
+            Log.d("CardSlots", "Slot " + count + " updated with image: " + imageUrl);
             count++;
+
+
+            //Log.d("TEST TAG", "Value of tag image url is " + TAG_IMAGE_URL + " and for audio " + R.id.tag_audio_voice);
         } else {
             Log.w("CardSlotsFULL", "All slots are full. Cannot add more cards.");
         }
@@ -329,34 +376,13 @@ public class CommunicationActivity extends AppCompatActivity {
                 Log.e("CardSound", "Failed to create MediaPlayer for: " + imageName);
             }
         } else {
-            Log.e("CardSound", "Sound resource not found for: " + imageName);
+            Log.e("CardSound", "Sound resource not found for: " + imageName + "Card resource");
         }
     }
 
 
-    private void playAllCardSounds() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        Runnable playSoundTask = new Runnable() {
-            int index = 0;
-
-            @Override
-            public void run() {
-                if (index < SLOT_COUNT) {
-                    if (cardSlots[index].getVisibility() == View.VISIBLE) {
-                        applyTouchFeedback(cardSlots[index]);
-                        playCardSound(String.valueOf(cardDrawableIds[index]));
-                    }
-                    index++;
-                    scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
-                } else {
-                    scheduler.shutdown();
-                }
-            }
-        };
-        playSoundTask.run();
-    }
-
     private void applyTouchFeedback(final ImageButton slot) {
+
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             runOnUiThread(() -> slot.setAlpha(0.5f));
