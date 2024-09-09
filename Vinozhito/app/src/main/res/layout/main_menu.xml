@@ -16,6 +16,12 @@
 <!--        android:background="@drawable/clouds"-->
 <!--        android:scaleType="fitCenter" />-->
 
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -58,7 +64,8 @@
             android:layout_gravity="bottom|center_horizontal"
             android:background="@null"
             android:scaleType="centerInside"
-            android:src="@drawable/children" />
+            android:src="@drawable/children"
+            android:contentDescription="@string/todo_text" />
 
     </FrameLayout>
 
@@ -90,7 +97,8 @@
             android:layout_gravity="center"
             android:background="@null"
             android:scaleType="centerInside"
-            android:src="@drawable/parents" />
+            android:src="@drawable/parents"
+            android:contentDescription="@string/todo_text" />
 
     </FrameLayout>
 

@@ -15,7 +15,7 @@
         android:background="@null"
         android:contentDescription="@string/back"
         android:scaleType="centerInside"
-        android:src="@drawable/reply" />
+        android:src="@drawable/back" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,8 +23,8 @@
         android:layout_below="@id/back_button"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
         android:scrollbars="none">
 
         <GridLayout
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView1"
+                    android:id="@+id/imageButton_ladybug"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -65,7 +65,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageButton_dino"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -87,7 +87,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/cupcake"
+                    android:id="@+id/imageButton_cake"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -108,7 +108,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageButton_butterfly"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -129,7 +129,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageButton_rainbow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -150,7 +150,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageButton_cow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -171,7 +171,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageButton_cactus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -192,7 +192,7 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
-                    android:id="@+id/imageView11"
+                    android:id="@+id/imageButton_cp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -203,6 +203,49 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/cp" />
             </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_ufo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ufo" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_horse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/text_background"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/horse" />
+            </FrameLayout>
+
 
         </GridLayout>
     </ScrollView>

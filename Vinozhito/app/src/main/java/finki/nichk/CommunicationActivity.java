@@ -23,10 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
-
-    private static final int SLOT_COUNT = 3;
+    private static final int SLOT_COUNT = 4;
     private static final int SOUND_DELAY_MILLIS = 1000;
-
     private int count = 0; // Track the number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
@@ -49,6 +47,7 @@ public class CommunicationActivity extends AppCompatActivity {
         cardSlots[0] = findViewById(R.id.cardslot1);
         cardSlots[1] = findViewById(R.id.cardslot2);
         cardSlots[2] = findViewById(R.id.cardslot3);
+        cardSlots[3] = findViewById(R.id.cardslot4);
 
         // Initialize card layout and slots
         GridLayout cardLayout = findViewById(R.id.card_layout);

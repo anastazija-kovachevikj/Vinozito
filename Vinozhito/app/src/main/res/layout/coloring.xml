@@ -1,71 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/greyblue"
+    android:orientation="horizontal">
 
-    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="30dp"
         android:layout_height="match_parent"
-        android:background="@color/greyblue"
-        tools:context=".ColoringScreenActivity">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/back_button"
             android:layout_width="85dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:background="@null"
-            android:contentDescription="Back"
+            android:contentDescription="@string/back"
             android:scaleType="centerInside"
-            android:src="@drawable/reply" />
+            android:src="@drawable/back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/reset_btn"
+                android:layout_width="85dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/reset"
+                android:scaleType="centerInside"
+                android:src="@drawable/trash" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/pic"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/coloring_image"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_weight="1"
-            android:layout_below="@id/back_button"
-            android:layout_centerHorizontal="true" />
+            android:layout_height="match_parent"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:contentDescription="@string/todo_text" />
+    </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/color_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/coloring_image"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+    <!-- Color Buttons Layout -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/color_red"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@android:color/holo_red_dark"
-                android:contentDescription="Red" />
+        <ImageButton
+            android:id="@+id/color_red"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
 
-            <ImageButton
-                android:id="@+id/color_green"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:background="@android:color/holo_green_dark"
-                android:contentDescription="Green" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon" />
 
-            <ImageButton
-                android:id="@+id/color_blue"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:background="@android:color/holo_blue_dark"
-                android:contentDescription="Blue" />
+        <ImageButton
+            android:id="@+id/color_green"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Green"
 
-            <!-- Add more color buttons as needed -->
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_green" />
 
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/color_blue"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
 
-    </RelativeLayout>
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_blue" />
 
+        <!-- Add more color buttons as needed -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

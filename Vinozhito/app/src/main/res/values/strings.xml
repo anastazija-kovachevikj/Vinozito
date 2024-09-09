@@ -30,4 +30,5 @@
     <string name="ananas_text">ананас</string>
     <string name="todo_text">TODO</string>
     <string name="back">Back</string>
+    <string name="reset">Reset</string>
 </resources>
