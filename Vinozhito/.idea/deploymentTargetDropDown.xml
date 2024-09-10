@@ -2,10 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MainMenuActivity">
-        <State />
-      </entry>
-      <entry key="SplashActivity">
+      <entry key="SplashActivity (1)">
         <State />
       </entry>
     </value>
