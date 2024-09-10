@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/darkpurpelblue</item>
         <item name="android:textColor">@color/darkgrey2</item>
          <item name="android:windowFullscreen">true</item>
+<!--        <item name="android:windowBackground">@drawable/scrolling_background</item>-->
     </style>
 
     <style name="Theme.Vinozhito" parent="Base.Theme.Vinozhito" />

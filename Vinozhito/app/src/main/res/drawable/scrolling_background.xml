@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/infinite_scroll_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/sky"
+            android:tileMode="repeat"
+            android:gravity="center"/>
+    </item>
+</layer-list>
