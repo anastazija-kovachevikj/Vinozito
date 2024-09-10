@@ -30,7 +30,7 @@
         android:layout_marginEnd="0dp"
         android:contentDescription="TODO"
         android:paddingBottom="2dp"
-        tools:context=".ChildActivity">
+        tools:context=".screens.child.ChildActivity">
 
         <LinearLayout
             android:id="@+id/infiniteView"

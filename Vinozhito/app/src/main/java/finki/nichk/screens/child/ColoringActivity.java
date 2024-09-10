@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import finki.nichk.R;
 
 public class ColoringActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {

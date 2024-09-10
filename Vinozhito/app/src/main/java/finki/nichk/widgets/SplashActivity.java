@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import finki.nichk.MainActivity;
+import finki.nichk.R;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {

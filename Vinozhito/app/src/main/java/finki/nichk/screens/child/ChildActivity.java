@@ -1,19 +1,22 @@
-package finki.nichk;
+package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.GridLayout;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import finki.nichk.models.DefaultCard;
+import finki.nichk.services.CardService;
+import finki.nichk.widgets.CommunicationActivity;
+import finki.nichk.screens.MainMenuActivity;
+import finki.nichk.R;
+
 public class ChildActivity extends AppCompatActivity {
+
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

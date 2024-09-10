@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.view.MotionEvent;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import finki.nichk.R;
+import finki.nichk.screens.child.ChildActivity;
+import finki.nichk.screens.parent.ParentActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 

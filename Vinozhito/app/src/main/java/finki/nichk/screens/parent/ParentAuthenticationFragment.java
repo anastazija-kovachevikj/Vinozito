@@ -1,10 +1,7 @@
-package finki.nichk;
+package finki.nichk.screens.parent;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +23,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
+
+import finki.nichk.R;
+import finki.nichk.logic.StringValuePair;
+import finki.nichk.screens.parent.ParentActivity;
 
 public class ParentAuthenticationFragment extends DialogFragment {
     int count = 0; // counter -> determines position of input field

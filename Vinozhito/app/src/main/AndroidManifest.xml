@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinozhito">
         <activity
-            android:name=".SplashActivity"
+            android:name=".widgets.SplashActivity"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -22,33 +23,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".screens.MainMenuActivity"
             android:exported="false"
             android:label="@string/title_activity_main_menu"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".ParentActivity"
+            android:name=".screens.parent.ParentActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".ChildActivity"
+            android:name=".screens.child.ChildActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".ColoringActivity"
+            android:name=".screens.child.ColoringActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".CommunicationActivity"
+            android:name=".widgets.CommunicationActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".ConnectActivity"
+            android:name=".screens.child.ConnectActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />

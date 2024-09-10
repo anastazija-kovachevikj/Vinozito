@@ -20,6 +20,7 @@ public class CardService(
             {
                 return new CardDto(
                     id: dc.Id,
+                    name: dc.Name,
                     audioVoice: customCard.VoiceAudio,
                     image: dc.Image,
                     category: dc.Category,
@@ -29,6 +30,7 @@ public class CardService(
         
             return new CardDto(
                 id: dc.Id,
+                name: dc.Name,
                 audioVoice: dc.AudioVoice,
                 image: dc.Image,
                 category: dc.Category,
@@ -38,4 +40,20 @@ public class CardService(
 
         return cards;
     }
+
+    public async Task<IEnumerable<CardDto>> GetCardsByIdAndCategroyTask(string id, string category)
+    {
+        var cards = await GetCardsById(id);
+        var cardsCategory = new List<CardDto>();
+        foreach (var card in cards)
+        {
+            if (card.Category == category)
+            {
+                cardsCategory.Add(card);
+            }
+        }
+        return cardsCategory.ToList();
+        
+    }
+    
 }
