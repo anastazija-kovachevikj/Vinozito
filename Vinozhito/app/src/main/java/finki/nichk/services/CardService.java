@@ -14,7 +14,7 @@ public class CardService {
     private Gson gson = new Gson();
 
     public void fetchCardDataByUserIdAndCategory(String userId, String category, CardServiceCallback callback) {
-        String url = "https://fdcb-77-29-47-14.ngrok-free.app/api/Card/category/" + userId + "?category=" + category;
+        String url = "https://977b-95-180-212-83.ngrok-free.app/api/Card/category/" + userId + "?category=" + category;
 
         NetworkUtils.getAsync(new NetworkUtils.ApiCallback() {
 
