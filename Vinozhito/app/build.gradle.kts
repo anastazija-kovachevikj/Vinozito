@@ -58,7 +58,9 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19") // for gif splash
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
 
 
 
