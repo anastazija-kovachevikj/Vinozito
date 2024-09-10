@@ -42,5 +42,5 @@ rider.project.restore.info
 *.log
 
 backend/obj/
-
+backend/bin/
 

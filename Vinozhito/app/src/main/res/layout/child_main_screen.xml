@@ -19,7 +19,7 @@
         android:background="@null"
         android:contentDescription="Back"
         android:scaleType="centerInside"
-        android:src="@drawable/reply" />
+        android:src="@drawable/back" />
 
     <HorizontalScrollView
         android:id="@+id/horizontal"
@@ -71,7 +71,7 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginBottom="-3dp"
                         android:background="@null"
-                        android:contentDescription="TODO"
+                        android:contentDescription="@string/todo_text"
                         android:scaleType="centerInside"
                         android:src="@drawable/speak" />
                 </FrameLayout>
