@@ -115,7 +115,7 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void updateCardLayoutByCategory(String category) {
-        cardService.fetchCardDataByUserIdAndCategory("7693-77-28-179-118", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
