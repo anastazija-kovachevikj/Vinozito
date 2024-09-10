@@ -144,9 +144,9 @@ public class CommunicationActivity extends AppCompatActivity {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = 0;
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(i % 4, 1f); // Place item in correct column
-            params.rowSpec = GridLayout.spec(i / 4);        // Place item in correct row
-            params.setMargins(15, 15, 15, 15);              // Add some margin around each card
+            params.columnSpec = GridLayout.spec(i % 4, 1f);
+            params.rowSpec = GridLayout.spec(i / 4);
+            params.setMargins(15, 15, 15, 15);
 
             // Set the layout parameters and add the card view to the GridLayout
             cardView.setLayoutParams(params);
