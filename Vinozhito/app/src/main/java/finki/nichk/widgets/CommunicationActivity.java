@@ -1,9 +1,12 @@
 package finki.nichk.widgets;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,12 +20,15 @@ import android.widget.TextView;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import finki.nichk.R;
@@ -35,10 +41,15 @@ public class CommunicationActivity extends AppCompatActivity {
     private static final int SLOT_COUNT = 4;
 
     private CardService cardService;
+    private ExecutorService executorService;
+
+    private static final int TAG_IMAGE_URL = 0x1;
+    private static final int TAG_AUDIO_VOICE = 0x2;
 
     private static final int SOUND_DELAY_MILLIS = 1000;
     private int count = 0; // number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
+    private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
 
     private MediaPlayer mediaPlayer;
@@ -49,9 +60,15 @@ public class CommunicationActivity extends AppCompatActivity {
         setContentView(R.layout.communication_cat);
         cardService = new CardService();
 
+        int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
+                NUMBER_OF_CORES,   // Core pool size
+                NUMBER_OF_CORES * 2,  // Maximum pool size
+                60L, TimeUnit.SECONDS,  // Keep-alive time
+                new LinkedBlockingQueue<Runnable>()  // Work queue
+        );
         initializeViews();
         initializeListeners();
-        //playCardSound("fruit_banana"); // test
 
     }
 
@@ -62,51 +79,29 @@ public class CommunicationActivity extends AppCompatActivity {
         cardSlots[2] = findViewById(R.id.cardslot3);
         cardSlots[3] = findViewById(R.id.cardslot4);
 
-        // Initialize card layout and slots
-        GridLayout cardLayout = findViewById(R.id.card_layout);
-        for (int i = 0; i < cardLayout.getChildCount(); i++) {
-            View cardView = cardLayout.getChildAt(i);
-            if (cardView instanceof FrameLayout) {
-                FrameLayout frameLayout = (FrameLayout) cardView;
-                ImageButton cardButton = (ImageButton) frameLayout.getChildAt(0);
-                // setCardListener(cardButton, String.valueOf(cardView));
-            }
-        }
+        cardLayout = findViewById(R.id.card_layout);
+
     }
 
     private void initializeListeners() {
 
         cardLayout = findViewById(R.id.card_layout);
 
-        // Category TABs
-        ImageButton conversationTab = findViewById(R.id.conversation_tab);
-        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
-        ImageButton peopleTab = findViewById(R.id.people_tab);
-        ImageButton drinksTab = findViewById(R.id.drinks_tab);
-        ImageButton foodTab = findViewById(R.id.food_tab);
-        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
-        ImageButton fruitTab = findViewById(R.id.fruit_tab);
-        ImageButton cutleryTab = findViewById(R.id.cutlery_tab);
-        ImageButton toysTab = findViewById(R.id.toys_tab);
-        ImageButton activitiesTab = findViewById(R.id.activities_tab);
-        ImageButton animalsTab = findViewById(R.id.animals_tab);
-        ImageButton clothesTab = findViewById(R.id.clothes_tab);
-        ImageButton colorsTab = findViewById(R.id.colors_tab);
+        int[] tabIds = {R.id.conversation_tab, R.id.feelings_tab, R.id.people_tab,
+                R.id.drinks_tab, R.id.food_tab, R.id.vegetables_tab,
+                R.id.fruit_tab, R.id.cutlery_tab, R.id.toys_tab,
+                R.id.activities_tab, R.id.animals_tab,
+                R.id.clothes_tab, R.id.colors_tab};
 
-        conversationTab.setOnClickListener(view -> updateCardLayoutByCategory("conversation"));
-        feelingsTab.setOnClickListener(view -> updateCardLayoutByCategory("feelings"));
-        peopleTab.setOnClickListener(view -> updateCardLayoutByCategory("people"));
-        drinksTab.setOnClickListener(view -> updateCardLayoutByCategory("drinks"));
-        foodTab.setOnClickListener(view -> updateCardLayoutByCategory("food"));
-        vegetablesTab.setOnClickListener(view -> updateCardLayoutByCategory("Vegetable"));
-        fruitTab.setOnClickListener(view -> updateCardLayoutByCategory("Fruit"));
-        cutleryTab.setOnClickListener(view -> updateCardLayoutByCategory("cutlery"));
-        toysTab.setOnClickListener(view -> updateCardLayoutByCategory("toys"));
-        activitiesTab.setOnClickListener(view -> updateCardLayoutByCategory("activities"));
-        animalsTab.setOnClickListener(view -> updateCardLayoutByCategory("animals"));
-        clothesTab.setOnClickListener(view -> updateCardLayoutByCategory("clothes"));
-        colorsTab.setOnClickListener(view -> updateCardLayoutByCategory("colors"));
+        String[] categories = {"conversation", "feelings", "people", "drinks", "food",
+                "Vegetable", "Fruit", "cutlery", "toys", "activities",
+                "animals", "clothes", "colors"};
 
+        for (int i = 0; i < tabIds.length; i++) {
+            ImageButton tabButton = findViewById(tabIds[i]);
+            String category = categories[i];
+            tabButton.setOnClickListener(view -> updateCardLayoutByCategory(category));
+        }
         // Initialize buttons
         ImageButton backButton = findViewById(R.id.back_button);
         ImageButton clearButton = findViewById(R.id.clearAll);
@@ -115,12 +110,8 @@ public class CommunicationActivity extends AppCompatActivity {
         // Set listeners
         setButtonTouchListener(backButton, this::navigateToChildActivity);
         setButtonTouchListener(clearButton, this::clearAllSlots);
-        //setButtonTouchListener(readAll, this::playAllCardSounds);
+        setButtonTouchListener(readAll, this::playAllCardSounds);
 
-        // Set click listeners for card slots
-//        for (ImageButton slot : cardSlots) {
-//            setSlotClickListener(slot);
-//        }
     }
 
     private void updateCardLayoutByCategory(String category) {
@@ -128,8 +119,8 @@ public class CommunicationActivity extends AppCompatActivity {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
-                    cardLayout.removeAllViews(); // Clear all previous views
-                    cardLayout.setColumnCount(4); // Set the number of columns to 4
+                    cardLayout.removeAllViews();
+                    cardLayout.setColumnCount(4);
 
                     int totalCards = cards.size();
                     int totalRows = (int) Math.ceil((double) totalCards / 4); // Calculate the required number of rows
@@ -143,11 +134,10 @@ public class CommunicationActivity extends AppCompatActivity {
                         String audioVoice = card.getAudioVoice();
                         String imageLink = card.getImage();
 
-                        // Transform the Google Drive link to a direct download link
+
                         String fileId = extractFileIdFromDriveLink(imageLink);
                         String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
 
-                        // Inflate the card layout
                         View cardView = LayoutInflater.from(CommunicationActivity.this)
                                 .inflate(R.layout.card_layout, cardLayout, false);
 
@@ -158,11 +148,14 @@ public class CommunicationActivity extends AppCompatActivity {
                         textView.setText(cardName); // Set card name
 
                         // Load the image from the direct download link into the ImageButton using Glide
+
                         Glide.with(CommunicationActivity.this)
                                 .load(directImageLink)
+                                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                                 .placeholder(R.drawable.unknown)
                                 .error(R.drawable.circle_curves)
                                 .into(imageButton);
+
 
                         // Create layout parameters for the GridLayout
                         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -176,14 +169,12 @@ public class CommunicationActivity extends AppCompatActivity {
                         cardView.setLayoutParams(params);
                         cardLayout.addView(cardView);
 
-                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice));
+                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice),directImageLink);
                         position++;
                     }
                 });
             }
 
-
-            // Helper method to extract file ID from Google Drive link
             private String extractFileIdFromDriveLink(String driveLink) {
                 // Match the file ID using regex or string manipulation
                 String[] parts = driveLink.split("/");
@@ -199,30 +190,24 @@ public class CommunicationActivity extends AppCompatActivity {
 
     }
 
-    private String convertGoogleDriveLinkToDirect(String driveLink) {
-        if (driveLink.contains("drive.google.com")) {
-            // Extract the file ID from the Google Drive URL
-            String[] parts = driveLink.split("/");
-            String fileId = parts[5]; // Assuming it's in the correct format
-            return "https://drive.google.com/uc?export=download&id=" + fileId;
-        } else {
-            return driveLink; // In case it's not a Google Drive link
-        }
-    }
-
-
     @SuppressLint("ClickableViewAccessibility")
-    private void setCardListener(ImageButton cardButton, String audioVoiceUrl) {
+    private void setCardListener(ImageButton cardButton, String audioVoiceUrl, String imageLink) {
         // Convert Google Drive link to direct download link
-        // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+       // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+       // setSlotImage(imageLink);
 
         cardButton.setOnClickListener(view -> {
             if (count < SLOT_COUNT) {
                 // Play the sound when the card is clicked
                 playCardSoundFromUrl(audioVoiceUrl);
                 Log.d("CardClick", "Audio URL clicked: " + audioVoiceUrl);
+                setSlotImage(imageLink,audioVoiceUrl);
+                Log.d("CardImage", "Image link: " + imageLink);
+
             }
+
         });
+        applyTouchFeedback(cardButton);
 
         // Apply touch feedback (visual effect) for button press
         cardButton.setOnTouchListener((v, event) -> {
@@ -267,13 +252,40 @@ public class CommunicationActivity extends AppCompatActivity {
         }
     }
 
+    private void playAllCardSounds() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable playSoundTask = new Runnable() {
+            int index = 0;
+
+            @Override
+            public void run() {
+                if (index < SLOT_COUNT) {
+                    if (cardSlots[index].getVisibility() == View.VISIBLE) {
+                        applyTouchFeedback(cardSlots[index]);
+                        String audio = audioButtons[index].audioUrl;
+                        playCardSoundFromUrl(audio);
+                       // playCardSound(String.valueOf(cardDrawableIds[index]));
+                    }
+                    index++;
+                    scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
+                } else {
+                    scheduler.shutdown();
+                }
+            }
+        };
+        playSoundTask.run();
+    }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setSlotClickListener(ImageButton slot) {
+    private void setSlotClickListener(ImageButton slot, String audio) {
+        String audioUrl = (String) slot.getTag(R.id.tag_audio_voice);
+        Log.d("TAG_AUDIO", "The audio is:" + audioUrl);
         slot.setOnClickListener(view -> {
             int slotIndex = getSlotIndex(slot);
             if (slotIndex != -1) {
-                playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
+               playCardSoundFromUrl(audio);
+                //playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
+
             }
         });
 
@@ -291,69 +303,37 @@ public class CommunicationActivity extends AppCompatActivity {
         });
     }
 
-    private void setSlotImage(Drawable drawable, String imageName) {
+    private void setSlotImage(String imageUrl, String audioVoice) {
+
         if (count < SLOT_COUNT) {
+
             ImageButton slot = cardSlots[count];
-            slot.setImageDrawable(drawable);
+            AudioImageButton audioImageButton = new AudioImageButton(slot, audioVoice);
+            audioButtons[count] = audioImageButton;
+
+            Glide.with(CommunicationActivity.this)
+                    .load(imageUrl)
+                    .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
+                    .placeholder(R.drawable.unknown)
+                    .error(R.drawable.circle_curves)
+                    .into(slot);
+
             slot.setVisibility(View.VISIBLE);
-            cardDrawableIds[count] = getResources().getIdentifier(imageName, "raw", getPackageName());
-            Log.d("CardSlots", "Slot " + count + " updated with image: " + imageName);
+            setSlotClickListener(slot,audioVoice);
+
+            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName());
+            Log.d("CardSlots", "Slot " + count + " updated with image: " + imageUrl);
             count++;
+
+
+            //Log.d("TEST TAG", "Value of tag image url is " + TAG_IMAGE_URL + " and for audio " + R.id.tag_audio_voice);
         } else {
             Log.w("CardSlotsFULL", "All slots are full. Cannot add more cards.");
         }
     }
 
-
-    private void playCardSound(String imageName) {
-        Log.d("CardSound", "Attempting to play sound for: " + imageName);
-
-        int soundResId = getResources().getIdentifier(imageName, "raw", getPackageName());
-
-        if (soundResId != 0) {
-            if (mediaPlayer != null) {
-                mediaPlayer.release();
-                mediaPlayer = null;
-            }
-
-            mediaPlayer = MediaPlayer.create(this, soundResId);
-            if (mediaPlayer != null) {
-                mediaPlayer.start();
-                mediaPlayer.setOnCompletionListener(mp -> {
-                    mp.release();
-                    mediaPlayer = null;
-                });
-            } else {
-                Log.e("CardSound", "Failed to create MediaPlayer for: " + imageName);
-            }
-        } else {
-            Log.e("CardSound", "Sound resource not found for: " + imageName);
-        }
-    }
-
-    private void playAllCardSounds() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        Runnable playSoundTask = new Runnable() {
-            int index = 0;
-
-            @Override
-            public void run() {
-                if (index < SLOT_COUNT) {
-                    if (cardSlots[index].getVisibility() == View.VISIBLE) {
-                        applyTouchFeedback(cardSlots[index]);
-                        playCardSound(String.valueOf(cardDrawableIds[index]));
-                    }
-                    index++;
-                    scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
-                } else {
-                    scheduler.shutdown();
-                }
-            }
-        };
-        playSoundTask.run();
-    }
-
     private void applyTouchFeedback(final ImageButton slot) {
+
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             runOnUiThread(() -> slot.setAlpha(0.5f));

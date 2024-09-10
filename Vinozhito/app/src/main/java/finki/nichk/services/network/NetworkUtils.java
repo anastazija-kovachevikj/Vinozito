@@ -7,13 +7,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import finki.nichk.models.Card;
 
 public class NetworkUtils {
   //  private static final String BASE_URL = "https://1c82-77-29-6-81.ngrok-free.app/api";
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-
+  private static final ExecutorService executor = new ThreadPoolExecutor(
+          1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()
+  );
     public static void getAsync(ApiCallback callback, String urlString) {
         executor.submit(() -> {
             try {

@@ -41,4 +41,6 @@ rider.project.restore.info
 # Miscellaneous
 *.log
 
+backend/obj/
+backend/bin/
 
