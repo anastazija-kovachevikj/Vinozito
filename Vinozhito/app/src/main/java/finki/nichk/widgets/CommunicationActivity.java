@@ -8,14 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,7 +37,7 @@ public class CommunicationActivity extends AppCompatActivity {
     private CardService cardService;
 
     private static final int SOUND_DELAY_MILLIS = 1000;
-    private int count = 0; // Track the number of occupied slots
+    private int count = 0; // number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
 
@@ -53,7 +51,7 @@ public class CommunicationActivity extends AppCompatActivity {
 
         initializeViews();
         initializeListeners();
-        //playCardSound("fruit_banana"); // Replace with an actual audio file name you have
+        //playCardSound("fruit_banana"); // test
 
     }
 
@@ -126,7 +124,7 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void updateCardLayoutByCategory(String category) {
-        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("7693-77-28-179-118", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
@@ -216,7 +214,7 @@ public class CommunicationActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     private void setCardListener(ImageButton cardButton, String audioVoiceUrl) {
         // Convert Google Drive link to direct download link
-       // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+        // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
 
         cardButton.setOnClickListener(view -> {
             if (count < SLOT_COUNT) {
@@ -240,6 +238,7 @@ public class CommunicationActivity extends AppCompatActivity {
             return false;
         });
     }
+
     private void playCardSoundFromUrl(String audioFileId) {
         Log.d("CardSound", "Attempting to play sound from URL: " + audioFileId);
 
@@ -267,9 +266,6 @@ public class CommunicationActivity extends AppCompatActivity {
             Log.e("CardSound", "Failed to play sound from URL: " + directAudioUrl, e);
         }
     }
-
-
-
 
 
     @SuppressLint("ClickableViewAccessibility")

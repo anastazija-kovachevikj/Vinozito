@@ -1,4 +1,4 @@
-package finki.nichk;
+package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -18,6 +18,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import androidx.core.graphics.ColorUtils;
+
+import finki.nichk.R;
 
 public class ColoringScreenActivity extends AppCompatActivity {
 

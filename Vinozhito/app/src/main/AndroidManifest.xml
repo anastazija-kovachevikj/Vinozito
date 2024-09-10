@@ -54,7 +54,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".ColoringScreenActivity"
+            android:name=".screens.child.ColoringScreenActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
