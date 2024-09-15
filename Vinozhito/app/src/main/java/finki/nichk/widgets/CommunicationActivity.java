@@ -93,7 +93,7 @@ public class CommunicationActivity extends AppCompatActivity {
                 R.id.activities_tab, R.id.animals_tab,
                 R.id.clothes_tab, R.id.colors_tab};
 
-        String[] categories = {"conversation", "Feelings", "people", "drinks", "food",
+        String[] categories = {"Conversation", "Feelings", "people", "drinks", "food",
                 "Vegetable", "Fruit", "cutlery", "toys", "activities",
                 "animals", "clothes", "Colors"};
 
