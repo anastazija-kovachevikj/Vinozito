@@ -9,9 +9,10 @@
 
     <ImageButton
         android:id="@+id/start_btn"
-        android:layout_width="116dp"
-        android:layout_height="122dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@null"
+        android:contentDescription="@string/todo_text"
         android:scaleType="centerInside"
         android:src="@drawable/play_button_states"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,6 +21,7 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.62"
+        app:layout_constraintWidth_percent="0.15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

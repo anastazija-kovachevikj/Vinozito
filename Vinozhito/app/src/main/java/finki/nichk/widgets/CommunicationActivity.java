@@ -115,15 +115,15 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void updateCardLayoutByCategory(String category) {
-        cardService.fetchCardDataByUserIdAndCategory("7693-77-28-179-118", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
                     cardLayout.removeAllViews();
-                    cardLayout.setColumnCount(4);
+                    cardLayout.setColumnCount(5);
 
                     int totalCards = cards.size();
-                    int totalRows = (int) Math.ceil((double) totalCards / 4); // Calculate the required number of rows
+                    int totalRows = (int) Math.ceil((double) totalCards / 5); // Calculate the required number of rows
                     cardLayout.setRowCount(totalRows); // Set row count
 
                     int position = 0;
@@ -161,15 +161,15 @@ public class CommunicationActivity extends AppCompatActivity {
                         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                         params.width = 0;
                         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-                        params.columnSpec = GridLayout.spec(position % 4, 1f); // Correct column placement
-                        params.rowSpec = GridLayout.spec(position / 4);        // Correct row placement
-                        params.setMargins(15, 15, 15, 15);                    // Add some margin around each card
+                        params.columnSpec = GridLayout.spec(position % 5, 1f); // Correct column placement
+                        params.rowSpec = GridLayout.spec(position / 5); // Correct row placement
+                        params.setMargins(1, 5, 1, 1);
 
                         // Set the layout parameters and add the card view to the GridLayout
                         cardView.setLayoutParams(params);
                         cardLayout.addView(cardView);
 
-                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice),directImageLink);
+                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice), directImageLink);
                         position++;
                     }
                 });
@@ -193,8 +193,8 @@ public class CommunicationActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     private void setCardListener(ImageButton cardButton, String audioVoiceUrl, String imageLink) {
         // Convert Google Drive link to direct download link
-       // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
-       // setSlotImage(imageLink);
+        // String directAudioLink = convertGoogleDriveLinkToDirect(audioVoiceUrl);
+        // setSlotImage(imageLink);
 
         cardButton.setOnClickListener(view -> {
             if (count < SLOT_COUNT) {
@@ -264,7 +264,7 @@ public class CommunicationActivity extends AppCompatActivity {
                         applyTouchFeedback(cardSlots[index]);
                         String audio = audioButtons[index].audioUrl;
                         playCardSoundFromUrl(audio);
-                       // playCardSound(String.valueOf(cardDrawableIds[index]));
+                        // playCardSound(String.valueOf(cardDrawableIds[index]));
                     }
                     index++;
                     scheduler.schedule(this, SOUND_DELAY_MILLIS, TimeUnit.MILLISECONDS);
@@ -283,7 +283,7 @@ public class CommunicationActivity extends AppCompatActivity {
         slot.setOnClickListener(view -> {
             int slotIndex = getSlotIndex(slot);
             if (slotIndex != -1) {
-               playCardSoundFromUrl(audio);
+                playCardSoundFromUrl(audio);
                 //playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
 
             }
@@ -319,7 +319,7 @@ public class CommunicationActivity extends AppCompatActivity {
                     .into(slot);
 
             slot.setVisibility(View.VISIBLE);
-            setSlotClickListener(slot,audioVoice);
+            setSlotClickListener(slot, audioVoice);
 
             cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName());
             Log.d("CardSlots", "Slot " + count + " updated with image: " + imageUrl);
