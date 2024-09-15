@@ -93,9 +93,9 @@ public class CommunicationActivity extends AppCompatActivity {
                 R.id.activities_tab, R.id.animals_tab,
                 R.id.clothes_tab, R.id.colors_tab};
 
-        String[] categories = {"conversation", "feelings", "people", "drinks", "food",
+        String[] categories = {"conversation", "Feelings", "people", "drinks", "food",
                 "Vegetable", "Fruit", "cutlery", "toys", "activities",
-                "animals", "clothes", "colors"};
+                "animals", "clothes", "Colors"};
 
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
@@ -115,7 +115,7 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void updateCardLayoutByCategory(String category) {
-        cardService.fetchCardDataByUserIdAndCategory("7693-77-28-179-118", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
@@ -163,7 +163,7 @@ public class CommunicationActivity extends AppCompatActivity {
                         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
                         params.columnSpec = GridLayout.spec(position % 4, 1f); // Correct column placement
                         params.rowSpec = GridLayout.spec(position / 4);        // Correct row placement
-                        params.setMargins(15, 15, 15, 15);                    // Add some margin around each card
+                        params.setMargins(2, 10, 2, 3);                    // Add some margin around each card
 
                         // Set the layout parameters and add the card view to the GridLayout
                         cardView.setLayoutParams(params);
@@ -370,7 +370,9 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void clearAllSlots() {
+
         for (ImageButton slot : cardSlots) {
+            Log.d("Image delete button", "Slot is " + slot.getTag());
             slot.setVisibility(View.INVISIBLE);
         }
         count = 0; // Reset slot counter

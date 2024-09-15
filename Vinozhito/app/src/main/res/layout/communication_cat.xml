@@ -215,7 +215,7 @@
                 android:layout_gravity="top|center_horizontal"
                 android:columnCount="4"
                 android:paddingHorizontal="15dp"
-                android:rowCount="4">
+                android:rowCount="6">
 
                 <!--                <FrameLayout-->
                 <!--                    android:layout_width="0dp"-->
