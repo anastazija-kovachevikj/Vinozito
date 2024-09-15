@@ -28,124 +28,45 @@ namespace backend.data
 
             var sampleData = new List<DefaultCard>
             {
-              new DefaultCard
+            new DefaultCard
                 {
                     //
-                    Name = "црвена",
-                    AudioVoice = "https://drive.google.com/file/d/149MenaUfuUIM05MXHeCA84xSCVaJ8zm3/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1K5p8F0ow93iQq-z3A7ubM_7Os4zqrmmy/view?usp=drive_link",
-                    Category = "Colors"
+                    Name = "да",
+                    AudioVoice = "https://drive.google.com/file/d/1YvPxmdmHJTcwQ8ZadaqN-lHSnI3TfTmF/view?usp=drive_link",
+                    Image = "https://drive.google.com/file/d/19t5Mb6_2pDeOyyvCZHSDQR9l7XRUh-aI/view?usp=drive_link",
+                    Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
-                    Name = "зелена",
-                    AudioVoice = "https://drive.google.com/file/d/1_qt2iQDYX2RPEHaZCxX0g-Lug7YxG8jG/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/15wM-rRKUftjaJKkkyzCqHaBU_hzZYCrH/view?usp=drive_link",
-                    Category = "Colors"
+                    Name = "не",
+                    AudioVoice = "https://drive.google.com/file/d/1nAfGlDno8BEthoBq6RhiReUSWGLlBv30/view?usp=drive_link",
+                    Image = "https://drive.google.com/file/d/17Ec9lHU30LkLGwxJgV4G_SeUqBYkUnXk/view?usp=drive_link",
+                    Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
-                    Name = "сина",
-                    AudioVoice = "https://drive.google.com/file/d/1OX5BXsLjqy0cCaLnRf1QHNiJwi9cIpf1/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/18a8m3i7TQJWBdNlLnJX-hPaC4S7yIyOU/view?usp=drive_link",
-                    Category = "Colors"
+                    Name = "стоп",
+                    AudioVoice = "https://drive.google.com/file/d/1DYGZZk5N4MbUqKRN2g18k5j7tU32Tr_O/view?usp=drive_link",
+                    Image = "https://drive.google.com/file/d/1uWD21JplQnUaLZF9bVmjDyz3DsoQinP_/view?usp=drive_link",
+                    Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
-                    Name = "жолта",
-                    AudioVoice = "https://drive.google.com/file/d/1RTdgW3pcJNMz0n4LC2GfOyQsNvJUmgdx/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1VZx9WFrQy9afkGd8fa4f37_ndhiBQO2e/view?usp=drive_link",
-                    Category = "Colors"
+                    Name = "зошто",
+                    AudioVoice = "https://drive.google.com/file/d/1ejA9T-tQeL1sr_Gdvy-KzLxf02YvVVMI/view?usp=drive_link",
+                    Image = "https://drive.google.com/file/d/1tdQaCDF0MRqqbBQdgarviK5FumG7Bgt5/view?usp=drive_link",
+                    Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
-                    Name = "розева",
-                    AudioVoice = "https://drive.google.com/file/d/1wRd2dH9sY1DYBfDQa_tpWl8Ky8uNW1NA/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1I5pXbSPAF_2wpY1rPOnmbf9ujoEhEZGX/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "портокалова",
-                    AudioVoice = "https://drive.google.com/file/d/1lcD7RTFx77E0xnJBDtAnOuf5YWWnvQ3U/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/19K2aJVvQ6AcSlbP09xrdqOkzn_FJyV5E/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "виолетова",
-                    AudioVoice = "https://drive.google.com/file/d/1pEfwEKlGHF4Sdy6QfRxVrLP0tGruNMlp/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1xgfoT70QJUgk7jB4N5giU-S_QV2mbpGw/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "светлосина",
-                    AudioVoice = "https://drive.google.com/file/d/1Ls_-RDN2NVcD0c9IIRmmiUWeb8NlxsgT/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1WFcCrRlXchftP0XOmLnFBfeShCpTZohw/view?usp=drive_link",
-                    Category = "Colors"
-                },   new DefaultCard
-                {
-                    //
-                    Name = "светлорозева",
-                    AudioVoice = "https://drive.google.com/file/d/109HfHgxLYBxH55Id5BiQRSd1RgsQe1Du/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1oDa8dZjrZCm_w6Vj4fZwRnEbE8SCuLKj/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "тиркизна",
-                    AudioVoice = "https://drive.google.com/file/d/1uB2qx0VAqvVhVBpc0SwqBASkth1itXEb/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1sDncZEGxIfgucIGdSysH8bZdx9nVPVF2/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "темнозелена",
-                    AudioVoice = "https://drive.google.com/file/d/1rpDN7s9A6QIKKKlSxT4ED9hDM93gy8g5/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1VMDGj_aSPagppDF3QmdHIZ537n8XXOMP/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "кафеава",
-                    AudioVoice = "https://drive.google.com/file/d/1TGh4SDIxDjo3MuuSr8bWzFMf-fvasIcm/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/10N16_It71VT291flji2MDal9JSXd2mw_/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "бела",
-                    AudioVoice = "https://drive.google.com/file/d/1lHv8qhGSdL-m4g5Z8_TNyH-VHnmp3k6-/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/19dhPRRnLONjONQN939N4JQ1zVLU4nye2/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "црна",
-                    AudioVoice = "https://drive.google.com/file/d/1YfPr8QmfYQ9e6mvO_4l_IXmiVVdI1c_A/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1xsDX_lDZ4hgwQAGmxttQJxUd_ZKlLQGo/view?usp=drive_link",
-                    Category = "Colors"
-                },
-                new DefaultCard
-                {
-                    //
-                    Name = "сива",
-                    AudioVoice = "https://drive.google.com/file/d/14pOG8BvO2U1wTYcw1NipQ4x_kTp1W3bQ/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/178njWBryLdPUQoRgG4G7K6iW8kv4-E5G/view?usp=drive_link",
-                    Category = "Colors"
+                    Name = "помош",
+                    AudioVoice = "https://drive.google.com/file/d/1BRYx5JwOjBOEXfM-aTJiQwVW82MD7-t2/view?usp=drive_link",
+                    Image = "https://drive.google.com/file/d/1ge2g4wbYgCR3X-hLDJYFyC4j9Zexpd3b/view?usp=drive_link",
+                    Category = "Conversation"
                 },
             };
             foreach (var dfCard in sampleData)
