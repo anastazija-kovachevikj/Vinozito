@@ -18,7 +18,7 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
-      run: docker build ./backend --file ./backend/Dockerfile --tag anastazijakovach/backend_vinozito:$(date +%s)
+      run: docker build ./backend --file ./backend/Dockerfile --tag anastazijakovach/backend_vinozito:latest
 
     - name: Push the Docker image to DockerHub
-      run: docker push anastazijakovach/backend_vinozito:$(date +%s)
+      run: docker push anastazijakovach/backend_vinozito:latest
