@@ -213,9 +213,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
-                android:columnCount="4"
-                android:paddingHorizontal="15dp"
-                android:rowCount="6">
+
+                android:columnCount="5"
+                android:paddingHorizontal="15dp">
 
                 <!--                <FrameLayout-->
                 <!--                    android:layout_width="0dp"-->
