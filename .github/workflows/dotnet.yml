@@ -19,12 +19,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: Vinozito/backend
+      working-directory: ./backend
 
     - name: Build
       run: dotnet build --no-restore
-      working-directory: Vinozito/backend
+      working-directory: ./backend
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: Vinozito/backend
+      working-directory: ./backend
