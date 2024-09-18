@@ -35,6 +35,6 @@ public class UserRepository(MongoDbContext context) : IUserRepository
 
     public async Task<User> GetByUsernameAsync(string username)
     {
-        return await context.Users.Find(u => u.Username == username).FirstOrDefaultAsync();
+        return await context.Users.Find(u => u.UserName == username).FirstOrDefaultAsync();
     }
 }
