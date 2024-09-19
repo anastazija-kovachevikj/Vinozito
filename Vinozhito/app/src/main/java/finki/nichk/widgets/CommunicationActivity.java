@@ -1,23 +1,21 @@
 package finki.nichk.widgets;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -39,20 +37,18 @@ import finki.nichk.services.CardService;
 public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
     private static final int SLOT_COUNT = 4;
-
     private CardService cardService;
-    private ExecutorService executorService;
-
-    private static final int TAG_IMAGE_URL = 0x1;
-    private static final int TAG_AUDIO_VOICE = 0x2;
-
+//    private ExecutorService executorService;
+//    private static final int TAG_IMAGE_URL = 0x1;
+//    private static final int TAG_AUDIO_VOICE = 0x2;
     private static final int SOUND_DELAY_MILLIS = 1000;
     private int count = 0; // number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
     private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
-
     private MediaPlayer mediaPlayer;
+    private SoundPool soundPool;
+    private Map<String, MediaPlayer> audioCache = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +56,16 @@ public class CommunicationActivity extends AppCompatActivity {
         setContentView(R.layout.communication_cat);
         cardService = new CardService();
 
-        int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
-                NUMBER_OF_CORES,   // Core pool size
-                NUMBER_OF_CORES * 2,  // Maximum pool size
-                60L, TimeUnit.SECONDS,  // Keep-alive time
-                new LinkedBlockingQueue<Runnable>()  // Work queue
-        );
+//        int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
+//        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
+//                NUMBER_OF_CORES,   // Core pool size
+//                NUMBER_OF_CORES * 2,  // Maximum pool size
+//                60L, TimeUnit.SECONDS,  // Keep-alive time
+//                new LinkedBlockingQueue<Runnable>()  // Work queue
+//        );
+
         initializeViews();
         initializeListeners();
-
     }
 
     private void initializeViews() {
@@ -134,7 +130,6 @@ public class CommunicationActivity extends AppCompatActivity {
                         String audioVoice = card.getAudioVoice();
                         String imageLink = card.getImage();
 
-
                         String fileId = extractFileIdFromDriveLink(imageLink);
                         String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
 
@@ -148,7 +143,6 @@ public class CommunicationActivity extends AppCompatActivity {
                         textView.setText(cardName); // Set card name
 
                         // Load the image from the direct download link into the ImageButton using Glide
-
                         Glide.with(CommunicationActivity.this)
                                 .load(directImageLink)
                                 .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
@@ -201,7 +195,7 @@ public class CommunicationActivity extends AppCompatActivity {
                 // Play the sound when the card is clicked
                 playCardSoundFromUrl(audioVoiceUrl);
                 Log.d("CardClick", "Audio URL clicked: " + audioVoiceUrl);
-                setSlotImage(imageLink,audioVoiceUrl);
+                setSlotImage(imageLink, audioVoiceUrl);
                 Log.d("CardImage", "Image link: " + imageLink);
 
             }
@@ -230,27 +224,24 @@ public class CommunicationActivity extends AppCompatActivity {
         // Construct the Google Drive direct download link
         String directAudioUrl = "https://drive.google.com/uc?export=download&id=" + audioFileId;
 
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
+        if (mediaPlayer == null) {
+            mediaPlayer = new MediaPlayer();
+        } else {
+            mediaPlayer.reset(); // Reset the MediaPlayer to reuse it
         }
 
         try {
-            mediaPlayer = new MediaPlayer();
-
-            // Set the data source to the direct Google Drive URL
             mediaPlayer.setDataSource(directAudioUrl);
-            mediaPlayer.prepare(); // Prepare the media player
-            mediaPlayer.start();   // Start playing the audio
-
-            mediaPlayer.setOnCompletionListener(mp -> {
-                mp.release(); // Release MediaPlayer once done
-                mediaPlayer = null;
-            });
+            // Start playback once prepared
+            mediaPlayer.setOnPreparedListener(MediaPlayer::start);
+            mediaPlayer.prepareAsync(); // Prepare asynchronously to avoid blocking
+            // Reset MediaPlayer once done
+            mediaPlayer.setOnCompletionListener(MediaPlayer::reset);
         } catch (Exception e) {
             Log.e("CardSound", "Failed to play sound from URL: " + directAudioUrl, e);
         }
     }
+
 
     private void playAllCardSounds() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -273,7 +264,8 @@ public class CommunicationActivity extends AppCompatActivity {
                 }
             }
         };
-        playSoundTask.run();
+        //playSoundTask.run();
+        scheduler.schedule(playSoundTask, 0, TimeUnit.MILLISECONDS); // Start immediately
     }
 
     @SuppressLint("ClickableViewAccessibility")
