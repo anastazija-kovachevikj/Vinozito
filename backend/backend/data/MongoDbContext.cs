@@ -28,46 +28,88 @@ namespace backend.data
 
             var sampleData = new List<DefaultCard>
             {
+                //========Conversation=========
             new DefaultCard
                 {
                     //
                     Name = "да",
-                    AudioVoice = "https://drive.google.com/file/d/1YvPxmdmHJTcwQ8ZadaqN-lHSnI3TfTmF/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/19t5Mb6_2pDeOyyvCZHSDQR9l7XRUh-aI/view?usp=drive_link",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/да.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/да.png",
                     Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
                     Name = "не",
-                    AudioVoice = "https://drive.google.com/file/d/1nAfGlDno8BEthoBq6RhiReUSWGLlBv30/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/17Ec9lHU30LkLGwxJgV4G_SeUqBYkUnXk/view?usp=drive_link",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/не.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/не.png",
                     Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
                     Name = "стоп",
-                    AudioVoice = "https://drive.google.com/file/d/1DYGZZk5N4MbUqKRN2g18k5j7tU32Tr_O/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1uWD21JplQnUaLZF9bVmjDyz3DsoQinP_/view?usp=drive_link",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/стоп.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/стоп.png",
                     Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
                     Name = "зошто",
-                    AudioVoice = "https://drive.google.com/file/d/1ejA9T-tQeL1sr_Gdvy-KzLxf02YvVVMI/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1tdQaCDF0MRqqbBQdgarviK5FumG7Bgt5/view?usp=drive_link",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/зошто.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/зошто.png",
                     Category = "Conversation"
                 },
                 new DefaultCard
                 {
                     //
                     Name = "помош",
-                    AudioVoice = "https://drive.google.com/file/d/1BRYx5JwOjBOEXfM-aTJiQwVW82MD7-t2/view?usp=drive_link",
-                    Image = "https://drive.google.com/file/d/1ge2g4wbYgCR3X-hLDJYFyC4j9Zexpd3b/view?usp=drive_link",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/помош.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/помош.png",
                     Category = "Conversation"
                 },
+                // //========Vegetable=========
+                // new DefaultCard
+                // {
+                //     //
+                //     Name = "домат",
+                //     AudioVoice = "http://mkpatka.duckdns.org:5000/audio/домат.m4a",
+                //     Image = "http://mkpatka.duckdns.org:5000/images/домат.png",
+                //     Category = "Vegetable"
+                // },
+                // new DefaultCard
+                // {
+                //     //
+                //     Name = "морков",
+                //     AudioVoice = "http://mkpatka.duckdns.org:5000/audio/морков.m4a",
+                //     Image = "http://mkpatka.duckdns.org:5000/images/морков.png",
+                //     Category = "Vegetable"
+                // },
+                // new DefaultCard
+                // {
+                //     //
+                //     Name = "крставица",
+                //     AudioVoice = "http://mkpatka.duckdns.org:5000/audio/крставица.m4a",
+                //     Image = "http://mkpatka.duckdns.org:5000/images/крставица.png",
+                //     Category = "Vegetable"
+                // },
+                // new DefaultCard
+                // {
+                //     //
+                //     Name = "домат",
+                //     AudioVoice = "http://mkpatka.duckdns.org:5000/audio/домат.m4a",
+                //     Image = "http://mkpatka.duckdns.org:5000/images/домат.png",
+                //     Category = "Vegetable"
+                // },
+                // new DefaultCard
+                // {
+                //     //
+                //     Name = "домат",
+                //     AudioVoice = "http://mkpatka.duckdns.org:5000/audio/домат.m4a",
+                //     Image = "http://mkpatka.duckdns.org:5000/images/домат.png",
+                //     Category = "Vegetable"
+                // },
             };
             foreach (var dfCard in sampleData)
             {
