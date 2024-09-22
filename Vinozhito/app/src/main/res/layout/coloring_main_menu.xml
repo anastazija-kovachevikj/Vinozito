@@ -53,7 +53,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ladybug" />
+                    android:src="@drawable/bug_vector" />
             </FrameLayout>
 
             <FrameLayout
