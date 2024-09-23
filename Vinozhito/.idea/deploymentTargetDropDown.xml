@@ -3,22 +3,7 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="SplashActivity">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\ana_m\.android\avd\Pixel_Tablet_API_31.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-09-19T17:50:33.100044300Z" />
-
-        </State>
+        <State />
       </entry>
     </value>
   </component>

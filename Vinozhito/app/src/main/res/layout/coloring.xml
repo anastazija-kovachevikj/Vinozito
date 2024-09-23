@@ -16,8 +16,8 @@
 
         <ImageButton
             android:id="@+id/back_button"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="5dp"
@@ -36,8 +36,8 @@
 
             <ImageButton
                 android:id="@+id/reset_btn"
-                android:layout_width="85dp"
-                android:layout_height="50dp"
+                android:layout_width="105dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
@@ -66,15 +66,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-<!--            <pl.droidsonroids.gif.GifTextView-->
-<!--                android:id="@+id/loading_flower"-->
-<!--                android:layout_width="140dp"-->
-<!--                android:layout_height="140dp"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:background="@drawable/f"-->
-<!--                android:elevation="10dp"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:visibility="visible" />-->
+            <pl.droidsonroids.gif.GifTextView
+                android:id="@+id/loading_flower"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/f"
+                android:elevation="10dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -97,14 +97,16 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <!-- Color buttons section on the right -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/crayons"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:layout_marginEnd="-60dp"
+        android:layout_marginStart="60dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:paddingStart="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2">
 
         <ImageButton
             android:id="@+id/color_red"
@@ -114,7 +116,27 @@
             android:background="@android:color/transparent"
             android:contentDescription="Red"
             android:scaleType="centerCrop"
-            android:src="@drawable/crayon" />
+            android:src="@drawable/crayon_red" />
+
+        <ImageButton
+            android:id="@+id/color_orange"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_orange" />
+
+        <ImageButton
+            android:id="@+id/color_yellow"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_yellow" />
 
         <ImageButton
             android:id="@+id/color_green"
@@ -127,14 +149,44 @@
             android:src="@drawable/crayon_green" />
 
         <ImageButton
-            android:id="@+id/color_blue"
+            android:id="@+id/color_lightblue"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
             android:background="@android:color/transparent"
             android:contentDescription="Blue"
             android:scaleType="centerCrop"
-            android:src="@drawable/crayon_blue" />
+            android:src="@drawable/crayon_lightblue" />
+
+        <ImageButton
+            android:id="@+id/color_darkblue"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_darkblue" />
+
+        <ImageButton
+            android:id="@+id/color_purple"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_purple" />
+
+        <ImageButton
+            android:id="@+id/color_pink"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_pink" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
