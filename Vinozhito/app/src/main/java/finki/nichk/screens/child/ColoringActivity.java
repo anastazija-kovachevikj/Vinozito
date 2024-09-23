@@ -54,7 +54,6 @@ public class ColoringActivity extends AppCompatActivity {
         });
     }
 
-
     private void openColoringScreen(int drawableId) {
         Intent intent = new Intent(ColoringActivity.this, ColoringScreenActivity.class);
         intent.putExtra("image_resource", drawableId);

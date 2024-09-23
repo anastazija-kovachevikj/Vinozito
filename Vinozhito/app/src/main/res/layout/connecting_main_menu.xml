@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="none"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,16 +27,15 @@
             android:src="@drawable/back" />
     </LinearLayout>
 
-
-
     <ImageView
-        android:id="@+id/moving_heart"
+        android:id="@+id/bee_reaction"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="510dp"
         android:layout_marginTop="100dp"
-        android:background="@drawable/hearts"
+        android:layout_marginEnd="150dp"
+        android:scaleType="fitCenter"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,6 +48,7 @@
     <!--        android:layout_height="match_parent"/>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingTop="16dp"

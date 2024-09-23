@@ -33,7 +33,7 @@ public class ConnectActivity extends AppCompatActivity {
     private int targetImageRes;
     private TextView resultTextView;
     private ImageView firstPlate, secondPlate, thirdPlate, forthPlate;
-    private ImageView heart;
+    private ImageView beeReaction;
     private int currentRound = 1; // current round
     private final int totalRounds = 5; // number of rounds
 
@@ -43,7 +43,7 @@ public class ConnectActivity extends AppCompatActivity {
         setContentView(R.layout.connecting_main_menu);
 
         targetImage = findViewById(R.id.targetImage);
-        heart = findViewById(R.id.moving_heart);
+        beeReaction = findViewById(R.id.bee_reaction);
         //resultTextView = findViewById(R.id.resultTextView);
         ImageButton backButton = findViewById(R.id.back_button);
 
@@ -66,6 +66,9 @@ public class ConnectActivity extends AppCompatActivity {
         dishImages.add(R.drawable.orange);
         dishImages.add(R.drawable.grape);
         dishImages.add(R.drawable.fruit_banana);
+        dishImages.add(R.drawable.apple);
+        dishImages.add(R.drawable.pineapple);
+        dishImages.add(R.drawable.cherry);
 
         // listener for the target image
         targetImage.setOnDragListener(new TargetDragListener());
@@ -123,6 +126,43 @@ public class ConnectActivity extends AppCompatActivity {
             forthPlate.setVisibility(View.VISIBLE);
             forthPlate.startAnimation(zoomIn);
         }, 3 * delayBetweenPlates);
+    }
+
+    private void animateReaction(boolean isCorrect) {
+        ImageView react = findViewById(R.id.bee_reaction);
+
+        if (isCorrect) {
+            react.setImageResource(R.drawable.hearts);
+            //playCorrectAnswerSound(); // Play correct sound
+
+        } else {
+            react.setImageResource(R.drawable.wrong);
+            //playTryAgainSound(); // Play "try again" sound
+        }
+
+        react.setVisibility(View.VISIBLE);
+
+        Animation reactAnimation = AnimationUtils.loadAnimation(this, R.anim.float_away); // Reuse the same animation
+        react.startAnimation(reactAnimation);
+
+        // Optionally, reset the heart image after the animation finishes (if needed for future rounds)
+        reactAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // Reset the heart image back to the default after the animation ends
+                react.setImageResource(R.drawable.hearts);  // Default heart image
+                react.setVisibility(View.INVISIBLE); // Optionally hide it again after the animation
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+        react.startAnimation(reactAnimation);
     }
 
     private void animateHeart(ImageView heart) {
@@ -294,7 +334,7 @@ public class ConnectActivity extends AppCompatActivity {
 
                     if (draggedImageRes == targetImageRes) {
                         //resultTextView.setText("Correct!");
-                        animateHeart(heart);
+                        animateReaction(true);
                         playSoundForTarget(targetImageRes);
                         currentRound++;
 
@@ -311,6 +351,8 @@ public class ConnectActivity extends AppCompatActivity {
                             mediaPlayer.start();
                             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
                         }
+
+                        animateReaction(false);
 
                         //resultTextView.setText("Incorrect!");
                         View draggedView = (View) event.getLocalState();
