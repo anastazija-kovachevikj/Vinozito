@@ -3,12 +3,17 @@
     android:id="@+id/child_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greyblue">
+    android:background="@drawable/sky">
+
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/back_button"
-        android:layout_width="85dp"
-        android:layout_height="50dp"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
@@ -31,17 +36,19 @@
             android:id="@+id/horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_gravity="top|center_horizontal"
-            android:columnCount="3"
-            android:rowCount="4">
+            android:columnCount="2"
+            android:rowCount="8">
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="130dp"
+                android:layout_height="200dp"
                 android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="15dp"
+                android:elevation="100dp"
+                android:layout_marginBottom="20dp">
 
                 <ImageButton
                     android:id="@+id/imageButton_ladybug"
@@ -49,7 +56,8 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
+
+                    android:background="@drawable/coloring_book_border"
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
@@ -58,179 +66,11 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="130dp"
+
+                android:layout_height="200dp"
                 android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_dino"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/dino" />
-            </FrameLayout>
-
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_cake"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/cake" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_butterfly"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/butterfly" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_rainbow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/rainbow" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_cow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/cow" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_cactus"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/cactus" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_cp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/cp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-
-                <ImageButton
-                    android:id="@+id/imageButton_ufo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
-                    android:contentDescription="@string/todo_text"
-                    android:paddingVertical="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ufo" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="55dp"
                 android:layout_marginBottom="5dp">
 
                 <ImageButton
@@ -239,12 +79,181 @@
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
-                    android:background="@drawable/text_background"
+                    android:background="@drawable/coloring_book_border"
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/horse" />
             </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cake"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cake" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_butterfly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/butterfly" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_rainbow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rainbow" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cow" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cactus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cactus" />
+            </FrameLayout>
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginEnd="55dp"-->
+<!--                android:layout_marginBottom="5dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/imageButton_cp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_columnWeight="1"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:background="@drawable/coloring_book_border"-->
+<!--                    android:contentDescription="@string/todo_text"-->
+<!--                    android:paddingVertical="20dp"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:src="@drawable/cp" />-->
+<!--            </FrameLayout>-->
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton_ufo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/coloring_book_border"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ufo" />
+            </FrameLayout>
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:layout_marginStart="55dp"-->
+<!--                android:layout_marginEnd="15dp"-->
+<!--                android:layout_marginBottom="5dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/imageButton_horse"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_columnWeight="1"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:background="@drawable/text_background"-->
+<!--                    android:contentDescription="@string/todo_text"-->
+<!--                    android:paddingVertical="20dp"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:src="@drawable/horse" />-->
+<!--            </FrameLayout>-->
 
 
         </GridLayout>
