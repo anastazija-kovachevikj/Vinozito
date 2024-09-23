@@ -15,7 +15,7 @@ public class CardService {
 
     public void fetchCardDataByUserIdAndCategory(String userId, String category, CardServiceCallback callback) {
 
-        String url = "https://03e6-79-125-235-106.ngrok-free.app/api/Card/category/" + userId + "?category=" + category;
+        String url = "https://2008-46-217-16-111.ngrok-free.app/api/Card/category/" + userId + "?category=" + category;
 
 
         NetworkUtils.getAsync(new NetworkUtils.ApiCallback() {

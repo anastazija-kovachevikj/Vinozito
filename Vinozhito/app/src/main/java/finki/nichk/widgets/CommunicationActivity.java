@@ -87,9 +87,15 @@ public class CommunicationActivity extends AppCompatActivity {
 
         cardLayout = findViewById(R.id.card_layout);
 
-        int[] tabIds = {R.id.conversation_tab};
+        int[] tabIds = {R.id.conversation_tab, R.id.feelings_tab, R.id.people_tab,
+                R.id.drinks_tab, R.id.food_tab, R.id.vegetables_tab,
+                R.id.fruit_tab, R.id.cutlery_tab, R.id.toys_tab,
+                R.id.activities_tab, R.id.animals_tab,
+                R.id.clothes_tab, R.id.colors_tab};
 
-        String[] categories = {"Conversation"};
+        String[] categories = {"Conversation", "Feelings", "People", "Drinks", "Food",
+                "Vegetable", "Fruit", "Cutlery", "Toys", "Activities",
+                "Animals", "Clothes", "Colors"};
 
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
