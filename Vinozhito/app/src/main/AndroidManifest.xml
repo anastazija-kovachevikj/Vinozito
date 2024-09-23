@@ -66,6 +66,11 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Vinozhito" />
         <activity
+            android:name=".screens.parent.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="landscape" />

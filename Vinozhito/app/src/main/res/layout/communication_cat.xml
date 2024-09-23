@@ -611,39 +611,39 @@
                 android:layout_height="3dp"
                 android:background="@drawable/border" />
 
-            <ImageButton
-                android:id="@+id/cutlery_tab"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/icon_circle"
-                android:contentDescription="@string/todo_text"
-                android:paddingHorizontal="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/cutlery" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/cutlery_tab"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="90dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/icon_circle"-->
+<!--                android:contentDescription="@string/todo_text"-->
+<!--                android:paddingHorizontal="5dp"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/cutlery" />-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@drawable/border" />
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="@drawable/border" />-->
 
-            <ImageButton
-                android:id="@+id/toys_tab"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/icon_circle"
-                android:contentDescription="@string/todo_text"
-                android:paddingHorizontal="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/toys" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/toys_tab"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="90dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/icon_circle"-->
+<!--                android:contentDescription="@string/todo_text"-->
+<!--                android:paddingHorizontal="5dp"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/toys" />-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@drawable/border" />
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="@drawable/border" />-->
 
             <ImageButton
                 android:id="@+id/activities_tab"

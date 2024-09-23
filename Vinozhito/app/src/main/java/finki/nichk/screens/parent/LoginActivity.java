@@ -1,14 +1,21 @@
 package finki.nichk.screens.parent;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import finki.nichk.MainActivity;
 import finki.nichk.R;
+import finki.nichk.screens.child.ChildActivity;
+import finki.nichk.screens.child.ColoringActivity;
 import finki.nichk.services.authentication.AuthRepository;
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,12 +23,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private ImageButton backButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.new_login);
 
         // Initialize AuthRepository with TokenManager
         authRepository = new AuthRepository(this);
@@ -30,17 +38,38 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameInput);
         passwordEditText = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
+        backButton = findViewById(R.id.back_button_login);
 
         // Set login button click listener
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = usernameEditText.getText().toString().trim();
-                String password = passwordEditText.getText().toString().trim();
+        loginButton.setOnClickListener(view -> {
+            String username = usernameEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
 
-                // Perform login
-                performLogin(username, password);
+            // Perform login
+            performLogin(username, password);
+        });
+
+        backButton.setOnClickListener(v -> finish());
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
+
+        button.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // transparent when pressed
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // back to normal released or canceled
+                    v.setAlpha(1.0f);
+                    break;
             }
+            return false;
         });
     }
 

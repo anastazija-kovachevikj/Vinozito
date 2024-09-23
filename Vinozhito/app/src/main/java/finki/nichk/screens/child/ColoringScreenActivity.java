@@ -41,7 +41,7 @@ public class ColoringScreenActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.back_button);
         loadingFlower = findViewById(R.id.loading_flower);
 
-        // Initially show the rotating flower GIF
+        // rotating flower GIF
         loadingFlower.setVisibility(View.VISIBLE);
 
         int drawableId = getIntent().getIntExtra("image_resource", -1);
@@ -86,7 +86,6 @@ public class ColoringScreenActivity extends AppCompatActivity {
         ImageButton pinkButton = findViewById(R.id.color_pink);
         View selectedColorView = findViewById(R.id.crayons);
 
-        // Pass the button, color, and blend ratio to handleColorButtonClick()
         redButton.setOnClickListener(v -> handleColorButtonClick(redButton, Color.RED, selectedColorView, 0.3f));
         orangeButton.setOnClickListener(v -> handleColorButtonClick(orangeButton, Color.parseColor("#FFA500"), selectedColorView, 0.4f));
         yellowButton.setOnClickListener(v -> handleColorButtonClick(yellowButton, Color.YELLOW, selectedColorView, 0.5f));
@@ -98,12 +97,12 @@ public class ColoringScreenActivity extends AppCompatActivity {
     }
 
     private void handleColorButtonClick(ImageButton clickedButton, int color, View selectedColorView, float blendRatio) {
-        float slideDistance = -50f; // Adjust this value to control how far it slides left
+        float slideDistance = -50f; // how far it slides left
 
         if (currentOpenCrayon != null && currentOpenCrayon != clickedButton) {
-            // Slide back the previous crayon to its original position
+            // slide back the previous crayon to its original position
             ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(currentOpenCrayon, "translationX", currentOpenCrayon.getTranslationX(), 0f);
-            slideBackAnimator.setDuration(300); // Animation duration in milliseconds
+            slideBackAnimator.setDuration(300);
             slideBackAnimator.start();
         }
 
@@ -114,16 +113,14 @@ public class ColoringScreenActivity extends AppCompatActivity {
             slideBackAnimator.start();
             currentOpenCrayon = null; // No crayon is currently open
         } else {
-            // Slide the clicked crayon a little to the left
+            // slide the clicked crayon to the left
             ObjectAnimator slideOutAnimator = ObjectAnimator.ofFloat(clickedButton, "translationX", clickedButton.getTranslationX(), slideDistance);
             slideOutAnimator.setDuration(300);
             slideOutAnimator.start();
 
-            // Update the current open crayon
             currentOpenCrayon = clickedButton;
         }
 
-        // Update the current color and the selected color view with the provided blend ratio
         currentColor = ColorUtils.blendARGB(color, Color.WHITE, blendRatio);
 //        selectedColorView.setBackgroundColor(currentColor);
     }
@@ -177,9 +174,8 @@ public class ColoringScreenActivity extends AppCompatActivity {
 
     private void floodFill(Bitmap bitmap, int x, int y, int newColor) {
         int targetColor = bitmap.getPixel(x, y);
-        int lightGray = Color.rgb(254, 254, 254); // Define a very light gray color
+        int lightGray = Color.rgb(254, 254, 254);  //very light gray color
 
-        // Return if the starting pixel is already the new color or is the light gray area
         if (targetColor == newColor || targetColor == lightGray) return;
 
         Queue<Point> queue = new LinkedList<>();
@@ -195,7 +191,6 @@ public class ColoringScreenActivity extends AppCompatActivity {
 
             int currentColor = bitmap.getPixel(px, py);
 
-            // Only fill areas that match the target color and are not the outline or light gray
             if (currentColor == targetColor && currentColor != Color.BLACK && currentColor != lightGray) {
                 bitmap.setPixel(px, py, newColor);
 
@@ -211,9 +206,9 @@ public class ColoringScreenActivity extends AppCompatActivity {
     private Bitmap preprocessImage(Bitmap bitmap) {
         Bitmap processedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
 
-        Canvas canvas = new Canvas(processedBitmap);
+        //Canvas canvas = new Canvas(processedBitmap);
         int threshold = 50; // Threshold for detecting black pixels
-        int lightGray = Color.rgb(254, 254, 254); // Define a very light gray color
+        int lightGray = Color.rgb(254, 254, 254);
 
         for (int x = 0; x < bitmap.getWidth(); x++) {
             for (int y = 0; y < bitmap.getHeight(); y++) {
@@ -223,16 +218,14 @@ public class ColoringScreenActivity extends AppCompatActivity {
                 int blue = Color.blue(pixel);
 
                 if (red < threshold && green < threshold && blue < threshold) {
-                    // Mark the outline as black
+                    // mark the outline as black
                     processedBitmap.setPixel(x, y, Color.BLACK);
                 } else {
-                    // Initially keep it as white
                     processedBitmap.setPixel(x, y, Color.WHITE);
                 }
             }
         }
 
-        // Step 2: Mark the outside area starting from the edges with light gray
         for (int x = 0; x < processedBitmap.getWidth(); x++) {
             floodFillOutside(processedBitmap, x, 0, Color.WHITE, lightGray); // Top edge
             floodFillOutside(processedBitmap, x, processedBitmap.getHeight() - 1, Color.WHITE, lightGray); // Bottom edge
@@ -247,7 +240,6 @@ public class ColoringScreenActivity extends AppCompatActivity {
     }
 
     private void floodFillOutside(Bitmap bitmap, int x, int y, int targetColor, int replaceColor) {
-        // Ensure we are within bounds and have the target color
         if (x < 0 || x >= bitmap.getWidth() || y < 0 || y >= bitmap.getHeight()) return;
         if (bitmap.getPixel(x, y) != targetColor) return;
 

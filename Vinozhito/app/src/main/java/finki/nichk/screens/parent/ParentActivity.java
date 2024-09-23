@@ -29,12 +29,7 @@ public class ParentActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passField);
         eyeIcon = findViewById(R.id.PassVisibility);
 
-        eyeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                togglePasswordVisibility();
-            }
-        });
+        eyeIcon.setOnClickListener(v -> togglePasswordVisibility());
 
         // Load authenticated status from SharedPreferences
 //        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
