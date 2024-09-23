@@ -2,20 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="SplashActivity (1)">
+      <entry key="SplashActivity">
         <State>
-          <runningDeviceTargetSelectedWithDropDown>
+          <targetSelectedWithDropDown>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="adb-RFCT32ET3ZX-SSxhix._adb-tls-connect._tcp" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\ana_m\.android\avd\Pixel_Tablet_API_31.avd" />
                 </Key>
               </deviceKey>
             </Target>
+
           </runningDeviceTargetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-09-19T17:50:33.100044300Z" />
+
         </State>
       </entry>
     </value>
