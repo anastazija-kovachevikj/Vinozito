@@ -63,6 +63,7 @@
                     android:layout_column="0"/>
 
                 <EditText
+                    android:id="@+id/usernameInput"
                     android:layout_columnWeight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
                     android:layout_gravity="center_vertical" />
 
                 <EditText
+                    android:id="@+id/passwordInput"
                     android:layout_columnWeight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -113,6 +115,7 @@
             </GridLayout>
 
             <Button
+                android:id="@+id/loginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center"

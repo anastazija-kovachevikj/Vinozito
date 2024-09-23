@@ -1,14 +1,21 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background color -->
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/lightred"/>
+            <corners android:topLeftRadius="20dp" android:bottomLeftRadius="20dp"/> <!-- Rounded left corners -->
         </shape>
     </item>
+
+    <!-- Border with adjusted position to show the stroke -->
     <item android:left="0dp" android:right="-2dp" android:top="-2dp" android:bottom="-2dp">
         <shape android:shape="rectangle">
             <stroke
                 android:width="2dp"
                 android:color="@color/redish" />
+            <corners android:topLeftRadius="20dp" android:bottomLeftRadius="20dp"/> <!-- Apply rounded corners to border -->
         </shape>
     </item>
+
 </layer-list>

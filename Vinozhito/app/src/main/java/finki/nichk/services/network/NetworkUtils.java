@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import finki.nichk.models.Card;
 
 public class NetworkUtils {
-  //  private static final String BASE_URL = "https://1c82-77-29-6-81.ngrok-free.app/api";
+
   private static final ExecutorService executor = new ThreadPoolExecutor(
           1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()
   );

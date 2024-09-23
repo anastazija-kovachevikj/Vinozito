@@ -474,7 +474,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/scroll_cat"
-        android:paddingVertical="2dp">
+        android:paddingVertical="5dp">
 
         <GridLayout
             android:id="@+id/tab_layout"
@@ -482,6 +482,7 @@
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:orientation="vertical"
+
             android:rowCount="27">
 
 
@@ -490,7 +491,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -506,7 +507,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -514,6 +515,7 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_marginRight="-5dp"
                 android:layout_height="2.5dp"
                 android:background="@drawable/border" />
 
@@ -522,7 +524,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -533,12 +535,13 @@
                 android:layout_height="2.5dp"
                 android:background="@drawable/border" />
 
+
             <ImageButton
                 android:id="@+id/drinks_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -554,7 +557,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -570,7 +573,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -586,7 +589,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -602,7 +605,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -618,7 +621,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -634,7 +637,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -650,7 +653,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -666,7 +669,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
@@ -682,26 +685,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
-                android:background="@color/lightred"
+                android:background="@drawable/icon_circle"
                 android:contentDescription="@string/todo_text"
                 android:paddingHorizontal="5dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/wheel" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@drawable/border" />
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="@drawable/border" />-->
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:background="@color/lightred"
-                android:contentDescription="@string/todo_text"
-                android:paddingHorizontal="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/other" />
+<!--            <ImageButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@color/lightred"-->
+<!--                android:contentDescription="@string/todo_text"-->
+<!--                android:paddingHorizontal="5dp"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/other" />-->
 
         </GridLayout>
     </ScrollView>
