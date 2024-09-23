@@ -3,7 +3,7 @@
     <!-- Background color -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/lightred"/>
+            <solid android:color="@color/lightgrey"/>
             <corners android:topLeftRadius="20dp" android:bottomLeftRadius="20dp"/> <!-- Rounded left corners -->
         </shape>
     </item>
@@ -12,8 +12,8 @@
     <item android:left="0dp" android:right="-2dp" android:top="-2dp" android:bottom="-2dp">
         <shape android:shape="rectangle">
             <stroke
-                android:width="2dp"
-                android:color="@color/redish" />
+                android:width="2.5dp"
+                android:color="@color/babyblue" />
             <corners android:topLeftRadius="20dp" android:bottomLeftRadius="20dp"/> <!-- Apply rounded corners to border -->
         </shape>
     </item>

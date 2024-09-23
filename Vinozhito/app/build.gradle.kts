@@ -54,7 +54,7 @@ android {
 
 dependencies {
     //NEW
-    implementation ("androidx.vectordrawable:vectordrawable:1.2.0")
+    //implementation ("androidx.vectordrawable:vectordrawable:1.2.0")
     implementation ("com.caverock:androidsvg:1.4")
 
 
