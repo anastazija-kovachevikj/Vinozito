@@ -38,10 +38,12 @@ public class CommunicationActivity extends AppCompatActivity {
     private GridLayout cardLayout;
     private static final int SLOT_COUNT = 4;
     private CardService cardService;
+
 //    private ExecutorService executorService;
 //    private static final int TAG_IMAGE_URL = 0x1;
 //    private static final int TAG_AUDIO_VOICE = 0x2;
-    private static final int SOUND_DELAY_MILLIS = 1000;
+    private static final int SOUND_DELAY_MILLIS = 1500;
+
     private int count = 0; // number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
     private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
@@ -89,9 +91,9 @@ public class CommunicationActivity extends AppCompatActivity {
                 R.id.activities_tab, R.id.animals_tab,
                 R.id.clothes_tab, R.id.colors_tab};
 
-        String[] categories = {"Conversation", "Feelings", "people", "drinks", "food",
-                "Vegetable", "Fruit", "cutlery", "toys", "activities",
-                "animals", "clothes", "Colors"};
+        String[] categories = {"Conversation", "Feelings", "People", "Drinks", "Food",
+                "Vegetable", "Fruit", "Cutlery", "Toys", "Activities",
+                "Animals", "Clothes", "Colors"};
 
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
@@ -111,7 +113,7 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void updateCardLayoutByCategory(String category) {
-        cardService.fetchCardDataByUserIdAndCategory("64f76d45-f03a-4c9e-9339-4c01524fb08a", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("68daa6ff-5048-4ea5-877a-ed5a91a9d11e", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
@@ -130,8 +132,11 @@ public class CommunicationActivity extends AppCompatActivity {
                         String audioVoice = card.getAudioVoice();
                         String imageLink = card.getImage();
 
-                        String fileId = extractFileIdFromDriveLink(imageLink);
-                        String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
+
+
+                     //  String fileId = extractFileIdFromDriveLink(imageLink);
+                       // String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
+
 
                         View cardView = LayoutInflater.from(CommunicationActivity.this)
                                 .inflate(R.layout.card_layout, cardLayout, false);
@@ -144,7 +149,7 @@ public class CommunicationActivity extends AppCompatActivity {
 
                         // Load the image from the direct download link into the ImageButton using Glide
                         Glide.with(CommunicationActivity.this)
-                                .load(directImageLink)
+                                .load(imageLink)
                                 .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                                 .placeholder(R.drawable.unknown)
                                 .error(R.drawable.circle_curves)
@@ -165,7 +170,7 @@ public class CommunicationActivity extends AppCompatActivity {
                         cardView.setLayoutParams(params);
                         cardLayout.addView(cardView);
 
-                        setCardListener(imageButton, extractFileIdFromDriveLink(audioVoice), directImageLink);
+                        setCardListener(imageButton, audioVoice, imageLink);
                         position++;
                     }
                 });
@@ -221,6 +226,7 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void playCardSoundFromUrl(String audioFileId) {
+
         Log.d("CardSound", "Attempting to play sound from URL: " + audioFileId);
 
         // Construct the Google Drive direct download link
@@ -233,12 +239,26 @@ public class CommunicationActivity extends AppCompatActivity {
         }
 
         try {
-            mediaPlayer.setDataSource(directAudioUrl);
-            // Start playback once prepared
-            mediaPlayer.setOnPreparedListener(MediaPlayer::start);
-            mediaPlayer.prepareAsync(); // Prepare asynchronously to avoid blocking
-            // Reset MediaPlayer once done
-            mediaPlayer.setOnCompletionListener(MediaPlayer::reset);
+// <<<<<<< main
+//             mediaPlayer.setDataSource(directAudioUrl);
+//             // Start playback once prepared
+//             mediaPlayer.setOnPreparedListener(MediaPlayer::start);
+//             mediaPlayer.prepareAsync(); // Prepare asynchronously to avoid blocking
+//             // Reset MediaPlayer once done
+//             mediaPlayer.setOnCompletionListener(MediaPlayer::reset);
+// =======
+            mediaPlayer = new MediaPlayer();
+
+            // Set the data source to the direct Google Drive URL
+            mediaPlayer.setDataSource(audioFileId);
+            mediaPlayer.prepare(); // Prepare the media player
+            mediaPlayer.start();   // Start playing the audio
+
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release(); // Release MediaPlayer once done
+                mediaPlayer = null;
+            });
+
         } catch (Exception e) {
             Log.e("CardSound", "Failed to play sound from URL: " + directAudioUrl, e);
         }
