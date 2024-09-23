@@ -89,9 +89,9 @@ public class CommunicationActivity extends AppCompatActivity {
                 R.id.activities_tab, R.id.animals_tab,
                 R.id.clothes_tab, R.id.colors_tab};
 
-        String[] categories = {"conversation", "feelings", "people", "drinks", "food",
+        String[] categories = {"Conversation", "Feelings", "people", "drinks", "food",
                 "Vegetable", "Fruit", "cutlery", "toys", "activities",
-                "animals", "clothes", "colors"};
+                "animals", "clothes", "Colors"};
 
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
@@ -155,9 +155,11 @@ public class CommunicationActivity extends AppCompatActivity {
                         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                         params.width = 0;
                         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+
                         params.columnSpec = GridLayout.spec(position % 5, 1f); // Correct column placement
                         params.rowSpec = GridLayout.spec(position / 5); // Correct row placement
                         params.setMargins(1, 5, 1, 1);
+
 
                         // Set the layout parameters and add the card view to the GridLayout
                         cardView.setLayoutParams(params);
@@ -362,7 +364,9 @@ public class CommunicationActivity extends AppCompatActivity {
     }
 
     private void clearAllSlots() {
+
         for (ImageButton slot : cardSlots) {
+            Log.d("Image delete button", "Slot is " + slot.getTag());
             slot.setVisibility(View.INVISIBLE);
         }
         count = 0; // Reset slot counter
