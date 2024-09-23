@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +34,8 @@ public class ConnectActivity extends AppCompatActivity {
     private TextView resultTextView;
     private ImageView firstPlate, secondPlate, thirdPlate, forthPlate;
     private ImageView heart;
-    private int currentRound = 1; // Track current round
-    private final int totalRounds = 5; // Number of rounds to play
+    private int currentRound = 1; // current round
+    private final int totalRounds = 5; // number of rounds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,12 @@ public class ConnectActivity extends AppCompatActivity {
         targetImage = findViewById(R.id.targetImage);
         heart = findViewById(R.id.moving_heart);
         //resultTextView = findViewById(R.id.resultTextView);
+        ImageButton backButton = findViewById(R.id.back_button);
+
+        buttonTouchListener(backButton, () -> {
+            Intent intent = new Intent(this, ChildActivity.class);
+            startActivity(intent);
+        });
 
         firstPlate = findViewById(R.id.firstPlate);
         secondPlate = findViewById(R.id.secondPlate);
@@ -64,6 +71,32 @@ public class ConnectActivity extends AppCompatActivity {
         targetImage.setOnDragListener(new TargetDragListener());
 
         startNewRound(); // first round
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectActivity.this, R.raw.instructions);
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
+
+        button.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // transparent when pressed
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // back to normal released or canceled
+                    v.setAlpha(1.0f);
+                    break;
+            }
+            return false;
+        });
     }
 
     private void animateFruits() {
@@ -93,7 +126,6 @@ public class ConnectActivity extends AppCompatActivity {
     }
 
     private void animateHeart(ImageView heart) {
-        // Load the heart floating animation
         Animation floatAwayAnimation = AnimationUtils.loadAnimation(this, R.anim.float_away);
         floatAwayAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -124,10 +156,8 @@ public class ConnectActivity extends AppCompatActivity {
                 findViewById(R.id.star6)
         };
 
+        int delay = 500; // delay for each star
 
-        int delay = 500; // for each star
-
-        // Loop through each star to animate
         for (int i = 0; i < stars.length; i++) {
             ImageView star = stars[i];
 
@@ -141,17 +171,17 @@ public class ConnectActivity extends AppCompatActivity {
                 fallingStarsAnimation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-                        star.setVisibility(View.VISIBLE); // Make sure the star is visible
+                        star.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        star.setVisibility(View.INVISIBLE); // Hide the star after it falls
-                        // Check if it's the last star and navigate to the main menu
-                        if (finalI == stars.length - 1) {
+                        star.setVisibility(View.INVISIBLE); // hide
+
+                        if (finalI == stars.length - 1) { // on the last star go back to menu
                             Intent intent = new Intent(ConnectActivity.this, ChildActivity.class);
                             startActivity(intent);
-                            finish(); // Close the current activity
+                            finish();
                         }
                     }
 
@@ -160,25 +190,17 @@ public class ConnectActivity extends AppCompatActivity {
                     }
                 });
 
-                // Start the animation
-                star.startAnimation(fallingStarsAnimation);
+                star.startAnimation(fallingStarsAnimation); // start animation
 
             }, delay * i); // increase delay for each star
         }
-
-        // Transition back to the main menu after all animations
-//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//            Intent intent = new Intent(ConnectActivity.this, ChildActivity.class);
-//            startActivity(intent);
-//            finish(); // Close the current activity
-//        }, delay * stars.length + 500); // Extra delay before transitioning
     }
 
 
     private void startNewRound() {
-        Collections.shuffle(dishImages, new Random());  // Shuffle the images
+        Collections.shuffle(dishImages, new Random());  // shuffle
 
-        // Set images to plates
+        // set images to plates
         firstPlate.setImageResource(dishImages.get(0));
         secondPlate.setImageResource(dishImages.get(1));
         thirdPlate.setImageResource(dishImages.get(2));
@@ -186,7 +208,7 @@ public class ConnectActivity extends AppCompatActivity {
 
         animateFruits();
 
-        // Set up a random target image
+        // random target image
         List<Integer> choices = new ArrayList<>();
         choices.add(dishImages.get(0));
         choices.add(dishImages.get(1));
@@ -194,29 +216,26 @@ public class ConnectActivity extends AppCompatActivity {
         choices.add(dishImages.get(3));
 
         Collections.shuffle(choices, new Random());
-        targetImageRes = choices.get(0); // Store the target image resource
+        targetImageRes = choices.get(0); // target image resource
         targetImage.setImageResource(targetImageRes);
 
-        // Re-enable and reset appearance for all plates
         resetPlates();
 
-        // Set touch listeners for drag events
         setPlateDragListener(firstPlate, dishImages.get(0));
         setPlateDragListener(secondPlate, dishImages.get(1));
         setPlateDragListener(thirdPlate, dishImages.get(2));
         setPlateDragListener(forthPlate, dishImages.get(3));
 
-        //resultTextView.setText("");  // Clear result for the new round
+        //resultTextView.setText("");
     }
 
     private void resetPlates() {
-        // Re-enable all plates
+
         firstPlate.setEnabled(true);
         secondPlate.setEnabled(true);
         thirdPlate.setEnabled(true);
         forthPlate.setEnabled(true);
 
-        // Reset the opacity of all plates to fully visible
         firstPlate.setAlpha(1.0f);
         secondPlate.setAlpha(1.0f);
         thirdPlate.setAlpha(1.0f);
@@ -227,7 +246,7 @@ public class ConnectActivity extends AppCompatActivity {
     private void setPlateDragListener(ImageView plate, int imageRes) {
         plate.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN && v.isEnabled()) {
-                // Start the drag event
+
                 ClipData.Item item = new ClipData.Item(String.valueOf(imageRes));
                 ClipData dragData = new ClipData(
                         String.valueOf(imageRes),
@@ -245,14 +264,13 @@ public class ConnectActivity extends AppCompatActivity {
     }
 
     private void playSoundForTarget(int targetImageRes) {
-        String soundName = getResources().getResourceEntryName(targetImageRes); // Get the name of the drawable resource
-        int soundResId = getResources().getIdentifier(soundName, "raw", getPackageName()); // Get the sound resource ID
+        String soundName = getResources().getResourceEntryName(targetImageRes); // name from drawable
+        int soundResId = getResources().getIdentifier(soundName, "raw", getPackageName());
 
-        if (soundResId != 0) { // Check if the sound resource exists
+        if (soundResId != 0) {
             MediaPlayer mediaPlayer = MediaPlayer.create(this, soundResId);
-            // Release resources once the sound has finished playing
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
-            mediaPlayer.start(); // Play the sound
+            mediaPlayer.start(); // play sound
         }
     }
 
@@ -287,12 +305,17 @@ public class ConnectActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        //resultTextView.setText("Incorrect!");
+                        // sound
+                        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectActivity.this, R.raw.try_again);
+                        if (mediaPlayer != null) {
+                            mediaPlayer.start();
+                            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+                        }
 
-                        // Disable the dragged plate (you can find it by the tag)
+                        //resultTextView.setText("Incorrect!");
                         View draggedView = (View) event.getLocalState();
-                        draggedView.setEnabled(false);
-                        draggedView.setAlpha(0.5f); // Visual feedback for disabled plate
+                        draggedView.setEnabled(false); // disable plate
+                        draggedView.setAlpha(0.5f);
                     }
                     return true;
 

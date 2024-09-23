@@ -152,7 +152,8 @@
                         android:layout_gravity="center"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/unknown" />
+                        android:src="@drawable/unknown"
+                        android:contentDescription="TODO" />
 
                 </FrameLayout>
 
@@ -174,7 +175,8 @@
                         android:layout_gravity="center"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/unknown" />
+                        android:src="@drawable/unknown"
+                        android:contentDescription="TODO" />
 
                 </FrameLayout>
 

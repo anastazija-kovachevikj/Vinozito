@@ -22,7 +22,7 @@ public class ColoringActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.coloring_main_menu); // to be updated to coloring_layout
+        setContentView(R.layout.coloring_main_menu);
 
         ImageButton imageButton1 = findViewById(R.id.imageButton_ladybug);
         ImageButton imageButton2 = findViewById(R.id.imageButton_dino);

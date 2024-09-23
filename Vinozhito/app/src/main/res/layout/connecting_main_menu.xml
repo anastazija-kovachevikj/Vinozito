@@ -6,6 +6,28 @@
     android:background="@drawable/picnic2"
     tools:context=".screens.child.ConnectActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:contentDescription="@string/todo_text"
+            android:scaleType="centerInside"
+            android:src="@drawable/back" />
+    </LinearLayout>
+
+
 
     <ImageView
         android:id="@+id/moving_heart"

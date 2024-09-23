@@ -1,6 +1,7 @@
 package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -79,7 +80,30 @@ public class ColoringScreenActivity extends AppCompatActivity {
         setupColorButtons();
         setupResetButton();
         //coloringImageView.setOnTouchListener(this::onTouch);
-        backButton.setOnClickListener(v -> finish());
+        buttonTouchListener(backButton, () -> {
+            Intent intent = new Intent(this, ChildActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void buttonTouchListener(ImageButton button, Runnable onClickAction) {
+        button.setOnClickListener(v -> onClickAction.run());
+
+        button.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // transparent when pressed
+                    v.setAlpha(0.5f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // back to normal released or canceled
+                    v.setAlpha(1.0f);
+                    break;
+            }
+            return false;
+        });
     }
 
     private void setupColorButtons() {
