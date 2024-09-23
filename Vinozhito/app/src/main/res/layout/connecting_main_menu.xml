@@ -6,6 +6,17 @@
     android:background="@drawable/picnic2"
     tools:context=".screens.child.ConnectActivity">
 
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/carsav"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,8 +27,8 @@
 
         <ImageButton
             android:id="@+id/back_button"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="5dp"
