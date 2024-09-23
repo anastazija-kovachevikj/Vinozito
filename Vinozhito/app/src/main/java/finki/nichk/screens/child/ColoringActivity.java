@@ -8,14 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
-import com.caverock.androidsvg.SVG;
-import com.caverock.androidsvg.SVGParseException;
+
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import finki.nichk.R;
 
 public class ColoringActivity extends AppCompatActivity {
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coloring_main_menu); // to be updated to coloring_layout

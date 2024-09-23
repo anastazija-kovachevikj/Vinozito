@@ -8,7 +8,7 @@
     tools:context=".widgets.SplashActivity">
 
 
-    <pl.droidsonroids.gif.GifTextView
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_centerInParent="true"

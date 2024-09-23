@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.ColorUtils;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
@@ -32,10 +33,6 @@ import java.util.Vector;
 
 import pl.droidsonroids.gif.GifTextView;
 import finki.nichk.R;
-
-import com.caverock.androidsvg.SVG;
-import com.caverock.androidsvg.SVGImageView;
-import com.caverock.androidsvg.SVGParseException;
 
 public class ColoringScreenActivity extends AppCompatActivity {
 
@@ -54,7 +51,6 @@ public class ColoringScreenActivity extends AppCompatActivity {
         coloringImageView = findViewById(R.id.coloring_image);
         ImageButton backButton = findViewById(R.id.back_button);
         int drawableId = getIntent().getIntExtra("image_resource", -1);
-        String pathColor = getIntent().getStringExtra("path_color");
 
         //int drawableId = getIntent().getIntExtra("image_resource", -1);
         if (drawableId != -1) {
@@ -62,10 +58,14 @@ public class ColoringScreenActivity extends AppCompatActivity {
             Log.e("AAAA", String.valueOf(drawableId));
 
             try {
+                VectorDrawableCompat vectorDrawableCompat = VectorDrawableCompat.create(getResources(), drawableId, getTheme());
+                //Drawable vectorDrawable = vectorDrawableCompat.getCurrent();
+                Drawable vectorDrawable = AppCompatResources.getDrawable(getApplicationContext(), drawableId);
                 //coloringImageView.setImageResource(drawableId);
                 //String resourceName = getResources().getResourceEntryName(drawableId);
                 //Log.e("Vector Name", "Loaded image: " + resourceName);
-                Drawable vectorDrawable = VectorDrawableCompat.create(getResources(), drawableId, null);
+                //Drawable vectorDrawable = VectorDrawableCompat.create(getResources(), drawableId, null);
+
                 coloringImageView.setImageDrawable(vectorDrawable);
 //                changePathColor(vectorDrawable, R.id.path2, getResources().getColor(R.color.babyblue));
 
@@ -100,6 +100,7 @@ public class ColoringScreenActivity extends AppCompatActivity {
 //            coloringImageView.setImageBitmap(coloredBitmap);
 //        }
 //    }
+
 
     private void resetImage() {
         int drawableId = getIntent().getIntExtra("image_resource", -1);

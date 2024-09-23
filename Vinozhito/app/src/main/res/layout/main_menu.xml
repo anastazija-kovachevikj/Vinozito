@@ -19,7 +19,7 @@
         android:gravity="bottom|center_horizontal"
         android:text="@string/main_manu_title"
         android:textColor="@color/darkgrey2"
-        android:textSize="35sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.25"
