@@ -39,7 +39,7 @@ public class CommunicationActivity extends AppCompatActivity {
     private static final int SLOT_COUNT = 4;
     private CardService cardService;
 
-//    private ExecutorService executorService;
+    //    private ExecutorService executorService;
 //    private static final int TAG_IMAGE_URL = 0x1;
 //    private static final int TAG_AUDIO_VOICE = 0x2;
     private static final int SOUND_DELAY_MILLIS = 1500;
@@ -49,14 +49,17 @@ public class CommunicationActivity extends AppCompatActivity {
     private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
     private MediaPlayer mediaPlayer;
-    private SoundPool soundPool;
-    private Map<String, MediaPlayer> audioCache = new HashMap<>();
+    //private SoundPool soundPool;
+    //private Map<String, MediaPlayer> audioCache = new HashMap<>();
+    private ImageButton previouslySelectedTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communication_cat);
         cardService = new CardService();
+
+        previouslySelectedTab = null;
 
 //        int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
 //        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
@@ -68,7 +71,41 @@ public class CommunicationActivity extends AppCompatActivity {
 
         initializeViews();
         initializeListeners();
+
+        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+        ImageButton fruitsTab = findViewById(R.id.fruit_tab);
+        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
+        ImageButton colorsTab = findViewById(R.id.colors_tab);
+        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
+        ImageButton peopleTab = findViewById(R.id.people_tab);
+        ImageButton drinksTab = findViewById(R.id.drinks_tab);
+        ImageButton foodTab = findViewById(R.id.food_tab);
+        ImageButton activitiesTab = findViewById(R.id.activities_tab);
+        ImageButton animalsTab = findViewById(R.id.animals_tab);
+        ImageButton clothesTab = findViewById(R.id.clothes_tab);
+
+
+        conversationTab.setOnClickListener(v -> selectTab(conversationTab));
+        fruitsTab.setOnClickListener(v -> selectTab(fruitsTab));
+        vegetablesTab.setOnClickListener(v -> selectTab(vegetablesTab));
+        colorsTab.setOnClickListener(v -> selectTab(colorsTab));
+        feelingsTab.setOnClickListener(v -> selectTab(feelingsTab));
+        peopleTab.setOnClickListener(v -> selectTab(peopleTab));
+        drinksTab.setOnClickListener(v -> selectTab(drinksTab));
+        foodTab.setOnClickListener(v -> selectTab(foodTab));
+        activitiesTab.setOnClickListener(v -> selectTab(activitiesTab));
+        animalsTab.setOnClickListener(v -> selectTab(animalsTab));
+        clothesTab.setOnClickListener(v -> selectTab(clothesTab));
     }
+
+    void selectTab(ImageButton newTab) {
+        if (previouslySelectedTab != null) {
+            previouslySelectedTab.setBackgroundResource(R.drawable.icon_circle); // default
+        }
+        newTab.setBackgroundResource(R.drawable.icon_selected_circle); // selected
+        previouslySelectedTab = newTab;
+    }
+
 
     private void initializeViews() {
         // Initialize slot buttons
@@ -87,12 +124,11 @@ public class CommunicationActivity extends AppCompatActivity {
 
         int[] tabIds = {R.id.conversation_tab, R.id.feelings_tab, R.id.people_tab,
                 R.id.drinks_tab, R.id.food_tab, R.id.vegetables_tab,
-                R.id.fruit_tab, R.id.cutlery_tab, R.id.toys_tab,
-                R.id.activities_tab, R.id.animals_tab,
+                R.id.fruit_tab, R.id.activities_tab, R.id.animals_tab,
                 R.id.clothes_tab, R.id.colors_tab};
 
         String[] categories = {"Conversation", "Feelings", "People", "Drinks", "Food",
-                "Vegetable", "Fruit", "Cutlery", "Toys", "Activities",
+                "Vegetable", "Fruit", "Activities",
                 "Animals", "Clothes", "Colors"};
 
         for (int i = 0; i < tabIds.length; i++) {
@@ -133,9 +169,8 @@ public class CommunicationActivity extends AppCompatActivity {
                         String imageLink = card.getImage();
 
 
-
-                     //  String fileId = extractFileIdFromDriveLink(imageLink);
-                       // String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
+                        //  String fileId = extractFileIdFromDriveLink(imageLink);
+                        // String directImageLink = "https://drive.google.com/uc?export=download&id=" + fileId;
 
 
                         View cardView = LayoutInflater.from(CommunicationActivity.this)
@@ -176,11 +211,11 @@ public class CommunicationActivity extends AppCompatActivity {
                 });
             }
 
-            private String extractFileIdFromDriveLink(String driveLink) {
-                // Match the file ID using regex or string manipulation
-                String[] parts = driveLink.split("/");
-                return parts[5]; // The file ID is the 5th part in the URL structure
-            }
+//            private String extractFileIdFromDriveLink(String driveLink) {
+//                // Match the file ID using regex or string manipulation
+//                String[] parts = driveLink.split("/");
+//                return parts[5]; // The file ID is the 5th part in the URL structure
+//            }
 
             @Override
             public void onError(Exception e) {
