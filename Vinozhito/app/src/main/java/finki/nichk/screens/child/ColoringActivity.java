@@ -2,9 +2,14 @@ package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,22 +32,24 @@ public class ColoringActivity extends AppCompatActivity {
         ImageButton imageButton10 = findViewById(R.id.imageButton_horse);
         ImageButton backButton = findViewById(R.id.back_button);
 
-        imageButton1.setOnClickListener(v -> openColoringScreen(R.drawable.ladybug));
-        imageButton2.setOnClickListener(v -> openColoringScreen(R.drawable.dino));
-        imageButton3.setOnClickListener(v -> openColoringScreen(R.drawable.cake));
-        imageButton4.setOnClickListener(v -> openColoringScreen(R.drawable.butterfly));
-        imageButton5.setOnClickListener(v -> openColoringScreen(R.drawable.rainbow));
-        imageButton6.setOnClickListener(v -> openColoringScreen(R.drawable.cow));
-        imageButton7.setOnClickListener(v -> openColoringScreen(R.drawable.cactus));
-        imageButton8.setOnClickListener(v -> openColoringScreen(R.drawable.cp));
-        imageButton9.setOnClickListener(v -> openColoringScreen(R.drawable.ufo));
-        imageButton10.setOnClickListener(v -> openColoringScreen(R.drawable.horse));
+        imageButton1.setOnClickListener(v -> openColoringScreen(R.drawable.bug_vector));
+        imageButton2.setOnClickListener(v -> openColoringScreen(R.drawable.dino_vector));
+        imageButton3.setOnClickListener(v -> openColoringScreen(R.drawable.cake_vector));
+        imageButton4.setOnClickListener(v -> openColoringScreen(R.drawable.butterfly_vector));
+        imageButton5.setOnClickListener(v -> openColoringScreen(R.drawable.rainbow_vector));
+        imageButton6.setOnClickListener(v -> openColoringScreen(R.drawable.cow_vector));
+        imageButton7.setOnClickListener(v -> openColoringScreen(R.drawable.cactus));  // TREBA DA SE SMENI
+        imageButton8.setOnClickListener(v -> openColoringScreen(R.drawable.cp_vector));
+        imageButton9.setOnClickListener(v -> openColoringScreen(R.drawable.ufo_vector));
+        imageButton10.setOnClickListener(v -> openColoringScreen(R.drawable.horse_vector));
+
 
         buttonTouchListener(backButton, () -> {
             Intent intent = new Intent(ColoringActivity.this, ChildActivity.class);
             startActivity(intent);
         });
     }
+
 
     private void openColoringScreen(int drawableId) {
         Intent intent = new Intent(ColoringActivity.this, ColoringScreenActivity.class);

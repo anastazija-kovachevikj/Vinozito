@@ -1,12 +1,20 @@
 package finki.nichk.screens.child;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,12 +23,19 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.ColorUtils;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Vector;
 
 import pl.droidsonroids.gif.GifTextView;
 import finki.nichk.R;
+
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGImageView;
+import com.caverock.androidsvg.SVGParseException;
 
 public class ColoringScreenActivity extends AppCompatActivity {
 
@@ -38,38 +53,32 @@ public class ColoringScreenActivity extends AppCompatActivity {
 
         coloringImageView = findViewById(R.id.coloring_image);
         ImageButton backButton = findViewById(R.id.back_button);
-        loadingFlower = findViewById(R.id.loading_flower);
-
-        // Initially show the rotating flower GIF
-        loadingFlower.setVisibility(View.VISIBLE);
-
         int drawableId = getIntent().getIntExtra("image_resource", -1);
+        String pathColor = getIntent().getStringExtra("path_color");
 
+        //int drawableId = getIntent().getIntExtra("image_resource", -1);
         if (drawableId != -1) {
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inMutable = true;
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableId, options);
 
-            // Process image on a background thread
-            new Thread(() -> {
-                preprocessedBitmap = preprocessImage(bitmap);
-                runOnUiThread(() -> {
-                    coloredBitmap = Bitmap.createBitmap(preprocessedBitmap.getWidth(), preprocessedBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-                    Canvas canvas = new Canvas(coloredBitmap);
-                    canvas.drawBitmap(preprocessedBitmap, 0, 0, null);
-                    coloringImageView.setImageBitmap(coloredBitmap);
-                    loadingFlower.setVisibility(View.GONE);
-                });
-            }).start();
+            Log.e("AAAA", String.valueOf(drawableId));
 
-            coloringImageView.setOnTouchListener(this::onTouch);
-            setupColorButtons();
-            setupResetButton();
+            try {
+                //coloringImageView.setImageResource(drawableId);
+                //String resourceName = getResources().getResourceEntryName(drawableId);
+                //Log.e("Vector Name", "Loaded image: " + resourceName);
+                Drawable vectorDrawable = VectorDrawableCompat.create(getResources(), drawableId, null);
+                coloringImageView.setImageDrawable(vectorDrawable);
+//                changePathColor(vectorDrawable, R.id.path2, getResources().getColor(R.color.babyblue));
 
+            } catch (Resources.NotFoundException e) {
+                Log.e("Vector", "Vector file not found: " + e.getMessage());
+            }
         } else {
-            coloringImageView.setImageResource(R.drawable.unknown);
+            Log.e("Vector", "Invalid resource ID passed");
         }
 
+        setupColorButtons();
+        setupResetButton();
+        //coloringImageView.setOnTouchListener(this::onTouch);
         backButton.setOnClickListener(v -> finish());
     }
 
@@ -83,12 +92,20 @@ public class ColoringScreenActivity extends AppCompatActivity {
         blueButton.setOnClickListener(v -> currentColor = ColorUtils.blendARGB(Color.BLUE, Color.WHITE, 0.5f));
     }
 
+//    private void resetImage() {
+//        if (preprocessedBitmap != null) {
+//            coloredBitmap = Bitmap.createBitmap(preprocessedBitmap.getWidth(), preprocessedBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+//            Canvas canvas = new Canvas(coloredBitmap);
+//            canvas.drawBitmap(preprocessedBitmap, 0, 0, null);
+//            coloringImageView.setImageBitmap(coloredBitmap);
+//        }
+//    }
+
     private void resetImage() {
-        if (preprocessedBitmap != null) {
-            coloredBitmap = Bitmap.createBitmap(preprocessedBitmap.getWidth(), preprocessedBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(coloredBitmap);
-            canvas.drawBitmap(preprocessedBitmap, 0, 0, null);
-            coloringImageView.setImageBitmap(coloredBitmap);
+        int drawableId = getIntent().getIntExtra("image_resource", -1);
+        if (drawableId != -1) {
+            VectorDrawableCompat vectorDrawable = VectorDrawableCompat.create(getResources(), drawableId, null);
+            coloringImageView.setImageDrawable(vectorDrawable);
         }
     }
 
@@ -97,94 +114,27 @@ public class ColoringScreenActivity extends AppCompatActivity {
         resetButton.setOnClickListener(v -> resetImage());
     }
 
-    private boolean onTouch(View view, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            float touchX = event.getX();
-            float touchY = event.getY();
+//    @SuppressLint("ClickableViewAccessibility")
+//    private boolean onTouch(View view, MotionEvent event) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            // Check if drawable is a VectorDrawable and handle the click event
+//            if (vectorDrawable instanceof VectorDrawableCompat) {
+//                // changes the color of the entire drawable
+//                applyColorFilterToVectorDrawable((VectorDrawableCompat) vectorDrawable);
+//            }
+//        }
+//        return true;
+//    }
 
-            float[] values = new float[9];
-            coloringImageView.getImageMatrix().getValues(values);
-            float scaleX = values[Matrix.MSCALE_X];
-            float scaleY = values[Matrix.MSCALE_Y];
 
-            int drawableWidth = coloringImageView.getDrawable().getIntrinsicWidth();
-            int drawableHeight = coloringImageView.getDrawable().getIntrinsicHeight();
-
-            int actualX = (int) ((touchX - values[Matrix.MTRANS_X]) / scaleX);
-            int actualY = (int) ((touchY - values[Matrix.MTRANS_Y]) / scaleY);
-
-            if (actualX >= 0 && actualX < drawableWidth && actualY >= 0 && actualY < drawableHeight) {
-                handleTouch(actualX, actualY);
-            }
-        }
-        return true;
-    }
-
-    private void handleTouch(int x, int y) {
-        if (coloredBitmap != null) {
-            new Thread(() -> {
-                floodFill(coloredBitmap, x, y, currentColor);
-                runOnUiThread(() -> coloringImageView.invalidate());
-            }).start();
-        }
-    }
-
-    private void floodFill(Bitmap bitmap, int x, int y, int newColor) {
-        int targetColor = bitmap.getPixel(x, y);
-        if (targetColor == newColor || targetColor == Color.BLACK) return;
-
-        Queue<Point> queue = new LinkedList<>();
-        queue.add(new Point(x, y));
-
-        while (!queue.isEmpty()) {
-            Point point = queue.poll();
-            int px = point.x;
-            int py = point.y;
-
-            if (px < 0 || py < 0 || px >= bitmap.getWidth() || py >= bitmap.getHeight()) continue;
-
-            int currentColor = bitmap.getPixel(px, py);
-
-            if (currentColor == targetColor) {
-                bitmap.setPixel(px, py, newColor);
-
-                queue.add(new Point(px + 1, py));
-                queue.add(new Point(px - 1, py));
-                queue.add(new Point(px, py + 1));
-                queue.add(new Point(px, py - 1));
-            }
-        }
-    }
-
-    private Bitmap preprocessImage(Bitmap bitmap) {
-        Bitmap processedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(processedBitmap);
-        int threshold = 50;
-
-        for (int x = 0; x < bitmap.getWidth(); x++) {
-            for (int y = 0; y < bitmap.getHeight(); y++) {
-                int pixel = bitmap.getPixel(x, y);
-                int red = Color.red(pixel);
-                int green = Color.green(pixel);
-                int blue = Color.blue(pixel);
-
-                if (red < threshold && green < threshold && blue < threshold) {
-                    processedBitmap.setPixel(x, y, Color.BLACK);
-                } else {
-                    processedBitmap.setPixel(x, y, Color.WHITE);
-                }
-            }
-        }
-        return processedBitmap;
-    }
-
-    private static class Point {
-        int x, y;
-
-        Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
+//    private void applyColorFilterToVectorDrawable(VectorDrawableCompat vectorDrawable) {
+//        // Create a PorterDuffColorFilter with the current selected color
+//        PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(currentColor, PorterDuff.Mode.SRC_IN);
+//
+//        // Apply the color filter to the vector drawable
+//        vectorDrawable.setColorFilter(colorFilter);
+//
+//        // Redraw the vector on the ImageView
+//        coloringImageView.invalidate();
+//    }
 }
