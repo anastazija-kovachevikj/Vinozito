@@ -72,30 +72,30 @@ public class CommunicationActivity extends AppCompatActivity {
         initializeViews();
         initializeListeners();
 
-        ImageButton conversationTab = findViewById(R.id.conversation_tab);
-        ImageButton fruitsTab = findViewById(R.id.fruit_tab);
-        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
-        ImageButton colorsTab = findViewById(R.id.colors_tab);
-        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
-        ImageButton peopleTab = findViewById(R.id.people_tab);
-        ImageButton drinksTab = findViewById(R.id.drinks_tab);
-        ImageButton foodTab = findViewById(R.id.food_tab);
-        ImageButton activitiesTab = findViewById(R.id.activities_tab);
-        ImageButton animalsTab = findViewById(R.id.animals_tab);
-        ImageButton clothesTab = findViewById(R.id.clothes_tab);
-
-
-        conversationTab.setOnClickListener(v -> selectTab(conversationTab));
-        fruitsTab.setOnClickListener(v -> selectTab(fruitsTab));
-        vegetablesTab.setOnClickListener(v -> selectTab(vegetablesTab));
-        colorsTab.setOnClickListener(v -> selectTab(colorsTab));
-        feelingsTab.setOnClickListener(v -> selectTab(feelingsTab));
-        peopleTab.setOnClickListener(v -> selectTab(peopleTab));
-        drinksTab.setOnClickListener(v -> selectTab(drinksTab));
-        foodTab.setOnClickListener(v -> selectTab(foodTab));
-        activitiesTab.setOnClickListener(v -> selectTab(activitiesTab));
-        animalsTab.setOnClickListener(v -> selectTab(animalsTab));
-        clothesTab.setOnClickListener(v -> selectTab(clothesTab));
+//        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+//        ImageButton fruitsTab = findViewById(R.id.fruit_tab);
+//        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
+//        ImageButton colorsTab = findViewById(R.id.colors_tab);
+//        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
+//        ImageButton peopleTab = findViewById(R.id.people_tab);
+//        ImageButton drinksTab = findViewById(R.id.drinks_tab);
+//        ImageButton foodTab = findViewById(R.id.food_tab);
+//        ImageButton activitiesTab = findViewById(R.id.activities_tab);
+//        ImageButton animalsTab = findViewById(R.id.animals_tab);
+//        ImageButton clothesTab = findViewById(R.id.clothes_tab);
+//
+//
+//        conversationTab.setOnClickListener(v -> selectTab(conversationTab));
+//        fruitsTab.setOnClickListener(v -> selectTab(fruitsTab));
+//        vegetablesTab.setOnClickListener(v -> selectTab(vegetablesTab));
+//        colorsTab.setOnClickListener(v -> selectTab(colorsTab));
+//        feelingsTab.setOnClickListener(v -> selectTab(feelingsTab));
+//        peopleTab.setOnClickListener(v -> selectTab(peopleTab));
+//        drinksTab.setOnClickListener(v -> selectTab(drinksTab));
+//        foodTab.setOnClickListener(v -> selectTab(foodTab));
+//        activitiesTab.setOnClickListener(v -> selectTab(activitiesTab));
+//        animalsTab.setOnClickListener(v -> selectTab(animalsTab));
+//        clothesTab.setOnClickListener(v -> selectTab(clothesTab));
     }
 
     void selectTab(ImageButton newTab) {
@@ -134,7 +134,8 @@ public class CommunicationActivity extends AppCompatActivity {
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
             String category = categories[i];
-            tabButton.setOnClickListener(view -> updateCardLayoutByCategory(category));
+            tabButton.setOnClickListener(view -> updateCardLayoutByCategory(category,tabButton));
+
         }
         // Initialize buttons
         ImageButton backButton = findViewById(R.id.back_button);
@@ -148,7 +149,8 @@ public class CommunicationActivity extends AppCompatActivity {
 
     }
 
-    private void updateCardLayoutByCategory(String category) {
+    private void updateCardLayoutByCategory(String category,ImageButton btn) {
+
         cardService.fetchCardDataByUserIdAndCategory("68daa6ff-5048-4ea5-877a-ed5a91a9d11e", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
@@ -223,6 +225,7 @@ public class CommunicationActivity extends AppCompatActivity {
                 Log.e("CardService", "Error fetching cards", e);
             }
         });
+        selectTab(btn);
 
     }
 
