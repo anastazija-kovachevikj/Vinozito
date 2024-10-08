@@ -1,4 +1,4 @@
-package finki.nichk.widgets;
+package finki.nichk.tablet.widgets;
 
 import android.widget.ImageButton;
 

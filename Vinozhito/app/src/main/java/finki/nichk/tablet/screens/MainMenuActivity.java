@@ -1,4 +1,4 @@
-package finki.nichk.screens;
+package finki.nichk.tablet.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.R;
-import finki.nichk.screens.child.ChildActivity;
-import finki.nichk.screens.parent.ParentActivity;
+import finki.nichk.tablet.screens.child.ChildActivity;
+import finki.nichk.tablet.screens.parent.ParentActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_menu);
+        setContentView(R.layout.tablet_main_menu);
 
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);

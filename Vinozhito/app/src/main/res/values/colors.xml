@@ -18,7 +18,9 @@
     <color name="login_blue">#dbe2f2</color>
     <color name="login_blue2">#708ec6</color>
     <color name="ashy_white">#F3F3F3</color>
-
-
+    <color name="yellow_circle">#FDCF72</color>
+    <color name="cyan_circle">#7CCDD2</color>
+    <color name="pastel_yellow">#EDD197</color>
+    <color name="text_color">#575757</color>
 
 </resources>

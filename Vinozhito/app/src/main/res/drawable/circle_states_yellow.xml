@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- default -->
+    <item android:drawable="@drawable/circle_shape" android:state_pressed="false"/>
+    <!-- pressed -->
+    <item android:drawable="@drawable/circle_curves" android:state_pressed="true"/>
+</selector>

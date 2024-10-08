@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-import finki.nichk.models.Card;
-import finki.nichk.screens.MainMenuActivity;
+import finki.nichk.tablet.screens.MainMenuActivity;
 import finki.nichk.services.CardService;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.mobile_main_menu);
         cardService = new CardService();
 
         // Get the ExecutorService from the application
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Call the async method to fetch data
         fetchCardDataAsync();
 
-        ImageButton startButton = findViewById(R.id.start_btn);
+        ImageButton startButton = findViewById(R.id.child_btn);
         startButton.setOnClickListener(view -> {
             // Play the sound
             playSound();

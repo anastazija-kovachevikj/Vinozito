@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/picnic2"
-    tools:context=".screens.child.ConnectActivity">
+    tools:context=".tablet.screens.child.ConnectActivity">
 
     <finki.nichk.BackgroundView
         android:id="@+id/background_view"

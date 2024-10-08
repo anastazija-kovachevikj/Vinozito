@@ -1,4 +1,4 @@
-package finki.nichk.widgets;
+package finki.nichk.tablet.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
+        setContentView(R.layout.mobile_load);
 
         new Handler().postDelayed((Runnable) () -> {
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);

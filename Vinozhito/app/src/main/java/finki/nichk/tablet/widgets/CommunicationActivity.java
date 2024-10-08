@@ -1,8 +1,7 @@
-package finki.nichk.widgets;
+package finki.nichk.tablet.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,14 +12,10 @@ import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +26,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import finki.nichk.R;
 import finki.nichk.models.Card;
-import finki.nichk.screens.child.ChildActivity;
+import finki.nichk.tablet.screens.child.ChildActivity;
 import finki.nichk.services.CardService;
 
 public class CommunicationActivity extends AppCompatActivity {
@@ -56,7 +51,7 @@ public class CommunicationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.communication_cat);
+        setContentView(R.layout.tablet_communication_cat);
         cardService = new CardService();
 
         previouslySelectedTab = null;
@@ -176,7 +171,7 @@ public class CommunicationActivity extends AppCompatActivity {
 
 
                         View cardView = LayoutInflater.from(CommunicationActivity.this)
-                                .inflate(R.layout.card_layout, cardLayout, false);
+                                .inflate(R.layout.tablet_card_layout, cardLayout, false);
 
                         // Find the ImageButton and TextView in the card layout
                         ImageButton imageButton = cardView.findViewById(R.id.card_image);

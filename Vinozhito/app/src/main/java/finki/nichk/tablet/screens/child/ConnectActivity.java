@@ -1,4 +1,4 @@
-package finki.nichk.screens.child;
+package finki.nichk.tablet.screens.child;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
@@ -40,7 +40,7 @@ public class ConnectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.connecting_main_menu);
+        setContentView(R.layout.tablet_connecting_main_menu);
 
         targetImage = findViewById(R.id.targetImage);
         beeReaction = findViewById(R.id.bee_reaction);

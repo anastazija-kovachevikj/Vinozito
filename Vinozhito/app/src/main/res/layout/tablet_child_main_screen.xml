@@ -37,7 +37,7 @@
         app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".screens.child.ChildActivity">
+        tools:context=".tablet.screens.child.ChildActivity">
 
         <LinearLayout
             android:id="@+id/infiniteView"
