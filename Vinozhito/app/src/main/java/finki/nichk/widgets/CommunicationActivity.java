@@ -72,30 +72,30 @@ public class CommunicationActivity extends AppCompatActivity {
         initializeViews();
         initializeListeners();
 
-        ImageButton conversationTab = findViewById(R.id.conversation_tab);
-        ImageButton fruitsTab = findViewById(R.id.fruit_tab);
-        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
-        ImageButton colorsTab = findViewById(R.id.colors_tab);
-        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
-        ImageButton peopleTab = findViewById(R.id.people_tab);
-        ImageButton drinksTab = findViewById(R.id.drinks_tab);
-        ImageButton foodTab = findViewById(R.id.food_tab);
-        ImageButton activitiesTab = findViewById(R.id.activities_tab);
-        ImageButton animalsTab = findViewById(R.id.animals_tab);
-        ImageButton clothesTab = findViewById(R.id.clothes_tab);
-
-
-        conversationTab.setOnClickListener(v -> selectTab(conversationTab));
-        fruitsTab.setOnClickListener(v -> selectTab(fruitsTab));
-        vegetablesTab.setOnClickListener(v -> selectTab(vegetablesTab));
-        colorsTab.setOnClickListener(v -> selectTab(colorsTab));
-        feelingsTab.setOnClickListener(v -> selectTab(feelingsTab));
-        peopleTab.setOnClickListener(v -> selectTab(peopleTab));
-        drinksTab.setOnClickListener(v -> selectTab(drinksTab));
-        foodTab.setOnClickListener(v -> selectTab(foodTab));
-        activitiesTab.setOnClickListener(v -> selectTab(activitiesTab));
-        animalsTab.setOnClickListener(v -> selectTab(animalsTab));
-        clothesTab.setOnClickListener(v -> selectTab(clothesTab));
+//        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+//        ImageButton fruitsTab = findViewById(R.id.fruit_tab);
+//        ImageButton vegetablesTab = findViewById(R.id.vegetables_tab);
+//        ImageButton colorsTab = findViewById(R.id.colors_tab);
+//        ImageButton feelingsTab = findViewById(R.id.feelings_tab);
+//        ImageButton peopleTab = findViewById(R.id.people_tab);
+//        ImageButton drinksTab = findViewById(R.id.drinks_tab);
+//        ImageButton foodTab = findViewById(R.id.food_tab);
+//        ImageButton activitiesTab = findViewById(R.id.activities_tab);
+//        ImageButton animalsTab = findViewById(R.id.animals_tab);
+//        ImageButton clothesTab = findViewById(R.id.clothes_tab);
+//
+//
+//        conversationTab.setOnClickListener(v -> selectTab(conversationTab));
+//        fruitsTab.setOnClickListener(v -> selectTab(fruitsTab));
+//        vegetablesTab.setOnClickListener(v -> selectTab(vegetablesTab));
+//        colorsTab.setOnClickListener(v -> selectTab(colorsTab));
+//        feelingsTab.setOnClickListener(v -> selectTab(feelingsTab));
+//        peopleTab.setOnClickListener(v -> selectTab(peopleTab));
+//        drinksTab.setOnClickListener(v -> selectTab(drinksTab));
+//        foodTab.setOnClickListener(v -> selectTab(foodTab));
+//        activitiesTab.setOnClickListener(v -> selectTab(activitiesTab));
+//        animalsTab.setOnClickListener(v -> selectTab(animalsTab));
+//        clothesTab.setOnClickListener(v -> selectTab(clothesTab));
     }
 
     void selectTab(ImageButton newTab) {
