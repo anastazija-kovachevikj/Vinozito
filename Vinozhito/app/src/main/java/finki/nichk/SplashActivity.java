@@ -1,4 +1,4 @@
-package finki.nichk.tablet.widgets;
+package finki.nichk;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,8 +7,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import finki.nichk.MainActivity;
-import finki.nichk.R;
+import finki.nichk.mobile.activities.MobileMainMenuActivity;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.mobile_load);
 
         new Handler().postDelayed((Runnable) () -> {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MobileMainMenuActivity.class);
             startActivity(intent);
             finish();
         }, SPLASH_DELAY);
