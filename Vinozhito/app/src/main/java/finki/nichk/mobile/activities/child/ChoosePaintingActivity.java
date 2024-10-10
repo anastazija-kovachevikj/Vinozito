@@ -16,7 +16,7 @@ public class ChoosePaintingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mobile_coloring_menu);
+        setContentView(R.layout.mobile_coloring);
 
 
 

@@ -50,7 +50,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="5dp"
                 android:elevation="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
                 <ImageButton
                     android:id="@+id/imageButton_ladybug"
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_horse"
@@ -96,7 +96,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_cake"
@@ -120,7 +120,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_butterfly"
@@ -145,7 +145,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_rainbow"
@@ -169,7 +169,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_cow"
@@ -193,7 +193,7 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_rainbow2"
@@ -217,7 +217,7 @@
                 android:padding="5dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shadowCard">
+                android:background="@drawable/shadowcard">
 
                 <ImageButton
                     android:id="@+id/imageButton_cow2"
