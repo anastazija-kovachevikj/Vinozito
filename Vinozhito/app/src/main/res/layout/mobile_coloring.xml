@@ -1,0 +1,167 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/child_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky">
+
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:contentDescription="@string/back"
+        android:scaleType="centerInside"
+        android:src="@drawable/back" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadowCard"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <pl.droidsonroids.gif.GifTextView
+                android:id="@+id/loading_flower"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/f"
+                android:elevation="10dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/coloring_image"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/todo_text"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.78"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth="wrap_content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/crayons"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2">
+
+        <ImageButton
+            android:id="@+id/color_red"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_red" />
+
+        <ImageButton
+            android:id="@+id/color_orange"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_orange" />
+
+        <ImageButton
+            android:id="@+id/color_yellow"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Red"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_yellow" />
+
+        <ImageButton
+            android:id="@+id/color_green"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Green"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_green" />
+
+        <ImageButton
+            android:id="@+id/color_lightblue"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_lightblue" />
+
+        <ImageButton
+            android:id="@+id/color_darkblue"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_darkblue" />
+
+        <ImageButton
+            android:id="@+id/color_purple"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_purple" />
+
+        <ImageButton
+            android:id="@+id/color_pink"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Blue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/crayon_pink" />
+    </LinearLayout>
+
+
+</RelativeLayout>
