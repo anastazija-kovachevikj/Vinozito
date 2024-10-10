@@ -1,4 +1,4 @@
-package finki.nichk.screens.parent;
+package finki.nichk.tablet.screens.parent;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -26,7 +26,6 @@ import java.util.Objects;
 
 import finki.nichk.R;
 import finki.nichk.logic.StringValuePair;
-import finki.nichk.screens.parent.ParentActivity;
 
 public class ParentAuthenticationFragment extends DialogFragment {
     int count = 0; // counter -> determines position of input field
@@ -58,7 +57,7 @@ public class ParentAuthenticationFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mainView = inflater.inflate(R.layout.parent_auth, container, false);
+        View mainView = inflater.inflate(R.layout.tablet_parent_auth, container, false);
         Objects.requireNonNull(getDialog()).setCancelable(false);
 
         // THE BUTTONS

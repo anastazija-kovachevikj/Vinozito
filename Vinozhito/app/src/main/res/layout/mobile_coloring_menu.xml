@@ -1,0 +1,240 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/child_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky">
+
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:contentDescription="@string/back"
+        android:scaleType="centerInside"
+        android:src="@drawable/back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:scrollbars="none">
+
+        <GridLayout
+            android:id="@+id/horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="top|center_horizontal"
+            android:columnCount="2"
+            android:rowCount="8">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:padding="5dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="5dp"
+                android:elevation="10dp"
+                android:background="@drawable/shadowCard">
+                <ImageButton
+                    android:id="@+id/imageButton_ladybug"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ladybug" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:padding="5dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_horse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/horse" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:padding="5dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cake"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cake" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:padding="5dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_butterfly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/butterfly" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:padding="5dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_rainbow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rainbow" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:padding="5dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cow" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:padding="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_rainbow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rainbow" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="25dp"
+                android:padding="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shadowCard">
+
+                <ImageButton
+                    android:id="@+id/imageButton_cow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingVertical="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cow" />
+            </FrameLayout>
+
+
+
+
+        </GridLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package finki.nichk.screens.child;
+package finki.nichk.tablet.screens.child;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
@@ -35,7 +35,7 @@ public class ColoringScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.coloring);
+        setContentView(R.layout.tablet_coloring);
 
         coloringImageView = findViewById(R.id.coloring_image);
         ImageButton backButton = findViewById(R.id.back_button);

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/greyblue"
     android:id="@+id/splash"
-    tools:context=".screens.parent.ParentActivity">
+    tools:context=".tablet.screens.parent.ParentActivity">
 
     <TextView
         android:layout_width="match_parent"

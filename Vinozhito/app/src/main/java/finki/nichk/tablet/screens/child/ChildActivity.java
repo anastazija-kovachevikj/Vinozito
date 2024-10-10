@@ -1,4 +1,4 @@
-package finki.nichk.screens.child;
+package finki.nichk.tablet.screens.child;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,10 +8,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import finki.nichk.models.DefaultCard;
-import finki.nichk.services.CardService;
-import finki.nichk.widgets.CommunicationActivity;
-import finki.nichk.screens.MainMenuActivity;
+import finki.nichk.tablet.screens.MainMenuActivity;
+import finki.nichk.tablet.widgets.CommunicationActivity;
 import finki.nichk.R;
 
 public class ChildActivity extends AppCompatActivity {
@@ -21,7 +19,7 @@ public class ChildActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.child_main_screen);
+        setContentView(R.layout.tablet_child_main_screen);
 
         //GridLayout bckg = findViewById(R.id.child_main);
         //Glide.with(this).asGif().load(R.drawable.c).into(bckg);
