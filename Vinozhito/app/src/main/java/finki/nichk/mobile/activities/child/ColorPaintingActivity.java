@@ -1,12 +1,11 @@
-package finki.nichk.tablet.screens.child;
+package finki.nichk.mobile.activities.child;
 
 import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,10 +18,10 @@ import androidx.core.graphics.ColorUtils;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import pl.droidsonroids.gif.GifTextView;
 import finki.nichk.R;
+import pl.droidsonroids.gif.GifTextView;
 
-public class ColoringScreenActivity extends AppCompatActivity {
+public class ColorPaintingActivity extends AppCompatActivity {
 
     private ImageView coloringImageView;
     private Bitmap coloredBitmap;
@@ -31,11 +30,11 @@ public class ColoringScreenActivity extends AppCompatActivity {
     private GifTextView loadingFlower;
     private ImageButton currentOpenCrayon = null;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tablet_coloring);
+        setContentView(R.layout.mobile_coloring);
+
 
         coloringImageView = findViewById(R.id.coloring_image);
         ImageButton backButton = findViewById(R.id.back_button);
@@ -65,7 +64,7 @@ public class ColoringScreenActivity extends AppCompatActivity {
 
             coloringImageView.setOnTouchListener(this::onTouch);
             setupColorButtons();
-            setupResetButton();
+            //setupResetButton();
 
         } else {
             coloringImageView.setImageResource(R.drawable.unknown);
@@ -135,10 +134,10 @@ public class ColoringScreenActivity extends AppCompatActivity {
         }
     }
 
-    private void setupResetButton() {
-        ImageButton resetButton = findViewById(R.id.reset_btn);
-        resetButton.setOnClickListener(v -> resetImage());
-    }
+//    private void setupResetButton() {
+//        ImageButton resetButton = findViewById(R.id.reset_btn);
+//        resetButton.setOnClickListener(v -> resetImage());
+//    }
 
     private boolean onTouch(View view, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -178,11 +177,11 @@ public class ColoringScreenActivity extends AppCompatActivity {
 
         if (targetColor == newColor || targetColor == lightGray) return;
 
-        Queue<Point> queue = new LinkedList<>();
-        queue.add(new Point(x, y));
+        Queue<ColorPaintingActivity.Point> queue = new LinkedList<>();
+        queue.add(new ColorPaintingActivity.Point(x, y));
 
         while (!queue.isEmpty()) {
-            Point point = queue.poll();
+            ColorPaintingActivity.Point point = queue.poll();
             int px = point.x;
             int py = point.y;
 
@@ -194,10 +193,10 @@ public class ColoringScreenActivity extends AppCompatActivity {
             if (currentColor == targetColor && currentColor != Color.BLACK && currentColor != lightGray) {
                 bitmap.setPixel(px, py, newColor);
 
-                queue.add(new Point(px + 1, py));
-                queue.add(new Point(px - 1, py));
-                queue.add(new Point(px, py + 1));
-                queue.add(new Point(px, py - 1));
+                queue.add(new ColorPaintingActivity.Point(px + 1, py));
+                queue.add(new ColorPaintingActivity.Point(px - 1, py));
+                queue.add(new ColorPaintingActivity.Point(px, py + 1));
+                queue.add(new ColorPaintingActivity.Point(px, py - 1));
             }
         }
     }
@@ -243,11 +242,11 @@ public class ColoringScreenActivity extends AppCompatActivity {
         if (x < 0 || x >= bitmap.getWidth() || y < 0 || y >= bitmap.getHeight()) return;
         if (bitmap.getPixel(x, y) != targetColor) return;
 
-        Queue<Point> queue = new LinkedList<>();
-        queue.add(new Point(x, y));
+        Queue<ColorPaintingActivity.Point> queue = new LinkedList<>();
+        queue.add(new ColorPaintingActivity.Point(x, y));
 
         while (!queue.isEmpty()) {
-            Point point = queue.poll();
+            ColorPaintingActivity.Point point = queue.poll();
             int px = point.x;
             int py = point.y;
 
@@ -257,16 +256,16 @@ public class ColoringScreenActivity extends AppCompatActivity {
             if (currentColor == targetColor) {
                 bitmap.setPixel(px, py, replaceColor);
 
-                queue.add(new Point(px + 1, py));
-                queue.add(new Point(px - 1, py));
-                queue.add(new Point(px, py + 1));
-                queue.add(new Point(px, py - 1));
+                queue.add(new ColorPaintingActivity.Point(px + 1, py));
+                queue.add(new ColorPaintingActivity.Point(px - 1, py));
+                queue.add(new ColorPaintingActivity.Point(px, py + 1));
+                queue.add(new ColorPaintingActivity.Point(px, py - 1));
             }
         }
     }
 
 
-    public static class Point {
+    private static class Point {
         int x, y;
 
         Point(int x, int y) {
