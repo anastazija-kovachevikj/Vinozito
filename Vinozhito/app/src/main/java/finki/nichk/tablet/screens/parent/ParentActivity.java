@@ -1,10 +1,9 @@
-package finki.nichk.screens.parent;
+package finki.nichk.tablet.screens.parent;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -23,7 +22,7 @@ public class ParentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_login);
+        setContentView(R.layout.tablet_new_login);
 
         // Ensure the correct IDs are used
         passwordEditText = findViewById(R.id.passField);

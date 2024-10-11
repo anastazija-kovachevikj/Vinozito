@@ -1,4 +1,4 @@
-package finki.nichk.screens;
+package finki.nichk.mobile.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,18 +10,18 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.R;
-import finki.nichk.screens.child.ChildActivity;
-import finki.nichk.screens.parent.ParentActivity;
+import finki.nichk.mobile.activities.child.ChooseChildActivity;
+import finki.nichk.tablet.screens.MainMenuActivity;
+import finki.nichk.tablet.screens.child.ChildMobileActivity;
+import finki.nichk.tablet.screens.parent.ParentActivity;
 
-public class MainMenuActivity extends AppCompatActivity {
-
+public class MobileMainMenuActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_menu);
+        setContentView(R.layout.mobile_main_menu);
 
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);
@@ -33,7 +33,7 @@ public class MainMenuActivity extends AppCompatActivity {
         buttonTouchListener(parentButton, () -> {
             // Play sound
             playSound();
-            Intent intent = new Intent(MainMenuActivity.this, ParentActivity.class);
+            Intent intent = new Intent(MobileMainMenuActivity.this, ParentActivity.class);
             startActivity(intent);
         });
 
@@ -41,7 +41,7 @@ public class MainMenuActivity extends AppCompatActivity {
         buttonTouchListener(childButton, () -> {
             // Play sound
             playSound();
-            Intent intent = new Intent(MainMenuActivity.this, ChildActivity.class);
+            Intent intent = new Intent(MobileMainMenuActivity.this, ChooseChildActivity.class);
             startActivity(intent);
         });
     }
@@ -66,9 +66,8 @@ public class MainMenuActivity extends AppCompatActivity {
         });
     }
 
-    // BUTTON SOUND
+
     private void playSound() {
-        // Check if mediaPlayer is not null and not already playing
         if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
             mediaPlayer.start();
         }
@@ -77,10 +76,10 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Release MediaPlayer resources
         if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
         }
     }
+
 }
