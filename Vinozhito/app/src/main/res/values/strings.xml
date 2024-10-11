@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Виножито</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
-    <string name="main_manu_title">Кој ја користи апликацијата ?</string>
+    <string name="main_manu_title">Кој ја користи апликацијата?</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="auth_title">За пристап внесете ги следните броеви</string>
     <string name="komunikacija_title">Комуникација</string>

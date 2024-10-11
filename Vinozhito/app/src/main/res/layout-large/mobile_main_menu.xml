@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mountains">
+
+    <finki.nichk.BackgroundView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mountains">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/main_manu_title"
+        android:textColor="@color/text_color"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="110dp"
+        android:gravity="center"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <ImageButton
+            android:id="@+id/child_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="@string/todo_text"
+            android:elevation="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/children"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <View
+            android:id="@+id/child_circle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_shape_yellow"
+            android:elevation="2dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintWidth_percent="0.50">
+
+        <ImageButton
+            android:id="@+id/parent_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:background="@null"
+            android:contentDescription="@string/todo_text"
+            android:elevation="8dp"
+            android:padding="18dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/parents"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <View
+            android:id="@+id/parent_circle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_states_cyan"
+            android:elevation="2dp" />
+    </FrameLayout>
+
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/frameLayout"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:layout_marginTop="150dp"-->
+    <!--        app:layout_constraintDimensionRatio="1:1"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
+    <!--        app:layout_constraintWidth_percent="0.25">-->
+
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/child_btn"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="bottom|center_horizontal"-->
+    <!--            android:layout_margin="8dp"-->
+    <!--            android:background="@null"-->
+    <!--            android:contentDescription="@string/todo_text"-->
+    <!--            android:scaleType="centerInside"-->
+    <!--            android:src="@drawable/children"-->
+    <!--            android:elevation="8dp"-->
+    <!--            app:layout_constraintDimensionRatio="1:1" />-->
+
+    <!--        <View-->
+    <!--            android:id="@+id/child_circle"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:background="@drawable/circle_shape_yellow"-->
+    <!--            android:elevation="2dp" />-->
+
+    <!--    </FrameLayout>-->
+
+
+    <!--    <FrameLayout-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintDimensionRatio="1:1"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/frameLayout"-->
+    <!--        app:layout_constraintWidth_percent="0.25">-->
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/parent_btn"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:layout_marginStart="8dp"-->
+    <!--            android:background="@null"-->
+    <!--            android:contentDescription="@string/todo_text"-->
+    <!--            android:elevation="8dp"-->
+    <!--            android:padding="6dp"-->
+    <!--            android:scaleType="centerInside"-->
+    <!--            android:src="@drawable/parents"-->
+    <!--            app:layout_constraintDimensionRatio="1:1" />-->
+
+    <!--        <View-->
+    <!--            android:id="@+id/parent_circle"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:background="@drawable/circle_states_cyan"-->
+    <!--            android:elevation="2dp"/>-->
+
+
+    <!--    </FrameLayout>-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
