@@ -40,10 +40,10 @@ public class ConnectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tablet_connecting_main_menu);
+        setContentView(R.layout.mobile_connecting); //tablet_connecting_main_menu
 
         targetImage = findViewById(R.id.targetImage);
-        beeReaction = findViewById(R.id.bee_reaction);
+        //beeReaction = findViewById(R.id.bee_reaction);
         //resultTextView = findViewById(R.id.resultTextView);
         ImageButton backButton = findViewById(R.id.back_button);
 
@@ -52,10 +52,10 @@ public class ConnectActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        firstPlate = findViewById(R.id.firstPlate);
-        secondPlate = findViewById(R.id.secondPlate);
-        thirdPlate = findViewById(R.id.thirdtPlate);
-        forthPlate = findViewById(R.id.forthPlate);
+//        firstPlate = findViewById(R.id.firstPlate);
+//        secondPlate = findViewById(R.id.secondPlate);
+//        thirdPlate = findViewById(R.id.thirdtPlate);
+//        forthPlate = findViewById(R.id.forthPlate);
 
         // Load dish images
         dishImages = new ArrayList<>();
@@ -73,7 +73,7 @@ public class ConnectActivity extends AppCompatActivity {
         // listener for the target image
         targetImage.setOnDragListener(new TargetDragListener());
 
-        startNewRound(); // first round
+        //startNewRound(); // first round
 
         MediaPlayer mediaPlayer = MediaPlayer.create(ConnectActivity.this, R.raw.instructions);
         if (mediaPlayer != null) {

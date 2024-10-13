@@ -10,13 +10,7 @@
     <finki.nichk.BackgroundView
         android:id="@+id/background_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-<<<<<<<< HEAD:Vinozhito/app/src/main/res/layout-large/main_menu.xml
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
-========
-        />
->>>>>>>> d7fac3b2a264a7235df4b67696af8314c6af458f:Vinozhito/app/src/main/res/layout-large/tablet_main_menu.xml
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/textView"

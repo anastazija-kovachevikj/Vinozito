@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/sky">
 
-    <finki.nichk.BackgroundView
-        android:id="@+id/background_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <finki.nichk.BackgroundView-->
+<!--        android:id="@+id/background_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
     <ImageButton
         android:id="@+id/back_button"
