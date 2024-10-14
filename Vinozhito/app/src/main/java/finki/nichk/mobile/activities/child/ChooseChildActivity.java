@@ -38,7 +38,7 @@ public class ChooseChildActivity extends AppCompatActivity {
         });
 
         buttonTouchListener(communicationButton, () -> {
-            Intent intent = new Intent(ChooseChildActivity.this, CommunicationActivity.class); // CommunicationActivity
+            Intent intent = new Intent(ChooseChildActivity.this, CommunicationMobileActivity.class); // CommunicationActivity
             startActivity(intent);
         });
 

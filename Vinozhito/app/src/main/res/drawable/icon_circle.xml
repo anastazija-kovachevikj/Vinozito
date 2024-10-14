@@ -1,12 +1,12 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
-    <solid android:color="@color/babyblue" />
+    <solid android:color="@color/blue_circle" />
 
     <!-- Stroke for circle border -->
     <stroke
         android:width="5dp"
-        android:color="@color/babyblue" />
+        android:color="@color/blue_circle" />
 
     <!-- Optional: You can define size here if not set in the layout -->
     <size

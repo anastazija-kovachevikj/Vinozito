@@ -64,7 +64,7 @@ public class ColorPaintingActivity extends AppCompatActivity {
 
             coloringImageView.setOnTouchListener(this::onTouch);
             setupColorButtons();
-            //setupResetButton();
+            setupResetButton();
 
         } else {
             coloringImageView.setImageResource(R.drawable.unknown);
@@ -96,24 +96,24 @@ public class ColorPaintingActivity extends AppCompatActivity {
     }
 
     private void handleColorButtonClick(ImageButton clickedButton, int color, View selectedColorView, float blendRatio) {
-        float slideDistance = -50f; // how far it slides left
+        float slideDistance = -50f; // Negative to slide up
 
         if (currentOpenCrayon != null && currentOpenCrayon != clickedButton) {
-            // slide back the previous crayon to its original position
-            ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(currentOpenCrayon, "translationX", currentOpenCrayon.getTranslationX(), 0f);
+            // Slide back the previous crayon to its original position
+            ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(currentOpenCrayon, "translationY", currentOpenCrayon.getTranslationY(), 0f);
             slideBackAnimator.setDuration(300);
             slideBackAnimator.start();
         }
 
         if (currentOpenCrayon == clickedButton) {
             // If the clicked crayon is already the current open crayon, slide it back to its original position
-            ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(clickedButton, "translationX", clickedButton.getTranslationX(), 0f);
+            ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(clickedButton, "translationY", clickedButton.getTranslationY(), 0f);
             slideBackAnimator.setDuration(300);
             slideBackAnimator.start();
             currentOpenCrayon = null; // No crayon is currently open
         } else {
-            // slide the clicked crayon to the left
-            ObjectAnimator slideOutAnimator = ObjectAnimator.ofFloat(clickedButton, "translationX", clickedButton.getTranslationX(), slideDistance);
+            // Slide the clicked crayon up
+            ObjectAnimator slideOutAnimator = ObjectAnimator.ofFloat(clickedButton, "translationY", clickedButton.getTranslationY(), slideDistance);
             slideOutAnimator.setDuration(300);
             slideOutAnimator.start();
 
@@ -121,8 +121,9 @@ public class ColorPaintingActivity extends AppCompatActivity {
         }
 
         currentColor = ColorUtils.blendARGB(color, Color.WHITE, blendRatio);
-//        selectedColorView.setBackgroundColor(currentColor);
+//    selectedColorView.setBackgroundColor(currentColor);
     }
+
 
 
     private void resetImage() {
@@ -134,10 +135,10 @@ public class ColorPaintingActivity extends AppCompatActivity {
         }
     }
 
-//    private void setupResetButton() {
-//        ImageButton resetButton = findViewById(R.id.reset_btn);
-//        resetButton.setOnClickListener(v -> resetImage());
-//    }
+    private void setupResetButton() {
+        ImageButton resetButton = findViewById(R.id.reset_btn);
+        resetButton.setOnClickListener(v -> resetImage());
+    }
 
     private boolean onTouch(View view, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

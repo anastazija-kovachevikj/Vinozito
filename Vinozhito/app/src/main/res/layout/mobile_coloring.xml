@@ -16,12 +16,23 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="5dp"
         android:background="@null"
         android:contentDescription="@string/back"
         android:scaleType="centerInside"
         android:src="@drawable/back" />
+    <ImageButton
+        android:id="@+id/reset_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:contentDescription="@string/back"
+        android:scaleType="centerInside"
+        android:src="@drawable/trash" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -76,95 +87,127 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/crayons"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:gravity="center"
-            android:layout_marginTop="60dp"
-            android:paddingTop="60dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:layout_marginTop="220dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/plank"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <ImageButton
-                android:id="@+id/color_red"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Red"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_red" />
+<!--            <FrameLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="300dp">-->
 
-            <ImageButton
-                android:id="@+id/color_orange"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Red"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_orange" />
-
-            <ImageButton
-                android:id="@+id/color_yellow"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Red"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_yellow" />
-
-            <ImageButton
-                android:id="@+id/color_green"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Green"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_green" />
-
-            <ImageButton
-                android:id="@+id/color_lightblue"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Blue"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_lightblue" />
-
-            <ImageButton
-                android:id="@+id/color_darkblue"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Blue"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_darkblue" />
-
-            <ImageButton
-                android:id="@+id/color_purple"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Blue"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_purple" />
-
-            <ImageButton
-                android:id="@+id/color_pink"
-                android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Blue"
-                android:scaleType="centerCrop"
-                android:src="@drawable/crayon_pink" />
+<!--            &lt;!&ndash; Background Image &ndash;&gt;-->
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@drawable/plank" />-->
 
 
+            <LinearLayout
+                android:id="@+id/crayons"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/color_red"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Red"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_red" />
+
+                <ImageButton
+                    android:id="@+id/color_orange"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Orange"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_orange" />
+
+                <ImageButton
+                    android:id="@+id/color_yellow"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Yellow"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_yellow" />
+
+                <ImageButton
+                    android:id="@+id/color_green"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Green"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_green" />
+
+                <ImageButton
+                    android:id="@+id/color_lightblue"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Light Blue"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_lightblue" />
+
+                <ImageButton
+                    android:id="@+id/color_darkblue"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Dark Blue"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_darkblue" />
+
+                <ImageButton
+                    android:id="@+id/color_purple"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Purple"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_purple" />
+
+                <ImageButton
+                    android:id="@+id/color_pink"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Pink"
+                    android:layout_marginEnd="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_pink" />
+
+
+            </LinearLayout>
+<!--            </FrameLayout>-->
+
+        </HorizontalScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--    <LinearLayout-->

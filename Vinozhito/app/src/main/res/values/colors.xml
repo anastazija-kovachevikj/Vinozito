@@ -24,5 +24,9 @@
     <color name="text_color">#575757</color>
     <color name="pink">#F7B7C2</color>
     <color name="green">#81C284</color>
+    <color name="blue_scroll">#B8C9E3</color>
+    <color name="blue_circle">#466A9E</color>
+    <color name="com_bg">#B8C9E3</color>
+    <color name="com_stroke">#A0AFC7</color>
 
 </resources>
