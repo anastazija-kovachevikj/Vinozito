@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:orientation="vertical"
+        android:rowCount="3">
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:rowCount="1"
+                android:columnCount="2"
+                android:layout_gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:background="@null">
+
+                    <ImageButton
+                        android:id="@+id/back_button3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@null"
+                        android:contentDescription="@string/todo_text"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/back" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/com_actions_bg">
+
+                    <ImageButton
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/back_button4"
+                        android:layout_width="48dp"
+                        android:layout_marginStart="120dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@string/todo_text"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/play_button_states" />
+
+                    <ImageButton
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/back_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@string/todo_text"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/trash" />
+                </RelativeLayout>
+
+            </GridLayout>
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <GridLayout
+                    android:id="@+id/gridLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/com_tab_bg"
+                    android:columnCount="8"
+                    android:orientation="horizontal"
+                    android:rowCount="1">
+
+                    <FrameLayout
+                        android:id="@+id/card1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+
+                            android:id="@+id/cardslot1"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/apple"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+
+                        <ImageButton
+                            android:id="@+id/cardslot2"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fruit_lemon"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+                            android:id="@+id/cardslot3"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fruit_pear"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/card4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+
+                            android:id="@+id/cardslot4"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+
+                            android:id="@+id/cardslot5"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+
+                        <ImageButton
+                            android:id="@+id/cardslot6"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fruit_lemon"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+                            android:id="@+id/cardslot7"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fruit_pear"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/card8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="15dp">
+
+                        <ImageButton
+                            android:id="@+id/cardslot8"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/card_background"
+                            android:contentDescription="@string/todo_text"
+                            android:paddingVertical="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fruit_pear"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+                </GridLayout>
+
+
+            </HorizontalScrollView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:background="@drawable/scroll"
+                android:padding="2dp"
+                android:scrollbars="none">
+
+                <GridLayout
+                    android:id="@+id/card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:columnCount="3"
+                    android:paddingHorizontal="15dp">
+
+                </GridLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/scroll_cat"
+            android:paddingVertical="5dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <GridLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:columnCount="27"
+                android:orientation="horizontal"
+                android:rowCount="1">
+
+                <ImageButton
+                    android:id="@+id/conversation_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/talking" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/feelings_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/emotional" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginRight="-5dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/people_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/family" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:background="@drawable/border" />
+
+
+                <ImageButton
+                    android:id="@+id/drinks_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bevg" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/food_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/meal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/vegetables_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/vegetable" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/fruit_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/fruits" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+
+                <ImageButton
+                    android:id="@+id/activities_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/hobby" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/animals_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/animals" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/clothes_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/clothes" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border" />
+
+                <ImageButton
+                    android:id="@+id/colors_tab"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/icon_circle"
+                    android:contentDescription="@string/todo_text"
+                    android:paddingHorizontal="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/wheel" />
+
+
+            </GridLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

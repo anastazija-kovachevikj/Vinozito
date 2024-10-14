@@ -40,12 +40,22 @@
             android:label="@string/title_activity_main_menu"
             android:theme="@style/Theme.Vinozhito" />
         <activity
+            android:name=".mobile.activities.child.CommunicationMobileActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
             android:name=".mobile.activities.child.ChooseChildActivity"
             android:exported="false"
             android:label="@string/title_activity_main_menu"
             android:theme="@style/Theme.Vinozhito" />
         <activity
             android:name=".mobile.activities.child.ChoosePaintingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
+            android:name=".mobile.activities.child.ColorPaintingActivity"
             android:exported="false"
             android:label="@string/title_activity_main_menu"
             android:theme="@style/Theme.Vinozhito" />
