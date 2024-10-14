@@ -60,6 +60,11 @@
 
             android:theme="@style/Theme.Vinozhito" />
         <activity
+            android:name=".tablet.screens.child.ConnectActivity"
+            android:exported="false"
+
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
             android:name=".tablet.screens.child.ColoringActivity"
             android:exported="false"
 
@@ -70,7 +75,7 @@
 
             android:theme="@style/Theme.Vinozhito" />
         <activity
-            android:name=".tablet.screens.child.ConnectActivity"
+            android:name=".mobile.activities.child.ConnectingActivity"
             android:exported="false"
 
             android:theme="@style/Theme.Vinozhito" />
