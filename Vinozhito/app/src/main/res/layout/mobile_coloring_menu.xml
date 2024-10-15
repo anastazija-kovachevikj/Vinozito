@@ -28,8 +28,8 @@
         android:layout_below="@id/back_button"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
-        android:paddingStart="35dp"
-        android:paddingEnd="35dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
         android:scrollbars="none">
 
         <GridLayout
@@ -43,11 +43,11 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_height="200dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
                 android:elevation="10dp"
                 android:background="@drawable/shadowcard">
@@ -66,11 +66,11 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_height="200dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shadowcard">
 
@@ -90,10 +90,10 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
@@ -114,10 +114,10 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
@@ -139,10 +139,10 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
@@ -163,10 +163,10 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
@@ -188,9 +188,9 @@
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_columnWeight="1"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
@@ -213,8 +213,8 @@
                 android:layout_height="200dp"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="25dp"
-                android:padding="5dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shadowcard">
