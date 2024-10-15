@@ -29,7 +29,7 @@ import finki.nichk.R;
 public class ConnectActivity extends AppCompatActivity {
 
     private ImageView targetImage;
-    private List<Integer> dishImages;
+    private List<Integer> branchImages;
     private int targetImageRes;
     private TextView resultTextView;
     private ImageView firstPlate, secondPlate, thirdPlate, forthPlate;
@@ -58,17 +58,17 @@ public class ConnectActivity extends AppCompatActivity {
 //        forthPlate = findViewById(R.id.forthPlate);
 
         // Load dish images
-        dishImages = new ArrayList<>();
-        dishImages.add(R.drawable.fruit_lemon);
-        dishImages.add(R.drawable.fruit_pear);
-        dishImages.add(R.drawable.watermelon);
-        dishImages.add(R.drawable.sb);
-        dishImages.add(R.drawable.orange);
-        dishImages.add(R.drawable.grape);
-        dishImages.add(R.drawable.fruit_banana);
-        dishImages.add(R.drawable.apple);
-        dishImages.add(R.drawable.pineapple);
-        dishImages.add(R.drawable.cherry);
+        branchImages = new ArrayList<>();
+        branchImages.add(R.drawable.fruit_lemon);
+        branchImages.add(R.drawable.fruit_pear);
+        branchImages.add(R.drawable.watermelon);
+        branchImages.add(R.drawable.sb);
+        branchImages.add(R.drawable.orange);
+        branchImages.add(R.drawable.grape);
+        branchImages.add(R.drawable.fruit_banana);
+        branchImages.add(R.drawable.apple);
+        branchImages.add(R.drawable.pineapple);
+        branchImages.add(R.drawable.cherry);
 
         // listener for the target image
         targetImage.setOnDragListener(new TargetDragListener());
@@ -238,22 +238,22 @@ public class ConnectActivity extends AppCompatActivity {
 
 
     private void startNewRound() {
-        Collections.shuffle(dishImages, new Random());  // shuffle
+        Collections.shuffle(branchImages, new Random());  // shuffle
 
         // set images to plates
-        firstPlate.setImageResource(dishImages.get(0));
-        secondPlate.setImageResource(dishImages.get(1));
-        thirdPlate.setImageResource(dishImages.get(2));
-        forthPlate.setImageResource(dishImages.get(3));
+        firstPlate.setImageResource(branchImages.get(0));
+        secondPlate.setImageResource(branchImages.get(1));
+        thirdPlate.setImageResource(branchImages.get(2));
+        forthPlate.setImageResource(branchImages.get(3));
 
         animateFruits();
 
         // random target image
         List<Integer> choices = new ArrayList<>();
-        choices.add(dishImages.get(0));
-        choices.add(dishImages.get(1));
-        choices.add(dishImages.get(2));
-        choices.add(dishImages.get(3));
+        choices.add(branchImages.get(0));
+        choices.add(branchImages.get(1));
+        choices.add(branchImages.get(2));
+        choices.add(branchImages.get(3));
 
         Collections.shuffle(choices, new Random());
         targetImageRes = choices.get(0); // target image resource
@@ -261,10 +261,10 @@ public class ConnectActivity extends AppCompatActivity {
 
         resetPlates();
 
-        setPlateDragListener(firstPlate, dishImages.get(0));
-        setPlateDragListener(secondPlate, dishImages.get(1));
-        setPlateDragListener(thirdPlate, dishImages.get(2));
-        setPlateDragListener(forthPlate, dishImages.get(3));
+        setPlateDragListener(firstPlate, branchImages.get(0));
+        setPlateDragListener(secondPlate, branchImages.get(1));
+        setPlateDragListener(thirdPlate, branchImages.get(2));
+        setPlateDragListener(forthPlate, branchImages.get(3));
 
         //resultTextView.setText("");
     }

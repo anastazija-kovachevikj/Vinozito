@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky">
+    android:background="@color/greyblue">
 
-    <finki.nichk.BackgroundView
-        android:id="@+id/background_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--    <finki.nichk.BackgroundView-->
+    <!--        android:id="@+id/background_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
 
     <ImageView
@@ -46,8 +46,8 @@
         android:id="@+id/constraintLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingBottom="0dp"
         android:layout_marginBottom="190dp"
+        android:paddingBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.65"
@@ -69,14 +69,14 @@
 
             <ImageView
                 android:id="@+id/bee_reaction"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="150dp"
-                android:layout_marginTop="168dp"
+                android:layout_marginTop="184dp"
                 android:scaleType="fitCenter"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.243"
+                app:layout_constraintHorizontal_bias="0.177"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,24 +85,23 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/bee_speech_2"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewBee"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintHeight_percent="0.21"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.4">
+                app:layout_constraintWidth_percent="0.42">
 
                 <ImageView
                     android:id="@+id/targetImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="33dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginBottom="36dp"
                     android:scaleType="fitCenter" />
 
             </FrameLayout>
@@ -127,6 +126,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:columnCount="4"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.37"
@@ -137,78 +137,138 @@
             <FrameLayout
                 android:id="@+id/firstBranchFrame"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="100dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="5dp"
-                app:layout_constraintDimensionRatio="1:1">
+                android:layout_gravity="bottom"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent="0.5">
 
                 <ImageView
                     android:id="@+id/firstBranch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:src="@drawable/apple"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
             </FrameLayout>
-
 
             <FrameLayout
                 android:id="@+id/secondBranchFrame"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
+                android:layout_height="140dp"
                 android:layout_rowWeight="1"
-                android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="5dp"
-                app:layout_constraintDimensionRatio="1:1">
+                android:layout_gravity="top"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent="0.5">
 
                 <ImageView
                     android:id="@+id/secondBranch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:visibility="visible" />
+                    android:layout_margin="5dp"
+                    android:src="@drawable/apple"
+                    android:visibility="gone" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/thirdBranchFrame"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="100dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:layout_gravity="bottom"
                 android:layout_marginEnd="5dp"
-                app:layout_constraintDimensionRatio="1:1">
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent="0.5">
 
                 <ImageView
                     android:id="@+id/thirdBranch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:visibility="visible" />
+                    android:src="@drawable/apple"
+
+                    android:visibility="gone" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/forthBranchFrame"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="180dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:layout_constraintDimensionRatio="1:1">
+                android:layout_gravity="top"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent="0.5">
 
                 <ImageView
                     android:id="@+id/forthBarnch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:visibility="visible" />
+                    android:src="@drawable/apple"
+                    android:visibility="gone" />
 
             </FrameLayout>
 
         </GridLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

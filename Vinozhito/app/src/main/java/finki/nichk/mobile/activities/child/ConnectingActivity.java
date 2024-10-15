@@ -71,11 +71,11 @@ public class ConnectingActivity extends AppCompatActivity {
         dishImages.add(R.drawable.cherry);
 
         // DEBUG
-        firstBranch.setImageResource(dishImages.get(0));
-        secondBranch.setImageResource(R.drawable.fruit_lemon);
-        thirdBranch.setImageResource(dishImages.get(2));
-        forthBranch.setImageResource(dishImages.get(3));
-        forthBranch.setVisibility(View.VISIBLE);
+//        firstBranch.setImageResource(dishImages.get(0));
+//        secondBranch.setImageResource(R.drawable.fruit_lemon);
+//        thirdBranch.setImageResource(dishImages.get(2));
+//        forthBranch.setImageResource(dishImages.get(3));
+//        forthBranch.setVisibility(View.VISIBLE);
 
         // listener for the target image
         targetImage.setOnDragListener(new ConnectingActivity.TargetDragListener());
@@ -110,10 +110,8 @@ public class ConnectingActivity extends AppCompatActivity {
     }
 
     private void animateFruits() {
-        // load animation
         final Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom);
 
-        // delay between each animation
         long delayBetweenBranchs = 0;
 
         secondBranch.setVisibility(View.VISIBLE);
