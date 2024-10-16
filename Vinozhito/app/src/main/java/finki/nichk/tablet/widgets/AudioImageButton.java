@@ -4,7 +4,7 @@ import android.widget.ImageButton;
 
 public class AudioImageButton {
     ImageButton imageButton;
-    String audioUrl;
+    public String audioUrl;
 
     public AudioImageButton(ImageButton imageButton, String audioUrl) {
         this.imageButton = imageButton;
