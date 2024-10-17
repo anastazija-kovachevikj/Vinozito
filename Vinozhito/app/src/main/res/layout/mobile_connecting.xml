@@ -71,7 +71,6 @@
                 android:id="@+id/bee_reaction"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart=""
                 android:layout_marginTop="35dp"
                 android:scaleType="fitCenter"
                 android:visibility="invisible"
