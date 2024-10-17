@@ -34,9 +34,6 @@ public class CommunicationActivity extends AppCompatActivity {
     private static final int SLOT_COUNT = 4;
     private CardService cardService;
 
-    //    private ExecutorService executorService;
-//    private static final int TAG_IMAGE_URL = 0x1;
-//    private static final int TAG_AUDIO_VOICE = 0x2;
     private static final int SOUND_DELAY_MILLIS = 1500;
 
     private int count = 0; // number of occupied slots
