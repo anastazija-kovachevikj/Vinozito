@@ -1,4 +1,4 @@
-package finki.nichk.tablet.screens.child;
+package finki.nichk.mobile.activities.child;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
@@ -25,14 +25,14 @@ import java.util.List;
 import java.util.Random;
 
 import finki.nichk.R;
+import finki.nichk.mobile.activities.child.ChooseChildActivity;
 
-public class ConnectActivity extends AppCompatActivity {
-
+public class ConnectingActivity extends AppCompatActivity {
     private ImageView targetImage;
-    private List<Integer> branchImages;
+    private List<Integer> dishImages;
     private int targetImageRes;
     private TextView resultTextView;
-    private ImageView firstPlate, secondPlate, thirdPlate, forthPlate;
+    private ImageView firstBranch, secondBranch, thirdBranch, forthBranch;
     private ImageView beeReaction;
     private int currentRound = 1; // current round
     private final int totalRounds = 5; // number of rounds
@@ -43,39 +43,46 @@ public class ConnectActivity extends AppCompatActivity {
         setContentView(R.layout.mobile_connecting); //tablet_connecting_main_menu
 
         targetImage = findViewById(R.id.targetImage);
-        //beeReaction = findViewById(R.id.bee_reaction);
+        beeReaction = findViewById(R.id.bee_reaction);
         //resultTextView = findViewById(R.id.resultTextView);
         ImageButton backButton = findViewById(R.id.back_button);
 
         buttonTouchListener(backButton, () -> {
-            Intent intent = new Intent(this, ChildActivity.class);
+            Intent intent = new Intent(this, ChooseChildActivity.class);
             startActivity(intent);
         });
 
-//        firstPlate = findViewById(R.id.firstPlate);
-//        secondPlate = findViewById(R.id.secondPlate);
-//        thirdPlate = findViewById(R.id.thirdtPlate);
-//        forthPlate = findViewById(R.id.forthPlate);
+        firstBranch = findViewById(R.id.firstBranch);
+        secondBranch = findViewById(R.id.secondBranch);
+        thirdBranch = findViewById(R.id.thirdBranch);
+        forthBranch = findViewById(R.id.forthBarnch);
 
         // Load dish images
-        branchImages = new ArrayList<>();
-        branchImages.add(R.drawable.fruit_lemon);
-        branchImages.add(R.drawable.fruit_pear);
-        branchImages.add(R.drawable.watermelon);
-        branchImages.add(R.drawable.sb);
-        branchImages.add(R.drawable.orange);
-        branchImages.add(R.drawable.grape);
-        branchImages.add(R.drawable.fruit_banana);
-        branchImages.add(R.drawable.apple);
-        branchImages.add(R.drawable.pineapple);
-        branchImages.add(R.drawable.cherry);
+        dishImages = new ArrayList<>();
+        dishImages.add(R.drawable.fruit_lemon);
+        dishImages.add(R.drawable.fruit_pear);
+        dishImages.add(R.drawable.watermelon);
+        dishImages.add(R.drawable.sb);
+        dishImages.add(R.drawable.orange);
+        dishImages.add(R.drawable.grape);
+        dishImages.add(R.drawable.fruit_banana);
+        dishImages.add(R.drawable.apple);
+        dishImages.add(R.drawable.pineapple);
+        dishImages.add(R.drawable.cherry);
+
+        // DEBUG
+//        firstBranch.setImageResource(dishImages.get(0));
+//        secondBranch.setImageResource(R.drawable.fruit_lemon);
+//        thirdBranch.setImageResource(dishImages.get(2));
+//        forthBranch.setImageResource(dishImages.get(3));
+//        forthBranch.setVisibility(View.VISIBLE);
 
         // listener for the target image
-        targetImage.setOnDragListener(new TargetDragListener());
+        targetImage.setOnDragListener(new ConnectingActivity.TargetDragListener());
 
-        //startNewRound(); // first round
+        startNewRound(); // first round
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectActivity.this, R.raw.instructions);
+        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectingActivity.this, R.raw.instructions);
         if (mediaPlayer != null) {
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
@@ -103,29 +110,27 @@ public class ConnectActivity extends AppCompatActivity {
     }
 
     private void animateFruits() {
-        // load animation
         final Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom);
 
-        // delay between each animation
-        long delayBetweenPlates = 0;
+        long delayBetweenBranchs = 0;
 
-        secondPlate.setVisibility(View.VISIBLE);
-        secondPlate.startAnimation(zoomIn);
+        secondBranch.setVisibility(View.VISIBLE);
+        secondBranch.startAnimation(zoomIn);
 
-        thirdPlate.postDelayed(() -> {
-            thirdPlate.setVisibility(View.VISIBLE);
-            thirdPlate.startAnimation(zoomIn);
-        }, delayBetweenPlates);
+        thirdBranch.postDelayed(() -> {
+            thirdBranch.setVisibility(View.VISIBLE);
+            thirdBranch.startAnimation(zoomIn);
+        }, delayBetweenBranchs);
 
-        firstPlate.postDelayed(() -> {
-            firstPlate.setVisibility(View.VISIBLE);
-            firstPlate.startAnimation(zoomIn);
-        }, 2 * delayBetweenPlates);
+        firstBranch.postDelayed(() -> {
+            firstBranch.setVisibility(View.VISIBLE);
+            firstBranch.startAnimation(zoomIn);
+        }, 2 * delayBetweenBranchs);
 
-        forthPlate.postDelayed(() -> {
-            forthPlate.setVisibility(View.VISIBLE);
-            forthPlate.startAnimation(zoomIn);
-        }, 3 * delayBetweenPlates);
+        forthBranch.postDelayed(() -> {
+            forthBranch.setVisibility(View.VISIBLE);
+            forthBranch.startAnimation(zoomIn);
+        }, 3 * delayBetweenBranchs);
     }
 
     private void animateReaction(boolean isCorrect) {
@@ -219,7 +224,7 @@ public class ConnectActivity extends AppCompatActivity {
                         star.setVisibility(View.INVISIBLE); // hide
 
                         if (finalI == stars.length - 1) { // on the last star go back to menu
-                            Intent intent = new Intent(ConnectActivity.this, ChildActivity.class);
+                            Intent intent = new Intent(ConnectingActivity.this, ChooseChildActivity.class);
                             startActivity(intent);
                             finish();
                         }
@@ -238,53 +243,53 @@ public class ConnectActivity extends AppCompatActivity {
 
 
     private void startNewRound() {
-        Collections.shuffle(branchImages, new Random());  // shuffle
+        Collections.shuffle(dishImages, new Random());  // shuffle
 
-        // set images to plates
-        firstPlate.setImageResource(branchImages.get(0));
-        secondPlate.setImageResource(branchImages.get(1));
-        thirdPlate.setImageResource(branchImages.get(2));
-        forthPlate.setImageResource(branchImages.get(3));
+        // set images to Branchs
+        firstBranch.setImageResource(dishImages.get(0));
+        secondBranch.setImageResource(dishImages.get(1));
+        thirdBranch.setImageResource(dishImages.get(2));
+        forthBranch.setImageResource(dishImages.get(3));
 
         animateFruits();
 
         // random target image
         List<Integer> choices = new ArrayList<>();
-        choices.add(branchImages.get(0));
-        choices.add(branchImages.get(1));
-        choices.add(branchImages.get(2));
-        choices.add(branchImages.get(3));
+        choices.add(dishImages.get(0));
+        choices.add(dishImages.get(1));
+        choices.add(dishImages.get(2));
+        choices.add(dishImages.get(3));
 
         Collections.shuffle(choices, new Random());
         targetImageRes = choices.get(0); // target image resource
         targetImage.setImageResource(targetImageRes);
 
-        resetPlates();
+        resetBranchs();
 
-        setPlateDragListener(firstPlate, branchImages.get(0));
-        setPlateDragListener(secondPlate, branchImages.get(1));
-        setPlateDragListener(thirdPlate, branchImages.get(2));
-        setPlateDragListener(forthPlate, branchImages.get(3));
+        setBranchDragListener(firstBranch, dishImages.get(0));
+        setBranchDragListener(secondBranch, dishImages.get(1));
+        setBranchDragListener(thirdBranch, dishImages.get(2));
+        setBranchDragListener(forthBranch, dishImages.get(3));
 
         //resultTextView.setText("");
     }
 
-    private void resetPlates() {
+    private void resetBranchs() {
 
-        firstPlate.setEnabled(true);
-        secondPlate.setEnabled(true);
-        thirdPlate.setEnabled(true);
-        forthPlate.setEnabled(true);
+        firstBranch.setEnabled(true);
+        secondBranch.setEnabled(true);
+        thirdBranch.setEnabled(true);
+        forthBranch.setEnabled(true);
 
-        firstPlate.setAlpha(1.0f);
-        secondPlate.setAlpha(1.0f);
-        thirdPlate.setAlpha(1.0f);
-        forthPlate.setAlpha(1.0f);
+        firstBranch.setAlpha(1.0f);
+        secondBranch.setAlpha(1.0f);
+        thirdBranch.setAlpha(1.0f);
+        forthBranch.setAlpha(1.0f);
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setPlateDragListener(ImageView plate, int imageRes) {
-        plate.setOnTouchListener((v, event) -> {
+    private void setBranchDragListener(ImageView Branch, int imageRes) {
+        Branch.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN && v.isEnabled()) {
 
                 ClipData.Item item = new ClipData.Item(String.valueOf(imageRes));
@@ -346,7 +351,7 @@ public class ConnectActivity extends AppCompatActivity {
 
                     } else {
                         // sound
-                        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectActivity.this, R.raw.try_again);
+                        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectingActivity.this, R.raw.try_again);
                         if (mediaPlayer != null) {
                             mediaPlayer.start();
                             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
@@ -356,7 +361,7 @@ public class ConnectActivity extends AppCompatActivity {
 
                         //resultTextView.setText("Incorrect!");
                         View draggedView = (View) event.getLocalState();
-                        draggedView.setEnabled(false); // disable plate
+                        draggedView.setEnabled(false); // disable Branch
                         draggedView.setAlpha(0.5f);
                     }
                     return true;
