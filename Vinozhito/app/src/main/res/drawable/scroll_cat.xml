@@ -4,7 +4,7 @@
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/blue_scroll"/>
-            <corners android:topLeftRadius="20dp" android:topRightRadius="20dp"/> <!-- Rounded left corners -->
+            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp"/> <!-- Rounded left corners -->
         </shape>
     </item>
 
@@ -14,7 +14,7 @@
             <stroke
                 android:width="2.5dp"
                 android:color="@color/babyblue" />
-            <corners android:topLeftRadius="20dp" android:topRightRadius="20dp" /> <!-- Apply rounded corners to border -->
+            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" /> <!-- Apply rounded corners to border -->
         </shape>
     </item>
 
