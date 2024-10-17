@@ -13,7 +13,7 @@ import finki.nichk.mobile.activities.MobileMainMenuActivity;
 import finki.nichk.tablet.screens.MainMenuActivity;
 import finki.nichk.tablet.screens.child.ChildActivity;
 import finki.nichk.tablet.screens.child.ColoringActivity;
-import finki.nichk.tablet.screens.child.ConnectActivity;
+import finki.nichk.mobile.activities.child.ConnectingActivity;
 import finki.nichk.tablet.widgets.CommunicationActivity;
 
 public class ChooseChildActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class ChooseChildActivity extends AppCompatActivity {
         });
 
         buttonTouchListener(connectButton, () -> {
-            Intent intent = new Intent(ChooseChildActivity.this, ConnectActivity.class); // ConnectActivity
+            Intent intent = new Intent(ChooseChildActivity.this, ConnectingActivity.class); // ConnectActivity
             startActivity(intent);
         });
 

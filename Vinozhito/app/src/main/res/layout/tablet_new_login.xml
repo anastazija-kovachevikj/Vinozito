@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/sky">
 
-    <finki.nichk.BackgroundView
-        android:id="@+id/background_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <finki.nichk.BackgroundView-->
+<!--        android:id="@+id/background_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -228,7 +228,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/half_circle"
             android:elevation="4dp"
-            android:text="Немате кориснички профил? Регистрирај се"
+            android:text="@string/register"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
