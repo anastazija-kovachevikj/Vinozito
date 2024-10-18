@@ -63,6 +63,7 @@ dependencies {
     //implementation("org.tensorflow:tensorflow-lite:2.8.0")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19") // for gif splash
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
