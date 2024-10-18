@@ -8,6 +8,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.mobile.activities.MobileMainMenuActivity;
+import finki.nichk.mobile.activities.child.BubbleActivity;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.mobile_load);
 
         new Handler().postDelayed((Runnable) () -> {
-            Intent intent = new Intent(SplashActivity.this, MobileMainMenuActivity.class);
+            Intent intent = new Intent(SplashActivity.this, BubbleActivity.class);
             startActivity(intent);
             finish();
         }, SPLASH_DELAY);
