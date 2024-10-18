@@ -1,0 +1,13 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:drawable="@drawable/bubble_pop_frame_01" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_02" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_03" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_04" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_05" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_06" android:duration="120" />
+    <item android:drawable="@drawable/bubble_pop_frame_07" android:duration="120" />
+
+    <!-- Add more frames if needed -->
+</animation-list>
