@@ -17,10 +17,10 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mobile_load);
+        setContentView(R.layout.mobile_main_menu);
 
         new Handler().postDelayed((Runnable) () -> {
-            Intent intent = new Intent(SplashActivity.this, BubbleActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MobileMainMenuActivity.class);
             startActivity(intent);
             finish();
         }, SPLASH_DELAY);

@@ -191,9 +191,9 @@
                 android:background="@null"
                 android:contentDescription="@string/todo_text"
                 android:elevation="8dp"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/play"
+                android:src="@drawable/bubble"
                 app:layout_constraintDimensionRatio="1:1" />
 
             <View

@@ -61,7 +61,7 @@ public class BubbleActivity extends AppCompatActivity {
                     // Show the button again
 
                     bubbleButton.setVisibility(View.VISIBLE);
-                }, 3000);  // 5000 milliseconds = 5 seconds
+                }, 2000);  // 5000 milliseconds = 5 seconds
             }, totalDuration - 100);  // Wait for the animation to finish before hiding the button
         }
     }
