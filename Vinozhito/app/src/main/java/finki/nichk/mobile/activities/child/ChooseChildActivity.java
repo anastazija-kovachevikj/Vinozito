@@ -52,6 +52,12 @@ public class ChooseChildActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        buttonTouchListener(relaxButton, () -> {
+            Intent intent = new Intent(ChooseChildActivity.this, BubbleActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_up, R.anim.slide_out);
+
+        });
     }
 
 
@@ -61,13 +67,11 @@ public class ChooseChildActivity extends AppCompatActivity {
 
         button.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    // transparent when pressed
+                case MotionEvent.ACTION_DOWN: // transparent when pressed
                     v.setAlpha(0.5f);
                     break;
                 case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    // back to normal released or canceled
+                case MotionEvent.ACTION_CANCEL: // back to normal released or canceled
                     v.setAlpha(1.0f);
                     break;
             }

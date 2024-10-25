@@ -27,12 +27,10 @@ public class MobileMainMenuActivity extends AppCompatActivity {
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);
 
-        // Initialize MediaPlayer
         mediaPlayer = MediaPlayer.create(this, R.raw.btnclick); // Replace R.raw.your_sound_file with your sound file
 
         // PARENTS
         buttonTouchListener(parentButton, () -> {
-            // Play sound
             playSound();
             Intent intent = new Intent(MobileMainMenuActivity.this, ParentActivity.class);
             startActivity(intent);
@@ -40,7 +38,6 @@ public class MobileMainMenuActivity extends AppCompatActivity {
 
         // CHILDREN
         buttonTouchListener(childButton, () -> {
-            // Play sound
             playSound();
             Intent intent = new Intent(MobileMainMenuActivity.this, ChooseChildActivity.class);
             startActivity(intent);
@@ -67,6 +64,13 @@ public class MobileMainMenuActivity extends AppCompatActivity {
         });
     }
 
+//    private void stopButtonClickSound() {
+//        if (mediaPlayer != null) {
+//            mediaPlayer.stop();
+//            mediaPlayer.release();
+//            mediaPlayer = null;
+//        }
+//    }
 
     private void playSound() {
         if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
