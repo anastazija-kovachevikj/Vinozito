@@ -62,7 +62,7 @@ var app = builder.Build();
 // Use scoped services to initialize the database
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
+    //var dbContext = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
     //dbContext.InsertSampleDataAsync(scope.ServiceProvider); // Ensure this is async if needed
 }
 

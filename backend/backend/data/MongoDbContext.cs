@@ -32,86 +32,86 @@ namespace backend.data
                 new DefaultCard
                 {
                     //1
-                    Name = "куче",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/куче.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/куче.png",
+                    Name = "мајмун",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/мајмун.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/мајмун.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //2
-                    Name = "мачка",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/мачка.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/мачка.png",
+                    Name = "жирафа",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/жирафа.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/жирафа.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //3
-                    Name = "хрчак",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/хрчак.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/хрчак.png",
+                    Name = "мечка",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/мечка.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/мечка.png",
                     Category = "Animals"
                 },
 
                 new DefaultCard
                 {
                     //5
-                    Name = "папагал",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/папагал.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/папагал.png",
+                    Name = "нилски коњ",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/нилски_коњ.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/нилски_коњ.png",
                     Category = "Animals"
      
                 },
                 new DefaultCard
                 {
                     //6
-                    Name = "желка",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/желка.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/желка.png",
+                    Name = "лав",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/лав.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/лав.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //7
-                    Name = "зајак",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/зајак.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/зајак.png",
+                    Name = "слон",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/слон.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/слон.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //8
-                    Name = "кокошка",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/кокошка.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/кокошка.png",
+                    Name = "зебра",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/зебра.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/зебра.png",
                     Category = "Animals"
                    
                 },
                 new DefaultCard
                 {
                     //9
-                    Name = "прасе",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/прасе.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/прасе.png",
+                    Name = "пингвин",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/пингвин.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/пингвин.png",
                     Category = "Animals"
 
                 },
                 new DefaultCard
                 {
                     //10
-                    Name = "овца",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/овца.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/овца.png",
+                    Name = "змија",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/змија.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/змија.png",
                     Category = "Animals"
 
                 },
                 new DefaultCard
                 {
                     //11
-                    Name = "крава",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/крава.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/крава.png",
+                    Name = "пчела",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/пчела.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/пчела.png",
                     Category = "Animals"
 
 
@@ -119,36 +119,127 @@ namespace backend.data
                 new DefaultCard
                 {
                     //12
-                    Name = "коза",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/коза.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/коза.png",
+                    Name = "пајак",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/пајак.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/пајак.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //13
-                    Name = "коњ",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/коњ.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/коњ.png",
+                    Name = "пеперутка",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/пеперутка.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/пеперутка.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //14
-                    Name = "гулаб",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/гулаб.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/гулаб.png",
+                    Name = "бубамара",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/бубамара.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/бубамара.png",
                     Category = "Animals"
                 },
                 new DefaultCard
                 {
                     //15
-                    Name = "був",
-                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/був.m4a",
-                    Image = "http://mkpatka.duckdns.org:5000/images/був.png",
+                    Name = "мравка",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/мравка.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/мравка.png",
                     Category = "Animals"
                     
                 },
+                new DefaultCard
+                {
+                    //15
+                    Name = "вода",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/вода.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/вода.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "млеко",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/млеко.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/млеко.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "јогурт",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/јогурт.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/јогурт.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "чај",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/чај.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/чај.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "сок",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/сок.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/сок.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "газиран сок",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/газиран_сок.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/газиран_сок.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "топло чоколадо",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/топло_чоколадо.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/топло_чоколадо.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "салеп",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/салеп.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/салеп.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "лимонада",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/лимонада.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/лимонада.png",
+                    Category = "Drinks"
+                    
+                },
+                new DefaultCard
+                {
+                    //15
+                    Name = "милкшејк",
+                    AudioVoice = "http://mkpatka.duckdns.org:5000/audio/милкшејк.m4a",
+                    Image = "http://mkpatka.duckdns.org:5000/images/милкшејк.png",
+                    Category = "Drinks"
+                    
+                },
+                
                 // },
                 // new DefaultCard
                 // {
