@@ -22,8 +22,9 @@ namespace backend.services.impl
 
         public async Task AddAsync(CustomCard entity, string userId)
         {
-            await userService.AddCustomCardToListAsync(userId, entity.Id);
             await customCardRepository.AddAsync(entity);
+            await userService.AddCustomCardToListAsync(userId, entity.Id);
+            
         }
 
         public async Task UpdateAsync(CustomCard entity)
