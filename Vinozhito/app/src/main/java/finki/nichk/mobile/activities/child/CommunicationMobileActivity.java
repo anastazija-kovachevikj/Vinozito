@@ -112,7 +112,7 @@ public class CommunicationMobileActivity extends AppCompatActivity {
 
     private void updateCardLayoutByCategory(String category,ImageButton btn) {
 
-        cardService.fetchCardDataByUserIdAndCategory("68daa6ff-5048-4ea5-877a-ed5a91a9d11e", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory("1f2732fe-05c1-4d50-a74e-e5f065112374", category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {
