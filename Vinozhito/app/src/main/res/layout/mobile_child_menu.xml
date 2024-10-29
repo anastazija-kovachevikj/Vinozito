@@ -193,7 +193,7 @@
                 android:elevation="8dp"
                 android:padding="20dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/bubble"
+                android:src="@drawable/marine"
                 app:layout_constraintDimensionRatio="1:1" />
 
             <View

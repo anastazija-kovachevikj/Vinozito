@@ -103,7 +103,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         ImageButton clearButton = findViewById(R.id.clear_button);
         ImageButton readAll = findViewById(R.id.read_button);
 
-        // Set listeners
         setButtonTouchListener(backButton, this::navigateToChildActivity);
         setButtonTouchListener(clearButton, this::clearAllSlots);
         setButtonTouchListener(readAll, this::playAllCardSounds);
@@ -150,8 +149,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                                 .error(R.drawable.circle_curves)
                                 .into(imageButton);
 
-
-                        // Create layout parameters for the GridLayout
                         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                         params.width = 0;
                         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
@@ -159,7 +156,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                         params.columnSpec = GridLayout.spec(position % 3, 1f); // Correct column placement
                         params.rowSpec = GridLayout.spec(position / 3); // Correct row placement
                         params.setMargins(1, 5, 1, 1);
-
 
                         // Set the layout parameters and add the card view to the GridLayout
                         cardView.setLayoutParams(params);
@@ -173,7 +169,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
-                // Handle the error
                 Log.e("CardService", "Error fetching cards", e);
             }
         });
