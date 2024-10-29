@@ -126,14 +126,17 @@ public class BubbleActivity extends AppCompatActivity {
                 return; // no music selected aka "None" selected
         }
 
-        if (!isMuted) {
+        if (!isMuted && mediaPlayer != null) {
+            mediaPlayer.setLooping(true); // enable looping
             mediaPlayer.start();
         }
 
-        mediaPlayer.setOnCompletionListener(mp -> {
-            mp.release();
-            mediaPlayer = null;
-        });
+        if (mediaPlayer != null) {
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+                mediaPlayer = null;
+            });
+        }
     }
 
     private void toggleMute() {
