@@ -55,7 +55,7 @@ public class ChooseChildActivity extends AppCompatActivity {
         buttonTouchListener(relaxButton, () -> {
             Intent intent = new Intent(ChooseChildActivity.this, BubbleActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_up, R.anim.slide_out);
+//            overridePendingTransition(R.anim.slide_up, R.anim.slide_out);
 
         });
     }

@@ -27,7 +27,7 @@ public class MobileMainMenuActivity extends AppCompatActivity {
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.btnclick); // Replace R.raw.your_sound_file with your sound file
+        mediaPlayer = MediaPlayer.create(this, R.raw.btnclick);
 
         // PARENTS
         buttonTouchListener(parentButton, () -> {
@@ -86,5 +86,4 @@ public class MobileMainMenuActivity extends AppCompatActivity {
             mediaPlayer = null;
         }
     }
-
 }
