@@ -17,9 +17,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mobile_main_menu);
+        setContentView(R.layout.mobile_load);
 
-        new Handler().postDelayed((Runnable) () -> {
+        new Handler().postDelayed(() -> {
             Intent intent = new Intent(SplashActivity.this, MobileMainMenuActivity.class);
             startActivity(intent);
             finish();
