@@ -30,5 +30,7 @@
     <color name="blue_circle">#466A9E</color>
     <color name="com_bg">#B8C9E3</color>
     <color name="com_stroke">#A0AFC7</color>
+    <color name="spinner">#BD639E</color>
+    <color name="spinner2">#706383</color>
 
 </resources>

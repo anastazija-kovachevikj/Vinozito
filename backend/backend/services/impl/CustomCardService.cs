@@ -33,8 +33,11 @@ namespace backend.services.impl
         }
 
         public async Task DeleteAsync(string id)
-        {
+        {   
+            CustomCard card = await customCardRepository.GetByIdAsync(id);
             await customCardRepository.DeleteAsync(id);
+            await userService.RemoveCustomCardFromListAsync(card.UserId, id);
+            
         }
 
         public async Task<IEnumerable<CustomCard>> GetAllByUserId(string id)
