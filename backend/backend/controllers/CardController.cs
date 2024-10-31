@@ -11,14 +11,14 @@ namespace backend.controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCardsByUserId(string id)
         {
-            var cards = await cardService.GetCardsById(id);
+            var cards = await cardService.GetCardsByUserId(id);
             return Ok(cards);
         }
         
         [HttpGet("category/{id}")]
         public async Task<IActionResult> GetCardsByIdAndCategroyTask(string id,string category)
         {
-            var cards = await cardService.GetCardsByIdAndCategroyTask(id, category);
+            var cards = await cardService.GetCardsByUserIdAndCategroyTask(id, category);
             return Ok(cards);
         }
     }

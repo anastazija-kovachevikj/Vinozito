@@ -7,6 +7,7 @@ using backend.services;
 public class UserService(IUserRepository userRepository)
     : IUserService
 {
+
     public async Task<User> AuthenticateAsync(string username, string password)
     {
         var user = await userRepository.GetByUsernameAsync(username);
@@ -158,4 +159,17 @@ public class UserService(IUserRepository userRepository)
 
         await userRepository.UpdateAsync(user);
     }
+    
+    public async Task RemoveCustomCardFromListAsync(string userId, string customCardId)
+    {
+        var user = await userRepository.GetByIdAsync(userId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException("User not found");
+        }
+        user.CustomCardsIds?.Remove(customCardId);
+        
+        await userRepository.UpdateAsync(user);
+    }
+
 }

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky">
+
+    <!--    <finki.nichk.BackgroundView-->
+    <!--        android:id="@+id/background_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/back_button_login"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:contentDescription="@string/todo_text"
+            android:elevation="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:background="@drawable/text_background"-->
+    <!--        android:columnCount="1"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:rowCount="7"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHeight_percent="0.9"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintWidth_percent="0.7">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/text_background"
+        android:columnCount="1"
+        android:elevation="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="0dp"
+        android:rowCount="7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <ImageView
+            android:id="@+id/title_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/todo_text"
+            android:scaleType="fitCenter"
+            android:src="@drawable/title"
+            app:layout_constraintBottom_toTopOf="@+id/bounce_gif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.35" />
+
+        <pl.droidsonroids.gif.GifTextView
+            android:id="@+id/bounce_gif"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="1dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bounce"
+            android:contentDescription="@string/todo_text"
+
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintDimensionRatio="w,3:4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_image"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/half_circle"
+            app:layout_constraintTop_toBottomOf="@+id/bounce_gif">
+
+            <ImageButton
+                android:id="@+id/cancel_register"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_white"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/disable"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/username_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageButton>
+
+            <!-- Username Input Section -->
+            <GridLayout
+                android:id="@+id/username_input"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/login_info"
+                android:columnCount="2"
+                android:elevation="4dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/password_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.85">
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="3"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/user" />
+
+                <EditText
+                    android:id="@+id/UsernameField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="7"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:hint="Корисничко име"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="8dp"
+                    android:textSize="18sp" />
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/password_input"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/login_info"
+                android:columnCount="3"
+                android:elevation="4dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/login_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/username_input"
+                app:layout_constraintWidth_percent="0.85">
+
+                <!-- Password Icon -->
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="3"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/pass" />
+
+                <!-- Password EditText -->
+                <EditText
+                    android:id="@+id/passField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="7"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:hint="Лозинка"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="8dp"
+                    android:textSize="18sp" />
+
+                <ImageView
+
+                    android:id="@+id/PassVisibility"
+                    android:layout_width="38dp"
+
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/close_eye" />
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/password_input2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/login_info"
+                android:columnCount="3"
+                android:elevation="4dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/register_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_input"
+                app:layout_constraintWidth_percent="0.85">
+
+                <!-- Password Icon -->
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="3"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/pass" />
+
+                <!-- Password EditText -->
+                <EditText
+                    android:id="@+id/passFieldRepeat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="7"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:hint="Повтори лозинка"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="8dp"
+                    android:textSize="18sp" />
+
+                <ImageView
+
+                    android:id="@+id/PassVisibilityRepeat"
+                    android:layout_width="38dp"
+
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="2"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/close_eye" />
+
+            </GridLayout>
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_login"
+                android:elevation="4dp"
+                android:text="Регистрирај се"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/password_input"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintWidth_percent="0.55" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
