@@ -4,11 +4,12 @@ import android.content.Context;
 
 import finki.nichk.models.LoginRequest;
 import finki.nichk.models.LoginResponse;
+import finki.nichk.models.RegisterRequest;
+import finki.nichk.models.RegisterResponse;
 import finki.nichk.services.retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 import retrofit2.Retrofit;
 
 public class AuthRepository {
@@ -17,7 +18,7 @@ public class AuthRepository {
 
     public AuthRepository(Context context) {
         this.tokenManager = new TokenManager(context); // Initialize TokenManager
-        Retrofit retrofit = RetrofitClient.getClient("https://441e-95-180-215-146.ngrok-free.app", tokenManager); // Backend base URL with TokenManager
+        Retrofit retrofit = RetrofitClient.getClient("http://mkpatka.duckdns.org:8080", tokenManager); // Backend base URL with TokenManager
         authService = retrofit.create(AuthService.class);
     }
 
@@ -44,8 +45,39 @@ public class AuthRepository {
         });
     }
 
+    public void register(String username, String password, String email, final RegisterCallback callback) {
+        RegisterRequest registerRequest = new RegisterRequest(username, password, email);
+        Call<RegisterResponse> call = authService.register(registerRequest);
+
+        call.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (response.isSuccessful()) {
+                    String message = response.body().getMessage();
+                    String token = response.body().getToken(); // If a token is returned upon registration
+                    if (token != null) {
+                        tokenManager.saveToken(token);  // Save the JWT token if applicable
+                    }
+                    callback.onSuccess(message);
+                } else {
+                    callback.onFailure("Registration failed: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                callback.onFailure("Error: " + t.getMessage());
+            }
+        });
+    }
+
     public interface LoginCallback {
         void onSuccess(String token);
+        void onFailure(String error);
+    }
+
+    public interface RegisterCallback {
+        void onSuccess(String message);
         void onFailure(String error);
     }
 }

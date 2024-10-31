@@ -7,43 +7,50 @@ public class CardService(
     ICustomCardService customCardService,
     IDefaultCardService defaultCardService) : ICardService
 {
-    public async Task<IEnumerable<CardDto>> GetCardsById(string id)
+   public async Task<IEnumerable<CardDto>> GetCardsByUserId(string id)
+{
+    // Fetch custom and default cards, assigning empty lists if they are null
+    var customCards = await customCardService.GetAllByUserId(id);
+    var defaultCards = await defaultCardService.GetAllDefaultCardsAsync();
+    
+    // Filter out any null entries and any CustomCard with a null DefaultCardId
+    var customCardDict = customCards
+        .Where(cc => true)  // Check for non-null entries and valid DefaultCardId
+        .ToDictionary(cc => cc.DefaultCardId);
+
+    var cards = defaultCards.Select(dc =>
     {
-        var customCards = await customCardService.GetAllByUserId(id);
-        var defaultCards = await defaultCardService.GetAllDefaultCardsAsync();
-        
-        var customCardDict = customCards.ToDictionary(cc => cc.DefaultCardId);
-        
-        var cards = defaultCards.Select(dc =>
+        // If there's a matching custom card, use its properties; otherwise, fall back to default card properties
+        if (dc.Id != null && customCardDict.TryGetValue(dc.Id, out var customCard))
         {
-            if (customCardDict.TryGetValue(dc.Id, out var customCard))
-            {
-                return new CardDto(
-                    id: dc.Id,
-                    name: dc.Name,
-                    audioVoice: customCard.VoiceAudio,
-                    image: dc.Image,
-                    category: dc.Category,
-                    cardType: CardType.Custom
-                );
-            }
-        
             return new CardDto(
                 id: dc.Id,
-                name: dc.Name,
-                audioVoice: dc.AudioVoice,
+                name: customCard.Title ?? dc.Name,  // Use default name if custom title is null
+                audioVoice: customCard.VoiceAudio ?? dc.AudioVoice, // Use default audio if custom audio is null
                 image: dc.Image,
                 category: dc.Category,
-                cardType: CardType.Default
+                cardType: CardType.Custom
             );
-        }).ToList();
+        }
 
-        return cards;
-    }
+        // Create a CardDto using default card properties
+        return new CardDto(
+            id: dc.Id,
+            name: dc.Name,
+            audioVoice: dc.AudioVoice,
+            image: dc.Image,
+            category: dc.Category,
+            cardType: CardType.Default
+        );
+    }).ToList();
 
-    public async Task<IEnumerable<CardDto>> GetCardsByIdAndCategroyTask(string id, string category)
+    return cards;
+}
+
+
+    public async Task<IEnumerable<CardDto>> GetCardsByUserIdAndCategroyTask(string id, string category)
     {
-        var cards = await GetCardsById(id);
+        var cards = await GetCardsByUserId(id);
         var cardsCategory = new List<CardDto>();
         foreach (var card in cards)
         {
