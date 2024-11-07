@@ -11,18 +11,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.R;
 import finki.nichk.mobile.activities.child.ChooseChildActivity;
+import finki.nichk.mobile.activities.parent.ParentProfileActivity;
+import finki.nichk.services.authentication.TokenManager;
 import finki.nichk.tablet.screens.MainMenuActivity;
 import finki.nichk.tablet.screens.child.ChildMobileActivity;
 import finki.nichk.tablet.screens.parent.ParentActivity;
 
 public class MobileMainMenuActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+    TokenManager tokenManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile_main_menu);
+
+        tokenManager = new TokenManager(this);
 
         ImageButton parentButton = findViewById(R.id.parent_btn);
         ImageButton childButton = findViewById(R.id.child_btn);
@@ -32,8 +37,15 @@ public class MobileMainMenuActivity extends AppCompatActivity {
         // PARENTS
         buttonTouchListener(parentButton, () -> {
             playSound();
-            Intent intent = new Intent(MobileMainMenuActivity.this, ParentActivity.class);
-            startActivity(intent);
+            if(tokenManager.getToken()!=null)
+            {
+                Intent intent = new Intent(MobileMainMenuActivity.this, ParentProfileActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(MobileMainMenuActivity.this, ParentActivity.class);
+                startActivity(intent);
+            }
         });
 
         // CHILDREN

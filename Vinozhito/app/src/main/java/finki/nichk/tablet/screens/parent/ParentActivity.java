@@ -1,5 +1,6 @@
 package finki.nichk.tablet.screens.parent;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -13,7 +14,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.R;
+import finki.nichk.mobile.activities.MobileMainMenuActivity;
+import finki.nichk.mobile.activities.child.ChooseChildActivity;
+import finki.nichk.mobile.activities.parent.ParentProfileActivity;
 import finki.nichk.services.authentication.AuthRepository;
+import finki.nichk.services.authentication.TokenManager;
 
 public class ParentActivity extends AppCompatActivity {
 
@@ -54,21 +59,19 @@ public class ParentActivity extends AppCompatActivity {
     }
 
     private void setRegisterLayout() {
-        setContentView(R.layout.mobile_register); // Switch to the registration layout
+        setContentView(R.layout.mobile_register);
         isLoginLayout = false;
 
-        usernameEditText = findViewById(R.id.UsernameField); // Ensure these IDs exist in mobile_register.xml
+        usernameEditText = findViewById(R.id.UsernameField);
         passwordEditText = findViewById(R.id.passField);
-        emailEditText = findViewById(R.id.passFieldRepeat); // New EditText for email input
+        emailEditText = findViewById(R.id.passFieldRepeat);
+        Button registerButton = findViewById(R.id.register_button);
+        ImageButton loginSwitchButton = findViewById(R.id.cancel_register);
 
-        Button registerButton = findViewById(R.id.register_button); // Register button in registration layout
-        ImageButton loginSwitchButton = findViewById(R.id.cancel_register); // Button to go back to login
-
-        registerButton.setOnClickListener(v -> register()); // Set register button click listener
+        registerButton.setOnClickListener(v -> register());
         loginSwitchButton.setOnClickListener(v -> setLoginLayout());
     }
 
-    // Method to log in the user
     private void login() {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
@@ -76,8 +79,16 @@ public class ParentActivity extends AppCompatActivity {
         authRepository.login(username, password, new AuthRepository.LoginCallback() {
             @Override
             public void onSuccess(String token) {
+                // Initialize TokenManager and save token and user details
+                TokenManager tokenManager = new TokenManager(ParentActivity.this);
+                tokenManager.saveToken(token);
+                tokenManager.saveUserDetails(username, "user_email@example.com"); // Replace with actual email if available
+
+                // Set user as authenticated and proceed to the profile activity
                 setAuthenticated(true);
                 Toast.makeText(ParentActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -87,7 +98,8 @@ public class ParentActivity extends AppCompatActivity {
         });
     }
 
-    // Method to register the user
+
+
     private void register() {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
@@ -97,7 +109,7 @@ public class ParentActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String message) {
                 Toast.makeText(ParentActivity.this, message, Toast.LENGTH_SHORT).show();
-                setLoginLayout(); // Optionally switch back to login layout after successful registration
+                setLoginLayout();
             }
 
             @Override
