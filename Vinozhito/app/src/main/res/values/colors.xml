@@ -15,7 +15,7 @@
     <color name="redish">#C66363</color>
     <color name="lightred">#FBECF0</color>
     <color name="lightpink">#ffd1dc</color>
-    <color name="btncolor">#686a84</color>
+    <color name="btncolor">#6B88C8</color>
     <color name="yellow">#FFFACD</color>
     <color name="login_blue">#dbe2f2</color>
     <color name="login_blue2">#708ec6</color>
@@ -32,5 +32,6 @@
     <color name="com_stroke">#A0AFC7</color>
     <color name="spinner">#BD639E</color>
     <color name="spinner2">#706383</color>
+    <color name="reg_blue">#6B88C8</color>
 
 </resources>

@@ -51,6 +51,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/text_background"
         android:columnCount="1"
         android:elevation="10dp"
@@ -73,10 +74,10 @@
             android:src="@drawable/title"
             app:layout_constraintBottom_toTopOf="@+id/bounce_gif"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHeight_percent="0.10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.35" />
+            app:layout_constraintWidth_percent="0.75" />
 
         <pl.droidsonroids.gif.GifTextView
             android:id="@+id/bounce_gif"
@@ -99,7 +100,7 @@
             android:id="@+id/username_input"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/login_info"
             android:columnCount="2"
@@ -107,7 +108,7 @@
             android:padding="4dp"
             app:layout_constraintBottom_toTopOf="@+id/password_input"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bounce_gif"
             app:layout_constraintWidth_percent="0.85">
@@ -130,7 +131,7 @@
                 android:hint="Корисничко име"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="8dp"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </GridLayout>
 
         <GridLayout
@@ -145,7 +146,7 @@
             android:padding="4dp"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/username_input"
             app:layout_constraintWidth_percent="0.85">
@@ -170,7 +171,7 @@
                 android:hint="Лозинка"
                 android:inputType="textPassword"
                 android:paddingHorizontal="8dp"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <ImageView
 
@@ -196,10 +197,10 @@
             android:elevation="4dp"
             android:text="Најави се"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintHeight_percent="0.06"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_input"
             app:layout_constraintVertical_bias="0.5"

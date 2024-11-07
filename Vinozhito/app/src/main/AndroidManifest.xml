@@ -62,6 +62,11 @@
             android:label="@string/title_activity_main_menu"
             android:theme="@style/Theme.Vinozhito" />
         <activity
+            android:name=".mobile.activities.parent.ParentProfileActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/Theme.Vinozhito" />
+        <activity
             android:name=".tablet.screens.parent.ParentActivity"
             android:exported="false"
 
