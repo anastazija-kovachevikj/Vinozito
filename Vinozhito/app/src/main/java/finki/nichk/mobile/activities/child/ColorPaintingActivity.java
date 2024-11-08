@@ -1,6 +1,7 @@
 package finki.nichk.mobile.activities.child;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -30,34 +31,35 @@ public class ColorPaintingActivity extends AppCompatActivity {
     private GifTextView loadingFlower;
     private ImageButton currentOpenCrayon = null;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile_coloring);
 
-
         coloringImageView = findViewById(R.id.coloring_image);
-        ImageButton backButton = findViewById(R.id.back_button);
         loadingFlower = findViewById(R.id.loading_flower);
+        ImageButton backButton = findViewById(R.id.back_button);
 
-        // rotating flower GIF
         loadingFlower.setVisibility(View.VISIBLE);
 
-        int drawableId = getIntent().getIntExtra("image_resource", -1);
+        byte[] byteArray = getIntent().getByteArrayExtra("image_png"); // byte array passed via Intent
 
-        if (drawableId != -1) {
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inMutable = true;
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableId, options);
+        if (byteArray != null) {
 
-            // Process image on a background thread
+            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length); // byte array into a Bitmap
+
             new Thread(() -> {
-                preprocessedBitmap = preprocessImage(bitmap);
+                preprocessedBitmap = bitmap; // set the preprocessed bitmap -> to be fixed - redundant
                 runOnUiThread(() -> {
+                    // mutable bitmap to draw on
                     coloredBitmap = Bitmap.createBitmap(preprocessedBitmap.getWidth(), preprocessedBitmap.getHeight(), Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(coloredBitmap);
                     canvas.drawBitmap(preprocessedBitmap, 0, 0, null);
+
                     coloringImageView.setImageBitmap(coloredBitmap);
+
+                    // hide flower gif
                     loadingFlower.setVisibility(View.GONE);
                 });
             }).start();
@@ -73,7 +75,6 @@ public class ColorPaintingActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> finish());
     }
 
-
     private void setupColorButtons() {
         ImageButton redButton = findViewById(R.id.color_red);
         ImageButton orangeButton = findViewById(R.id.color_orange);
@@ -81,50 +82,52 @@ public class ColorPaintingActivity extends AppCompatActivity {
         ImageButton greenButton = findViewById(R.id.color_green);
         ImageButton purpleButton = findViewById(R.id.color_purple);
         ImageButton lightblueButton = findViewById(R.id.color_lightblue);
-        ImageButton darktblueButton = findViewById(R.id.color_darkblue);
+        ImageButton darkblueButton = findViewById(R.id.color_darkblue);
         ImageButton pinkButton = findViewById(R.id.color_pink);
+        ImageButton whiteButton = findViewById(R.id.color_white);
+        ImageButton blackButton = findViewById(R.id.color_blackish);
+        ImageButton brownButton = findViewById(R.id.color_brown);
         View selectedColorView = findViewById(R.id.crayons);
 
         redButton.setOnClickListener(v -> handleColorButtonClick(redButton, Color.RED, selectedColorView, 0.3f));
         orangeButton.setOnClickListener(v -> handleColorButtonClick(orangeButton, Color.parseColor("#FFA500"), selectedColorView, 0.4f));
         yellowButton.setOnClickListener(v -> handleColorButtonClick(yellowButton, Color.YELLOW, selectedColorView, 0.5f));
         greenButton.setOnClickListener(v -> handleColorButtonClick(greenButton, Color.GREEN, selectedColorView, 0.6f));
-        purpleButton.setOnClickListener(v -> handleColorButtonClick(purpleButton, Color.parseColor("#800080"), selectedColorView, 0.7f));
+        purpleButton.setOnClickListener(v -> handleColorButtonClick(purpleButton, Color.parseColor("#800080"), selectedColorView, 0.5f));
         lightblueButton.setOnClickListener(v -> handleColorButtonClick(lightblueButton, Color.parseColor("#ADD8E6"), selectedColorView, 0.4f));
-        darktblueButton.setOnClickListener(v -> handleColorButtonClick(darktblueButton, Color.BLUE, selectedColorView, 0.5f));
-        pinkButton.setOnClickListener(v -> handleColorButtonClick(pinkButton, Color.parseColor("#FFC0CB"), selectedColorView, 0.6f));
+        darkblueButton.setOnClickListener(v -> handleColorButtonClick(darkblueButton, Color.BLUE, selectedColorView, 0.5f));
+        pinkButton.setOnClickListener(v -> handleColorButtonClick(pinkButton, Color.parseColor("#FFC0CB"), selectedColorView, 0.0f));
+        whiteButton.setOnClickListener(v -> handleColorButtonClick(whiteButton, Color.WHITE, selectedColorView, 0.0f));
+        blackButton.setOnClickListener(v -> handleColorButtonClick(blackButton, Color.BLACK, selectedColorView, 0.5f));
+        brownButton.setOnClickListener(v -> handleColorButtonClick(brownButton, Color.parseColor("#836343"), selectedColorView, 0.1f));
     }
 
     private void handleColorButtonClick(ImageButton clickedButton, int color, View selectedColorView, float blendRatio) {
-        float slideDistance = -50f; // Negative to slide up
+        float slideDistance = -50f; // to slide up
 
         if (currentOpenCrayon != null && currentOpenCrayon != clickedButton) {
-            // Slide back the previous crayon to its original position
+            // slide back the previous crayon to its original position
             ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(currentOpenCrayon, "translationY", currentOpenCrayon.getTranslationY(), 0f);
             slideBackAnimator.setDuration(300);
             slideBackAnimator.start();
         }
 
         if (currentOpenCrayon == clickedButton) {
-            // If the clicked crayon is already the current open crayon, slide it back to its original position
+            // if the clicked crayon is already the current open crayon, slide it back to its original position
             ObjectAnimator slideBackAnimator = ObjectAnimator.ofFloat(clickedButton, "translationY", clickedButton.getTranslationY(), 0f);
             slideBackAnimator.setDuration(300);
             slideBackAnimator.start();
             currentOpenCrayon = null; // No crayon is currently open
         } else {
-            // Slide the clicked crayon up
+            // slide clicked crayon up
             ObjectAnimator slideOutAnimator = ObjectAnimator.ofFloat(clickedButton, "translationY", clickedButton.getTranslationY(), slideDistance);
             slideOutAnimator.setDuration(300);
             slideOutAnimator.start();
 
             currentOpenCrayon = clickedButton;
         }
-
         currentColor = ColorUtils.blendARGB(color, Color.WHITE, blendRatio);
-//    selectedColorView.setBackgroundColor(currentColor);
     }
-
-
 
     private void resetImage() {
         if (preprocessedBitmap != null) {
@@ -201,70 +204,6 @@ public class ColorPaintingActivity extends AppCompatActivity {
             }
         }
     }
-
-
-    private Bitmap preprocessImage(Bitmap bitmap) {
-        Bitmap processedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-
-        //Canvas canvas = new Canvas(processedBitmap);
-        int threshold = 50; // Threshold for detecting black pixels
-        int lightGray = Color.rgb(254, 254, 254);
-
-        for (int x = 0; x < bitmap.getWidth(); x++) {
-            for (int y = 0; y < bitmap.getHeight(); y++) {
-                int pixel = bitmap.getPixel(x, y);
-                int red = Color.red(pixel);
-                int green = Color.green(pixel);
-                int blue = Color.blue(pixel);
-
-                if (red < threshold && green < threshold && blue < threshold) {
-                    // mark the outline as black
-                    processedBitmap.setPixel(x, y, Color.BLACK);
-                } else {
-                    processedBitmap.setPixel(x, y, Color.WHITE);
-                }
-            }
-        }
-
-        for (int x = 0; x < processedBitmap.getWidth(); x++) {
-            floodFillOutside(processedBitmap, x, 0, Color.WHITE, lightGray); // Top edge
-            floodFillOutside(processedBitmap, x, processedBitmap.getHeight() - 1, Color.WHITE, lightGray); // Bottom edge
-        }
-
-        for (int y = 0; y < processedBitmap.getHeight(); y++) {
-            floodFillOutside(processedBitmap, 0, y, Color.WHITE, lightGray); // Left edge
-            floodFillOutside(processedBitmap, processedBitmap.getWidth() - 1, y, Color.WHITE, lightGray); // Right edge
-        }
-
-        return processedBitmap;
-    }
-
-    private void floodFillOutside(Bitmap bitmap, int x, int y, int targetColor, int replaceColor) {
-        if (x < 0 || x >= bitmap.getWidth() || y < 0 || y >= bitmap.getHeight()) return;
-        if (bitmap.getPixel(x, y) != targetColor) return;
-
-        Queue<ColorPaintingActivity.Point> queue = new LinkedList<>();
-        queue.add(new ColorPaintingActivity.Point(x, y));
-
-        while (!queue.isEmpty()) {
-            ColorPaintingActivity.Point point = queue.poll();
-            int px = point.x;
-            int py = point.y;
-
-            if (px < 0 || py < 0 || px >= bitmap.getWidth() || py >= bitmap.getHeight()) continue;
-
-            int currentColor = bitmap.getPixel(px, py);
-            if (currentColor == targetColor) {
-                bitmap.setPixel(px, py, replaceColor);
-
-                queue.add(new ColorPaintingActivity.Point(px + 1, py));
-                queue.add(new ColorPaintingActivity.Point(px - 1, py));
-                queue.add(new ColorPaintingActivity.Point(px, py + 1));
-                queue.add(new ColorPaintingActivity.Point(px, py - 1));
-            }
-        }
-    }
-
 
     private static class Point {
         int x, y;

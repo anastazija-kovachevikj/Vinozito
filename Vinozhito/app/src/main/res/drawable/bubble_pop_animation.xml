@@ -8,6 +8,5 @@
     <item android:drawable="@drawable/bubble_pop_frame_05" android:duration="120" />
     <item android:drawable="@drawable/bubble_pop_frame_06" android:duration="120" />
     <item android:drawable="@drawable/bubble_pop_frame_07" android:duration="120" />
-
-    <!-- Add more frames if needed -->
+    <item android:drawable="@drawable/empty" android:duration="120" />
 </animation-list>

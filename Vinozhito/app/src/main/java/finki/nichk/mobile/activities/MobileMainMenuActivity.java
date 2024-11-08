@@ -21,7 +21,6 @@ public class MobileMainMenuActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     TokenManager tokenManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +53,17 @@ public class MobileMainMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MobileMainMenuActivity.this, ChooseChildActivity.class);
             startActivity(intent);
         });
+
+//        int[] imageResources = {
+//                R.drawable.worm,
+//                R.drawable.rocket,
+//                R.drawable.candy,
+//                R.drawable.flower
+//        };
+//
+//        ImageProcessor imageProcessor = new ImageProcessor(getApplicationContext());
+//        imageProcessor.preprocessAndSaveImages(imageResources);
+
     }
 
     @SuppressLint("ClickableViewAccessibility")

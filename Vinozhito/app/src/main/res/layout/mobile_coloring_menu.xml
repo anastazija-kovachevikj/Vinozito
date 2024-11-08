@@ -61,7 +61,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ladybug" />
+                    android:src="@drawable/worm" />
             </FrameLayout>
 
             <FrameLayout
@@ -84,7 +84,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/horse" />
+                    android:src="@drawable/ladybug" />
             </FrameLayout>
 
             <FrameLayout
@@ -108,7 +108,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/cake" />
+                    android:src="@drawable/rainbow" />
             </FrameLayout>
 
             <FrameLayout
@@ -132,7 +132,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/butterfly" />
+                    android:src="@drawable/rocket" />
             </FrameLayout>
 
 
@@ -157,7 +157,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/rainbow" />
+                    android:src="@drawable/cake" />
             </FrameLayout>
 
             <FrameLayout
@@ -181,7 +181,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/cow" />
+                    android:src="@drawable/candy" />
             </FrameLayout>
 
             <FrameLayout
@@ -196,7 +196,7 @@
                 android:background="@drawable/shadowcard">
 
                 <ImageButton
-                    android:id="@+id/imageButton_rainbow2"
+                    android:id="@+id/imageButton_umbrella"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -205,7 +205,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/rainbow" />
+                    android:src="@drawable/flower" />
             </FrameLayout>
 
             <FrameLayout
@@ -220,7 +220,7 @@
                 android:background="@drawable/shadowcard">
 
                 <ImageButton
-                    android:id="@+id/imageButton_cow2"
+                    android:id="@+id/imageButton_hat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
@@ -229,7 +229,7 @@
                     android:contentDescription="@string/todo_text"
                     android:paddingVertical="20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/cow" />
+                    android:src="@drawable/butterfly" />
             </FrameLayout>
 
 
