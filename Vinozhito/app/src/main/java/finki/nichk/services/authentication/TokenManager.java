@@ -23,6 +23,23 @@ public class TokenManager {
 
     public void clearToken() {
         editor.remove("jwt_token");
+        editor.remove("username"); // Clear user details as well
+        editor.remove("email");
         editor.apply();
+    }
+
+    // New methods for saving and retrieving user details
+    public void saveUserDetails(String username, String email) {
+        editor.putString("username", username);
+        editor.putString("email", email);
+        editor.apply();
+    }
+
+    public String getUsername() {
+        return prefs.getString("username", null);
+    }
+
+    public String getEmail() {
+        return prefs.getString("email", null);
     }
 }
