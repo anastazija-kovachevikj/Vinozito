@@ -63,7 +63,7 @@ public class ConnectingActivity extends AppCompatActivity {
         dishImages = new ArrayList<>();
         dishImages.add(R.drawable.fruit_lemon);
         dishImages.add(R.drawable.fruit_pear);
-        dishImages.add(R.drawable.watermelon);
+//        dishImages.add(R.drawable.watermelon);
         dishImages.add(R.drawable.sb);
         dishImages.add(R.drawable.orange);
         dishImages.add(R.drawable.grape);
@@ -149,7 +149,7 @@ public class ConnectingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                react.setImageResource(R.drawable.hearts);  // reset to default heart image
+                react.setImageResource(R.drawable.hearts); // reset to default heart image
                 react.setVisibility(View.INVISIBLE); // hide again after the animation
             }
 
@@ -175,7 +175,6 @@ public class ConnectingActivity extends AppCompatActivity {
         for (int i = 0; i < stars.length; i++) {
             ImageView star = stars[i];
 
-            // Use a Handler with the main Looper to delay the start of each star's animation
             int finalI = i;
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 star.setVisibility(View.VISIBLE);

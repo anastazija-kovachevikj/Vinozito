@@ -4,12 +4,12 @@
     android:id="@+id/child_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky">
+    android:background="@drawable/sky4">
 
-    <finki.nichk.BackgroundView
-        android:id="@+id/background_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--    <finki.nichk.BackgroundView-->
+    <!--        android:id="@+id/background_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
     <ImageButton
         android:id="@+id/back_button"
@@ -42,9 +42,10 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
+
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/shadowcard"
+            android:background="@drawable/shadowcard2"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +81,7 @@
                         android:scaleType="fitCenter"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHeight_percent="0.78"
+                        app:layout_constraintHeight_percent="0.69"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth="match_parent" />
@@ -99,17 +100,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <!--            <FrameLayout-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="300dp">-->
-
-            <!--            &lt;!&ndash; Background Image &ndash;&gt;-->
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:background="@drawable/plank" />-->
-
-
             <LinearLayout
                 android:id="@+id/crayons"
                 android:layout_width="wrap_content"
@@ -122,6 +112,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <ImageButton
+                    android:id="@+id/color_white"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="White"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_white" />
 
 
                 <ImageButton
@@ -204,105 +205,27 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/crayon_pink" />
 
+                <ImageButton
+                    android:id="@+id/color_brown"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Brown"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_brown" />
+
+                <ImageButton
+                    android:id="@+id/color_blackish"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Blackish"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crayon_blackish" />
 
             </LinearLayout>
-            <!--            </FrameLayout>-->
-
         </HorizontalScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/crayons"-->
-    <!--        android:layout_width="300dp"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_marginStart="60dp"-->
-    <!--        android:gravity="center"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:paddingStart="110dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/linearLayout2">-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_red"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Red"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_red" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_orange"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Red"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_orange" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_yellow"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Red"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_yellow" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_green"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Green"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_green" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_lightblue"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Blue"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_lightblue" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_darkblue"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Blue"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_darkblue" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_purple"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Blue"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_purple" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/color_pink"-->
-    <!--            android:layout_width="150dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginBottom="15dp"-->
-    <!--            android:background="@android:color/transparent"-->
-    <!--            android:contentDescription="Blue"-->
-    <!--            android:scaleType="centerCrop"-->
-    <!--            android:src="@drawable/crayon_pink" />-->
-    <!--    </LinearLayout>-->
-
-
 </RelativeLayout>

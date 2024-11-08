@@ -205,7 +205,13 @@ public class ConnectActivity extends AppCompatActivity {
             int finalI = i;
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 star.setVisibility(View.VISIBLE);
-                star.setTranslationX(new Random().nextInt(getResources().getDisplayMetrics().widthPixels));
+
+                // Get screen width
+                int screenWidth = getResources().getDisplayMetrics().widthPixels;
+
+                // Set the X translation to a random value between 0 and screen width
+                float randomXTranslation = new Random().nextFloat() * screenWidth - 200; // Random float between 0 and width
+                star.setTranslationX(randomXTranslation);
 
                 Animation fallingStarsAnimation = AnimationUtils.loadAnimation(this, R.anim.star_fall);
                 fallingStarsAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -234,6 +240,7 @@ public class ConnectActivity extends AppCompatActivity {
 
             }, delay * i); // increase delay for each star
         }
+
     }
 
 
@@ -265,8 +272,6 @@ public class ConnectActivity extends AppCompatActivity {
         setPlateDragListener(secondPlate, branchImages.get(1));
         setPlateDragListener(thirdPlate, branchImages.get(2));
         setPlateDragListener(forthPlate, branchImages.get(3));
-
-        //resultTextView.setText("");
     }
 
     private void resetPlates() {

@@ -201,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_states_green"
+                android:background="@drawable/circle_states_cyan"
                 android:elevation="2dp" />
 
         </FrameLayout>
@@ -238,7 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_states_cyan"
+                android:background="@drawable/circle_states_green"
                 android:elevation="2dp" />
 
         </FrameLayout>

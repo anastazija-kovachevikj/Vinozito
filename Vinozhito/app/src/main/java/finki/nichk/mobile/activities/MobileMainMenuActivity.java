@@ -11,13 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import finki.nichk.R;
 import finki.nichk.mobile.activities.child.ChooseChildActivity;
-import finki.nichk.tablet.screens.MainMenuActivity;
-import finki.nichk.tablet.screens.child.ChildMobileActivity;
 import finki.nichk.tablet.screens.parent.ParentActivity;
 
 public class MobileMainMenuActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +39,17 @@ public class MobileMainMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MobileMainMenuActivity.this, ChooseChildActivity.class);
             startActivity(intent);
         });
+
+//        int[] imageResources = {
+//                R.drawable.worm,
+//                R.drawable.rocket,
+//                R.drawable.candy,
+//                R.drawable.flower
+//        };
+//
+//        ImageProcessor imageProcessor = new ImageProcessor(getApplicationContext());
+//        imageProcessor.preprocessAndSaveImages(imageResources);
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
