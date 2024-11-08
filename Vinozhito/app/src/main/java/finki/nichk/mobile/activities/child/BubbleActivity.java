@@ -34,11 +34,11 @@ public class BubbleActivity extends AppCompatActivity {
 
     private MediaPlayer popSoundPlayer;
     private Vibrator vibrator;
-    private final String[] musicOptions = {"Без музика", "Музика 1", "Музика 2", "Музика 3"};
+    private final String[] musicOptions = {"Без музика", "Весело", "Мирно", "Шум"};
     private ImageButton muteButton;
     private ImageButton vibeButton;
     private boolean isMuted = false;
-    private boolean isVibrating = false;
+    private boolean isVibrating = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,14 +111,14 @@ public class BubbleActivity extends AppCompatActivity {
         }
 
         switch (music) {
-            case "Музика 1":
-                musicPlayer = MediaPlayer.create(this, R.raw.music1);
+            case "Весело":
+                musicPlayer = MediaPlayer.create(this, R.raw.veselo);
                 break;
-            case "Музика 2":
-                musicPlayer = MediaPlayer.create(this, R.raw.music2);
+            case "Мирно":
+                musicPlayer = MediaPlayer.create(this, R.raw.calm);
                 break;
-            case "Музика 3":
-                musicPlayer = MediaPlayer.create(this, R.raw.music3);
+            case "Шум":
+                musicPlayer = MediaPlayer.create(this, R.raw.whitenoise);
                 break;
             default:
                 return;
@@ -137,27 +137,27 @@ public class BubbleActivity extends AppCompatActivity {
         }
     }
 
-    private void toggleMute() {
-        isMuted = !isMuted;
-        if (isMuted) {
-            muteButton.setImageResource(R.drawable.mute);
-            if (musicPlayer != null) {
-                musicPlayer.pause();
-            }
-        } else {
-            muteButton.setImageResource(R.drawable.unmute);
-            if (musicPlayer != null) {
-                musicPlayer.start();
-            }
-        }
-    }
+//    private void toggleMute() {
+//        isMuted = !isMuted;
+//        if (isMuted) {
+//            muteButton.setImageResource(R.drawable.mute);
+//            if (musicPlayer != null) {
+//                musicPlayer.pause();
+//            }
+//        } else {
+//            muteButton.setImageResource(R.drawable.unmute);
+//            if (musicPlayer != null) {
+//                musicPlayer.start();
+//            }
+//        }
+//    }
 
     private void toggleVibe() {
         isVibrating = !isVibrating;
         if (isVibrating) {
-            vibeButton.setImageResource(vibe_off);
-        } else {
             vibeButton.setImageResource(vibe_on);
+        } else {
+            vibeButton.setImageResource(vibe_off);
         }
     }
 

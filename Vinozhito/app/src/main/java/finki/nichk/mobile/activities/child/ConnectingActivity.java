@@ -29,9 +29,9 @@ import finki.nichk.mobile.activities.child.ChooseChildActivity;
 
 public class ConnectingActivity extends AppCompatActivity {
     private ImageView targetImage;
+    private ImageView bee;
     private List<Integer> dishImages;
     private int targetImageRes;
-    private TextView resultTextView;
     private ImageView firstBranch, secondBranch, thirdBranch, forthBranch;
     private ImageView beeReaction;
     private int currentRound = 1; // current round
@@ -44,6 +44,8 @@ public class ConnectingActivity extends AppCompatActivity {
 
         targetImage = findViewById(R.id.targetImage);
         beeReaction = findViewById(R.id.bee_reaction);
+        bee = findViewById(R.id.imageViewBee);
+
         //resultTextView = findViewById(R.id.resultTextView);
         ImageButton backButton = findViewById(R.id.back_button);
 
@@ -61,7 +63,7 @@ public class ConnectingActivity extends AppCompatActivity {
         dishImages = new ArrayList<>();
         dishImages.add(R.drawable.fruit_lemon);
         dishImages.add(R.drawable.fruit_pear);
-        dishImages.add(R.drawable.watermelon);
+//        dishImages.add(R.drawable.watermelon);
         dishImages.add(R.drawable.sb);
         dishImages.add(R.drawable.orange);
         dishImages.add(R.drawable.grape);
@@ -70,19 +72,13 @@ public class ConnectingActivity extends AppCompatActivity {
         dishImages.add(R.drawable.pineapple);
         dishImages.add(R.drawable.cherry);
 
-        // DEBUG
-//        firstBranch.setImageResource(dishImages.get(0));
-//        secondBranch.setImageResource(R.drawable.fruit_lemon);
-//        thirdBranch.setImageResource(dishImages.get(2));
-//        forthBranch.setImageResource(dishImages.get(3));
-//        forthBranch.setVisibility(View.VISIBLE);
-
         // listener for the target image
-        targetImage.setOnDragListener(new ConnectingActivity.TargetDragListener());
+        //targetImage.setOnDragListener(new ConnectingActivity.TargetDragListener());
+        bee.setOnDragListener(new TargetDragListener());
 
         startNewRound(); // first round
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectingActivity.this, R.raw.instructions);
+        MediaPlayer mediaPlayer = MediaPlayer.create(ConnectingActivity.this, R.raw.instructions2);
         if (mediaPlayer != null) {
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
@@ -95,13 +91,11 @@ public class ConnectingActivity extends AppCompatActivity {
 
         button.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    // transparent when pressed
+                case MotionEvent.ACTION_DOWN: // transparent when pressed
                     v.setAlpha(0.5f);
                     break;
                 case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    // back to normal released or canceled
+                case MotionEvent.ACTION_CANCEL: // back to normal released or canceled
                     v.setAlpha(1.0f);
                     break;
             }
@@ -138,19 +132,16 @@ public class ConnectingActivity extends AppCompatActivity {
 
         if (isCorrect) {
             react.setImageResource(R.drawable.hearts);
-            //playCorrectAnswerSound(); // Play correct sound
 
         } else {
             react.setImageResource(R.drawable.wrong);
-            //playTryAgainSound(); // Play "try again" sound
         }
 
         react.setVisibility(View.VISIBLE);
 
-        Animation reactAnimation = AnimationUtils.loadAnimation(this, R.anim.float_away); // Reuse the same animation
+        Animation reactAnimation = AnimationUtils.loadAnimation(this, R.anim.float_away); // reuse the same animation
         react.startAnimation(reactAnimation);
 
-        // Optionally, reset the heart image after the animation finishes (if needed for future rounds)
         reactAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -158,9 +149,8 @@ public class ConnectingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                // Reset the heart image back to the default after the animation ends
-                react.setImageResource(R.drawable.hearts);  // Default heart image
-                react.setVisibility(View.INVISIBLE); // Optionally hide it again after the animation
+                react.setImageResource(R.drawable.hearts); // reset to default heart image
+                react.setVisibility(View.INVISIBLE); // hide again after the animation
             }
 
             @Override
@@ -168,27 +158,6 @@ public class ConnectingActivity extends AppCompatActivity {
             }
         });
         react.startAnimation(reactAnimation);
-    }
-
-    private void animateHeart(ImageView heart) {
-        Animation floatAwayAnimation = AnimationUtils.loadAnimation(this, R.anim.float_away);
-        floatAwayAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                heart.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                heart.setVisibility(View.GONE); // hide the heart after the animation ends
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-        });
-
-        heart.startAnimation(floatAwayAnimation);
     }
 
     private void animateStars() {
@@ -206,7 +175,6 @@ public class ConnectingActivity extends AppCompatActivity {
         for (int i = 0; i < stars.length; i++) {
             ImageView star = stars[i];
 
-            // Use a Handler with the main Looper to delay the start of each star's animation
             int finalI = i;
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 star.setVisibility(View.VISIBLE);
@@ -241,7 +209,6 @@ public class ConnectingActivity extends AppCompatActivity {
         }
     }
 
-
     private void startNewRound() {
         Collections.shuffle(dishImages, new Random());  // shuffle
 
@@ -270,8 +237,6 @@ public class ConnectingActivity extends AppCompatActivity {
         setBranchDragListener(secondBranch, dishImages.get(1));
         setBranchDragListener(thirdBranch, dishImages.get(2));
         setBranchDragListener(forthBranch, dishImages.get(3));
-
-        //resultTextView.setText("");
     }
 
     private void resetBranchs() {
@@ -319,9 +284,7 @@ public class ConnectingActivity extends AppCompatActivity {
         }
     }
 
-
     private class TargetDragListener implements View.OnDragListener {
-
         @Override
         public boolean onDrag(View v, DragEvent event) {
             final int action = event.getAction();
@@ -330,27 +293,22 @@ public class ConnectingActivity extends AppCompatActivity {
                 case DragEvent.ACTION_DRAG_STARTED:
                     return true;
 
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    return true;
-
                 case DragEvent.ACTION_DROP:
                     ClipData.Item item = event.getClipData().getItemAt(0);
                     int draggedImageRes = Integer.parseInt(item.getText().toString());
 
-                    if (draggedImageRes == targetImageRes) {
-                        //resultTextView.setText("Correct!");
+                    if (draggedImageRes == targetImageRes) { // check if the dragged fruit matches the target image
+                        // Trigger correct animation and sounds
                         animateReaction(true);
                         playSoundForTarget(targetImageRes);
                         currentRound++;
 
-                        if (currentRound > totalRounds) {
+                        if (currentRound > totalRounds) { // Start a new round or show the stars animation
                             animateStars();
                         } else {
                             startNewRound();
                         }
-
-                    } else {
-                        // sound
+                    } else { // incorrect answer
                         MediaPlayer mediaPlayer = MediaPlayer.create(ConnectingActivity.this, R.raw.try_again);
                         if (mediaPlayer != null) {
                             mediaPlayer.start();
@@ -359,9 +317,9 @@ public class ConnectingActivity extends AppCompatActivity {
 
                         animateReaction(false);
 
-                        //resultTextView.setText("Incorrect!");
+                        // Disable the dragged fruit image for further dragging
                         View draggedView = (View) event.getLocalState();
-                        draggedView.setEnabled(false); // disable Branch
+                        draggedView.setEnabled(false);
                         draggedView.setAlpha(0.5f);
                     }
                     return true;

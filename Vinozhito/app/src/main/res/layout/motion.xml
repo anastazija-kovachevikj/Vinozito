@@ -11,7 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/underwater"
-        android:contentDescription="@string/todo_text" />
+        android:contentDescription="@string/todo_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout4"
@@ -27,8 +31,6 @@
             android:id="@+id/back_button_bubbles"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.53"
-            app:layout_constraintWidth_percent="0.15"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="2dp"
             android:background="@null"
@@ -36,8 +38,10 @@
             android:scaleType="centerInside"
             android:src="@drawable/undo"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.53"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.15" />
 
         <Spinner
             android:id="@+id/music_spinner"
@@ -45,115 +49,105 @@
             android:layout_height="45dp"
             android:layout_marginEnd="0dp"
             android:background="@drawable/spinner_bckg"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/vibe_button"
             app:layout_constraintStart_toEndOf="@+id/back_button_bubbles"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.45" />
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/mute_button"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="@null"-->
-<!--            android:scaleType="centerInside"-->
-<!--            android:src="@drawable/unmute"-->
-<!--            app:layout_constraintHeight_percent="0.6"-->
-<!--            app:layout_constraintWidth_percent="0.15"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/vibe_button"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/mute_button"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:background="@null"-->
+        <!--            android:scaleType="centerInside"-->
+        <!--            android:src="@drawable/unmute"-->
+        <!--            app:layout_constraintHeight_percent="0.6"-->
+        <!--            app:layout_constraintWidth_percent="0.15"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/vibe_button"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <ImageButton
             android:id="@+id/vibe_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintHeight_percent="0.6"
-            app:layout_constraintWidth_percent="0.15"
             android:layout_marginEnd="15dp"
             android:background="@null"
             android:scaleType="centerInside"
             android:src="@drawable/vibe_on"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHeight_percent="0.6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
         android:id="@+id/bubbleButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
-        app:layout_constraintHeight_percent="0.24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintWidth_percent="0.53" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <ImageButton
         android:id="@+id/bubbleButton2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintWidth_percent="0.43" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <ImageButton
         android:id="@+id/bubbleButton3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleButton2"
-        app:layout_constraintWidth_percent="0.4" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleButton2" />
 
     <ImageButton
         android:id="@+id/bubbleButton4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
-        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleButton3"
-        app:layout_constraintWidth_percent="0.43" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleButton3" />
 
     <ImageButton
         android:id="@+id/bubbleButton5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.24"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleButton3"
-        app:layout_constraintWidth_percent="0.53" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleButton3" />
 
     <ImageButton
         android:id="@+id/bubbleButton6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleButton4"
-        app:layout_constraintWidth_percent="0.35" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleButton4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
