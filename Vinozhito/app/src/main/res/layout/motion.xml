@@ -88,8 +88,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
@@ -98,8 +98,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton2"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
@@ -108,8 +108,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton3"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
@@ -121,8 +121,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton4"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
@@ -131,8 +131,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton5"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
@@ -141,8 +141,8 @@
 
     <ImageButton
         android:id="@+id/bubbleButton6"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:background="@drawable/bubble_pop_animation"
         android:contentDescription="@string/bubble_pop"
         android:scaleType="fitCenter"
