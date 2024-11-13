@@ -89,21 +89,21 @@
             app:layout_constraintStart_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="email@gmail.com"
-            android:textColor="#6B88C8"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/username"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+<!--        <TextView-->
+<!--            android:id="@+id/email"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="email@gmail.com"-->
+<!--            android:textColor="#6B88C8"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/username"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/username"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/username" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@id/card_layout"
+            android:id="@id/my_cards"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="25dp"
@@ -115,7 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintWidth_percent="0.85">
 
             <ImageView
@@ -151,7 +151,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@id/setting_button"
+            android:id="@id/mycards"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="25dp"
@@ -163,7 +163,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_layout"
+            app:layout_constraintTop_toBottomOf="@+id/my_cards"
             app:layout_constraintWidth_percent="0.85">
 
             <ImageView
@@ -173,7 +173,7 @@
                 android:src="@drawable/flashcard"
                 android:elevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/setting_button"
+                app:layout_constraintEnd_toStartOf="@+id/mycards_button"
                 app:layout_constraintHeight="0.15 "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -182,7 +182,7 @@
             </ImageView>
 
             <Button
-                android:id="@+id/setting_button"
+                android:id="@+id/mycards_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="#00000000"
@@ -212,7 +212,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setting_button"
+            app:layout_constraintTop_toBottomOf="@+id/mycards"
             app:layout_constraintWidth_percent="0.85">
 
             <ImageView
@@ -271,9 +271,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
 
-                android:src="@drawable/setting2"
+                android:src="@drawable/logout2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/logout"
+                app:layout_constraintEnd_toStartOf="@+id/logout_button"
                 app:layout_constraintHeight="0.15 "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -282,7 +282,7 @@
             </ImageView>
 
             <Button
-                android:id="@+id/logout"
+                android:id="@+id/logout_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="#00000000"

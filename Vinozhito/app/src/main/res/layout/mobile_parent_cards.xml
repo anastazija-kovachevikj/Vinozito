@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vin3">
+
+    <!--    <finki.nichk.BackgroundView-->
+    <!--        android:id="@+id/background_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/back_button_login"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:contentDescription="@string/todo_text"
+            android:elevation="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_background"
+        android:columnCount="3"
+        android:elevation="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="0dp"
+        android:rowCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <ImageButton
+            android:id="@+id/Conversation"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/talking"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Feelings"
+            app:layout_constraintEnd_toStartOf="@+id/Food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/Food"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/babyblue_circle"
+
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/meal"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Drinks"
+            app:layout_constraintEnd_toStartOf="@+id/Clothes"
+            app:layout_constraintStart_toEndOf="@+id/Conversation"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/Clothes"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/babyblue_circle"
+
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/clothes"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Activities"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Food"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/Activities"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="104dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hobby"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Colors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Drinks"
+            app:layout_constraintTop_toBottomOf="@+id/Clothes" />
+
+        <ImageButton
+            android:id="@+id/Feelings"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/emotional"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/People"
+            app:layout_constraintEnd_toStartOf="@+id/Drinks"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Conversation" />
+
+        <ImageButton
+            android:id="@+id/Drinks"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="104dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bevg"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Vegetable"
+            app:layout_constraintEnd_toStartOf="@+id/Activities"
+            app:layout_constraintStart_toEndOf="@+id/Feelings"
+            app:layout_constraintTop_toBottomOf="@+id/Food" />
+
+
+        <ImageButton
+            android:id="@+id/People"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/family"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Animals"
+            app:layout_constraintEnd_toStartOf="@+id/Vegetable"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Feelings" />
+
+        <ImageButton
+            android:id="@+id/Vegetable"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="157dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vegetable"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Fruit"
+            app:layout_constraintEnd_toStartOf="@+id/Colors"
+            app:layout_constraintStart_toEndOf="@+id/People"
+            app:layout_constraintTop_toBottomOf="@+id/Drinks" />
+
+        <ImageButton
+            android:id="@+id/Colors"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wheel"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/Numbers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Vegetable"
+            app:layout_constraintTop_toBottomOf="@+id/Activities" />
+
+
+        <ImageButton
+            android:id="@+id/Numbers"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blocks"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Fruit"
+            app:layout_constraintTop_toBottomOf="@+id/Colors" />
+
+        <ImageButton
+            android:id="@+id/Fruit"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fruits"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Numbers"
+            app:layout_constraintStart_toEndOf="@+id/Animals"
+            app:layout_constraintTop_toBottomOf="@+id/Vegetable" />
+
+        <ImageButton
+            android:id="@+id/Animals"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/babyblue_circle"
+            android:contentDescription="@string/todo_text"
+            android:paddingHorizontal="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/animals"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Fruit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/People" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

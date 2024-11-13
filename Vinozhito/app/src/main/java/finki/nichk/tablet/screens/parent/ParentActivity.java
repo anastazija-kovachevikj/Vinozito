@@ -24,6 +24,7 @@ public class ParentActivity extends AppCompatActivity {
 
     private static final String PREF_AUTH = "authenticated";
     private boolean authenticated = false;
+    private ImageButton back ;
 
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -82,13 +83,19 @@ public class ParentActivity extends AppCompatActivity {
                 // Initialize TokenManager and save token and user details
                 TokenManager tokenManager = new TokenManager(ParentActivity.this);
                 tokenManager.saveToken(token);
-                tokenManager.saveUserDetails(username, "user_email@example.com"); // Replace with actual email if available
+                tokenManager.saveUserDetails(username); // Replace with actual email if available
 
                 // Set user as authenticated and proceed to the profile activity
                 setAuthenticated(true);
                 Toast.makeText(ParentActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
-                startActivity(intent);
+                try {
+                    Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(ParentActivity.this, "Error starting profile activity: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
