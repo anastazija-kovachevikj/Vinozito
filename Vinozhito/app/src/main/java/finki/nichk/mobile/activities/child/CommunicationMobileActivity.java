@@ -71,6 +71,7 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                 user = fetchedUser;
                 userId= user.getId();
                 Log.d("CommunicationMobile", "User ID: " + user.getId());
+                Log.d("Token", "User token value: " + tokenManager.getToken());
 
             }
 

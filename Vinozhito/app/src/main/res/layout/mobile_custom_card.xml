@@ -21,7 +21,7 @@
         tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/back_button_login"
+            android:id="@+id/back_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="30dp"
@@ -97,7 +97,7 @@
             app:layout_constraintWidth_percent="0.85">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/cardImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
@@ -122,7 +122,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView5">
+                app:layout_constraintTop_toTopOf="@+id/cardImage">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -145,13 +145,13 @@
                         app:layout_constraintWidth_percent="0.2" />
 
                     <EditText
-                        android:id="@+id/UsernameField2"
+                        android:id="@+id/cardTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="7"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
-                        android:hint="Корисничко име"
+                        android:hint="Име на картичка"
                         android:inputType="textPersonName"
                         android:paddingHorizontal="8dp"
                         android:textSize="20sp"
@@ -185,7 +185,7 @@
                     android:layout_alignParentBottom="true">
 
                     <ImageButton
-                        android:id="@+id/imageView"
+                        android:id="@+id/play_default_rec"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:background="@null"
@@ -212,7 +212,7 @@
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/play_default_rec"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
 
@@ -228,7 +228,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/darkgrey2"
+            android:background="@drawable/record_layout"
             android:columnCount="1"
             android:elevation="4dp"
             android:paddingHorizontal="8dp"
@@ -240,6 +240,93 @@
             app:layout_constraintTop_toBottomOf="@+id/card_layout"
             app:layout_constraintWidth_percent="0.85">
 
+            <TextView
+                android:id="@+id/recordingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Сними ново аудио"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/microphone2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recordingText"
+                app:layout_constraintWidth_percent="0.35">
+
+            </ImageButton>
+
+            <RelativeLayout
+                android:id="@+id/audio_layout2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/audio_recording"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintWidth_percent="0.75"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true">
+
+                    <ImageButton
+                        android:id="@+id/play_rec"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="3dp"
+                        android:background="@null"
+                        android:contentDescription="TODO"
+                        android:padding="2dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/play_btn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.2" />
+
+                    <ImageView
+                        android:id="@+id/soundwave_flat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="7"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:paddingHorizontal="8dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/minus"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/play_rec"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
