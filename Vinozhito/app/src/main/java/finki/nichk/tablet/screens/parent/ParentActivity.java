@@ -64,8 +64,8 @@ public class ParentActivity extends AppCompatActivity {
         isLoginLayout = false;
 
         usernameEditText = findViewById(R.id.UsernameField);
-        passwordEditText = findViewById(R.id.passField);
-        emailEditText = findViewById(R.id.passFieldRepeat);
+        emailEditText = findViewById(R.id.passField);
+        passwordEditText = findViewById(R.id.passFieldRepeat);
         Button registerButton = findViewById(R.id.register_button);
         ImageButton loginSwitchButton = findViewById(R.id.cancel_register);
 
@@ -87,7 +87,7 @@ public class ParentActivity extends AppCompatActivity {
 
                 // Set user as authenticated and proceed to the profile activity
                 setAuthenticated(true);
-                Toast.makeText(ParentActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Успешна најава!", Toast.LENGTH_SHORT).show();
                 try {
                     Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
                     startActivity(intent);
@@ -115,7 +115,9 @@ public class ParentActivity extends AppCompatActivity {
         authRepository.register(username, password, email, new AuthRepository.RegisterCallback() {
             @Override
             public void onSuccess(String message) {
-                Toast.makeText(ParentActivity.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Registration Successful! Please login.", Toast.LENGTH_SHORT).show();
+
+                // After successful registration, direct the user to the login layout
                 setLoginLayout();
             }
 

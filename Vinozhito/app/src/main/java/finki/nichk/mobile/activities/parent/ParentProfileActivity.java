@@ -34,10 +34,10 @@ public class ParentProfileActivity extends AppCompatActivity {
         tokenManager = new TokenManager(this);
 
         username = findViewById(R.id.username);
-        email = findViewById(R.id.email);
+//        email = findViewById(R.id.email);
 
         username.setText(tokenManager.getUsername());
-        email.setText(tokenManager.getEmail());
+        //email.setText(tokenManager.getEmail());
 
         backButton=findViewById(R.id.back_button_login);
         myCards=findViewById(R.id.mycards_button);

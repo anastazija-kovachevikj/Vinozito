@@ -32,14 +32,46 @@ public class ChooseCategoryMyCardsActivity extends AppCompatActivity {
 
 
 
-        backButton=findViewById(R.id.back_button_login);
+        backButton=findViewById(R.id.back_button);
 
         buttonTouchListener(backButton, () -> {
             Intent intent = new Intent(ChooseCategoryMyCardsActivity.this, ParentProfileActivity.class);
             startActivity(intent);
         });
 
+        initializeListeners();
 
+
+    }
+
+    private void initializeListeners() {
+
+        int[] tabIds = {R.id.Conversation, R.id.Feelings, R.id.People,
+                R.id.Drinks, R.id.Food, R.id.Vegetable,
+                R.id.Fruit, R.id.Activities, R.id.Animals,
+                R.id.Clothes, R.id.Colors};
+
+        String[] categories = {"Conversation", "Feelings", "People", "Drinks", "Food",
+                "Vegetable", "Fruit", "Activities",
+                "Animals", "Clothes", "Colors"};
+
+        for (int i = 0; i < tabIds.length; i++) {
+            ImageButton tabButton = findViewById(tabIds[i]);
+            String category = categories[i];
+
+
+            tabButton.setOnClickListener(view -> {
+                Intent intent = new Intent(ChooseCategoryMyCardsActivity.this, MyCardsActivity.class);
+                intent.putExtra("category", category); // Pass the category name
+                startActivity(intent);
+            });
+        }
+
+        ImageButton backButton = findViewById(R.id.back_button);
+        buttonTouchListener(backButton, () -> {
+            Intent intent = new Intent(ChooseCategoryMyCardsActivity.this, ParentProfileActivity.class);
+            startActivity(intent);
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")
