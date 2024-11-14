@@ -9,4 +9,8 @@ public class User {
     private String Password;
     private List<String> CustomCardsIds;
 
+    public String getId() {
+        return id;
+    }
+
 }

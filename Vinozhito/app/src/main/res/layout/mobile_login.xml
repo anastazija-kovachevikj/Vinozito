@@ -119,7 +119,7 @@
                 android:layout_columnWeight="3"
                 android:layout_gravity="center"
                 android:padding="5dp"
-                android:src="@drawable/user" />
+                android:src="@drawable/userr" />
 
             <EditText
                 android:id="@+id/UsernameField"
