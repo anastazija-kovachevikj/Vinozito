@@ -255,13 +255,30 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/record_button"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="30dp"
                 android:background="@null"
                 android:scaleType="fitCenter"
                 android:src="@drawable/microphone2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recordingText"
+                app:layout_constraintWidth_percent="0.35">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/stop_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/stop"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.35"
                 app:layout_constraintStart_toStartOf="parent"
@@ -280,7 +297,7 @@
                 app:layout_constraintHeight_percent="0.15"
                 app:layout_constraintWidth_percent="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton">
+                app:layout_constraintTop_toBottomOf="@+id/record_button">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -329,6 +346,17 @@
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/stop_button"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="@null"-->
+<!--            android:contentDescription="Stop Recording"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@drawable/unknown"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/login_button"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/login_button" />-->
 
         <Button
             android:id="@+id/login_button"
