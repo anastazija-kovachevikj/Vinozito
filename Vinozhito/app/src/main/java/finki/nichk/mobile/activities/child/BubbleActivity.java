@@ -60,7 +60,7 @@ public class BubbleActivity extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back_button_bubbles);
 
-        // Set up listeners for each bubble
+        // listeners for each bubble
         for (ImageButton bubble : bubbleButtons) {
             bubble.setOnClickListener(v -> handleBubbleClick(bubble));
         }
@@ -195,6 +195,22 @@ public class BubbleActivity extends AppCompatActivity {
         if (popSoundPlayer != null) {
             popSoundPlayer.release();
             popSoundPlayer = null;
+        }
+    }
+
+    @Override
+    protected void onPause() { // when the activity goes to the background
+        super.onPause();
+        if (musicPlayer != null && musicPlayer.isPlaying()) {
+            musicPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() { // when the activity comes to the foreground
+        super.onResume();
+        if (musicPlayer != null && !isMuted) {
+            musicPlayer.start();
         }
     }
 
