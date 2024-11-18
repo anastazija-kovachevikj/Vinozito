@@ -24,6 +24,7 @@ public class ParentActivity extends AppCompatActivity {
 
     private static final String PREF_AUTH = "authenticated";
     private boolean authenticated = false;
+    private ImageButton back ;
 
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -63,8 +64,8 @@ public class ParentActivity extends AppCompatActivity {
         isLoginLayout = false;
 
         usernameEditText = findViewById(R.id.UsernameField);
-        passwordEditText = findViewById(R.id.passField);
-        emailEditText = findViewById(R.id.passFieldRepeat);
+        emailEditText = findViewById(R.id.passField);
+        passwordEditText = findViewById(R.id.passFieldRepeat);
         Button registerButton = findViewById(R.id.register_button);
         ImageButton loginSwitchButton = findViewById(R.id.cancel_register);
 
@@ -82,13 +83,19 @@ public class ParentActivity extends AppCompatActivity {
                 // Initialize TokenManager and save token and user details
                 TokenManager tokenManager = new TokenManager(ParentActivity.this);
                 tokenManager.saveToken(token);
-                tokenManager.saveUserDetails(username, "user_email@example.com"); // Replace with actual email if available
+                tokenManager.saveUserDetails(username); // Replace with actual email if available
 
                 // Set user as authenticated and proceed to the profile activity
                 setAuthenticated(true);
-                Toast.makeText(ParentActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
-                startActivity(intent);
+                Toast.makeText(ParentActivity.this, "Успешна најава!", Toast.LENGTH_SHORT).show();
+                try {
+                    Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(ParentActivity.this, "Error starting profile activity: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
@@ -108,7 +115,9 @@ public class ParentActivity extends AppCompatActivity {
         authRepository.register(username, password, email, new AuthRepository.RegisterCallback() {
             @Override
             public void onSuccess(String message) {
-                Toast.makeText(ParentActivity.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Registration Successful! Please login.", Toast.LENGTH_SHORT).show();
+
+                // After successful registration, direct the user to the login layout
                 setLoginLayout();
             }
 

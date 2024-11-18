@@ -30,16 +30,27 @@ import java.util.concurrent.TimeUnit;
 
 import finki.nichk.R;
 import finki.nichk.models.Card;
+import finki.nichk.models.User;
 import finki.nichk.services.CardService;
 
+import finki.nichk.services.UserService;
+import finki.nichk.services.authentication.TokenManager;
 import finki.nichk.tablet.widgets.AudioImageButton;
 
 
 public class CommunicationMobileActivity extends AppCompatActivity {
     private GridLayout cardLayout;
+    TokenManager tokenManager;
+
     private static final int SLOT_COUNT = 8;
     private CardService cardService;
+    private UserService userService;
     private static final int SOUND_DELAY_MILLIS = 1500;
+
+    private  String userToken;
+
+    private User user;
+    private String userId;
     private int count = 0; // number of occupied slots
     private final ImageButton[] cardSlots = new ImageButton[SLOT_COUNT];
     private final AudioImageButton[] audioButtons = new AudioImageButton[SLOT_COUNT];
@@ -55,12 +66,32 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile_communication);
         cardService = new CardService();
+        userService = new UserService(this);
         previouslySelectedTab = null;
 
         deleteButton = findViewById(R.id.clear_button);
         deleteButton.setOnClickListener(v -> clearSelectedCard());
 
         initializeViews();
+        tokenManager = new TokenManager(this);
+        userToken = tokenManager.getUsername();
+        userService.fetchUserByUsername(new UserService.UserCallback() {
+            @Override
+            public void onUserFetched(User fetchedUser) {
+
+                user = fetchedUser;
+                userId= user.getId();
+                Log.d("CommunicationMobile", "User ID: " + user.getId());
+
+            }
+
+            @Override
+            public void onError(String error) {
+
+                Log.e("CommunicationMobile", "Error fetching user: " + error);
+            }
+        });
+
         initializeListeners();
         setupCardSlotListeners();
     }
@@ -224,7 +255,7 @@ public class CommunicationMobileActivity extends AppCompatActivity {
 
     private void updateCardLayoutByCategory(String category, ImageButton btn) {
 
-        cardService.fetchCardDataByUserIdAndCategory("1f2732fe-05c1-4d50-a74e-e5f065112374", category, new CardService.CardServiceCallback() {
+        cardService.fetchCardDataByUserIdAndCategory(userId, category, new CardService.CardServiceCallback() {
             @Override
             public void onCardsFetched(List<Card> cards) {
                 runOnUiThread(() -> {

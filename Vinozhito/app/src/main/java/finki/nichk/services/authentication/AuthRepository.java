@@ -45,8 +45,8 @@ public class AuthRepository {
         });
     }
 
-    public void register(String username, String password, String email, final RegisterCallback callback) {
-        RegisterRequest registerRequest = new RegisterRequest(username, password, email);
+    public void register(String username, String email, String password, final RegisterCallback callback) {
+        RegisterRequest registerRequest = new RegisterRequest(username, email, password);
         Call<RegisterResponse> call = authService.register(registerRequest);
 
         call.enqueue(new Callback<RegisterResponse>() {
@@ -55,9 +55,9 @@ public class AuthRepository {
                 if (response.isSuccessful()) {
                     String message = response.body().getMessage();
                     String token = response.body().getToken(); // If a token is returned upon registration
-                    if (token != null) {
-                        tokenManager.saveToken(token);  // Save the JWT token if applicable
-                    }
+//                    if (token != null) {
+//                        tokenManager.saveToken(token);  // Save the JWT token if applicable
+//                    }
                     callback.onSuccess(message);
                 } else {
                     callback.onFailure("Registration failed: " + response.message());

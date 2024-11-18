@@ -29,9 +29,9 @@ public class TokenManager {
     }
 
     // New methods for saving and retrieving user details
-    public void saveUserDetails(String username, String email) {
+    public void saveUserDetails(String username) {
         editor.putString("username", username);
-        editor.putString("email", email);
+//        editor.putString("email", email);
         editor.apply();
     }
 
