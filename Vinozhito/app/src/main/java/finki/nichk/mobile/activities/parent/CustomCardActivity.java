@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -28,14 +29,28 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.io.File;
 import java.io.IOException;
 
+import finki.nichk.ApiService;
 import finki.nichk.R;
 import finki.nichk.models.Card;
+import finki.nichk.models.CustomCard;
 import finki.nichk.models.User;
 import finki.nichk.services.CardService;
 import finki.nichk.services.UserService;
 import finki.nichk.services.authentication.TokenManager;
+import finki.nichk.services.retrofit.ApiClient;
+import finki.nichk.services.retrofit.ApiClientCards;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CustomCardActivity extends AppCompatActivity {
 
@@ -49,10 +64,14 @@ public class CustomCardActivity extends AppCompatActivity {
     private TextView cardName;
     private ImageButton saveAudio;
     private ImageButton resetAudio;
+    private boolean CustomTitle;
+    private boolean CustomAudio;
 
     private EditText cardTitle;
+    private Button save_button;
     private String category;
     private ImageButton play_default_rec;
+
     private String soundLink;
     private String imageLink;
     private ImageView cardImage;
@@ -87,6 +106,7 @@ public class CustomCardActivity extends AppCompatActivity {
         soundwave_flat = findViewById(R.id.soundwave_flat);
         saveAudio = findViewById(R.id.saveAudio);
         resetAudio = findViewById(R.id.restartAudio);
+        save_button = findViewById(R.id.save_button);
 
         audio_layout.setAlpha(0.5f);
 
@@ -98,7 +118,7 @@ public class CustomCardActivity extends AppCompatActivity {
 
 
         tokenManager = new TokenManager(this);
-        userToken = tokenManager.getUsername();
+        userToken = tokenManager.getToken();
         userService.fetchUserByUsername(new UserService.UserCallback() {
             @Override
             public void onUserFetched(User fetchedUser) {
@@ -115,7 +135,10 @@ public class CustomCardActivity extends AppCompatActivity {
             }
         });
 
-        fileName = getExternalCacheDir().getAbsolutePath() + "/audiorecordtest.3gp";
+
+        String cardTitle = card.getName();
+        String sanitizedCardTitle = cardTitle.replaceAll("[^a-zA-Z0-9]", "_");
+        fileName = getExternalCacheDir().getAbsolutePath() + "/" + tokenManager.getUsername() + "_" + cardTitle + ".3gp";
 
         ImageButton recordButton = findViewById(R.id.record_button);
         ImageButton stopButton = findViewById(R.id.stop_button);
@@ -141,11 +164,96 @@ public class CustomCardActivity extends AppCompatActivity {
             stopRecording();
         });
 
+        saveAudio.setOnClickListener(v -> {
+            CustomAudio = true;
+            uploadAudioFile();
+        });
+        save_button.setOnClickListener(v -> {
+            if(CustomAudio)
+            {
+                String url = "http://mkpatka.duckdns.org:5000/audio/"+tokenManager.getUsername() + "_" + cardTitle + ".3gp";
+                createCustomCard(card.getId(),url,card.getName());
+            }
+
+        });
+
         ImageButton playRecButton = findViewById(R.id.play_rec);
         playRecButton.setOnClickListener(v -> playRecording());
 
 
     }
+
+    public void createCustomCard(String defaultCardId, String uploadedUrl, String cardTitle) {
+        ApiService apiService = ApiClientCards.getRetrofitInstance().create(ApiService.class);
+        String title = cardTitle;
+        String userId = user.getId();
+
+        CustomCard customCard = new CustomCard(
+                null,
+                defaultCardId,
+                uploadedUrl,
+                user.getId(),
+                title
+        );
+
+        Call<ResponseBody> call = apiService.postCustomCard(user.getId(),customCard);
+        call.enqueue(new retrofit2.Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Log.d("CustomCardCreation", "Custom card created successfully!");
+                } else {
+                    try {
+                        String errorMessage = response.errorBody().string();
+                        Log.e("CustomCardCreation", "Creation failed: " + errorMessage);
+                    } catch (Exception e) {
+                        Log.e("CustomCardCreation", "Error reading error body: " + e.getMessage());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("CustomCardCreation", "Error: " + t.getMessage());
+            }
+        });
+    }
+
+
+    private void uploadAudioFile() {
+
+        File file = new File(fileName);
+        if (!file.exists()) {
+            Log.e("AudioUpload", "File not found: " + fileName);
+            return;
+        }
+
+        RequestBody requestFile = RequestBody.create(file, okhttp3.MediaType.parse("audio/3gp"));
+        MultipartBody.Part multipartFile = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+        ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
+
+
+        Call<ResponseBody> call = apiService.uploadFile(multipartFile);
+        call.enqueue(new retrofit2.Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Log.d("AudioUpload", "Upload successful: " + response.message());
+                } else {
+                    Log.e("AudioUpload", "Upload failed. Response code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("AudioUpload", "Upload failed: " + t.getMessage());
+            }
+        });
+    }
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -159,20 +267,25 @@ public class CustomCardActivity extends AppCompatActivity {
 
 
     private void startRecording() {
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(fileName);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        if (recorder == null) {
+            recorder = new MediaRecorder();
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            recorder.setOutputFile(fileName);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        }
 
         try {
             recorder.prepare();
+            recorder.start();
+            Log.d("AudioRecording", "Recording started");
         } catch (IOException e) {
-            Log.e("AudioRecording", "prepare() failed");
+            Log.e("AudioRecording", "Failed to start recording: " + e.getMessage());
+            recorder.release();
+            recorder = null;
         }
-
-        recorder.start();
     }
+
 
     private void stopRecording() {
         recorder.stop();
