@@ -86,6 +86,7 @@
                         android:contentDescription="@string/todo_text"
                         android:scaleType="centerInside"
                         android:padding="5dp"
+                        android:layout_marginStart="15dp"
                         android:src="@drawable/trash_closed"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/read_button"
