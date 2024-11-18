@@ -47,6 +47,8 @@ public class CustomCardActivity extends AppCompatActivity {
     private String userToken;
     private String userId;
     private TextView cardName;
+    private ImageButton saveAudio;
+    private ImageButton resetAudio;
 
     private EditText cardTitle;
     private String category;
@@ -83,6 +85,8 @@ public class CustomCardActivity extends AppCompatActivity {
         record_layout = findViewById(R.id.card_layout2);
         audio_layout = findViewById(R.id.audio_layout2);
         soundwave_flat = findViewById(R.id.soundwave_flat);
+        saveAudio = findViewById(R.id.saveAudio);
+        resetAudio = findViewById(R.id.restartAudio);
 
         audio_layout.setAlpha(0.5f);
 
@@ -117,9 +121,8 @@ public class CustomCardActivity extends AppCompatActivity {
         ImageButton stopButton = findViewById(R.id.stop_button);
 
         recordButton.setOnClickListener(v -> {
-
-            recordButton.setVisibility(View.INVISIBLE);
             stopButton.setVisibility(View.VISIBLE);
+            recordButton.setVisibility(View.INVISIBLE);
             audio_layout.setAlpha(0.5f);
             startRecording();
             record_layout.setBackgroundResource(R.drawable.recording);
@@ -132,6 +135,8 @@ public class CustomCardActivity extends AppCompatActivity {
             audio_layout.setAlpha(1.0f);
             soundwave_flat.setImageResource(R.drawable.waves);
             stopPulsatingAnimation(stopButton);
+            saveAudio.setVisibility(View.VISIBLE);
+            resetAudio.setVisibility(View.VISIBLE);
             record_layout.setBackgroundResource(R.drawable.record_layout);
             stopRecording();
         });

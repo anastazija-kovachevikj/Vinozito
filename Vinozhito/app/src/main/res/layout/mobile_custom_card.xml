@@ -12,9 +12,11 @@
     <!--        android:layout_height="match_parent" />-->
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,9 +51,9 @@
     <!--        app:layout_constraintWidth_percent="0.7">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/text_background"
         android:columnCount="1"
@@ -63,14 +65,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.9">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_goneMarginTop="5dp">
 
         <TextView
             android:id="@+id/cardNameTexView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Карта - XX"
             android:textColor="#6B88C8"
@@ -84,14 +86,14 @@
             android:id="@id/card_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:columnCount="1"
             android:elevation="4dp"
             android:paddingHorizontal="8dp"
             android:rowCount="3"
             app:layout_constraintBottom_toTopOf="@+id/card_layout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.40"
+            app:layout_constraintHeight_percent="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardNameTexView"
             app:layout_constraintWidth_percent="0.85">
@@ -100,15 +102,15 @@
                 android:id="@+id/cardImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/unknown"
                 app:layout_constraintBottom_toTopOf="@+id/card_layout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight="0.5 "
+                app:layout_constraintHeight="0.35 "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.3">
+                app:layout_constraintWidth_percent="0.28">
 
             </ImageView>
 
@@ -233,9 +235,9 @@
             android:elevation="4dp"
             android:paddingHorizontal="8dp"
             android:rowCount="3"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
+            app:layout_constraintBottom_toTopOf="@+id/saveButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.40"
+            app:layout_constraintHeight_percent="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_layout"
             app:layout_constraintWidth_percent="0.85">
@@ -254,50 +256,101 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/record_button"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recording"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="30dp"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:src="@drawable/microphone2"
+                android:layout_columnWeight="4"
+                android:padding="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/audio_layout2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.35"
+                app:layout_constraintHeight_percent="0.50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recordingText"
-                app:layout_constraintWidth_percent="0.35">
+                app:layout_constraintWidth_percent="0.95">
 
-            </ImageButton>
 
-            <ImageButton
-                android:id="@+id/stop_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="30dp"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:src="@drawable/stop"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.35"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recordingText"
-                app:layout_constraintWidth_percent="0.35">
+                <ImageButton
+                    android:id="@+id/saveAudio"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:background="@null"
+                    android:elevation="3dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/saveaudio"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
 
-            </ImageButton>
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/record_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:background="@null"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/microphone2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent="0.5">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/stop_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:background="@null"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/stop"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent="0.5">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/restartAudio"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:elevation="3dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/refresh"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2"
+                    tools:ignore="MissingConstraints">
+
+                </ImageButton>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout
                 android:id="@+id/audio_layout2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/audio_recording"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.15"
-                app:layout_constraintWidth_percent="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/record_button">
+                app:layout_constraintTop_toBottomOf="@+id/recording"
+                app:layout_constraintWidth_percent="0.75">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -341,41 +394,48 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
 
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/stop_button"-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:background="@null"-->
-<!--            android:contentDescription="Stop Recording"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            android:src="@drawable/unknown"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/login_button"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/login_button" />-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/stop_button"-->
+        <!--            android:layout_width="40dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:background="@null"-->
+        <!--            android:contentDescription="Stop Recording"-->
+        <!--            android:scaleType="fitCenter"-->
+        <!--            android:src="@drawable/unknown"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/login_button"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/login_button" />-->
 
-        <Button
-            android:id="@+id/login_button"
+        <RelativeLayout
+            android:id="@id/saveButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_login"
-            android:elevation="4dp"
-            android:text="Зачувај"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:background="@drawable/button_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_layout2"
-            app:layout_constraintWidth_percent="0.55" />
+            app:layout_constraintWidth_percent="0.55">
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:text="Зачувај"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

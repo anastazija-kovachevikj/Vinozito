@@ -4,6 +4,7 @@
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/darkergreyblue</item>
         <item name="android:textColor">@color/darkgrey2</item>
+
         <item name="android:windowFullscreen">true</item>
     </style>
 
