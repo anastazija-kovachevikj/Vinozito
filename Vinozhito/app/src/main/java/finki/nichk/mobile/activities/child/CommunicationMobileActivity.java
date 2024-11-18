@@ -453,8 +453,8 @@ public class CommunicationMobileActivity extends AppCompatActivity {
             HorizontalScrollView scrollView = findViewById(R.id.cardsScroll); // follow tha last card
 
             slot.post(() -> {
-                int cardWidth = slot.getWidth() + 60;  // slot width plus padding
-                int thirdCardPosition = cardWidth * (count - 2); // Position for the 3rd card to be visible
+                int cardWidth = slot.getWidth() + 65;  // slot width plus padding
+                int thirdCardPosition = cardWidth * (count - 3); // Position for the 3rd card to be visible
 
 
                 if (count > 2) { // start scrolling if there are enough cards added aka more than 2
