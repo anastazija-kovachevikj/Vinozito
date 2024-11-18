@@ -72,6 +72,8 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         deleteButton = findViewById(R.id.clear_button);
         deleteButton.setOnClickListener(v -> clearSelectedCard());
 
+        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+
         initializeViews();
         tokenManager = new TokenManager(this);
         userToken = tokenManager.getUsername();
@@ -83,6 +85,7 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                 userId= user.getId();
                 Log.d("CommunicationMobile", "User ID: " + user.getId());
 
+                updateCardLayoutByCategory("Conversation", conversationTab); // Communivation tab selected on opening
             }
 
             @Override
@@ -442,24 +445,19 @@ public class CommunicationMobileActivity extends AppCompatActivity {
 
             slot.setVisibility(View.VISIBLE);
 
-            // click listener with slot index
-            setSlotClickListener(slot, count);
+            setSlotClickListener(slot, count);// click listener with slot index
 
-            // Keep track of drawable IDs if needed
-            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName());
+            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName()); // keep track of drawable IDs if needed
             Log.d("CardSlots", "Slot " + count + " updated with image: " + imageUrl);
 
-            // follow tha last card
-            HorizontalScrollView scrollView = findViewById(R.id.cardsScroll);
+            HorizontalScrollView scrollView = findViewById(R.id.cardsScroll); // follow tha last card
 
-            // Ensure that the last slot added is the 3rd visible card
             slot.post(() -> {
-                // Assuming each card has the same width
-                int cardWidth = slot.getWidth();  // Width of a single card
+                int cardWidth = slot.getWidth() + 65;  // slot width plus padding
                 int thirdCardPosition = cardWidth * (count - 2); // Position for the 3rd card to be visible
 
-                // Ensure we only scroll if there are enough cards added
-                if (count > 2) {
+
+                if (count > 2) { // start scrolling if there are enough cards added aka more than 2
                     scrollView.smoothScrollTo(thirdCardPosition, 0);
                 }
             });
