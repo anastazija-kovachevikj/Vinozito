@@ -210,155 +210,154 @@
                         android:visibility="gone" />
 
                 </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_row="0"
-                    android:layout_column="2">
-
-                    <ImageView
-                        android:id="@+id/star1"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/star2"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/star3"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/star4"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/star5"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/star6"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/star"
-                        android:visibility="gone" />
-
-                </FrameLayout>
             </GridLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <GridLayout-->
-<!--            android:id="@+id/branch"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:columnCount="4"-->
+        <!--        <GridLayout-->
+        <!--            android:id="@+id/branch"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:columnCount="4"-->
 
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHeight_percent="0.37"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintWidth_percent="0.95">-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHeight_percent="0.37"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintWidth_percent="0.95">-->
 
 
-<!--            <FrameLayout-->
-<!--                android:id="@+id/firstBranchFrame"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                app:layout_constraintDimensionRatio="1:1"-->
-<!--                app:layout_constraintHeight_percent="0.5">-->
+        <!--            <FrameLayout-->
+        <!--                android:id="@+id/firstBranchFrame"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="100dp"-->
+        <!--                android:layout_rowWeight="1"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:layout_gravity="bottom"-->
+        <!--                app:layout_constraintDimensionRatio="1:1"-->
+        <!--                app:layout_constraintHeight_percent="0.5">-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/firstBranch"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:src="@drawable/apple"-->
-<!--                    android:visibility="gone" />-->
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/firstBranch"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_margin="5dp"-->
+        <!--                    android:src="@drawable/apple"-->
+        <!--                    android:visibility="gone" />-->
 
-<!--            </FrameLayout>-->
+        <!--            </FrameLayout>-->
 
-<!--            <FrameLayout-->
-<!--                android:id="@+id/secondBranchFrame"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="140dp"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_gravity="top"-->
-<!--                app:layout_constraintDimensionRatio="1:1"-->
-<!--                app:layout_constraintHeight_percent="0.5">-->
+        <!--            <FrameLayout-->
+        <!--                android:id="@+id/secondBranchFrame"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="140dp"-->
+        <!--                android:layout_rowWeight="1"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:layout_gravity="top"-->
+        <!--                app:layout_constraintDimensionRatio="1:1"-->
+        <!--                app:layout_constraintHeight_percent="0.5">-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/secondBranch"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:src="@drawable/apple"-->
-<!--                    android:visibility="gone" />-->
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/secondBranch"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_margin="5dp"-->
+        <!--                    android:src="@drawable/apple"-->
+        <!--                    android:visibility="gone" />-->
 
-<!--            </FrameLayout>-->
+        <!--            </FrameLayout>-->
 
-<!--            <FrameLayout-->
-<!--                android:id="@+id/thirdBranchFrame"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                app:layout_constraintDimensionRatio="1:1"-->
-<!--                app:layout_constraintHeight_percent="0.5">-->
+        <!--            <FrameLayout-->
+        <!--                android:id="@+id/thirdBranchFrame"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="100dp"-->
+        <!--                android:layout_rowWeight="1"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:layout_gravity="bottom"-->
+        <!--                android:layout_marginEnd="5dp"-->
+        <!--                app:layout_constraintDimensionRatio="1:1"-->
+        <!--                app:layout_constraintHeight_percent="0.5">-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/thirdBranch"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:src="@drawable/apple"-->
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/thirdBranch"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_margin="5dp"-->
+        <!--                    android:src="@drawable/apple"-->
 
-<!--                    android:visibility="gone" />-->
+        <!--                    android:visibility="gone" />-->
 
-<!--            </FrameLayout>-->
+        <!--            </FrameLayout>-->
 
-<!--            <FrameLayout-->
-<!--                android:id="@+id/forthBranchFrame"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="180dp"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_gravity="top"-->
-<!--                app:layout_constraintDimensionRatio="1:1"-->
-<!--                app:layout_constraintHeight_percent="0.5">-->
+        <!--            <FrameLayout-->
+        <!--                android:id="@+id/forthBranchFrame"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="180dp"-->
+        <!--                android:layout_rowWeight="1"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:layout_gravity="top"-->
+        <!--                app:layout_constraintDimensionRatio="1:1"-->
+        <!--                app:layout_constraintHeight_percent="0.5">-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/forthBarnch"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:src="@drawable/apple"-->
-<!--                    android:visibility="gone" />-->
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/forthBarnch"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_margin="5dp"-->
+        <!--                    android:src="@drawable/apple"-->
+        <!--                    android:visibility="gone" />-->
 
-<!--            </FrameLayout>-->
-<!--        </GridLayout>-->
+        <!--            </FrameLayout>-->
+        <!--        </GridLayout>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star4"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star5"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/star6"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/star"
+            android:visibility="gone" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

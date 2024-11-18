@@ -456,7 +456,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                 int cardWidth = slot.getWidth() + 65;  // slot width plus padding
                 int thirdCardPosition = cardWidth * (count - 3); // Position for the 3rd card to be visible
 
-
                 if (count > 2) { // start scrolling if there are enough cards added aka more than 2
                     scrollView.smoothScrollTo(thirdCardPosition, 0);
                 }
