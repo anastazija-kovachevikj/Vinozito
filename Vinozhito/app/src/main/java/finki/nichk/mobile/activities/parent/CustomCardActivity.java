@@ -1,10 +1,14 @@
 package finki.nichk.mobile.activities.parent;
 
+import static finki.nichk.R.drawable.other;
 import static finki.nichk.R.drawable.record_layout;
 
 import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.Image;
 import android.media.MediaPlayer;
@@ -20,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -42,6 +47,7 @@ import finki.nichk.services.UserService;
 import finki.nichk.services.authentication.TokenManager;
 import finki.nichk.services.retrofit.ApiClient;
 import finki.nichk.services.retrofit.ApiClientCards;
+import finki.nichk.tablet.screens.parent.ParentActivity;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -80,6 +86,7 @@ public class CustomCardActivity extends AppCompatActivity {
     Card card;
     ConstraintLayout record_layout;
     private RelativeLayout audio_layout;
+    private   ImageButton playRecButton;
 
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private boolean permissionToRecordAccepted = false;
@@ -87,27 +94,14 @@ public class CustomCardActivity extends AppCompatActivity {
 
     private MediaRecorder recorder = null;
     private String fileName = null;
+    private String originalName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile_custom_card);
-
-        cardService = new CardService();
-        userService = new UserService(this);
-
-        cardName = findViewById(R.id.cardNameTexView);
-        cardTitle = findViewById(R.id.cardTitle);
-        play_default_rec = findViewById(R.id.play_default_rec);
-        cardImage = findViewById(R.id.cardImage);
-        record_layout = findViewById(R.id.card_layout2);
-        audio_layout = findViewById(R.id.audio_layout2);
-        soundwave_flat = findViewById(R.id.soundwave_flat);
-        saveAudio = findViewById(R.id.saveAudio);
-        resetAudio = findViewById(R.id.restartAudio);
-        save_button = findViewById(R.id.save_button);
-
+        getElementsByViewId();
         audio_layout.setAlpha(0.5f);
 
 
@@ -119,6 +113,126 @@ public class CustomCardActivity extends AppCompatActivity {
 
         tokenManager = new TokenManager(this);
         userToken = tokenManager.getToken();
+
+        getUserInfo();
+
+        originalName =card.getName();
+        String titleCard = card.getName();
+        fileName = getExternalCacheDir().getAbsolutePath() + "/" + tokenManager.getUsername() + "_" + titleCard + ".3gp";
+
+        ImageButton recordButton = findViewById(R.id.record_button);
+        ImageButton stopButton = findViewById(R.id.stop_button);
+
+        recordButton.setOnClickListener(v -> {
+            setRecordingStatus(stopButton, recordButton);
+        });
+        stopButton.setOnClickListener(v -> {
+            setStopRecordingStatus(stopButton,recordButton);
+
+        });
+
+//        saveAudio.setOnClickListener(v -> {
+//            CustomAudio = true;
+//            uploadAudioFile();
+//        });
+        save_button.setOnClickListener(v -> {
+
+            checkCustomTitle();
+
+
+            if(CustomAudio && CustomTitle)
+            {
+
+                uploadAudioFile();
+                String url = "http://mkpatka.duckdns.org:5000/audio/" + tokenManager.getUsername() + "_" + titleCard + ".3gp";
+                createCustomCard(card.getId(), url, cardTitle.getText().toString());
+                Toast.makeText(CustomCardActivity.this, "Успешно зачувана картичка!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CustomCardActivity.this, ChooseCategoryMyCardsActivity.class);
+                startActivity(intent);
+            }
+
+            else if (CustomAudio) {
+
+                uploadAudioFile();
+                String url = "http://mkpatka.duckdns.org:5000/audio/" + tokenManager.getUsername() + "_" + titleCard + ".3gp";
+                createCustomCard(card.getId(), url, card.getName());
+                Toast.makeText(CustomCardActivity.this, "Успешно зачувана картичка!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CustomCardActivity.this, ChooseCategoryMyCardsActivity.class);
+                startActivity(intent);
+
+            }
+
+            else if(CustomTitle)
+            {
+                createCustomCard(card.getId(),card.getAudioVoice(),cardTitle.getText().toString() );
+                Toast.makeText(CustomCardActivity.this, "Успешно зачувана картичка!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CustomCardActivity.this, ChooseCategoryMyCardsActivity.class);
+                startActivity(intent);
+            }
+
+
+
+        });
+
+
+        playRecButton.setOnClickListener(v -> playRecording());
+
+
+    }
+
+
+    public void checkCustomTitle()
+    {
+
+        String currentName = cardTitle.getText().toString();
+        if(!currentName.equals(originalName))
+            CustomTitle = true;
+
+    }
+
+    public void getElementsByViewId()
+    {
+        cardService = new CardService();
+        userService = new UserService(this);
+        cardName = findViewById(R.id.cardNameTexView);
+        cardTitle = findViewById(R.id.cardTitle);
+        play_default_rec = findViewById(R.id.play_default_rec);
+        cardImage = findViewById(R.id.cardImage);
+        record_layout = findViewById(R.id.card_layout2);
+        audio_layout = findViewById(R.id.audio_layout2);
+        soundwave_flat = findViewById(R.id.soundwave_flat);
+        saveAudio = findViewById(R.id.saveAudio);
+        resetAudio = findViewById(R.id.restartAudio);
+        save_button = findViewById(R.id.save_button);
+        playRecButton = findViewById(R.id.play_rec);
+    }
+
+    public void setRecordingStatus(ImageButton stopButton, ImageButton recordButton)
+    {
+        stopButton.setVisibility(View.VISIBLE);
+        recordButton.setVisibility(View.INVISIBLE);
+        audio_layout.setAlpha(0.5f);
+        startRecording();
+        record_layout.setBackgroundResource(R.drawable.recording);
+        startPulsatingAnimation(stopButton);
+        CustomAudio = true;
+    }
+
+    public void setStopRecordingStatus(ImageButton stopButton, ImageButton recordButton)
+    {
+        stopButton.setVisibility(View.INVISIBLE);
+        recordButton.setVisibility(View.VISIBLE);
+        audio_layout.setAlpha(1.0f);
+        soundwave_flat.setImageResource(R.drawable.waves);
+        stopPulsatingAnimation(stopButton);
+        saveAudio.setVisibility(View.VISIBLE);
+        resetAudio.setVisibility(View.VISIBLE);
+        record_layout.setBackgroundResource(R.drawable.record_layout);
+        stopRecording();
+    }
+
+    public void getUserInfo()
+    {
         userService.fetchUserByUsername(new UserService.UserCallback() {
             @Override
             public void onUserFetched(User fetchedUser) {
@@ -134,54 +248,9 @@ public class CustomCardActivity extends AppCompatActivity {
                 Log.e("CommunicationMobile", "Error fetching user: " + error);
             }
         });
-
-
-        String cardTitle = card.getName();
-        String sanitizedCardTitle = cardTitle.replaceAll("[^a-zA-Z0-9]", "_");
-        fileName = getExternalCacheDir().getAbsolutePath() + "/" + tokenManager.getUsername() + "_" + cardTitle + ".3gp";
-
-        ImageButton recordButton = findViewById(R.id.record_button);
-        ImageButton stopButton = findViewById(R.id.stop_button);
-
-        recordButton.setOnClickListener(v -> {
-            stopButton.setVisibility(View.VISIBLE);
-            recordButton.setVisibility(View.INVISIBLE);
-            audio_layout.setAlpha(0.5f);
-            startRecording();
-            record_layout.setBackgroundResource(R.drawable.recording);
-            startPulsatingAnimation(stopButton);
-        });
-        stopButton.setOnClickListener(v -> {
-
-            stopButton.setVisibility(View.INVISIBLE);
-            recordButton.setVisibility(View.VISIBLE);
-            audio_layout.setAlpha(1.0f);
-            soundwave_flat.setImageResource(R.drawable.waves);
-            stopPulsatingAnimation(stopButton);
-            saveAudio.setVisibility(View.VISIBLE);
-            resetAudio.setVisibility(View.VISIBLE);
-            record_layout.setBackgroundResource(R.drawable.record_layout);
-            stopRecording();
-        });
-
-        saveAudio.setOnClickListener(v -> {
-            CustomAudio = true;
-            uploadAudioFile();
-        });
-        save_button.setOnClickListener(v -> {
-            if(CustomAudio)
-            {
-                String url = "http://mkpatka.duckdns.org:5000/audio/"+tokenManager.getUsername() + "_" + cardTitle + ".3gp";
-                createCustomCard(card.getId(),url,card.getName());
-            }
-
-        });
-
-        ImageButton playRecButton = findViewById(R.id.play_rec);
-        playRecButton.setOnClickListener(v -> playRecording());
-
-
     }
+
+
 
     public void createCustomCard(String defaultCardId, String uploadedUrl, String cardTitle) {
         ApiService apiService = ApiClientCards.getRetrofitInstance().create(ApiService.class);
@@ -196,7 +265,7 @@ public class CustomCardActivity extends AppCompatActivity {
                 title
         );
 
-        Call<ResponseBody> call = apiService.postCustomCard(user.getId(),customCard);
+        Call<ResponseBody> call = apiService.postCustomCard(user.getId(), customCard);
         call.enqueue(new retrofit2.Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -253,8 +322,6 @@ public class CustomCardActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -263,7 +330,6 @@ public class CustomCardActivity extends AppCompatActivity {
             if (!permissionToRecordAccepted) finish();
         }
     }
-
 
 
     private void startRecording() {
@@ -294,7 +360,9 @@ public class CustomCardActivity extends AppCompatActivity {
 
         Log.d("AudioRecording", "Recording saved to: " + fileName);
     }
+
     private MediaPlayer player = null;
+
     private void playRecording() {
         player = new MediaPlayer();
         try {
@@ -310,6 +378,7 @@ public class CustomCardActivity extends AppCompatActivity {
             player = null;
         });
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -322,11 +391,12 @@ public class CustomCardActivity extends AppCompatActivity {
             player = null;
         }
     }
+
     private void startPulsatingAnimation(ImageButton button) {
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(button, "scaleX", 1f, 1.2f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(button, "scaleY", 1f, 1.2f);
 
-        scaleX.setDuration(500); // Half a second
+        scaleX.setDuration(500);
         scaleY.setDuration(500);
 
         scaleX.setRepeatMode(ObjectAnimator.REVERSE);
