@@ -87,20 +87,20 @@ public class ParentActivity extends AppCompatActivity {
 
                 // Set user as authenticated and proceed to the profile activity
                 setAuthenticated(true);
-                Toast.makeText(ParentActivity.this, "Успешна најава!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Успешна најава !", Toast.LENGTH_SHORT).show();
                 try {
                     Intent intent = new Intent(ParentActivity.this, ParentProfileActivity.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(ParentActivity.this, "Error starting profile activity: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ParentActivity.this, "Грешка при вчитување: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(String error) {
-                Toast.makeText(ParentActivity.this, "Login Failed: " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Неуспешна најава : " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -115,7 +115,7 @@ public class ParentActivity extends AppCompatActivity {
         authRepository.register(username, password, email, new AuthRepository.RegisterCallback() {
             @Override
             public void onSuccess(String message) {
-                Toast.makeText(ParentActivity.this, "Registration Successful! Please login.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Успешна регистрација ! ", Toast.LENGTH_SHORT).show();
 
                 // After successful registration, direct the user to the login layout
                 setLoginLayout();
@@ -123,7 +123,7 @@ public class ParentActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(String error) {
-                Toast.makeText(ParentActivity.this, "Registration Failed: " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Неуспешна регистрација : " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -66,6 +66,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+//    implementation ("com.gauravk.audiovisualizer:visualizer:0.1.")
 
 
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -5,13 +5,15 @@ public class CustomCard {
     private String id;
     private String defaultCardId;
     private String voiceAudio;
+    private String title;
     private String userId;
 
     // Constructor
-    public CustomCard(String id, String defaultCardId, String voiceAudio, String userId) {
+    public CustomCard(String id, String defaultCardId, String voiceAudio, String userId, String title) {
         this.id = id;
         this.defaultCardId = defaultCardId;
         this.voiceAudio = voiceAudio;
+        this.title = title;
         this.userId = userId;
     }
 
@@ -22,6 +24,14 @@ public class CustomCard {
     // Getters and Setters
     public String getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setId(String id) {
