@@ -239,8 +239,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_layout"
             app:layout_constraintWidth_percent="0.85">
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
@@ -261,8 +259,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_layout2"
             app:layout_constraintWidth_percent="0.55" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

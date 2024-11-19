@@ -40,7 +40,7 @@ public class ConnectingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mobile_connecting); //tablet_connecting_main_menu
+        setContentView(R.layout.mobile_connecting); // tablet_connecting_main_menu
 
         targetImage = findViewById(R.id.targetImage);
         beeReaction = findViewById(R.id.bee_reaction);
