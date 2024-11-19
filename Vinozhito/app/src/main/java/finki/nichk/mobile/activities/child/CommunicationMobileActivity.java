@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -53,6 +57,9 @@ public class CommunicationMobileActivity extends AppCompatActivity {
     private final int[] cardDrawableIds = new int[SLOT_COUNT];
     private MediaPlayer mediaPlayer;
     private ImageButton previouslySelectedTab;
+    private ImageView selectedSlot = null; // Tracks the currently selected slot
+    private ImageButton deleteButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,12 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         cardService = new CardService();
         userService = new UserService(this);
         previouslySelectedTab = null;
+
+        deleteButton = findViewById(R.id.clear_button);
+        deleteButton.setOnClickListener(v -> clearSelectedCard());
+
+        ImageButton conversationTab = findViewById(R.id.conversation_tab);
+
         initializeViews();
         tokenManager = new TokenManager(this);
         userToken = tokenManager.getUsername();
@@ -73,6 +86,7 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                 Log.d("CommunicationMobile", "User ID: " + user.getId());
                 Log.d("Token", "User token value: " + tokenManager.getToken());
 
+                updateCardLayoutByCategory("Conversation", conversationTab); // Communivation tab selected on opening
             }
 
             @Override
@@ -83,8 +97,110 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         });
 
         initializeListeners();
-
+        setupCardSlotListeners();
     }
+
+    private void setupCardSlotListeners() {
+        for (ImageButton slot : cardSlots) {
+            slot.setOnLongClickListener(v -> {
+                if (selectedSlot == slot) { // if slot is selected, unselect it
+                    selectedSlot.setBackgroundResource(R.drawable.card_background); // reset
+                    selectedSlot.setTag(null); // clear tag
+                    selectedSlot = null; // reset the selected slot
+                    deleteButton.setImageResource(R.drawable.trash_closed);
+                    Toast.makeText(this, "Картичка одселектирана", Toast.LENGTH_SHORT).show(); // display message
+                } else { // if not selected, select slot
+                    if (selectedSlot != null) {
+                        selectedSlot.setBackgroundResource(R.drawable.card_background);
+                        selectedSlot.setTag(null);
+                        Toast.makeText(this, "Картичка селектирана", Toast.LENGTH_SHORT).show();
+
+                    }
+                    selectedSlot = (ImageView) v; // set new selected slot
+                    selectedSlot.setBackgroundResource(R.drawable.card_background_delete); // highlight slot
+                    selectedSlot.setTag("card_present"); // Indicate a card is present
+                    deleteButton.setImageResource(R.drawable.trash_open_empty);
+                }
+                return true; // event handled
+            });
+
+            slot.setOnClickListener(v -> {
+                if ("card_present".equals(slot.getTag())) {
+                    if (selectedSlot != null && selectedSlot != slot) {
+                        selectedSlot.setBackgroundResource(R.drawable.card_background); // deselect the previously selected slot
+                    }
+                    // select the current slot
+                    selectedSlot = (ImageView) v;
+                    selectedSlot.setBackgroundResource(R.drawable.card_background_delete);
+                }
+            });
+        }
+    }
+
+    private void clearSelectedCard() {
+        if (selectedSlot != null && "card_present".equals(selectedSlot.getTag())) { // if the tag is "card_present" -> remove card
+            int selectedIndex = -1;
+
+            for (int i = 0; i < cardSlots.length; i++) { // loop to find the index of the currently selected card/slot
+                if (cardSlots[i] == selectedSlot) {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+
+            if (selectedIndex != -1) { // selected index found aka card is selected to be removed
+                // remove (card and audio)
+                selectedSlot.setImageDrawable(null);
+                selectedSlot.setTag(null);
+                selectedSlot.setVisibility(View.INVISIBLE);
+                audioButtons[selectedIndex] = null;
+
+                // shift the cards and audio
+                for (int i = selectedIndex; i < cardSlots.length - 1; i++) {
+                    // move the card and tag from the next slot (on the right)
+                    cardSlots[i].setImageDrawable(cardSlots[i + 1].getDrawable());
+                    cardSlots[i].setTag(cardSlots[i + 1].getTag());
+                    cardSlots[i].setVisibility(cardSlots[i + 1].getVisibility());
+
+                    audioButtons[i] = audioButtons[i + 1]; // set new audio for the slot
+
+                    setSlotClickListener(cardSlots[i], i);
+                }
+
+                // clear last slot and audio
+                cardSlots[cardSlots.length - 1].setImageDrawable(null);
+                cardSlots[cardSlots.length - 1].setTag(null);
+                cardSlots[cardSlots.length - 1].setVisibility(View.INVISIBLE);
+                audioButtons[cardSlots.length - 1] = null;
+
+                count--; // one less slot
+            }
+            // reset
+            deleteButton.setImageResource(R.drawable.trash_closed);
+            selectedSlot.setBackgroundResource(R.drawable.card_background);
+            selectedSlot = null;
+        } else { // CLEAR ALL -> no card selected, but trash pressed
+            for (int i = 0; i < cardSlots.length; i++) {
+                cardSlots[i].setImageDrawable(null);
+                cardSlots[i].setTag(null);
+                cardSlots[i].setVisibility(View.INVISIBLE);
+                audioButtons[i] = null;
+            }
+            count = 0; // reset slot count
+
+            HorizontalScrollView scrollView = findViewById(R.id.cardsScroll);
+            scrollView.smoothScrollTo(0, 0);
+        }
+    }
+
+//    public void checkSelectedSlot() {
+//        if (selectedSlot != null) {
+//            int slotId = selectedSlot.getId(); // ID of selected slot
+//            Toast.makeText(this, "Selected Slot ID: " + slotId, Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(this, "No slot selected", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     void selectTab(ImageButton newTab) {
         if (previouslySelectedTab != null) {
@@ -94,9 +210,15 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         previouslySelectedTab = newTab;
     }
 
+//    private void clearAllSlots() {
+//        for (ImageButton slot : cardSlots) {
+//            Log.d("Image delete button", "Slot is " + slot.getTag());
+//            slot.setVisibility(View.INVISIBLE);
+//        }
+//        count = 0;
+//    }
 
     private void initializeViews() {
-        // Initialize slot buttons
         cardSlots[0] = findViewById(R.id.cardslot1);
         cardSlots[1] = findViewById(R.id.cardslot2);
         cardSlots[2] = findViewById(R.id.cardslot3);
@@ -107,7 +229,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         cardSlots[7] = findViewById(R.id.cardslot8);
 
         cardLayout = findViewById(R.id.card_layout2);
-
     }
 
     private void initializeListeners() {
@@ -126,21 +247,17 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         for (int i = 0; i < tabIds.length; i++) {
             ImageButton tabButton = findViewById(tabIds[i]);
             String category = categories[i];
-            tabButton.setOnClickListener(view -> updateCardLayoutByCategory(category,tabButton));
-
+            tabButton.setOnClickListener(view -> updateCardLayoutByCategory(category, tabButton));
         }
-        // Initialize buttons
+
         ImageButton backButton = findViewById(R.id.back_button);
-        ImageButton clearButton = findViewById(R.id.clear_button);
         ImageButton readAll = findViewById(R.id.read_button);
 
         setButtonTouchListener(backButton, this::navigateToChildActivity);
-        setButtonTouchListener(clearButton, this::clearAllSlots);
         setButtonTouchListener(readAll, this::playAllCardSounds);
-
     }
 
-    private void updateCardLayoutByCategory(String category,ImageButton btn) {
+    private void updateCardLayoutByCategory(String category, ImageButton btn) {
 
         cardService.fetchCardDataByUserIdAndCategory(userId, category, new CardService.CardServiceCallback() {
             @Override
@@ -150,8 +267,8 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                     cardLayout.setColumnCount(3);
 
                     int totalCards = cards.size();
-                    int totalRows = (int) Math.ceil((double) totalCards / 3); // Calculate the required number of rows
-                    cardLayout.setRowCount(totalRows); // Set row count
+                    int totalRows = (int) Math.ceil((double) totalCards / 3); // calculate the required number of rows
+                    cardLayout.setRowCount(totalRows); // set row count
 
                     int position = 0;
                     Log.d("CardInit", "Number of cards: " + totalCards);
@@ -160,7 +277,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                         String cardName = card.getName();
                         String audioVoice = card.getAudioVoice();
                         String imageLink = card.getImage();
-
 
 
                         View cardView = LayoutInflater.from(CommunicationMobileActivity.this)
@@ -223,7 +339,6 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         });
         applyTouchFeedback(cardButton);
 
-        // Apply touch feedback (visual effect) for button press
         cardButton.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
@@ -242,29 +357,27 @@ public class CommunicationMobileActivity extends AppCompatActivity {
 
         Log.d("CardSound", "Attempting to play sound from URL: " + audioFileId);
 
-        if (mediaPlayer == null) {
+        if (mediaPlayer == null || audioFileId.isEmpty()) { // dodadov ili
             mediaPlayer = new MediaPlayer();
         } else {
             mediaPlayer.reset(); // Reset the MediaPlayer to reuse it
         }
 
         try {
-
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setDataSource(audioFileId);
-            mediaPlayer.prepare(); // Prepare the media player
-            mediaPlayer.start();   // Start playing the audio
+            mediaPlayer.prepare();
+            mediaPlayer.start();   // start playing the audio
 
             mediaPlayer.setOnCompletionListener(mp -> {
-                mp.release(); // Release MediaPlayer once done
+                mp.release();
                 mediaPlayer = null;
             });
 
         } catch (Exception e) {
-            Log.e("CardSound", "Failed to play sound from URL: " + audioFileId , e);
+            Log.e("CardSound", "Failed to play sound from URL: " + audioFileId, e);
         }
     }
-
 
     private void playAllCardSounds() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -292,15 +405,13 @@ public class CommunicationMobileActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setSlotClickListener(ImageButton slot, String audio) {
-        String audioUrl = (String) slot.getTag(R.id.tag_audio_voice);
-        Log.d("TAG_AUDIO", "The audio is:" + audioUrl);
+    private void setSlotClickListener(ImageButton slot, int slotIndex) {
         slot.setOnClickListener(view -> {
-            int slotIndex = getSlotIndex(slot);
-            if (slotIndex != -1) {
-                playCardSoundFromUrl(audio);
-                //playCardSound(String.valueOf(cardDrawableIds[slotIndex]));
-
+            // Get the current audio URL from audioButtons or the slot's tag
+            if (audioButtons[slotIndex] != null) {
+                String audioUrl = audioButtons[slotIndex].audioUrl;
+                Log.d("TAG_AUDIO", "Playing audio for slot: " + slotIndex + ", URL: " + audioUrl);
+                playCardSoundFromUrl(audioUrl);
             }
         });
 
@@ -319,13 +430,13 @@ public class CommunicationMobileActivity extends AppCompatActivity {
     }
 
     private void setSlotImage(String imageUrl, String audioVoice) {
-
         if (count < SLOT_COUNT) {
-
             ImageButton slot = cardSlots[count];
-            AudioImageButton audioImageButton = new AudioImageButton(slot, audioVoice);
-            audioButtons[count] = audioImageButton;
 
+            // update the audio button array with the current slot and audio URL
+            audioButtons[count] = new AudioImageButton(slot, audioVoice);
+
+            // load image into slot
             Glide.with(CommunicationMobileActivity.this)
                     .load(imageUrl)
                     .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
@@ -334,14 +445,24 @@ public class CommunicationMobileActivity extends AppCompatActivity {
                     .into(slot);
 
             slot.setVisibility(View.VISIBLE);
-            setSlotClickListener(slot, audioVoice);
 
-            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName());
+            setSlotClickListener(slot, count);// click listener with slot index
+
+            cardDrawableIds[count] = getResources().getIdentifier(imageUrl, "raw", getPackageName()); // keep track of drawable IDs if needed
             Log.d("CardSlots", "Slot " + count + " updated with image: " + imageUrl);
-            count++;
 
+            HorizontalScrollView scrollView = findViewById(R.id.cardsScroll); // follow tha last card
 
-            //Log.d("TEST TAG", "Value of tag image url is " + TAG_IMAGE_URL + " and for audio " + R.id.tag_audio_voice);
+            slot.post(() -> {
+                int cardWidth = slot.getWidth() + 65;  // slot width plus padding
+                int thirdCardPosition = cardWidth * (count - 3); // Position for the 3rd card to be visible
+
+                if (count > 2) { // start scrolling if there are enough cards added aka more than 2
+                    scrollView.smoothScrollTo(thirdCardPosition, 0);
+                }
+            });
+            count++; // track filled slots
+
         } else {
             Log.w("CardSlotsFULL", "All slots are full. Cannot add more cards.");
         }
@@ -384,23 +505,14 @@ public class CommunicationMobileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void clearAllSlots() {
-
-        for (ImageButton slot : cardSlots) {
-            Log.d("Image delete button", "Slot is " + slot.getTag());
-            slot.setVisibility(View.INVISIBLE);
-        }
-        count = 0; // Reset slot counter
-    }
-
-    private int getSlotIndex(ImageButton slot) {
-        for (int i = 0; i < cardSlots.length; i++) {
-            if (cardSlots[i] == slot) {
-                return i;
-            }
-        }
-        return -1; // Slot not found
-    }
+//    private int getSlotIndex(ImageButton slot) {
+//        for (int i = 0; i < cardSlots.length; i++) {
+//            if (cardSlots[i] == slot) {
+//                return i;
+//            }
+//        }
+//        return -1; // Slot not found
+//    }
 
     @Override
     protected void onDestroy() {
@@ -410,5 +522,4 @@ public class CommunicationMobileActivity extends AppCompatActivity {
             mediaPlayer = null;
         }
     }
-
 }

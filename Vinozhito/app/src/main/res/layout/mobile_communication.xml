@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,6 @@
         android:rowCount="3">
 
         <LinearLayout
-
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -49,44 +49,57 @@
                         android:src="@drawable/back" />
                 </RelativeLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:layout_marginTop="10dp"
+                    android:padding="8dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/com_actions_bg">
 
                     <ImageButton
-                        android:layout_marginTop="20dp"
                         android:id="@+id/read_button"
-                        android:layout_width="48dp"
-                        android:layout_marginStart="120dp"
-                        android:layout_height="48dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:background="@null"
                         android:contentDescription="@string/todo_text"
                         android:scaleType="centerInside"
-                        android:src="@drawable/play_button_states" />
+                        android:src="@drawable/play_button_states"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/clear_button"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.5" />
 
                     <ImageButton
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="20dp"
                         android:id="@+id/clear_button"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@null"
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/circle_white"
                         android:contentDescription="@string/todo_text"
                         android:scaleType="centerInside"
-                        android:src="@drawable/trash" />
-                </RelativeLayout>
-
+                        android:padding="5dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/trash_closed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/read_button"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </GridLayout>
 
-
             <HorizontalScrollView
+                android:id="@+id/cardsScroll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <GridLayout
                     android:id="@+id/gridLayout"
@@ -97,7 +110,6 @@
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/com_tab_bg"
                     android:columnCount="8"
-                    
                     android:orientation="horizontal"
                     android:rowCount="1">
 
@@ -120,8 +132,8 @@
                             android:contentDescription="@string/todo_text"
                             android:paddingVertical="10dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/apple"
-                            android:visibility="invisible" />
+                            android:visibility="invisible"
+                            android:src="@drawable/apple"/>
                     </FrameLayout>
 
                     <FrameLayout
@@ -143,8 +155,8 @@
                             android:contentDescription="@string/todo_text"
                             android:paddingVertical="10dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/fruit_lemon"
-                            android:visibility="invisible" />
+                            android:visibility="invisible"
+                            android:src="@drawable/fruit_lemon" />
                     </FrameLayout>
 
                     <FrameLayout
@@ -165,8 +177,8 @@
                             android:contentDescription="@string/todo_text"
                             android:paddingVertical="10dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/fruit_pear"
-                            android:visibility="invisible" />
+                            android:visibility="invisible"
+                            android:src="@drawable/fruit_pear" />
                     </FrameLayout>
 
 
@@ -515,8 +527,6 @@
                     android:paddingHorizontal="5dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/wheel" />
-
-
             </GridLayout>
         </HorizontalScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

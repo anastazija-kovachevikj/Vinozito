@@ -422,6 +422,7 @@
             app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_layout2"
+
             app:layout_constraintWidth_percent="0.55">
 
             <Button
@@ -439,5 +440,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
