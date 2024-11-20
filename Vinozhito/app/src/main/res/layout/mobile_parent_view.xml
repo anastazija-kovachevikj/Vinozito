@@ -122,13 +122,14 @@
                 android:id="@+id/imageView5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/user2"
+                android:src="@drawable/usericon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/card_button"
                 app:layout_constraintHeight="0.15 "
+                android:elevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.15">
+                app:layout_constraintWidth_percent="0.2">
 
             </ImageView>
 
@@ -170,14 +171,14 @@
                 android:id="@+id/imageView6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/flashcard"
+                android:src="@drawable/cardicon"
                 android:elevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/mycards_button"
                 app:layout_constraintHeight="0.15 "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.15">
+                app:layout_constraintWidth_percent="0.2">
 
             </ImageView>
 
@@ -259,12 +260,13 @@
             android:elevation="4dp"
             android:paddingHorizontal="8dp"
             android:rowCount="1"
+            app:flow_horizontalAlign="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.09"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_layout"
-            app:layout_constraintWidth_percent="0.50">
+            app:layout_constraintWidth_percent="0.65">
 
             <ImageView
                 android:id="@+id/image"
@@ -295,7 +297,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.83" />
+                app:layout_constraintWidth_percent="0.70" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

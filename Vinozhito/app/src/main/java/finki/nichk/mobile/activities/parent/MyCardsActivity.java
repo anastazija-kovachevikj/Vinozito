@@ -1,9 +1,12 @@
 package finki.nichk.mobile.activities.parent;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -33,8 +36,14 @@ public class MyCardsActivity extends AppCompatActivity {
     private  String userToken;
     private String userId;
     private TextView categoryTextView;
+
+    private TextView cardName;
+
+
+    private EditText cardTitle;
     private String category;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +52,10 @@ public class MyCardsActivity extends AppCompatActivity {
         cardService = new CardService();
         userService = new UserService(this);
 
-        cardLayout = findViewById(R.id.card_display); // Your GridLayout ID
+        cardLayout = findViewById(R.id.card_display);
         categoryTextView = findViewById(R.id.categoryTextView);
+
+
 
         category = getIntent().getStringExtra("category");
 
@@ -88,7 +99,7 @@ public class MyCardsActivity extends AppCompatActivity {
     }
 
     private void populateCardGrid(List<Card> cards) {
-        cardLayout.removeAllViews(); 
+        cardLayout.removeAllViews();
         cardLayout.setColumnCount(3);
 
         int position = 0;
@@ -96,10 +107,8 @@ public class MyCardsActivity extends AppCompatActivity {
             String cardName = card.getName();
             String imageLink = card.getImage();
 
-
             LayoutInflater inflater = LayoutInflater.from(MyCardsActivity.this);
             View cardView = inflater.inflate(R.layout.tablet_card_layout, cardLayout, false);
-
 
             ImageButton imageButton = cardView.findViewById(R.id.card_image);
             TextView textView = cardView.findViewById(R.id.card_text);
@@ -115,14 +124,20 @@ public class MyCardsActivity extends AppCompatActivity {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = 0;
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(position % 3, 1f); // Correct column placement
-            params.rowSpec = GridLayout.spec(position / 3); // Correct row placement
-            params.setMargins(8, 8, 8, 8); // Set margins
-
+            params.columnSpec = GridLayout.spec(position % 3, 1f);
+            params.rowSpec = GridLayout.spec(position / 3);
+            params.setMargins(8, 8, 8, 8);
             cardView.setLayoutParams(params);
             cardLayout.addView(cardView);
-
             position++;
+
+
+            imageButton.setOnClickListener(v -> {
+                Intent intent = new Intent(MyCardsActivity.this, CustomCardActivity.class);
+                intent.putExtra("selectedCard", card); // Pass the card object
+                startActivity(intent); // Start the next activity
+            });
         }
     }
+
 }
